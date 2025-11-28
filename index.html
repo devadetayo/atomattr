@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtomAttr - The Runtime CSS Engine</title>
+    <meta name="description" content="Style at the speed of thought with a zero-config runtime CSS engine.">
+    <link rel="icon" href="assets/favico/favico.png">
+    <!-- 1. LOAD ENGINE & STYLES -->
+    <link rel="stylesheet" href="dist/defaults.css">
+    <script src="dist/atomattr.min.js" defer></script>
+
+    <!-- 2. FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css"
+        integrity="sha512-WxpJXPm/Is1a/dzEdhdaoajpgizHQimaLGL/QqUIAjIihlQqlPQb1V9vkGs9+VzXD7rgI6O+UsSKl4u5K36Ydw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary-glow: #3b82f6;
+            --secondary-glow: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- ANIMATED BACKGROUND --- */
+        .atom-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+            background: var(--surface);
+        }
+
+        /* Subtle Grid Overlay */
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(128, 128, 128, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(128, 128, 128, 0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        .atom-container {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            transform: translate(-50%, -50%);
+            opacity: 0.15;
+            pointer-events: none;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* Electron Orbits */
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            margin-top: -50%;
+            margin-left: -50%;
+            transform-style: preserve-3d;
+        }
+
+        .orbit:nth-child(1) {
+            transform: rotateZ(0deg) rotateY(65deg);
+            animation: spin-1 8s linear infinite;
+        }
+
+        .orbit:nth-child(2) {
+            transform: rotateZ(60deg) rotateY(65deg);
+            animation: spin-2 9s linear infinite;
+        }
+
+        .orbit:nth-child(3) {
+            transform: rotateZ(120deg) rotateY(65deg);
+            animation: spin-3 10s linear infinite;
+        }
+
+        /* Electrons */
+        .electron {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px var(--secondary);
+        }
+
+        /* Nucleus */
+        .nucleus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 40px var(--primary-glow);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-up 10s linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            width: 4px;
+            height: 4px;
+            left: 10%;
+            bottom: -10px;
+            animation-duration: 12s;
+        }
+
+        .particle:nth-child(2) {
+            width: 6px;
+            height: 6px;
+            left: 30%;
+            bottom: -20px;
+            animation-duration: 15s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(3) {
+            width: 3px;
+            height: 3px;
+            left: 70%;
+            bottom: -10px;
+            animation-duration: 8s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(4) {
+            width: 5px;
+            height: 5px;
+            left: 90%;
+            bottom: -30px;
+            animation-duration: 18s;
+        }
+
+        .particle:nth-child(5) {
+            width: 4px;
+            height: 4px;
+            left: 50%;
+            bottom: -10px;
+            animation-duration: 14s;
+            animation-delay: 4s;
+        }
+
+        @keyframes spin-1 {
+            from {
+                transform: rotateZ(0deg) rotateY(65deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(0deg) rotateY(65deg) rotateZ(360deg);
+            }
+        }
+
+        @keyframes spin-2 {
+            from {
+                transform: rotateZ(60deg) rotateY(65deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(60deg) rotateY(65deg) rotateZ(360deg);
+            }
+        }
+
+        @keyframes spin-3 {
+            from {
+                transform: rotateZ(120deg) rotateY(65deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(120deg) rotateY(65deg) rotateZ(360deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .text-gradient {
+            background: linear-gradient(135deg, #93c5fd 0%, #e879f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Code Block Styling */
+        .code-window {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Bento Grid Hover Effects */
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body bg="surface" text="text" min-h="100vh" flex col>
+
+    <!-- LIVE ATOM BACKGROUND WITH PARTICLES -->
+    <div class="atom-bg">
+        <div class="bg-grid"></div>
+        <!-- Floating Particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+
+        <div class="atom-container">
+            <div class="orbit">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit">
+                <div class="electron"></div>
+            </div>
+            <div class="nucleus"></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav sticky top="0" z="50" w="full" bg="surface" bg-opacity="0.85" backdrop="blur(16px)" border-b="1px"
+        border-color="border">
+        <div max-w="1400px" mx="auto" px="4" h="4.5rem" flex items="center" justify="between">
+
+            <!-- Logo -->
+            <a href="index.html" flex items="center" gap="3" group text="text" style="text-decoration: none;">
+                <img src="assets/images/logo.png" w="8" h="auto">
+                <span size="1.25rem" weight="700" tracking="-0.02em">AtomAttr</span>
+                <span bg="surface-alt" border="1px" border-color="border" text="text-dim" size="0.7rem" px="1" py="0.5"
+                    radius="md" weight="600" ml="2">BETA</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div hidden md-flex items="center" gap="8">
+                <a href="#features" text="text-dim" hover-text="primary" weight="500" size="0.95rem"
+                    transition="colors">Features</a>
+                <a href="docs.html" text="text-dim" hover-text="primary" weight="500" size="0.95rem"
+                    transition="colors">Docs</a>
+                <a href="#" text="text-dim" hover-text="primary" weight="500" size="0.95rem" transition="colors"
+                    title="Coming Soon">Blog</a>
+                <div w="1px" h="1.5rem" bg="border"></div>
+
+                <a href="https://github.com/devadetayo/atomattr" target="_blank" text="text" hover-text="primary"
+                    transition="colors">
+                    <svg w="1.25rem" h="1.25rem" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+
+                <button id="themeToggle" bg="surface-alt" border="1px" border-color="border" p="0.5rem" radius="xl"
+                    hover-border-color="text-dim" transition="all" cursor="pointer">
+                    <svg class="sun" w="1rem" h="1rem" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+
+            <button id="menuOpen" md-hidden bg="transparent" border="none" p="2" text="text">
+                <svg w="1.5rem" h="1.5rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="4" flex col
+        gap="4" shadow="2xl" border-l="1px" border-color="border" md-hidden>
+        <div flex justify="between" items="center" mb="4">
+            <span weight="700" size="1.25rem">Menu</span>
+            <button id="menuClose" bg="surface-alt" p="2" radius="xl"><svg w="1.5rem" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg></button>
+        </div>
+        <a href="#features" text="text" size="1.1rem" weight="600">Features</a>
+        <a href="docs.html" text="text" size="1.1rem" weight="600">Documentation</a>
+        <a href="#" text="text" size="1.1rem" weight="600">Blog</a>
+        <a href="https://github.com/devadetayo/atomattr" text="text" size="1.1rem" weight="600">GitHub</a>
+    </div>
+
+    <!-- HERO CONTENT -->
+    <main w="full" max-w="1400px" mx="auto" px="4" pt="2rem" pb="3rem">
+
+        <!-- HERO SPLIT -->
+        <section flex col lg-row items="center" gap="4rem" mb="8rem" w="full" mx="auto">
+            <div text-align="center" lg-text-align="left" flex col items="center" lg-items="start" justify="center"
+                lg-justify="start" flex="1">
+                <div inline-flex items="center" justify="center" gap="2" px="3" py="1" mb="6" radius="50px"
+                    bg="surface-alt" border="1px" max-w="fit-content" border-color="border">
+                    <span w="2" h="2" radius="xl" bg="green-500" class="animate-pulse"></span>
+                    <span text="text-dim" weight="600" size="0.8rem">v0.1.0 Now Available</span>
+                </div>
+
+                <h1 size="3rem" md-size="4.5rem" weight="800" leading="1.1" mb="6" tracking="-0.03em">
+                    The Runtime <br>
+                    <span class="text-gradient">Logic Engine.</span>
+                </h1>
+
+                <p text="text-dim" size="1.025rem" leading="1.6" mb="8" max-w="35rem" mx="auto" lg-mx="0">
+                    Skip the build step. AtomAttr watches your DOM and compiles utility attributes into optimized CSS
+                    instantly in the browser. Ideal for rapid prototyping, legacy apps, and static sites.
+                </p>
+
+                <div flex col sm-row gap="4" justify="center" lg-justify="start" w="full">
+                    <button bg="text" text="surface" py="0.8rem" px="2.5rem" radius="xl" weight="600"
+                        hover-opacity="0.9" hover-translate-y="-2px" transition="all" shadow="lg" w="full" md-w="auto">
+                        Get Started
+                    </button>
+                    <button bg="surface" text="text" border="1px" border-color="border" py="0.8rem" px="2.5rem"
+                        radius="xl" weight="600" hover-bg="surface-alt" transition="all" w="full" md-w="auto">
+                        Read the Docs
+                    </button>
+                </div>
+            </div>
+
+            <!-- CODE PREVIEW CARD -->
+            <div flex="1" w="full" max-w="36rem">
+                <div class="code-window" bg="#0f1117" radius="xl" overflow="hidden" border="1px"
+                    border-color="rgba(255,255,255,0.1)">
+                    <div flex items="center" justify="between" px="4" py="3" bg="#1e293b" border-b="1px"
+                        border-color="rgba(255,255,255,0.05)">
+                        <div flex gap="2">
+                            <div w="3" h="3" radius="xl" bg="#ef4444"></div>
+                            <div w="3" h="3" radius="xl" bg="#eab308"></div>
+                            <div w="3" h="3" radius="xl" bg="#22c55e"></div>
+                        </div>
+                        <span text="gray-400" size="0.8rem" font="mono">index.html</span>
+                    </div>
+                    <div p="4" font="mono" size="0.9rem" leading="1.7">
+                        <div text="gray-500">// 1. Drop it in</div>
+                        <div text="purple-400">&lt;script <span text="blue-400">src</span>=<span
+                                text="green-400">"atomattr.js"</span>&gt;&lt;/script&gt;</div>
+                        <br>
+                        <div text="gray-500">// 2. Style instantly</div>
+                        <div>
+                            <span text="purple-400">&lt;div</span>
+                            <span text="blue-400">flex</span>
+                            <span text="blue-400">center</span>
+                            <span text="blue-400">bg</span>=<span text="green-400">"primary"</span>
+                        </div>
+                        <div pl="2rem">
+                            <span text="blue-400">hover-scale</span>=<span text="green-400">"1.05"</span>
+                            <span text="purple-400">&gt;</span>
+                        </div>
+                        <div pl="2rem" text="white">Hello World</div>
+                        <div text="purple-400">&lt;/div&gt;</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how-it-works" mb="8rem" px="4">
+            <div mb="5rem" text-align="center">
+                <h2 size="2.5rem" weight="800" mb="3">How It Works</h2>
+                <p text="text-dim" max-w="40rem" mx="auto" leading="1.6">
+                    AtomAttr relies on a lightweight JavaScript engine that runs in the client browser, ensuring you
+                    only generate what you use.
+                </p>
+            </div>
+
+            <div grid md-grid-cols="3" gap="2rem">
+                <div class="bento-card" bg="surface-alt" p="6" radius="xl" border="1px" border-color="border">
+                    <div w="3rem" h="3rem" bg="blue-500" radius="full" flex items="center" justify="center" text="white"
+                        mb="4" weight="bold" shadow="lg">1</div>
+                    <h3 size="1.2rem" weight="700" mb="2">Scan DOM</h3>
+                    <p text="text-dim">The engine uses a MutationObserver to watch the DOM for elements with special
+                        attributes like <code>flex</code> or <code>p="4"</code>.</p>
+                </div>
+                <div class="bento-card" bg="surface-alt" p="6" radius="xl" border="1px" border-color="border">
+                    <div w="3rem" h="3rem" bg="purple-500" radius="full" flex items="center" justify="center"
+                        text="white" mb="4" weight="bold" shadow="lg">2</div>
+                    <h3 size="1.2rem" weight="700" mb="2">Compile CSS</h3>
+                    <p text="text-dim">It parses attributes into atomic CSS rules and injects them into a managed
+                        stylesheet in the document head.</p>
+                </div>
+                <div class="bento-card" bg="surface-alt" p="6" radius="xl" border="1px" border-color="border">
+                    <div w="3rem" h="3rem" bg="pink-500" radius="full" flex items="center" justify="center" text="white"
+                        mb="4" weight="bold" shadow="lg">3</div>
+                    <h3 size="1.2rem" weight="700" mb="2">Apply Styles</h3>
+                    <p text="text-dim">The browser paints the styles instantly. No build step, no purging, no massive
+                        CSS files to download.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOWCASE GRID -->
+        <section id="features" mb="8rem">
+            <div mb="4rem" text-align="center">
+                <h2 size="2.5rem" weight="800" mb="3">Packed with Power</h2>
+                <p text="text-dim">Everything you need to build modern UIs, right in the HTML.</p>
+            </div>
+
+            <div grid md-grid-cols="3" gap="1.5rem">
+                <!-- Zero Config -->
+                <div class="bento-card" md-col-span="2" bg="surface" p="8" radius="2xl" border="1px"
+                    border-color="border" relative overflow="hidden">
+                    <div relative z="10">
+                        <div w="3rem" h="3rem" bg="primary" radius="lg" flex items="center" justify="center" mb="4"
+                            text="white" shadow="md">
+                            <i class="fa-solid fa-bolt fa-lg"></i>
+                        </div>
+                        <h3 size="1.5rem" weight="700" mb="2">Zero Configuration</h3>
+                        <p text="text-dim" max-w="80%">No Webpack, no PostCSS, no CLI. Just include the script and start
+                            writing code. Ideal for PHP, Rails, or static sites.</p>
+                    </div>
+                    <div absolute right="-2rem" bottom="-2rem" opacity="0.05" rotate="-15deg" text="text">
+                        <i class="fa-solid fa-bolt" style="font-size: 14rem;"></i>
+                    </div>
+                </div>
+
+                <!-- Dark Mode -->
+                <div class="bento-card" bg="surface" p="8" radius="2xl" border="1px" border-color="border" flex col
+                    justify="between">
+                    <div>
+                        <div w="3rem" h="3rem" bg="purple-500" radius="lg" flex items="center" justify="center" mb="4"
+                            text="white" shadow="md">
+                            <i class="fa-solid fa-moon fa-lg"></i>
+                        </div>
+                        <h3 size="1.25rem" weight="700" mb="2">Dark Mode</h3>
+                        <p text="text-dim" size="0.9rem">Built-in theming engine. Toggle classes effortlessly.</p>
+                    </div>
+                    <div mt="6" bg="surface-alt" p="3" radius="lg" border="1px" border-color="border" flex
+                        items="center" justify="between">
+                        <span text="text" size="0.8rem" weight="600">Theme</span>
+                        <div w="2.5rem" h="1.25rem" bg="primary" radius="xl" relative>
+                            <div absolute right="2px" top="2px" w="1rem" h="1rem" bg="white" radius="xl"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Responsive -->
+                <div class="bento-card" bg="surface" p="8" radius="2xl" border="1px" border-color="border">
+                    <div w="3rem" h="3rem" bg="blue-500" radius="lg" flex items="center" justify="center" mb="4"
+                        text="white" shadow="md">
+                        <i class="fa-solid fa-mobile-screen fa-lg"></i>
+                    </div>
+                    <h3 size="1.25rem" weight="700" mb="2">Responsive</h3>
+                    <p text="text-dim" size="0.9rem" mb="4">Mobile-first syntax. Use `md-` or `lg-` prefixes to adapt
+                        layouts.</p>
+                    <div font="mono" bg="surface-alt" p="2" radius="md" text="text-dim" size="0.8rem">
+                        md-flex-row <br> lg-gap-8
+                    </div>
+                </div>
+
+                <!-- Layouts -->
+                <div class="bento-card" bg="surface" p="8" radius="2xl" border="1px" border-color="border">
+                    <div w="3rem" h="3rem" bg="teal-500" radius="lg" flex items="center" justify="center" mb="4"
+                        text="white" shadow="md">
+                        <i class="fa-solid fa-layer-group fa-lg"></i>
+                    </div>
+                    <h3 size="1.25rem" weight="700" mb="2">Layouts</h3>
+                    <p text="text-dim" size="0.9rem">Full Flexbox and Grid support with gaps and alignment.</p>
+                </div>
+
+                <!-- Effects -->
+                <div class="bento-card" bg="surface" p="8" radius="2xl" border="1px" border-color="border">
+                    <div w="3rem" h="3rem" bg="orange-500" radius="lg" flex items="center" justify="center" mb="4"
+                        text="white" shadow="md">
+                        <i class="fa-solid fa-wand-magic-sparkles fa-lg"></i>
+                    </div>
+                    <h3 size="1.25rem" weight="700" mb="2">Effects</h3>
+                    <p text="text-dim" size="0.9rem">Shadows, opacity, blur, and transitions out of the box.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="docs" mb="6rem">
+            <div flex items="end" justify="between" mb="3rem" border-b="1px" border-color="border" pb="2rem">
+                <div>
+                    <h2 size="2rem" weight="800" mb="2">Start Building</h2>
+                    <p text="text-dim">Explore the core concepts.</p>
+                </div>
+                <a href="#" text="primary" weight="600" hover-text="accent" transition="colors">View all docs &rarr;</a>
+            </div>
+
+            <div grid sm-grid-cols="2" lg-grid-cols="4" gap="2rem">
+                <a href="#" group>
+                    <div h="8rem" bg="surface-alt" radius="lg" mb="3" border="1px" border-color="border"
+                        group-hover-border-color="primary" transition="colors" flex items="center" justify="center">
+                        <span text="4rem" opacity="0.1" weight="800">Aa</span>
+                    </div>
+                    <h4 weight="700" mb="1" group-hover-text="primary" transition="colors">Typography</h4>
+                    <p text="text-dim" size="0.9rem">Fonts, sizes, and weights.</p>
+                </a>
+                <a href="#" group>
+                    <div h="8rem" bg="surface-alt" radius="lg" mb="3" border="1px" border-color="border"
+                        group-hover-border-color="primary" transition="colors" flex items="center" justify="center">
+                        <div flex gap="1">
+                            <div w="4" h="4" border="2px" border-color="text-dim" radius="sm"></div>
+                            <div w="4" h="4" border="2px" border-color="text-dim" radius="sm"></div>
+                        </div>
+                    </div>
+                    <h4 weight="700" mb="1" group-hover-text="primary" transition="colors">Layout</h4>
+                    <p text="text-dim" size="0.9rem">Flexbox and Grid systems.</p>
+                </a>
+                <a href="#" group>
+                    <div h="8rem" bg="surface-alt" radius="lg" mb="3" border="1px" border-color="border"
+                        group-hover-border-color="primary" transition="colors" flex items="center" justify="center">
+                        <div w="6" h="6" bg="gradient-to-br from-blue-400 to-purple-500" radius="xl"></div>
+                    </div>
+                    <h4 weight="700" mb="1" group-hover-text="primary" transition="colors">Colors</h4>
+                    <p text="text-dim" size="0.9rem">Palettes and gradients.</p>
+                </a>
+                <a href="#" group>
+                    <div h="8rem" bg="surface-alt" radius="lg" mb="3" border="1px" border-color="border"
+                        group-hover-border-color="primary" transition="colors" flex items="center" justify="center">
+                        <span text="2rem" text="text-dim">!</span>
+                    </div>
+                    <h4 weight="700" mb="1" group-hover-text="primary" transition="colors">States</h4>
+                    <p text="text-dim" size="0.9rem">Hover, focus, and active.</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer bg="surface" border-t="1px" border-color="border" pt="5rem" pb="3rem" w="full">
+        <div max-w="1400px" mx="auto" px="4" grid md-grid-cols="4" gap="4rem" mb="4rem">
+
+            <!-- Brand Column -->
+            <div md-col-span="2">
+                <div flex items="center" gap="2" mb="4">
+                    <div w="2rem" h="2rem" bg="text" radius="md" flex items="center" justify="center">
+                        <svg w="1.2rem" text="surface" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <span weight="800" size="1.4rem">AtomAttr</span>
+                </div>
+                <p text="text-dim" max-w="20rem" leading="1.6" mb="6">
+                    A project by <strong text="text">Quanta Labs</strong>. <br>
+                    Making the web faster, one attribute at a time.
+                </p>
+                <div flex gap="4">
+                    <a href="https://x.com/devadetayo" text="text-dim" hover-text="text" transition="colors"><i
+                            class="fa-brands fa-x-twitter fa-lg"></i></a>
+                    <a href="https://facebook.com/devadetayo" text="text-dim" hover-text="text" transition="colors"><i
+                            class="fa-brands fa-facebook fa-lg"></i></a>
+                    <a href="https://instagram.com/devadetayo" text="text-dim" hover-text="text" transition="colors"><i
+                            class="fa-brands fa-instagram fa-lg"></i></a>
+                    <a href="https://dev.to/devadetayo" text="text-dim" hover-text="text" transition="colors"><i
+                            class="fa-brands fa-dev fa-lg"></i></a>
+                </div>
+            </div>
+
+            <!-- Project Links -->
+            <div>
+                <h4 weight="700" mb="4">Project</h4>
+                <div flex col gap="3">
+                    <a href="#features" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Features</a>
+                    <a href="docs.html" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Documentation</a>
+                    <a href="playground.html" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Playground</a>
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div>
+                <h4 weight="700" mb="4">Resources</h4>
+                <div flex col gap="3">
+                    <a href="cheatsheet.html" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Cheat Sheet</a>
+                    <a href="https://github.com/devadetayo/atomattr" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">GitHub Repo</a>
+                    <a href="#" text="text-dim" hover-text="primary" size="0.9rem" style="text-decoration:none;">NPM
+                        Package</a>
+                </div>
+            </div>
+        </div>
+        <div text-align="center" max-w="1400px" mx="auto" border-t="1px" border-color="border" pt="2rem" text="text-dim"
+            size="0.85rem">
+            &copy; 2025 Quanta Labs. Released under MIT License.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('mobile-menu');
+            const menuOpen = document.getElementById('menuOpen');
+            const menuClose = document.getElementById('menuClose');
+            const themeBtn = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            // Mobile Menu
+            menuOpen.addEventListener('click', () => menu.classList.add('open'));
+            menuClose.addEventListener('click', () => menu.classList.remove('open'));
+
+            // Theme Toggle
+            themeBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // Init State
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+
+            // Force Engine Start
+            if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start();
+        });
+    </script>
+</body>
+
+</html>

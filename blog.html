@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtomAttr - Blog</title>
+
+    <link rel="icon" href="assets/favico/favico.png">
+    <!-- 1. LOAD ENGINE -->
+    <link rel="stylesheet" href="dist/defaults.css">
+    <script src="dist/atomattr.min.js" defer></script>
+
+    <!-- 2. FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- CORE SETUP --- */
+        :root {
+            --primary-glow: #3b82f6;
+            --header-height: 4rem;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--surface);
+            color: var(--text);
+        }
+
+        /* --- TEXT GRADIENT --- */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- CARD HOVER --- */
+        .blog-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        /* --- MOBILE MENU --- */
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* --- BACKGROUND GRID --- */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body bg="surface" text="text" min-h="100vh" flex col>
+
+    <div class="bg-grid"></div>
+
+    <!-- NAVBAR -->
+    <nav sticky top="0" z="50" w="full" bg="surface" bg-opacity="0.9" backdrop-blur="12px" border-b="1px"
+        border-color="border">
+        <div max-w="1400px" mx="auto" px="6" h="4rem" flex items="center" justify="between">
+
+            <!-- Logo -->
+            <a href="index.html" flex items="center" gap="3" style="text-decoration:none;" text="text" group>
+                <div w="2rem" h="2rem" bg="linear-gradient(135deg, #3b82f6, #9333ea)" radius="md" flex items="center"
+                    justify="center" shadow="sm">
+                    <svg w="1.2rem" text="white" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <div flex col justify="center">
+                    <span weight="700" size="1.1rem" leading="1" tracking="-0.02em">AtomAttr</span>
+                    <span text="text-dim" size="0.75rem" weight="500" tracking="wide">BLOG</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div hidden lg-flex items="center" gap="6">
+                <a href="index.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem" transition="colors"
+                    style="text-decoration:none;">Home</a>
+                <a href="docs.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem" transition="colors"
+                    style="text-decoration:none;">Docs</a>
+                <a href="playground.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Playground</a>
+                <a href="blog.html" text="primary" weight="600" size="0.9rem" transition="colors"
+                    style="text-decoration:none;">Blog</a>
+
+                <div w="1px" h="1.5rem" bg="border"></div>
+
+                <a href="https://github.com/devadetayo/atomattr" target="_blank" text="text-dim" hover-text="text"
+                    transition="colors">
+                    <svg w="1.2rem" h="1.2rem" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+
+                <button id="themeToggle" bg="surface-alt" border="1px" border-color="border" p="0.5rem" radius="xl"
+                    hover-border-color="text-dim" transition="all" cursor="pointer">
+                    <svg class="sun" w="1rem" h="1rem" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menuOpen" lg-hidden bg="transparent" border="none" p="2" text="text">
+                <svg w="1.5rem" h="1.5rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="6" flex col
+        gap="6" shadow="2xl" border-l="1px" border-color="border" lg-hidden>
+        <div flex justify="between" items="center" mb="4">
+            <span weight="700" size="1.25rem">Menu</span>
+            <button id="menuClose" bg="surface-alt" p="2" radius="xl" border="none"><svg w="1.5rem" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg></button>
+        </div>
+        <a href="index.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Home</a>
+        <a href="docs.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Documentation</a>
+        <a href="playground.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Playground</a>
+        <a href="blog.html" text="primary" size="1.1rem" weight="600" style="text-decoration:none;">Blog</a>
+        <a href="https://github.com/devadetayo/atomattr" text="text" size="1.1rem" weight="600"
+            style="text-decoration:none;">GitHub</a>
+    </div>
+
+    <!-- BLOG HEADER -->
+    <header pt="6rem" pb="4rem" px="6" text-align="center">
+        <span text="primary" weight="700" size="0.85rem" uppercase tracking="wider">The AtomAttr Blog</span>
+        <h1 size="3rem" md-size="4rem" weight="800" mt="2" mb="4">
+            Latest from the <br> <span class="text-gradient">Quantum Lab</span>
+        </h1>
+        <p text="text-dim" size="1.1rem" max-w="36rem" mx="auto">
+            Deep dives into CSS architecture, runtime performance, and the future of web styling.
+        </p>
+    </header>
+
+    <!-- BLOG GRID -->
+    <main w="full" max-w="1200px" mx="auto" px="6" pb="8rem">
+        <div grid md-grid-cols="2" lg-grid-cols="3" gap="2rem">
+
+            <!-- Article 1 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center" relative>
+                    <div w="4rem" h="4rem" bg="blue-100" radius="full" flex items="center" justify="center"
+                        text="blue-600">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Nov 25, 2025</span> • <span>Engineering</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">Introducing AtomAttr: The Runtime CSS Revolution
+                    </h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        Why we built a CSS engine that compiles in the browser, and how it outperforms traditional build
+                        steps for rapid prototyping.
+                    </p>
+                    <a href="blog/intro-atomattr.html" text="primary" weight="600" hover-text="accent"
+                        transition="colors" style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center">
+                    <div w="4rem" h="4rem" bg="purple-100" radius="full" flex items="center" justify="center"
+                        text="purple-600">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Nov 28, 2025</span> • <span>Tutorial</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">Why We Ditched the Build Step</h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        Complex toolchains are killing developer productivity. Learn how a zero-config approach can save
+                        your team hours every week.
+                    </p>
+                    <a href="blog/no-build-step.html" text="primary" weight="600" hover-text="accent"
+                        transition="colors" style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center">
+                    <div w="4rem" h="4rem" bg="pink-100" radius="full" flex items="center" justify="center"
+                        text="pink-600">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Dec 01, 2025</span> • <span>Performance</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">Tailwind vs. AtomAttr</h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        A deep dive into performance metrics, load times, and developer experience differences between
+                        static and runtime CSS engines.
+                    </p>
+                    <a href="blog/tailwind-vs-atomattr.html" text="primary" weight="600" hover-text="accent"
+                        transition="colors" style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center">
+                    <div w="4rem" h="4rem" bg="slate-200" radius="full" flex items="center" justify="center"
+                        text="slate-700">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Dec 05, 2025</span> • <span>Tutorial</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">Mastering Dark Mode in 5 Minutes</h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        How to implement a system-aware, persistent dark mode toggle using AtomAttr's native
+                        <code>dark-</code> modifiers.
+                    </p>
+                    <a href="blog/dark-mode-guide.html" text="primary" weight="600" hover-text="accent"
+                        transition="colors" style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center">
+                    <div w="4rem" h="4rem" bg="indigo-100" radius="full" flex items="center" justify="center"
+                        text="indigo-600">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Dec 08, 2025</span> • <span>Case Study</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">Building a Responsive Dashboard</h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        A step-by-step guide to building a complex admin interface with sidebars, grids, and charts
+                        using only attributes.
+                    </p>
+                    <a href="blog/responsive-dashboard.html" text="primary" weight="600" hover-text="accent"
+                        transition="colors" style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center">
+                    <div w="4rem" h="4rem" bg="orange-100" radius="full" flex items="center" justify="center"
+                        text="orange-600">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Dec 12, 2025</span> • <span>Architecture</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">Under the Hood: The Engine</h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        How the MutationObserver and CSSOM injection work together to deliver instant style updates at
+                        60fps.
+                    </p>
+                    <a href="blog/under-the-hood.html" text="primary" weight="600" hover-text="accent"
+                        transition="colors" style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 7 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center">
+                    <div w="4rem" h="4rem" bg="teal-100" radius="full" flex items="center" justify="center"
+                        text="teal-600">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Dec 15, 2025</span> • <span>Opinion</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">The Future of CSS</h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        Are classes dead? Why moving style logic to attributes might be the next evolution in web
+                        component design.
+                    </p>
+                    <a href="blog/future-css.html" text="primary" weight="600" hover-text="accent" transition="colors"
+                        style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 8 -->
+            <article class="blog-card" bg="surface" border="1px" border-color="border" radius="xl" overflow="hidden"
+                flex col h="full" cursor="pointer">
+                <div h="12rem" bg="surface-alt" flex items="center" justify="center">
+                    <div w="4rem" h="4rem" bg="rose-100" radius="full" flex items="center" justify="center"
+                        text="rose-600">
+                        <svg w="2rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <div p="6" flex col flex-grow="1">
+                    <div flex gap="2" items="center" mb="3" text="text-dim" size="0.8rem">
+                        <span>Dec 20, 2025</span> • <span>Community</span>
+                    </div>
+                    <h3 size="1.4rem" weight="700" mb="3" leading="1.3">Community Showcase</h3>
+                    <p text="text-dim" size="0.95rem" leading="1.6" mb="6" flex-grow="1">
+                        A look at the top 5 open-source projects built with AtomAttr this month, from portfolios to
+                        complex web apps.
+                    </p>
+                    <a href="blog/community-showcase.html" text="primary" weight="600" hover-text="accent"
+                        transition="colors" style="text-decoration:none;">Read Article &rarr;</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer bg="surface-alt" border-t="1px" border-color="border" pt="5rem" pb="3rem">
+        <div max-w="1400px" mx="auto" px="6" grid md-grid-cols="4" gap="4rem" mb="4rem">
+
+            <!-- Brand Column -->
+            <div md-col-span="2">
+                <div flex items="center" gap="2" mb="4">
+                    <div w="1.5rem" h="1.5rem" bg="text" radius="md" flex items="center" justify="center">
+                        <svg w="0.8rem" text="surface" fill="none" stroke="currentColor" stroke-width="3"
+                            viewBox="0 0 24 24">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <span weight="800" size="1.2rem">AtomAttr</span>
+                </div>
+                <p text="text-dim" max-w="20rem" leading="1.6" mb="6">
+                    A project by <strong text="text">Quanta Labs</strong>. <br>
+                    Making the web faster, one attribute at a time.
+                </p>
+                <div flex gap="4">
+                    <a href="https://x.com/devadetayo" target="_blank" text="text-dim" hover-text="text"
+                        transition="colors"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                    <a href="https://facebook.com/devadetayo" target="_blank" text="text-dim" hover-text="text"
+                        transition="colors"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                    <a href="https://instagram.com/devadetayo" target="_blank" text="text-dim" hover-text="text"
+                        transition="colors"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    <a href="https://dev.to/devadetayo" target="_blank" text="text-dim" hover-text="text"
+                        transition="colors"><i class="fa-brands fa-dev fa-lg"></i></a>
+                </div>
+            </div>
+
+            <!-- Project Links -->
+            <div>
+                <h4 weight="700" mb="4">Project</h4>
+                <div flex col gap="3">
+                    <a href="index.html#features" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Features</a>
+                    <a href="docs.html" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Documentation</a>
+                    <a href="playground.html" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Playground</a>
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div>
+                <h4 weight="700" mb="4">Resources</h4>
+                <div flex col gap="3">
+                    <a href="cheatsheet.html" text="text-dim" hover-text="primary" size="0.9rem"
+                        style="text-decoration:none;">Cheat Sheet</a>
+                    <a href="https://github.com/devadetayo/atomattr" target="_blank" text="text-dim"
+                        hover-text="primary" size="0.9rem" style="text-decoration:none;">GitHub Repo</a>
+                    <a href="#" text="text-dim" hover-text="primary" size="0.9rem" style="text-decoration:none;">NPM
+                        Package</a>
+                </div>
+            </div>
+        </div>
+        <div text-align="center" border-t="1px" border-color="border" pt="2rem" text="text-dim" size="0.85rem">
+            &copy; 2025 Quanta Labs. Released under MIT License.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('mobile-menu');
+            const menuOpen = document.getElementById('menuOpen');
+            const menuClose = document.getElementById('menuClose');
+            const themeBtn = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            // Mobile Menu
+            menuOpen.addEventListener('click', () => menu.classList.add('open'));
+            menuClose.addEventListener('click', () => menu.classList.remove('open'));
+
+            // Theme Toggle
+            themeBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // Init State
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+
+            // Force Engine Start
+            if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start();
+        });
+    </script>
+</body>
+
+</html>

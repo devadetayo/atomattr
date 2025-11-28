@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtomAttr - Documentation</title>
+
+    <link rel="icon" href="assets/favico/favico.png">
+    <!-- 1. LOAD ENGINE -->
+    <link rel="stylesheet" href="dist/defaults.css">
+    <script src="dist/atomattr.min.js" defer></script>
+
+    <!-- 2. FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- CORE SETUP --- */
+        :root {
+            --primary-glow: #3b82f6;
+            /* Height of the fixed navbar for scroll offsets */
+            --header-height: 4rem;
+        }
+
+        html {
+            /* Ensures anchor links stop *below* the fixed header */
+            scroll-padding-top: calc(var(--header-height) + 2rem);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--surface);
+            color: var(--text);
+        }
+
+        code,
+        pre,
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- SCROLLBARS --- */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--slate-300);
+            border-radius: 3px;
+        }
+
+        html.dark ::-webkit-scrollbar-thumb {
+            background: var(--slate-700);
+        }
+
+        /* --- SIDEBAR LINKS --- */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 0.75rem;
+            /* Increased padding */
+            border-radius: 0.375rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border-left: 2px solid transparent;
+            /* Marker for active state */
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            background: var(--surface-alt);
+        }
+
+        /* Active State - High Contrast */
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.08);
+            font-weight: 600;
+            border-left-color: var(--primary);
+        }
+
+        /* --- TABLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: var(--surface-alt);
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- INLINE CODE --- */
+        code {
+            background: var(--surface-alt);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.85em;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        /* --- MOBILE MENU --- */
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* --- BACKGROUND GRID --- */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body bg="surface" text="text" min-h="100vh" flex col>
+
+    <div class="bg-grid"></div>
+
+    <!-- NAVBAR -->
+    <nav sticky top="0" z="50" w="full" bg="surface" bg-opacity="0.9" backdrop-blur="12px" border-b="1px"
+        border-color="border">
+        <div max-w="1400px" mx="auto" px="6" h="4rem" flex items="center" justify="between">
+
+            <!-- Logo -->
+            <a href="index.html" flex items="center" gap="3" style="text-decoration:none;" text="text" group>
+                <img src="assets/images/logo.png" w="8" h="auto">
+                <div flex col justify="center">
+                    <span weight="700" size="1.1rem" leading="1" tracking="-0.02em">AtomAttr</span>
+                    <span text="text-dim" size="0.75rem" weight="500" tracking="wide">DOCS</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div hidden lg-flex items="center" gap="6">
+                <a href="index.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem" transition="colors"
+                    style="text-decoration:none;">Home</a>
+                <a href="cheatsheet.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Cheat Sheet</a>
+                <a href="playground.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Playground</a>
+
+                <div w="1px" h="1.5rem" bg="border"></div>
+
+                <a href="https://github.com/devadetayo/atomattr" target="_blank" text="text-dim" hover-text="text"
+                    transition="colors">
+                    <svg w="1.2rem" h="1.2rem" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+
+                <button id="themeToggle" bg="surface-alt" border="1px" border-color="border" p="0.5rem" radius="xl"
+                    hover-border-color="text-dim" transition="all" cursor="pointer">
+                    <svg class="sun" w="1rem" h="1rem" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menuOpen" lg-hidden bg="transparent" border="none" p="2" text="text">
+                <svg w="1.5rem" h="1.5rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="6" flex col
+        gap="6" shadow="2xl" border-l="1px" border-color="border" lg-hidden>
+        <div flex justify="between" items="center" mb="4">
+            <span weight="700" size="1.25rem">Menu</span>
+            <button id="menuClose" bg="surface-alt" p="2" radius="xl" border="none"><svg w="1.5rem" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg></button>
+        </div>
+        <a href="index.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Home</a>
+        <a href="cheatsheet.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Cheat Sheet</a>
+        <a href="playground.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Playground</a>
+        <a href="https://github.com/devadetayo/atomattr" text="text" size="1.1rem" weight="600"
+            style="text-decoration:none;">GitHub</a>
+    </div>
+
+    <!-- PAGE CONTAINER -->
+    <div w="full" max-w="1400px" mx="auto" flex items="start">
+
+        <!-- SIDEBAR (Desktop) -->
+        <aside w="18rem" h="calc(100vh - 4rem)" sticky top="4rem" overflow-y="auto" border-r="1px" border-color="border"
+            hidden lg-block p="6" bg="surface">
+            <div flex col gap="1"> <!-- Gap 1 = 4px for tighter list, but padding on links is increased -->
+
+                <span text="text-dim" size="0.7rem" weight="700" uppercase tracking="wider" mb="2" pl="2">Getting
+                    Started</span>
+                <a href="#installation" class="nav-link">Installation</a>
+                <a href="#syntax" class="nav-link">Syntax & Logic</a>
+                <a href="#responsive" class="nav-link">Responsive Design</a>
+                <a href="#states" class="nav-link">Hover & States</a>
+                <a href="#darkmode" class="nav-link">Dark Mode</a>
+
+                <span text="text-dim" size="0.7rem" weight="700" uppercase tracking="wider" mt="8" mb="2"
+                    pl="2">Utilities</span>
+                <a href="#layout" class="nav-link">Layout & Flexbox</a>
+                <a href="#grid" class="nav-link">Grid System</a>
+                <a href="#spacing" class="nav-link">Spacing & Sizing</a>
+                <a href="#typography" class="nav-link">Typography</a>
+                <a href="#visuals" class="nav-link">Visuals & Borders</a>
+                <a href="#transforms" class="nav-link">Transforms & Animation</a>
+                <a href="#colors" class="nav-link">Color Palette</a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main flex="1" p="6" lg-p="5rem" max-w="60rem" w="full">
+
+            <!-- INSTALLATION -->
+            <section id="installation" mb="6rem">
+                <div mb="2rem">
+                    <span text="primary" weight="700" size="0.85rem" uppercase tracking="wide">Getting Started</span>
+                    <h1 size="2.5rem" weight="800" mt="2">Installation</h1>
+                </div>
+                <p text="text-dim" size="1.1rem" leading="1.7" mb="6">
+                    AtomAttr works instantly in the browser. It's designed for rapid prototyping and projects where you
+                    don't want a complex build step.
+                </p>
+
+                <h3 size="1.25rem" weight="700" mb="3">CDN (Zero Config)</h3>
+                <div bg="surface-alt" p="5" radius="lg" border="1px" border-color="border" overflow-x="auto" mb="6">
+                    <code text="text-dim" size="0.9rem" style="background: transparent; border: none; padding: 0;">
+                        &lt;!-- 1. Base Styles --&gt;<br>
+                        &lt;link rel="stylesheet" href="https://unpkg.com/atomattr/dist/defaults.css"&gt;<br><br>
+                        &lt;!-- 2. The Engine --&gt;<br>
+                        &lt;script src="https://unpkg.com/atomattr/dist/atomattr.min.js" defer&gt;&lt;/script&gt;
+                    </code>
+                </div>
+
+                <h3 size="1.25rem" weight="700" mb="3">NPM</h3>
+                <div bg="surface-alt" p="4" radius="lg" border="1px" border-color="border" flex items="center" gap="3">
+                    <span text="accent">$</span>
+                    <code style="background: transparent; border: none; color: var(--text);">npm install atomattr</code>
+                </div>
+            </section>
+
+            <!-- SYNTAX -->
+            <section id="syntax" mb="6rem">
+                <div mb="2rem">
+                    <h2 size="2rem" weight="800">Syntax & Logic</h2>
+                </div>
+                <p text="text-dim" leading="1.7" mb="6">
+                    AtomAttr uses HTML attributes instead of classes. The structure is: <br>
+                    <code mt="2" inline-block text="primary">modifier-property="value"</code>
+                </p>
+
+                <div grid md-grid-cols="2" gap="2rem" mb="6">
+                    <div bg="surface" p="6" radius="xl" border="1px" border-color="border" shadow="sm">
+                        <h4 weight="700" mb="3">1. Standard Attributes</h4>
+                        <p text="text-dim" size="0.9rem" mb="4">Direct mapping to CSS properties using the built-in
+                            design tokens.</p>
+                        <div flex col gap="3">
+                            <div flex justify="between" items="center" border-b="1px" border-color="border" pb="2">
+                                <code>p="4"</code> <span text="text-dim" size="0.85rem">padding: 1rem</span>
+                            </div>
+                            <div flex justify="between" items="center" border-b="1px" border-color="border" pb="2">
+                                <code>bg="primary"</code> <span text="text-dim" size="0.85rem">background:
+                                    var(--primary)</span>
+                            </div>
+                            <div flex justify="between" items="center">
+                                <code>flex</code> <span text="text-dim" size="0.85rem">display: flex</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div bg="surface" p="6" radius="xl" border="1px" border-color="border" shadow="sm">
+                        <h4 weight="700" mb="3">2. Arbitrary Values</h4>
+                        <p text="text-dim" size="0.9rem" mb="4">Use raw CSS values anytime. No configuration needed.</p>
+                        <div flex col gap="3">
+                            <div flex justify="between" items="center" border-b="1px" border-color="border" pb="2">
+                                <code>w="350px"</code> <span text="text-dim" size="0.85rem">width: 350px</span>
+                            </div>
+                            <div flex justify="between" items="center" border-b="1px" border-color="border" pb="2">
+                                <code>top="15%"</code> <span text="text-dim" size="0.85rem">top: 15%</span>
+                            </div>
+                            <div flex justify="between" items="center">
+                                <code>bg="#ff0000"</code> <span text="text-dim" size="0.85rem">background:
+                                    #ff0000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESPONSIVE -->
+            <section id="responsive" mb="6rem">
+                <div mb="2rem">
+                    <h2 size="2rem" weight="800">Responsive Design</h2>
+                </div>
+                <p text="text-dim" leading="1.7" mb="6">
+                    Prefix any attribute with a breakpoint key to apply it conditionally. AtomAttr uses a
+                    <strong>mobile-first</strong> approach.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prefix</th>
+                            <th>Min-Width</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>(none)</td>
+                            <td>0px</td>
+                            <td>Default styles (Mobile)</td>
+                        </tr>
+                        <tr>
+                            <td><code>sm-</code></td>
+                            <td>640px</td>
+                            <td>Small tablets / Landscape phones</td>
+                        </tr>
+                        <tr>
+                            <td><code>md-</code></td>
+                            <td>768px</td>
+                            <td>Tablets (iPad Portrait)</td>
+                        </tr>
+                        <tr>
+                            <td><code>lg-</code></td>
+                            <td>1024px</td>
+                            <td>Laptops / Desktops</td>
+                        </tr>
+                        <tr>
+                            <td><code>xl-</code></td>
+                            <td>1280px</td>
+                            <td>Large Screens</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- STATES & INTERACTIONS -->
+            <section id="states" mb="6rem">
+                <div mb="2rem">
+                    <h2 size="2rem" weight="800">Hover & States</h2>
+                </div>
+                <p text="text-dim" leading="1.7" mb="6">
+                    Add interaction styles by prefixing attributes with state modifiers like <code>hover-</code>,
+                    <code>focus-</code>, or <code>active-</code>.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prefix</th>
+                            <th>Trigger</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>hover-</code></td>
+                            <td>Mouse hover</td>
+                            <td><code>hover-bg="primary"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>focus-</code></td>
+                            <td>Element focus</td>
+                            <td><code>focus-border-color="accent"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>active-</code></td>
+                            <td>Click/Press</td>
+                            <td><code>active-scale="0.95"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>disabled-</code></td>
+                            <td>Disabled state</td>
+                            <td><code>disabled-opacity="0.5"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>group-hover-</code></td>
+                            <td>Parent hover</td>
+                            <td><code>group-hover-text="white"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div bg="surface-alt" p="6" radius="lg" border="1px" border-color="border" mt="4">
+                    <p weight="600" mb="3">Interactive Example:</p>
+                    <button bg="primary" text="white" px="6" py="3" radius="md" weight="600" hover-bg="accent"
+                        hover-scale="1.05" active-scale="0.95" transition="all">
+                        Hover & Click Me
+                    </button>
+                    <div mt="4" p="3" bg="surface" radius="md" border="1px" border-color="border">
+                        <code text="text-dim" style="background: transparent; border: none;">
+                            &lt;button bg="primary" hover-bg="accent" hover-scale="1.05" ...&gt;
+                        </code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DARK MODE -->
+            <section id="darkmode" mb="6rem">
+                <div mb="2rem">
+                    <h2 size="2rem" weight="800">Dark Mode</h2>
+                </div>
+                <p text="text-dim" leading="1.7" mb="6">
+                    AtomAttr includes a native dark mode engine. Prefix any attribute with <code>dark-</code> to apply
+                    styles only when dark mode is active.
+                </p>
+
+                <div bg="surface-alt" p="6" radius="lg" border="1px" border-color="border">
+                    <p weight="600" mb="3">Try toggling the theme button in the navbar!</p>
+                    <div p="6" bg="white" dark-bg="slate-800" radius="lg" border="1px" border-color="slate-200"
+                        dark-border-color="slate-700" transition="colors">
+                        <h4 text="slate-900" dark-text="white" mb="2">Dark Mode Card</h4>
+                        <p text="slate-500" dark-text="slate-400">This card changes appearance automatically based on
+                            the theme.</p>
+                    </div>
+                    <div mt="4" p="3" bg="surface" radius="md" border="1px" border-color="border">
+                        <code text="text-dim" style="background: transparent; border: none;">
+                            &lt;div bg="white" dark-bg="slate-800" text="slate-900" dark-text="white"&gt;
+                        </code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LAYOUT -->
+            <section id="layout" mb="6rem">
+                <div mb="2rem">
+                    <h2 size="2rem" weight="800">Layout & Flexbox</h2>
+                </div>
+
+                <h3 size="1.25rem" weight="600" mb="3">Flexbox</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>CSS Property</th>
+                            <th>Example Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>flex</code></td>
+                            <td>display: flex</td>
+                            <td>Boolean</td>
+                        </tr>
+                        <tr>
+                            <td><code>col</code></td>
+                            <td>flex-direction: column</td>
+                            <td>Boolean</td>
+                        </tr>
+                        <tr>
+                            <td><code>row</code></td>
+                            <td>flex-direction: row</td>
+                            <td>Boolean</td>
+                        </tr>
+                        <tr>
+                            <td><code>wrap</code></td>
+                            <td>flex-wrap: wrap</td>
+                            <td>Boolean</td>
+                        </tr>
+                        <tr>
+                            <td><code>items="..."</code></td>
+                            <td>align-items</td>
+                            <td>start, end, center, stretch</td>
+                        </tr>
+                        <tr>
+                            <td><code>justify="..."</code></td>
+                            <td>justify-content</td>
+                            <td>start, end, center, between, around</td>
+                        </tr>
+                        <tr>
+                            <td><code>gap="..."</code></td>
+                            <td>gap</td>
+                            <td>4, 8, 1rem, 20px</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- GRID SYSTEM -->
+            <section id="grid" mb="6rem">
+                <h2 size="2rem" weight="800" mb="4">Grid System</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>CSS Output</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>grid</code></td>
+                            <td>Initialize Grid</td>
+                            <td>display: grid</td>
+                        </tr>
+                        <tr>
+                            <td><code>grid-cols="..."</code></td>
+                            <td>Define Columns</td>
+                            <td>repeat(n, minmax(0, 1fr))</td>
+                        </tr>
+                        <tr>
+                            <td><code>grid-rows="..."</code></td>
+                            <td>Define Rows</td>
+                            <td>repeat(n, minmax(0, 1fr))</td>
+                        </tr>
+                        <tr>
+                            <td><code>col-span="..."</code></td>
+                            <td>Span Columns</td>
+                            <td>grid-column: span n / span n</td>
+                        </tr>
+                        <tr>
+                            <td><code>row-span="..."</code></td>
+                            <td>Span Rows</td>
+                            <td>grid-row: span n / span n</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- SPACING -->
+            <section id="spacing" mb="6rem">
+                <h2 size="2rem" weight="800" mb="4">Spacing & Sizing</h2>
+                <p text="text-dim" mb="6">
+                    AtomAttr uses a standard spacing scale where <strong>1 unit = 0.25rem (4px)</strong>.
+                </p>
+
+                <div grid md-grid-cols="2" gap="2rem">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Value</th>
+                                <th>Pixels</th>
+                                <th>Rem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>1</code></td>
+                                <td>4px</td>
+                                <td>0.25rem</td>
+                            </tr>
+                            <tr>
+                                <td><code>2</code></td>
+                                <td>8px</td>
+                                <td>0.5rem</td>
+                            </tr>
+                            <tr>
+                                <td><code>4</code></td>
+                                <td>16px</td>
+                                <td>1rem</td>
+                            </tr>
+                            <tr>
+                                <td><code>8</code></td>
+                                <td>32px</td>
+                                <td>2rem</td>
+                            </tr>
+                            <tr>
+                                <td><code>16</code></td>
+                                <td>64px</td>
+                                <td>4rem</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <h4 weight="700" mb="3">Properties</h4>
+                        <ul flex col gap="2" text="text-dim" style="list-style: none; padding: 0;">
+                            <li flex items="center" gap="2"><span w="6px" h="6px" radius="full" bg="primary"></span>
+                                <code>p</code>, <code>pt</code>, <code>pb</code>, <code>px</code>, <code>py</code>
+                            </li>
+                            <li flex items="center" gap="2"><span w="6px" h="6px" radius="full" bg="primary"></span>
+                                <code>m</code>, <code>mt</code>, <code>mb</code>, <code>mx</code>, <code>my</code>
+                            </li>
+                            <li flex items="center" gap="2"><span w="6px" h="6px" radius="full" bg="primary"></span>
+                                <code>w</code>, <code>min-w</code>, <code>max-w</code>
+                            </li>
+                            <li flex items="center" gap="2"><span w="6px" h="6px" radius="full" bg="primary"></span>
+                                <code>h</code>, <code>min-h</code>, <code>max-h</code>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISUALS -->
+            <section id="visuals" mb="6rem">
+                <h2 size="2rem" weight="800" mb="4">Visuals</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>radius="..."</code></td>
+                            <td>Border Radius</td>
+                            <td>sm, md, lg, xl, full, none, 10px</td>
+                        </tr>
+                        <tr>
+                            <td><code>shadow="..."</code></td>
+                            <td>Box Shadow</td>
+                            <td>sm, md, lg, xl, 2xl, none</td>
+                        </tr>
+                        <tr>
+                            <td><code>border="..."</code></td>
+                            <td>Border Width</td>
+                            <td>1, 2, 4px</td>
+                        </tr>
+                        <tr>
+                            <td><code>border-color="..."</code></td>
+                            <td>Border Color</td>
+                            <td>slate-200, primary</td>
+                        </tr>
+                        <tr>
+                            <td><code>opacity="..."</code></td>
+                            <td>Opacity</td>
+                            <td>0.5, 1, 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- TRANSFORMS -->
+            <section id="transforms" mb="6rem">
+                <h2 size="2rem" weight="800" mb="4">Transforms</h2>
+                <p text="text-dim" mb="4">Compositing transforms handled automatically via CSS variables.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Logic</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>scale="..."</code></td>
+                            <td>Scale factor</td>
+                            <td>1.05, 0.9</td>
+                        </tr>
+                        <tr>
+                            <td><code>rotate="..."</code></td>
+                            <td>Degrees</td>
+                            <td>45, 90, 180</td>
+                        </tr>
+                        <tr>
+                            <td><code>translate-x="..."</code></td>
+                            <td>Spacing unit or literal</td>
+                            <td>4, 10px, 50%</td>
+                        </tr>
+                        <tr>
+                            <td><code>translate-y="..."</code></td>
+                            <td>Spacing unit or literal</td>
+                            <td>4, 10px, 50%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- COLORS -->
+            <section id="colors" mb="6rem">
+                <h2 size="2rem" weight="800" mb="4">Color Palette</h2>
+                <p text="text-dim" mb="6">Includes the full 2025 standard palette (50-950). Use with <code>bg</code>,
+                    <code>text</code>, <code>border-color</code>.
+                </p>
+
+                <div flex gap="2" flex-wrap="wrap">
+                    <div w="3rem" h="3rem" bg="blue-500" radius="md" title="blue-500"></div>
+                    <div w="3rem" h="3rem" bg="indigo-500" radius="md" title="indigo-500"></div>
+                    <div w="3rem" h="3rem" bg="purple-500" radius="md" title="purple-500"></div>
+                    <div w="3rem" h="3rem" bg="pink-500" radius="md" title="pink-500"></div>
+                    <div w="3rem" h="3rem" bg="rose-500" radius="md" title="rose-500"></div>
+                    <div w="3rem" h="3rem" bg="orange-500" radius="md" title="orange-500"></div>
+                    <div w="3rem" h="3rem" bg="emerald-500" radius="md" title="emerald-500"></div>
+                    <div w="3rem" h="3rem" bg="teal-500" radius="md" title="teal-500"></div>
+                    <div w="3rem" h="3rem" bg="cyan-500" radius="md" title="cyan-500"></div>
+                    <div w="3rem" h="3rem" bg="slate-900" radius="md" title="slate-900"></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // --- THEME & LOGIC ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('mobile-menu');
+            const menuOpen = document.getElementById('menuOpen');
+            const menuClose = document.getElementById('menuClose');
+            const themeBtn = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            // Active Link Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                                // Auto-scroll sidebar to active link
+                                const sidebar = document.querySelector('aside');
+                                const linkRect = link.getBoundingClientRect();
+                                const sidebarRect = sidebar.getBoundingClientRect();
+                                if (linkRect.bottom > sidebarRect.bottom || linkRect.top < sidebarRect.top) {
+                                    link.scrollIntoView({ block: "center", behavior: "smooth" });
+                                }
+                            }
+                        });
+                    }
+                });
+            }, {
+                rootMargin: "-20% 0px -70% 0px", // Trigger when section is near top
+                threshold: 0.1
+            });
+
+            // Observe all sections
+            document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+            // Mobile Menu
+            menuOpen.addEventListener('click', () => menu.classList.add('open'));
+            menuClose.addEventListener('click', () => menu.classList.remove('open'));
+
+            // Theme Toggle
+            themeBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // Init Theme
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+
+            // Force Engine Start
+            if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{
+    "name": "atomattr",
+    "version": "0.0.1",
+    "description": "A zero-setup, attribute-driven CSS engine.",
+    "type": "module",
+    "main": "dist/atomattr.min.js",
+    "scripts": {
+        "build:js": "rollup -c",
+        "build:css": "copyfiles -f src/style-data/defaults.css dist",
+        "prebuild": "node -e \"try { require('fs').rmSync('dist', { recursive: true, force: true }) } catch (e) {}\"",
+        "build": "npm run prebuild && npm run build:css && npm run build:js",
+        "watch": "rollup -c -w"
+    },
+    "files": [
+        "dist"
+    ],
+    "author": "Quanta Labs",
+    "license": "MIT",
+    "devDependencies": {
+        "rollup": "^4.9.6",
+        "@rollup/plugin-node-resolve": "^15.0.1",
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-terser": "^0.4.4",
+        "copyfiles": "^2.4.1"
+    }
+}

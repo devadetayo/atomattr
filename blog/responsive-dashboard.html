@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Responsive Dashboard - AtomAttr Blog</title>
+    <link rel="stylesheet" href="../dist/defaults.css">
+    <script src="../dist/atomattr.min.js" defer></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-glow: #3b82f6;
+            --header-height: 4rem;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--surface);
+            color: var(--text);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        article h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        article p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body bg="surface" text="text" min-h="100vh" flex col>
+    <nav sticky top="0" z="50" w="full" bg="surface" bg-opacity="0.9" backdrop-blur="12px" border-b="1px"
+        border-color="border">
+        <div max-w="1400px" mx="auto" px="4" h="4rem" flex items="center" justify="between">
+            <a href="../index.html" flex items="center" gap="3" style="text-decoration:none;" text="text" group>
+                <div w="2rem" h="2rem" bg="linear-gradient(135deg, #3b82f6, #9333ea)" radius="md" flex items="center"
+                    justify="center" shadow="sm">
+                    <svg w="1.2rem" text="white" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <div flex col justify="center">
+                    <span weight="700" size="1.1rem" leading="1" tracking="-0.02em">AtomAttr</span>
+                    <span text="text-dim" size="0.75rem" weight="500" tracking="wide">BLOG</span>
+                </div>
+            </a>
+            <div hidden lg-flex items="center" gap="6">
+                <a href="../index.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Home</a>
+                <a href="../docs.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Docs</a>
+                <a href="../playground.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Playground</a>
+                <a href="../blog.html" text="primary" weight="600" size="0.9rem" transition="colors"
+                    style="text-decoration:none;">Blog</a>
+                <button id="themeToggle" bg="surface-alt" border="1px" border-color="border" p="0.5rem" radius="xl"
+                    hover-border-color="text-dim" transition="all" cursor="pointer">
+                    <svg class="sun" w="1rem" h="1rem" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+            <button id="menuOpen" lg-hidden bg="transparent" border="none" p="2" text="text"><svg w="1.5rem" h="1.5rem"
+                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg></button>
+        </div>
+    </nav>
+    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="6" flex col
+        gap="6" shadow="2xl" border-l="1px" border-color="border" lg-hidden>
+        <div flex justify="between" items="center" mb="4"><span weight="700" size="1.25rem">Menu</span><button
+                id="menuClose" bg="surface-alt" p="2" radius="xl" border="none"><svg w="1.5rem" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg></button></div>
+        <a href="../index.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Home</a>
+        <a href="../docs.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Docs</a>
+        <a href="../playground.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Playground</a>
+        <a href="../blog.html" text="primary" size="1.1rem" weight="600" style="text-decoration:none;">Blog</a>
+    </div>
+    <header pt="6rem" pb="4rem" px="4" text-align="center" max-w="50rem" mx="auto">
+        <div flex gap="2" justify="center" mb="4" text="primary" weight="700" size="0.9rem" uppercase tracking="wide">
+            <span>Case Study</span> • <span>Dec 08, 2025</span>
+        </div>
+        <h1 size="2.5rem" md-size="3.5rem" weight="800" leading="1.2" mb="6">Building a Responsive Dashboard</h1>
+        <div flex items="center" justify="center" gap="3">
+            <div w="2.5rem" h="2.5rem" bg="slate-200" radius="full"></div>
+            <div text-align="left">
+                <p weight="700" size="0.95rem" mb="0">Adetayo</p>
+                <p text="text-dim" size="0.85rem">Creator of AtomAttr</p>
+            </div>
+        </div>
+    </header>
+    <main w="full" max-w="48rem" mx="auto" px="4" pb="8rem">
+        <article>
+            <p>Dashboards are complex. You need a sidebar, a top bar, a main content area, and charts. Traditionally,
+                this involves a lot of CSS grid and flexbox boilerplate. With AtomAttr, you can define your layout
+                directly in the HTML structure.</p>
+            <h2>The Structure</h2>
+            <p>We use a simple `flex h-screen` wrapper for the entire app. Inside, we have a sidebar with `w="16rem"
+                hidden md-block` to show it only on desktop, and a main content area with `flex-1 overflow-y-auto`.</p>
+            <h2>Responsive Grids</h2>
+            <p>For the data cards, we use `grid grid-cols-1 md-grid-cols-2 lg-grid-cols-4 gap="4"`. This single line
+                handles the responsive behavior across three different breakpoints without writing a single media query.
+            </p>
+        </article>
+    </main>
+    <footer bg="surface-alt" border-t="1px" border-color="border" pt="5rem" pb="3rem">
+        <div max-w="1400px" mx="auto" px="4" text-align="center" text="text-dim" size="0.85rem">&copy; 2025 Quanta Labs.
+            Released under MIT License.</div>
+    </footer>
+    <script>document.addEventListener('DOMContentLoaded', () => { const m = document.getElementById('mobile-menu'), o = document.getElementById('menuOpen'), c = document.getElementById('menuClose'), t = document.getElementById('themeToggle'), h = document.documentElement; o.addEventListener('click', () => m.classList.add('open')); c.addEventListener('click', () => m.classList.remove('open')); t.addEventListener('click', () => { h.classList.toggle('dark'); localStorage.setItem('theme', h.classList.contains('dark') ? 'dark' : 'light') }); if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) h.classList.add('dark'); if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start() });</script>
+</body>
+
+</html>

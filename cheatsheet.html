@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtomAttr - Cheat Sheet</title>
+
+    <link rel="icon" href="assets/favico/favico.png">
+    <!-- 1. LOAD ENGINE -->
+    <link rel="stylesheet" href="dist/defaults.css">
+    <script src="dist/atomattr.min.js" defer></script>
+
+    <!-- 2. FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-glow: #3b82f6;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--surface-alt);
+            color: var(--text);
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            background: var(--surface-alt);
+            padding: 0.1rem 0.3rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        /* Sheet Grid */
+        .sheet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        h3 {
+            margin: 0 0 1rem 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.35rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .row span {
+            color: var(--text-dim);
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--slate-300);
+            border-radius: 3px;
+        }
+
+        html.dark ::-webkit-scrollbar-thumb {
+            background: var(--slate-700);
+        }
+    </style>
+</head>
+
+<body bg="surface-alt" text="text" min-h="100vh" flex col>
+
+    <!-- NAVBAR (Synced with Docs) -->
+    <nav sticky top="0" z="50" w="full" bg="surface" border-b="1px" border-color="border">
+        <div max-w="1400px" mx="auto" px="4" h="4rem" flex items="center" justify="between">
+            <a href="index.html" flex items="center" gap="3" group text="text" style="text-decoration: none;">
+                <img src="assets/images/logo.png" w="8" h="auto">
+                <span size="1.25rem" weight="700" tracking="-0.02em">AtomAttr</span>
+                <span text="text-dim" size="0.9rem">/ Cheat Sheet</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div hidden lg-flex items="center" gap="4">
+                <a href="index.html" text="text-dim" hover-text="primary" size="0.9rem" weight="600" transition="colors"
+                    style="text-decoration:none;">Home</a>
+                <a href="docs.html" text="text-dim" hover-text="primary" size="0.9rem" weight="600" transition="colors"
+                    style="text-decoration:none;">Docs</a>
+                <a href="playground.html" text="text-dim" hover-text="primary" size="0.9rem" weight="600"
+                    transition="colors" style="text-decoration:none;">Playground</a>
+
+                <div w="1px" h="1.5rem" bg="border"></div>
+
+                <a href="https://github.com/devadetayo/quanta-atomattr" target="_blank" text="text-dim"
+                    hover-text="primary" transition="colors">
+                    <svg w="1.2rem" h="1.2rem" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+                <button id="themeToggle" bg="surface-alt" p="0.4rem" radius="md" border="1px" border-color="border"
+                    cursor="pointer">
+                    <span text="1rem">🌓</span>
+                </button>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menuOpen" lg-hidden bg="transparent" border="none" p="2" text="text">
+                <svg w="1.5rem" h="1.5rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="6" flex col
+        gap="6" shadow="2xl" border-l="1px" border-color="border" lg-hidden>
+        <div flex justify="between" items="center" mb="4">
+            <span weight="700" size="1.25rem">Menu</span>
+            <button id="menuClose" bg="surface-alt" p="2" radius="xl" border="none"><svg w="1.5rem" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg></button>
+        </div>
+        <a href="index.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Home</a>
+        <a href="docs.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Documentation</a>
+        <a href="playground.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Playground</a>
+        <a href="https://github.com/devadetayo/quanta-atomattr" text="text" size="1.1rem" weight="600"
+            style="text-decoration:none;">GitHub</a>
+    </div>
+
+    <!-- CHEAT SHEET GRID -->
+    <div class="sheet-grid">
+        <div class="card">
+            <h3>Layout</h3>
+            <div class="row"><code>flex</code> <span>display: flex</span></div>
+            <div class="row"><code>grid</code> <span>display: grid</span></div>
+            <div class="row"><code>hidden</code> <span>display: none</span></div>
+            <div class="row"><code>relative</code> <span>position: relative</span></div>
+            <div class="row"><code>absolute</code> <span>position: absolute</span></div>
+            <div class="row"><code>fixed</code> <span>position: fixed</span></div>
+            <div class="row"><code>z="10"</code> <span>z-index: 10</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Flexbox</h3>
+            <div class="row"><code>col</code> <span>flex-direction: column</span></div>
+            <div class="row"><code>row</code> <span>flex-direction: row</span></div>
+            <div class="row"><code>wrap</code> <span>flex-wrap: wrap</span></div>
+            <div class="row"><code>items="center"</code> <span>align-items</span></div>
+            <div class="row"><code>justify="between"</code> <span>justify-content</span></div>
+            <div class="row"><code>gap="4"</code> <span>gap: 1rem</span></div>
+            <div class="row"><code>grow</code> <span>flex-grow: 1</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Spacing (p/m)</h3>
+            <div class="row"><code>p="4"</code> <span>padding: 1rem</span></div>
+            <div class="row"><code>px="4"</code> <span>padding-x: 1rem</span></div>
+            <div class="row"><code>py="2"</code> <span>padding-y: 0.5rem</span></div>
+            <div class="row"><code>m="auto"</code> <span>margin: auto</span></div>
+            <div class="row"><code>mt="8"</code> <span>margin-top: 2rem</span></div>
+            <div class="row"><code>mx="auto"</code> <span>margin-x: auto</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Sizing</h3>
+            <div class="row"><code>w="full"</code> <span>width: 100%</span></div>
+            <div class="row"><code>h="screen"</code> <span>height: 100vh</span></div>
+            <div class="row"><code>w="300px"</code> <span>width: 300px</span></div>
+            <div class="row"><code>max-w="lg"</code> <span>max-width: 32rem</span></div>
+            <div class="row"><code>min-h="100vh"</code> <span>min-height: 100vh</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Visuals</h3>
+            <div class="row"><code>bg="primary"</code> <span>background-color</span></div>
+            <div class="row"><code>text="white"</code> <span>color</span></div>
+            <div class="row"><code>radius="lg"</code> <span>border-radius</span></div>
+            <div class="row"><code>shadow="md"</code> <span>box-shadow</span></div>
+            <div class="row"><code>border="1"</code> <span>border-width: 1px</span></div>
+            <div class="row"><code>opacity="0.5"</code> <span>opacity: 0.5</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Transforms</h3>
+            <div class="row"><code>scale="1.05"</code> <span>transform: scale()</span></div>
+            <div class="row"><code>rotate="45"</code> <span>transform: rotate()</span></div>
+            <div class="row"><code>translate-y="-2"</code> <span>transform: translateY()</span></div>
+            <div class="row"><code>skew-x="12"</code> <span>transform: skewX()</span></div>
+            <div class="row"><code>origin="center"</code> <span>transform-origin</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Typography</h3>
+            <div class="row"><code>size="1.2rem"</code> <span>font-size</span></div>
+            <div class="row"><code>weight="700"</code> <span>font-weight</span></div>
+            <div class="row"><code>align="center"</code> <span>text-align</span></div>
+            <div class="row"><code>leading="1.5"</code> <span>line-height</span></div>
+            <div class="row"><code>tracking="wide"</code> <span>letter-spacing</span></div>
+            <div class="row"><code>uppercase</code> <span>text-transform</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Grid</h3>
+            <div class="row"><code>grid</code> <span>display: grid</span></div>
+            <div class="row"><code>grid-cols="3"</code> <span>template-columns</span></div>
+            <div class="row"><code>col-span="2"</code> <span>grid-column</span></div>
+            <div class="row"><code>gap="4"</code> <span>gap</span></div>
+            <div class="row"><code>items="center"</code> <span>align-items</span></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('mobile-menu');
+            const menuOpen = document.getElementById('menuOpen');
+            const menuClose = document.getElementById('menuClose');
+            const themeBtn = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            // Mobile Menu
+            menuOpen.addEventListener('click', () => menu.classList.add('open'));
+            menuClose.addEventListener('click', () => menu.classList.remove('open'));
+
+            // Theme Toggle
+            themeBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // Init Theme
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+
+            // Force Engine Start
+            if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start();
+        });
+    </script>
+</body>
+
+</html>
