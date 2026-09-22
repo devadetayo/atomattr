@@ -1,0 +1,126 @@
+:root {
+  --site-glass-bg: rgb(255 255 255 / 0.76);
+  --site-glass-border: rgb(148 163 184 / 0.28);
+  --site-glass-shadow: 0 16px 40px rgb(15 23 42 / 0.1);
+}
+
+html.dark {
+  --site-glass-bg: rgb(15 23 42 / 0.76);
+  --site-glass-border: rgb(148 163 184 / 0.2);
+  --site-glass-shadow: 0 16px 40px rgb(2 6 23 / 0.32);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--surface, #f8fafc);
+  color: var(--text, #0f172a);
+}
+
+.page-shell {
+  width: min(100% - 2rem, 76rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  position: relative;
+  top: auto;
+  z-index: 100;
+  margin: 0;
+  transition: padding .2s ease;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: all .2s ease;
+}
+
+.site-header.is-scrolled {
+  position: sticky;
+  top: 0;
+  padding: .75rem 1rem;
+}
+
+.site-header.is-scrolled .site-nav {
+  border: 1px solid var(--site-glass-border);
+  border-radius: 1.25rem;
+  background: var(--site-glass-bg);
+  box-shadow: var(--site-glass-shadow);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+.brand-block,
+.nav-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.brand-logo {
+  width: auto;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: var(--text-muted, #64748b);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.nav-link:hover,
+.nav-link.is-current {
+  color: var(--primary, #2563eb);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--site-glass-border);
+  border-radius: 0.75rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .page-shell {
+    width: min(100% - 1rem, 76rem);
+  }
+
+  .site-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-row {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}

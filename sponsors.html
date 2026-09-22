@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Atomattr — Sponsors</title>
+
+  <meta
+    name="description"
+    content="Sponsor wall for Atomattr — partners, recurring supporters, and one-time backers keeping the project moving."
+  />
+
+  <!-- Load Remix Icon separately in your project -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/style-data/defaults.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+
+  <style>
+    html {
+      font-family: 'DM Sans', 'IBM Plex Sans', 'Inter', system-ui, sans-serif;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.015em;
+    }
+
+    /* ============================================================
+       SPONSORS PAGE — signature: everything reads like the
+       attribute syntax Atomattr itself is built on. Tier colors
+       are borrowed straight from the existing hljs token palette
+       in showcase.css, so a "partner" is a string, a "supporter"
+       is a keyword, a "one-time" gift is a number literal.
+       ============================================================ */
+
+    :root {
+      --tier-partner: var(--hljs-string);
+      --tier-supporter: var(--hljs-keyword);
+      --tier-onetime: var(--hljs-number);
+    }
+
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    /* blinking cursor on the hero inspector panel */
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    .cursor {
+      display: inline-block;
+      margin-left: 2px;
+      color: var(--hljs-string);
+      animation: blink 1s steps(1) infinite;
+    }
+
+    /* inspector / devtools-style code panel used in the hero */
+    .inspector-panel {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--surface-raised);
+      box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.35);
+    }
+    .inspector-panel-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .inspector-panel-head .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+    .inspector-title {
+      margin-left: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .inspector-code {
+      margin: 0;
+      padding: 22px 20px;
+      font-size: 13.5px;
+      line-height: 1.85;
+      overflow-x: auto;
+      background: transparent;
+      color: var(--hljs-text);
+      white-space: pre;
+    }
+
+    /* attribute-styled badges, e.g. tier="partner" */
+    .attr-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 1px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: 999px;
+      margin: 0;
+      background: color-mix(in oklch, var(--tier-color, var(--primary)), transparent 90%);
+      border: 1px solid color-mix(in oklch, var(--tier-color, var(--primary)), transparent 68%);
+    }
+    .attr-punct { color: var(--text-muted); }
+
+    /* sponsor cards: tier-colored top edge + gentle lift on hover */
+    .sponsor-card {
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .sponsor-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.35);
+    }
+    .sponsor-card[data-tier="partner"] { border-top: 3px solid var(--tier-partner) !important; }
+    .sponsor-card[data-tier="supporter"] { border-top: 3px solid var(--tier-supporter) !important; }
+    .sponsor-card[data-tier="onetime"] { border-top: 3px solid var(--tier-onetime) !important; }
+
+    /* open slots read as "unset" — a hatch pattern instead of a plain dashed box */
+    .slot-card {
+      background-image: repeating-linear-gradient(
+        45deg,
+        color-mix(in oklch, var(--text-muted), transparent 93%),
+        color-mix(in oklch, var(--text-muted), transparent 93%) 1px,
+        transparent 1px,
+        transparent 9px
+      );
+    }
+
+    .mono-comment { color: var(--hljs-comment); font-style: italic; }
+
+    /* link cards (github / open collective / etc.) get the same lift */
+    .link-card { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .link-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(0,0,0,0.35); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-up { animation: fadeUp 0.5s ease both; }
+      .fade-up:nth-child(2) { animation-delay: 0.06s; }
+      .fade-up:nth-child(3) { animation-delay: 0.12s; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cursor { animation: none; opacity: 1; }
+    }
+  </style>
+</head>
+
+<body
+  bg="#fff" dark-bg="grey-950"
+  text="text"
+  min-h="screen"
+>
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" backdrop-blur="md"></header>
+
+
+  <main>
+
+    <script type="module" src="./site/app.js"></script>
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+    <section
+      mx="auto"
+      px="4"
+      lg-px="6"
+      xl-px="12"
+      py="8"
+      md-py="12"
+      lg-py="16"
+    >
+
+      <div
+        display="grid"
+        grid-cols="1"
+        lg-grid-cols="2"
+        gap="10"
+        items="center"
+      >
+
+        <div class="fade-up">
+
+          <p
+            class="attr-tag mono"
+            style="--tier-color: var(--primary);"
+            mb="4"
+          >
+            <span class="hljs-tag">&lt;sponsors</span><span class="attr-punct"> </span><span class="hljs-attr">status</span><span class="attr-punct">=</span><span class="hljs-string">"open"</span><span class="hljs-tag">&gt;</span>
+          </p>
+
+          <h1
+            font-size="3xl"
+            md-font-size="5xl"
+            font-weight="bold"
+            tracking="tight"
+            mb="5"
+          >
+            Every dependency needs someone maintaining it. These are the people funding this one.
+          </h1>
+
+          <p
+            font-size="lg"
+            text="muted"
+            line-height="relaxed"
+            mb="0"
+          >
+            Partners get the biggest placement on this page. Monthly supporters stay visible for as long
+            as their pledge runs. One-time backers get a spot too — there's no minimum to show up here.
+          </p>
+
+          <div display="flex" gap="3" flex-wrap mt="7">
+            <a
+              href="#tier-partners"
+              display="inline-flex"
+              items="center"
+              gap="2"
+              px="5"
+              py="3"
+              rounded="xl"
+              bg="primary"
+              text="white"
+              text-decoration="none"
+              font-weight="600"
+            >
+              See who's already in
+              <i class="ri-arrow-down-line"></i>
+            </a>
+            <a
+              href="#support-links"
+              display="inline-flex"
+              items="center"
+              gap="2"
+              px="5"
+              py="3"
+              rounded="xl"
+              border="border"
+              text="text"
+              text-decoration="none"
+              font-weight="600"
+            >
+              Become a sponsor
+            </a>
+          </div>
+
+        </div>
+
+        <div class="fade-up">
+          <div class="inspector-panel">
+            <div class="inspector-panel-head">
+              <span class="dot" style="background: var(--hljs-builtins);"></span>
+              <span class="dot" style="background: var(--hljs-number);"></span>
+              <span class="dot" style="background: var(--hljs-string);"></span>
+              <span class="inspector-title mono">sponsor.html</span>
+            </div>
+            <pre class="inspector-code mono"><code>&lt;<span class="hljs-tag">sponsor</span>
+  <span class="hljs-attr">tier</span>=<span class="hljs-string">"partner"</span>
+  <span class="hljs-attr">support</span>=<span class="hljs-string">"active"</span>
+  <span class="hljs-attr">since</span>=<span class="hljs-number">2024</span>
+  <span class="hljs-attr">renders</span>=<span class="hljs-string">"everywhere"</span>
+/&gt;<span class="cursor">▌</span></code></pre>
+          </div>
+        </div>
+
+      </div>
+
+      <div
+        display="grid"
+        grid-cols="1"
+        sm-grid-cols="3"
+        gap="4"
+        mt="10"
+      >
+
+        <div bg="gray-100" dark-bg="gray-900" border="border" rounded="2xl" p="5" class="fade-up">
+          <p class="attr-tag mono" style="--tier-color: var(--tier-partner);" mb="3">
+            <span class="hljs-attr">tier</span><span class="attr-punct">=</span><span class="hljs-string">"partner"</span>
+          </p>
+          <h3 m="0" font-size="2xl" font-weight="bold">Featured placement</h3>
+        </div>
+
+        <div bg="gray-100" dark-bg="gray-900" border="border" rounded="2xl" p="5" class="fade-up">
+          <p class="attr-tag mono" style="--tier-color: var(--tier-supporter);" mb="3">
+            <span class="hljs-attr">tier</span><span class="attr-punct">=</span><span class="hljs-string">"supporter"</span>
+          </p>
+          <h3 m="0" font-size="2xl" font-weight="bold">Monthly, ongoing</h3>
+        </div>
+
+        <div bg="gray-100" dark-bg="gray-900" border="border" rounded="2xl" p="5" class="fade-up">
+          <p class="attr-tag mono" style="--tier-color: var(--tier-onetime);" mb="3">
+            <span class="hljs-attr">tier</span><span class="attr-punct">=</span><span class="hljs-string">"one-time"</span>
+          </p>
+          <h3 m="0" font-size="2xl" font-weight="bold">Small but meaningful</h3>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TIER 01 — PARTNERS -->
+    <!-- ================================================= -->
+
+    <section
+      id="tier-partners"
+      mx="auto"
+      px="4"
+      lg-px="6"
+      xl-px="12"
+      py="8"
+      md-py="12"
+    >
+
+      <div display="flex" items="end" justify="between" gap="4" flex-wrap mb="6">
+        <div>
+          <p class="attr-tag mono" style="--tier-color: var(--tier-partner);" mb="3">
+            <span class="hljs-attr">tier</span><span class="attr-punct">=</span><span class="hljs-string">"partner"</span>
+          </p>
+          <h2 m="0" font-size="3xl" font-weight="bold" tracking="tight">Partners</h2>
+        </div>
+        <span class="attr-tag mono" style="--tier-color: var(--tier-partner); color: var(--tier-partner);">
+          Largest logo placement
+        </span>
+      </div>
+
+      <div
+        display="grid"
+        grid-cols="1"
+        md-grid-cols="2"
+        gap="6"
+      >
+
+        <article
+          class="sponsor-card fade-up"
+          data-tier="partner"
+          bg="#fff"
+          dark-bg="gray-900"
+          bg-gradient="linear-gradient(180deg, color-mix(in oklch, var(--tier-partner), white 92%), transparent)"
+          shadow="md"
+          border="1px solid gray-100"
+          dark-border-color="gray-800"
+          rounded="2xl"
+          p="6"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-partner); color: var(--tier-partner);">
+            Featured partner
+          </span>
+
+          <div display="flex" items="center" gap="4" mt="5">
+            <div
+              w="20"
+              h="20"
+              rounded="2xl"
+              bg="gray-50"
+              border="1px solid"
+              border-color="gray-200"
+              display="flex"
+              items="center"
+              justify="center"
+              p="3"
+            >
+              <img data-logo alt="Atomattr logo" w="full" h="full" style="object-fit: contain;" />
+            </div>
+
+            <div>
+              <h3 m="0" font-size="xl" font-weight="bold">Atomattr</h3>
+              <p mt="2" mb="0" text="muted" line-height="relaxed">
+                Founding project partner slot — reserved here as the reference placement for future sponsors.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="sponsor-card slot-card fade-up"
+          data-tier="partner"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="1px dashed"
+          border-color="gray-300"
+          dark-border-color="gray-700"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="center"
+          items="center"
+          gap="2"
+          text-align="center"
+          min-h="180"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-partner); color: var(--tier-partner);">
+            Open partner slot
+          </span>
+          <p m="0" mt="3" text="muted">Your company logo here</p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TIER 02 — RECURRING SUPPORTERS -->
+    <!-- ================================================= -->
+
+    <section
+      mx="auto"
+      px="4"
+      lg-px="6"
+      xl-px="12"
+      py="8"
+      md-py="12"
+    >
+
+      <div display="flex" items="end" justify="between" gap="4" flex-wrap mb="6">
+        <div>
+          <p class="attr-tag mono" style="--tier-color: var(--tier-supporter);" mb="3">
+            <span class="hljs-attr">tier</span><span class="attr-punct">=</span><span class="hljs-string">"supporter"</span>
+          </p>
+          <h2 m="0" font-size="3xl" font-weight="bold" tracking="tight">Recurring supporters</h2>
+        </div>
+        <span class="attr-tag mono" style="--tier-color: var(--tier-supporter); color: var(--tier-supporter);">
+          Monthly or ongoing
+        </span>
+      </div>
+
+      <div
+        display="grid"
+        grid-cols="1"
+        md-grid-cols="3"
+        gap="6"
+      >
+
+        <article
+          class="sponsor-card slot-card fade-up"
+          data-tier="supporter"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="1px dashed"
+          border-color="gray-300"
+          dark-border-color="gray-700"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="center"
+          items="center"
+          gap="2"
+          text-align="center"
+          min-h="140"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-supporter); color: var(--tier-supporter);">Supporter</span>
+          <p m="0" mt="3" text="muted">Sponsor name or logo</p>
+        </article>
+
+        <article
+          class="sponsor-card slot-card fade-up"
+          data-tier="supporter"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="1px dashed"
+          border-color="gray-300"
+          dark-border-color="gray-700"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="center"
+          items="center"
+          gap="2"
+          text-align="center"
+          min-h="140"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-supporter); color: var(--tier-supporter);">Supporter</span>
+          <p m="0" mt="3" text="muted">Backer badge or company mark</p>
+        </article>
+
+        <article
+          class="sponsor-card slot-card fade-up"
+          data-tier="supporter"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="1px dashed"
+          border-color="gray-300"
+          dark-border-color="gray-700"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="center"
+          items="center"
+          gap="2"
+          text-align="center"
+          min-h="140"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-supporter); color: var(--tier-supporter);">Supporter</span>
+          <p m="0" mt="3" text="muted">Community supporter spot</p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TIER 03 — ONE-TIME SUPPORTERS -->
+    <!-- ================================================= -->
+
+    <section
+      mx="auto"
+      px="4"
+      lg-px="6"
+      xl-px="12"
+      py="8"
+      md-py="12"
+    >
+
+      <div display="flex" items="end" justify="between" gap="4" flex-wrap mb="6">
+        <div>
+          <p class="attr-tag mono" style="--tier-color: var(--tier-onetime);" mb="3">
+            <span class="hljs-attr">tier</span><span class="attr-punct">=</span><span class="hljs-string">"one-time"</span>
+          </p>
+          <h2 m="0" font-size="3xl" font-weight="bold" tracking="tight">One-time supporters</h2>
+        </div>
+        <span class="attr-tag mono" style="--tier-color: var(--tier-onetime); color: var(--tier-onetime);">
+          Small but meaningful
+        </span>
+      </div>
+
+      <div
+        display="grid"
+        grid-cols="1"
+        md-grid-cols="3"
+        gap="6"
+      >
+
+        <article
+          class="sponsor-card slot-card fade-up"
+          data-tier="onetime"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="1px dashed"
+          border-color="gray-300"
+          dark-border-color="gray-700"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="center"
+          items="center"
+          gap="2"
+          text-align="center"
+          min-h="120"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-onetime); color: var(--tier-onetime);">One-time</span>
+          <p m="0" mt="3" text="muted">Backer name or short note</p>
+        </article>
+
+        <article
+          class="sponsor-card slot-card fade-up"
+          data-tier="onetime"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="1px dashed"
+          border-color="gray-300"
+          dark-border-color="gray-700"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="center"
+          items="center"
+          gap="2"
+          text-align="center"
+          min-h="120"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-onetime); color: var(--tier-onetime);">One-time</span>
+          <p m="0" mt="3" text="muted">Coffee support</p>
+        </article>
+
+        <article
+          class="sponsor-card slot-card fade-up"
+          data-tier="onetime"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="1px dashed"
+          border-color="gray-300"
+          dark-border-color="gray-700"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="center"
+          items="center"
+          gap="2"
+          text-align="center"
+          min-h="120"
+        >
+          <span class="attr-tag mono" style="--tier-color: var(--tier-onetime); color: var(--tier-onetime);">One-time</span>
+          <p m="0" mt="3" text="muted">Open supporter slot</p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- WHAT SPONSORS GET -->
+    <!-- ================================================= -->
+
+    <section
+      mx="auto"
+      px="4"
+      lg-px="6"
+      xl-px="12"
+      py="8"
+      md-py="12"
+      lg-py="16"
+    >
+
+      <div
+        display="grid"
+        grid-cols="1"
+        lg-grid-cols="2"
+        gap="6"
+        items="stretch"
+      >
+
+        <article
+          bg="#fff"
+          dark-bg="gray-900"
+          shadow="md"
+          border="1px solid gray-100"
+          dark-border-color="gray-800"
+          rounded="2xl"
+          p="6"
+        >
+          <p class="mono" text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">WHAT SPONSORS GET</p>
+
+          <div display="flex" flex-col gap="4" mt="4">
+
+            <div display="flex" gap="3" items="start">
+              <span w="8" h="8" rounded="full" style="background: color-mix(in oklch, var(--tier-partner), transparent 88%); color: var(--tier-partner);" display="flex" items="center" justify="center" shrink="0">
+                <i class="ri-check-line"></i>
+              </span>
+              <p m="0" text="muted" line-height="relaxed">Featured partner placement with the biggest visual footprint on this page.</p>
+            </div>
+
+            <div display="flex" gap="3" items="start">
+              <span w="8" h="8" rounded="full" style="background: color-mix(in oklch, var(--tier-supporter), transparent 88%); color: var(--tier-supporter);" display="flex" items="center" justify="center" shrink="0">
+                <i class="ri-check-line"></i>
+              </span>
+              <p m="0" text="muted" line-height="relaxed">Recurring visibility for as long as a monthly pledge stays active.</p>
+            </div>
+
+            <div display="flex" gap="3" items="start">
+              <span w="8" h="8" rounded="full" style="background: color-mix(in oklch, var(--tier-onetime), transparent 88%); color: var(--tier-onetime);" display="flex" items="center" justify="center" shrink="0">
+                <i class="ri-check-line"></i>
+              </span>
+              <p m="0" text="muted" line-height="relaxed">A spot for one-time support — no subscription required to show up here.</p>
+            </div>
+
+            <div display="flex" gap="3" items="start">
+              <span w="8" h="8" rounded="full" bg="primary/10" text="primary" display="flex" items="center" justify="center" shrink="0">
+                <i class="ri-check-line"></i>
+              </span>
+              <p m="0" text="muted" line-height="relaxed">Association with the docs, examples, and everyone building on Atomattr.</p>
+            </div>
+
+          </div>
+        </article>
+
+        <article
+          bg="gray-100"
+          dark-bg="gray-900"
+          bg-gradient="linear-gradient(180deg, color-mix(in oklch, var(--primary), white 93%), transparent)"
+          border="border"
+          rounded="2xl"
+          p="6"
+          display="flex"
+          flex-col
+          justify="between"
+        >
+          <div>
+            <p class="mono" text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">SUPPORT OPTIONS</p>
+            <h2 m="0" mt="2" font-size="3xl" font-weight="bold" tracking="tight">Choose how you want to help.</h2>
+            <p mt="3" mb="0" text="muted" line-height="relaxed">
+              The tiers above stay visible for anyone backing the project directly — pick whichever platform
+              you already use below.
+            </p>
+            <p class="mono mono-comment" mt="4" mb="0" font-size="sm">/* no minimum, no lock-in */</p>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- SUPPORT LINKS -->
+    <!-- ================================================= -->
+
+    <section
+      id="support-links"
+      mx="auto"
+      px="4"
+      lg-px="6"
+      xl-px="12"
+      py="8"
+      md-py="12"
+      lg-py="16"
+    >
+
+      <div
+        display="grid"
+        grid-cols="1"
+        sm-grid-cols="2"
+        lg-grid-cols="4"
+        gap="4"
+      >
+
+        <a
+          class="link-card"
+          href="https://github.com/sponsors"
+          target="_blank"
+          rel="noreferrer"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="border"
+          rounded="2xl"
+          p="6"
+          text="text"
+          text-decoration="none"
+          display="flex"
+          flex-col
+          justify="between"
+          gap="4"
+        >
+          <span w="11" h="11" rounded="xl" bg="gray-950" dark-bg="white" text="white" dark-text="gray-950" display="flex" items="center" justify="center" font-size="xl">
+            <i class="ri-github-fill"></i>
+          </span>
+          <span>
+            <strong display="block" mb="2">GitHub Sponsors</strong>
+            <span text="muted" line-height="relaxed">Recurring or one-time, billed straight through GitHub.</span>
+          </span>
+        </a>
+
+        <a
+          class="link-card"
+          href="https://opencollective.com"
+          target="_blank"
+          rel="noreferrer"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="border"
+          rounded="2xl"
+          p="6"
+          text="text"
+          text-decoration="none"
+          display="flex"
+          flex-col
+          justify="between"
+          gap="4"
+        >
+          <span w="11" h="11" rounded="xl" bg="indigo-600" text="#fff" display="flex" items="center" justify="center" font-size="xl">
+            <i class="ri-team-line"></i>
+          </span>
+          <span>
+            <strong display="block" mb="2">Open Collective</strong>
+            <span text="muted" line-height="relaxed">Transparent budget — see exactly where funds go.</span>
+          </span>
+        </a>
+
+        <a
+          class="link-card"
+          href="https://www.buymeacoffee.com"
+          target="_blank"
+          rel="noreferrer"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="border"
+          rounded="2xl"
+          p="6"
+          text="text"
+          text-decoration="none"
+          display="flex"
+          flex-col
+          justify="between"
+          gap="4"
+        >
+          <span w="11" h="11" rounded="xl" bg="amber-500" text="gray-950" display="flex" items="center" justify="center" font-size="xl">
+            <i class="ri-cup-line"></i>
+          </span>
+          <span>
+            <strong display="block" mb="2">Buy Me a Coffee</strong>
+            <span text="muted" line-height="relaxed">A quick one-time thank-you, no account needed.</span>
+          </span>
+        </a>
+
+        <a
+          class="link-card"
+          href="https://ko-fi.com"
+          target="_blank"
+          rel="noreferrer"
+          bg="gray-100"
+          dark-bg="gray-900"
+          border="border"
+          rounded="2xl"
+          p="6"
+          text="text"
+          text-decoration="none"
+          display="flex"
+          flex-col
+          justify="between"
+          gap="4"
+        >
+          <span w="11" h="11" rounded="xl" bg="rose-500" text="white" display="flex" items="center" justify="center" font-size="xl">
+            <i class="ri-heart-3-fill"></i>
+          </span>
+          <span>
+            <strong display="block" mb="2">Ko-fi</strong>
+            <span text="muted" line-height="relaxed">No platform cut — the whole tip goes to the project.</span>
+          </span>
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================================================= -->
+  <!-- FOOTER -->
+  <!-- ================================================= -->
+
+  <footer
+    bg="gray-100"
+    dark-bg="gray-950"
+  >
+
+    <div
+      max-w="7xl"
+      mx="auto"
+      px="4"
+      md-px="6"
+      lg-px="8"
+      py="12"
+      md-py="24"
+    >
+
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
+
+        <div lg-col-span="2">
+
+          <a
+            href="/"
+            display="flex"
+            items="center"
+            gap="2"
+            text="text"
+            text-decoration="none"
+            font-weight="bold"
+            font-size="lg"
+          >
+
+            <span
+              w="8"
+              h="8"
+              rounded="lg"
+              bg="primary"
+              text="white"
+              display="flex"
+              items="center"
+              justify="center"
+            >
+              <i class="ri-shape-line"></i>
+            </span>
+
+            Atomattr
+
+          </a>
+
+
+          <p
+            max-w="sm"
+            mt="4"
+            text="muted"
+            line-height="relaxed"
+          >
+            Attribute-driven styling for modern interfaces,
+            from the web to React Native.
+          </p>
+
+          <div display="flex" gap="2" mt="6">
+            <a
+              href="#community"
+              aria-label="Open community chat"
+              w="10"
+              h="10"
+              rounded="lg"
+              border="border"
+              display="flex"
+              items="center"
+              justify="center"
+              text="text"
+              text-decoration="none"
+            >
+              <i class="ri-discord-fill" font-size="24"></i>
+            </a>
+
+            <a
+              href="https://github.com/"
+              aria-label="Open GitHub"
+              w="10"
+              h="10"
+              rounded="lg"
+              border="border"
+              display="flex"
+              items="center"
+              justify="center"
+              text="text"
+              text-decoration="none"
+            >
+              <i class="ri-github-fill" font-size="24"></i>
+            </a>
+
+            <a
+              href="#community"
+              aria-label="Open community chat"
+              w="10"
+              h="10"
+              rounded="lg"
+              border="border"
+              display="flex"
+              items="center"
+              justify="center"
+              text="text"
+              text-decoration="none"
+            >
+              <i class="ri-twitter-x-fill" font-size="24"></i>
+            </a>
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h3
+            font-weight="bold"
+            mb="2"
+          >
+            Product
+          </h3>
+
+          <div
+            display="flex"
+            flex-col
+            gap="2"
+          >
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="index.html#examples" text="muted" text-decoration="none" hover-text="text">Examples</a>
+            <a href="index.html#platforms" text="muted" text-decoration="none" hover-text="text">Platforms</a>
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h3
+            font-weight="bold"
+            mb="2"
+          >
+            Community
+          </h3>
+
+          <div
+            display="flex"
+            flex-col
+            gap="2"
+          >
+            <a href="index.html#community" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="https://github.com/" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="support.html" text="muted" text-decoration="none"  hover-text="text">Follow on X </a>
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3 font-weight="bold" mb="2">
+            Sponsors
+          </h3>
+
+          <div
+            display="flex"
+            flex-col
+            gap="2"
+          >
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="https://opencollective.com" target="_blank" rel="noreferrer" text="muted" text-decoration="none" hover-text="text">Open Collective</a>
+            <a href="https://www.buymeacoffee.com" target="_blank" rel="noreferrer" text="muted" text-decoration="none" hover-text="text">Buy me a coffee</a>
+            <a href="https://github.com/sponsors" target="_blank" rel="noreferrer" text="muted" text-decoration="none" hover-text="text">GitHub Sponsor</a>
+          </div>
+        </div>
+
+
+        <div>
+
+          <h3 font-weight="bold" mb="2">
+            Quick Jump
+          </h3>
+
+          <div
+            display="flex"
+            flex-col
+            gap="2"
+          >
+            <a href="index.html#features" text="muted" text-decoration="none" hover-text="text">Features</a>
+            <a href="index.html#colors" text="muted" text-decoration="none" hover-text="text">Colors</a>
+            <a href="index.html#examples" text="muted" text-decoration="none" hover-text="text">API</a>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        mt="10"
+        pt="6"
+        border-t="1px"
+        border-color="gray-200"
+        dark-border-color="gray-800"
+        display="flex"
+        flex-col
+        sm-flex-row
+        justify="between"
+        gap="3"
+        text="muted"
+      >
+
+        <span>
+          © 2026 Atomattr.
+        </span>
+
+        <span
+          display="flex"
+          items="center"
+          gap="2"
+        >
+          Built with Atomattr
+          <i class="ri-heart-3-line"></i>
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+    // Optional manual override on top of the automatic
+    // prefers-color-scheme behavior handled in CSS above.
+    // Without this script (or with JS disabled) the page still
+    // switches correctly, since the CSS media query is the source
+    // of truth — this just lets a visitor override it for the session.
+    (function () {
+      try {
+        const root = document.documentElement;
+        const toggle = document.querySelector('button[aria-label="Toggle color theme"]');
+        if (!toggle) return;
+
+        function systemPrefersDark() {
+          return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        function applyTheme(t) {
+          root.dataset.theme = t;
+          if (t === 'dark') root.classList.add('dark'); else root.classList.remove('dark');
+          try { sessionStorage.setItem('atomattr:theme', t); } catch (e) {}
+        }
+
+        let stored;
+        try { stored = sessionStorage.getItem('atomattr:theme'); } catch (e) {}
+        if (stored === 'dark' || stored === 'light') applyTheme(stored);
+
+        toggle.addEventListener('click', () => {
+          const current = root.dataset.theme === 'dark' || (!root.dataset.theme && systemPrefersDark());
+          applyTheme(current ? 'light' : 'dark');
+        });
+      } catch (e) {}
+    })();
+  </script>
+
+</body>
+</html>

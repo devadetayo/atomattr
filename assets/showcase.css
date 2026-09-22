@@ -1,0 +1,282 @@
+/* Showcase site stylesheet: semantic aliases + code spacing */
+/* This file intentionally augments the existing palette from defaults.css */
+
+:root {
+  /* showcase semantic names */
+  --background: var(--white);
+  --surface: var(--surface);
+  --surface-raised: var(--slate-50);
+  --border: var(--border);
+  --text: var(--black);
+  --text-muted: var(--slate-500);
+  --primary: var(--primary);
+  --danger: var(--red-600);
+  --success: var(--green-600);
+
+  /* High-contrast syntax palette for light mode */
+  --hljs-text: #1f2937;
+  --hljs-comment: #64748b;
+  --hljs-keyword: #7c3aed;
+  --hljs-string: #0f766e;
+  --hljs-number: #b45309;
+  --hljs-attr: #2563eb;
+  --hljs-tag: #1d4ed8;
+  --hljs-literal: #9333ea;
+  --hljs-builtins: #c2410c;
+  --hljs-variable: #0f172a;
+  --hljs-function: #0f766e;
+}
+
+html.dark {
+  --background: var(--slate-900);
+  --surface: var(--slate-900);
+  --surface-raised: var(--slate-800);
+  --border: var(--slate-700);
+  --text: var(--white);
+  --text-muted: var(--slate-400);
+  --primary: var(--primary);
+  --danger: var(--red-400);
+  --success: var(--green-400);
+
+  /* High-contrast syntax palette for dark mode */
+  --hljs-text: #e2e8f0;
+  --hljs-comment: #94a3b8;
+  --hljs-keyword: #c4b5fd;
+  --hljs-string: #6ee7b7;
+  --hljs-number: #fbbf24;
+  --hljs-attr: #7dd3fc;
+  --hljs-tag: #93c5fd;
+  --hljs-literal: #ddd6fe;
+  --hljs-builtins: #f9a8d4;
+  --hljs-variable: #e2e8f0;
+  --hljs-function: #67e8f9;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../assets/static/DMSans-VariableFont_opsz%2Cwght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../assets/static/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Apply basic page-level mappings for the showcase site (do not force a font)
+   DM Sans is available as an opt-in preset: add `preset-dm-sans` on the body */
+body {
+  font-family: 'DM Sans' !important;                        
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* Opt-in preset that applies the bundled DM Sans font */
+body.preset-dm-sans {
+  font-family: 'DM Sans' !important;
+}
+
+/* Shared floating glass navigation shell. The inner nav carries the
+   AtomAttr glass attributes; the outer header supplies the floating gap. */
+header[data-site-nav] {
+  position: relative;
+  top: auto;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  border: 0 !important;
+  transition: padding .2s ease;
+}
+
+header[data-site-nav] > nav {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+  border-color: transparent !important;
+  border-width: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: all .2s ease;
+}
+
+header[data-site-nav].is-scrolled {
+  position: sticky;
+  top: 0;
+  padding: .75rem 1rem;
+}
+
+header[data-site-nav].is-scrolled > nav {
+  width: min(100%, 72rem);
+  border-width: 1px !important;
+  border-color: rgb(148 163 184 / .28) !important;
+  border-radius: 50px !important;
+  background: rgb(255 255 255 / .76) !important;
+  box-shadow: 0 16px 40px rgb(15 23 42 / .1) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+html.dark header[data-site-nav].is-scrolled > nav {
+  border-color: rgb(148 163 184 / .2) !important;
+  background: rgb(15 23 42 / .76) !important;
+  box-shadow: 0 16px 40px rgb(2 6 23 / .32) !important;
+}
+
+@media (min-width: 768px) {
+  header[data-site-nav].is-scrolled {
+    padding-inline: 1.5rem;
+  }
+}
+
+a,
+.text-primary {
+  color: var(--primary);
+}
+
+/* Borders using the semantic border variable */
+.border-semantic {
+  border-color: var(--border);
+}
+
+/* Code block + inline code spacing/styling
+   NOTE: do not override highlight.js backgrounds — keep backgrounds transparent
+   so existing syntax themes still show, only add margins/padding. */
+pre {
+  overflow: auto;
+  border-radius: var(--radius-md);
+}
+
+/* keep hljs backgrounds transparent as the project expects */
+pre code.hljs,
+.hljs {
+  background: transparent !important;
+  color: var(--hljs-text) !important;
+  padding: 24px 0 !important;
+  display:  inline-block;
+}
+
+/* .hljs-comment,
+.hljs-quote {
+  color: var(--hljs-comment);
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-attribute,
+.hljs-literal,
+.hljs-built_in,
+.hljs-builtin-name {
+  color: var(--hljs-keyword);
+}
+
+.hljs-string,
+.hljs-meta-string,
+.hljs-template-variable,
+.hljs-regexp,
+.hljs-symbol {
+  color: var(--hljs-string);
+}
+
+.hljs-number,
+.hljs-params,
+.hljs-constant {
+  color: var(--hljs-number);
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-section {
+  color: var(--hljs-tag);
+}
+
+.hljs-variable,
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_ {
+  color: var(--hljs-function);
+}
+
+.hljs-attr,
+.hljs-property,
+.hljs-operator {
+  color: var(--hljs-attr);
+} */
+
+/* inline code */
+code:not(.hljs) {
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  background: rgba(0,0,0,0.04);
+  color: var(--text);
+}
+
+html.dark code:not(.hljs) {
+  background: rgba(255,255,255,0.04);
+}
+
+
+/* Custom scrollbars — uses existing semantic tokens, not browser defaults */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: var(--radius-md, 8px);
+  border: 2px solid var(--surface);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-muted);
+}
+
+/* Optional: scoped version instead of global `*`,
+   if you only want it on specific scroll containers */
+.custom-scroll {
+  scrollbar-color: var(--border) transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: var(--radius-md, 8px);
+  border: 2px solid var(--surface);
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-muted);
+}
+
+/* Dark mode gets the right colors automatically since
+--border, --surface, --text-muted already flip in html.dark */

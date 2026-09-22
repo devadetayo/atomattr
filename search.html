@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Atomattr — Attributes and values</title>
+    <meta
+      name="description"
+      content="Search Atomattr attributes and values by keyword across the style system."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      html { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif; }
+      h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.015em; }
+      code, pre, pre code, input { font-family: 'JetBrains Mono', monospace; }
+      [data-search-page] { scroll-margin-top: 100px; }
+    </style>
+    <link rel="stylesheet" href="./src/style-data/defaults.css" />
+    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+    <link rel="stylesheet" href="./assets/showcase.css" />
+  </head>
+  <body
+    bg="#fff"
+    dark-bg="grey-950"
+    text="text"
+    min-h="screen"
+  >
+
+    <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" backdrop-blur="md"></header>
+
+    <main class="page-shell" px="4" lg-px="6" xl-px="12" py="8" md-py="12" lg-py="16">
+      <section
+        data-search-page
+        max-w="5xl"
+        mx="auto"
+        display="flex"
+        flex-col
+        gap="6"
+      >
+        <div>
+          <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">SEARCH</p>
+          <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Find an attribute or value in one shot</h1>
+          <p font-size="md" text="muted" line-height="relaxed">
+            Search for things like <code>bg</code>, <code>p</code>, <code>md</code>, <code>primary</code>, or <code>rounded</code>.
+          </p>
+        </div>
+
+        <div
+          bg="gray-50"
+          dark-bg="gray-900"
+          border="border"
+          rounded="2xl"
+          p="4"
+          display="flex"
+          flex-col
+          gap="4"
+        >
+          <label for="attribute-search" font-size="sm" font-weight="600" text="muted">Search the attribute catalog</label>
+          <input
+            id="attribute-search"
+            type="search"
+            placeholder="Try bg, p, primary, md, rounded, shadow..."
+            w="full"
+            bg="#fff"
+            dark-bg="gray-950"
+            border="border"
+            rounded="xl"
+            px="4"
+            py="3"
+            text="text"
+            outline="none"
+          />
+          <div display="flex" items="center" justify="between" gap="3">
+            <span id="search-total" text="muted" font-size="sm">0 matches</span>
+            <span text="muted" font-size="xs">Includes attributes, values, breaks, and aliases</span>
+          </div>
+        </div>
+
+        <div id="search-empty" hidden>
+          <div
+            bg="gray-50"
+            dark-bg="gray-900"
+            border="border"
+            rounded="2xl"
+            p="6"
+            text="muted"
+            line-height="relaxed"
+          >
+            No matches yet. Try a keyword like <code>px</code>, <code>blue</code>, <code>between</code>, or <code>lg</code>.
+          </div>
+        </div>
+
+        <div id="search-results" display="grid" grid-cols="1" gap="4"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./site/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

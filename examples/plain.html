@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AtomAttr Plain HTML Example</title>
+    <link rel="stylesheet" href="/src/style-data/defaults.css" />
+  </head>
+  <body bg="slate-50">
+    <main p="8">
+      <section bg="white" rounded="3xl" shadow="xl" p="8" max-w="720px" mx-auto>
+        <p font-size="sm" tracking="widest" text="slate-500">PLAIN HTML</p>
+        <h1 font-size="5xl" weight="black" leading="tight" mt="2">
+          AtomAttr starts with attributes.
+        </h1>
+        <p mt="4" text="slate-600" font-size="lg">
+          This page uses the same engine the React layer depends on.
+        </p>
+        <div mt="6" flex gap="3" items="center">
+          <button bg="brand" text="white" px="4" py="2" rounded="full" hover-bg="slate-950">
+            Primary action
+          </button>
+          <span text="slate-500">No classes required.</span>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { startAtomAttr } from '/src/index.js';
+      startAtomAttr();
+    </script>
+  </body>
+</html>

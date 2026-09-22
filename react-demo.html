@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AtomAttr React Demo</title>
+    <meta name="description" content="React usage guide and demo page for AtomAttr." />
+    <link rel="stylesheet" href="./src/style-data/defaults.css" />
+    <link rel="stylesheet" href="./site/theme.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <nav class="site-nav">
+          <a href="index.html" class="brand-block">
+            <img data-logo class="brand-logo" alt="AtomAttr logo" />
+            <div flex flex-col gap="0.5">
+              <p m="0" font-size="xs" tracking="widest" text="grey-500">ATOMATTR + REACT</p>
+              <p m="0" font-size="sm" weight="semibold">Demo and usage reference</p>
+            </div>
+          </a>
+          <div class="nav-row">
+            <a class="nav-link" data-nav-link href="index.html">Home</a>
+            <a class="nav-link" data-nav-link href="docs.html">Docs</a>
+            <a class="nav-link" data-nav-link href="playground.html">Playground</a>
+            <a class="nav-link" data-nav-link href="react-demo.html">React</a>
+            <a class="nav-link" data-nav-link href="support.html">Support</a>
+            <button class="theme-toggle" data-theme-toggle type="button"></button>
+          </div>
+        </nav>
+      </header>
+
+      <section class="section-space">
+        <div class="hero-grid">
+          <div flex flex-col gap="4">
+            <p m="0" class="section-label">React demo</p>
+            <h1 m="0" font-size="4xl" weight="black">React is now a thin layer over the HTML contract.</h1>
+            <p m="0" font-size="lg" text="grey-600" style="max-width: 42rem;">
+              The React package no longer tries to be a different styling engine. It simply normalizes JSX-friendly
+              props back into the same AtomAttr attributes the HTML engine already understands.
+            </p>
+            <div flex gap="3" wrap>
+              <a class="pill-link" href="docs.html#react" bg="blue-700" text="white" px="5" py="3" rounded="full">Read React docs</a>
+              <a class="pill-link" href="playground.html" bg="white" text="grey-950" px="4" py="2.5" rounded="xl" border="1" border-color="grey-300">Open playground</a>
+            </div>
+          </div>
+
+          <section class="demo-card" rounded="3xl" p="6">
+            <p m="0" class="section-label">Canonical mapping</p>
+            <div class="mini-grid" mt="5">
+              <article rounded="2xl" bg="white" p="4" border="1" border-color="grey-200">
+                <p m="0" font-size="sm" text="grey-500">React prop</p>
+                <h3 mt="2" mb="0" font-size="xl" weight="bold">fontSize="4xl"</h3>
+                <p mt="3" mb="0" text="grey-600">JSX-safe alias</p>
+              </article>
+              <article rounded="2xl" bg="grey-950" text="white" p="4">
+                <p m="0" font-size="sm" text="grey-400">HTML output</p>
+                <h3 mt="2" mb="0" font-size="xl" weight="bold">font-size="4xl"</h3>
+                <p mt="3" mb="0" text="grey-300">Canonical AtomAttr key</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section-space">
+        <div class="demo-grid">
+          <section class="demo-card" rounded="3xl" p="5">
+            <p m="0" class="section-label">Component code</p>
+            <pre class="code-block" id="react-demo-code">import { Box, H1, Txt, Btn, Row, Badge } from 'atomattr/react';
+
+export function HeroCard() {
+  return (
+    &lt;Box bg="slate-950" text="white" p="8" rounded="3xl" shadow="2xl"&gt;
+      &lt;Badge bg="brand-light" text="slate-950"&gt;React&lt;/Badge&gt;
+      &lt;H1 mt="4" fontSize="4xl" weight="black"&gt;
+        Same contract, better ergonomics
+      &lt;/H1&gt;
+      &lt;Txt mt="3" text="slate-300"&gt;
+        Camel aliases normalize back into canonical AtomAttr keys.
+      &lt;/Txt&gt;
+      &lt;Row mt="6" gap="3" wrap&gt;
+        &lt;Btn px="4" py="2" rounded="full" bg="brand-light" text="slate-950"&gt;
+          Launch
+        &lt;/Btn&gt;
+      &lt;/Row&gt;
+    &lt;/Box&gt;
+  );
+}</pre>
+            <div mt="4" flex justify="end">
+              <button class="nav-link" data-copy-target="react-demo-code" data-copy-label="Copy" type="button">Copy</button>
+            </div>
+          </section>
+
+          <section class="demo-card" rounded="3xl" p="5" bg="slate-950" text="white">
+            <p m="0" class="section-label" style="color: #94a3b8;">Rendered intent</p>
+            <section mt="5" rounded="3xl" bg="slate-900" p="6" shadow="2xl">
+              <span inline-flex items="center" rounded="full" px="3" py="1" font-size="xs" weight="semibold" bg="brand-light" text="slate-950">
+                React
+              </span>
+              <h2 mt="4" mb="0" font-size="4xl" weight="black">Same contract, better ergonomics</h2>
+              <p mt="3" mb="0" text="slate-300">
+                Camel aliases normalize back into canonical AtomAttr keys.
+              </p>
+              <div mt="6" flex gap="3" wrap>
+                <button px="4" py="2" rounded="full" bg="brand-light" text="slate-950">Launch</button>
+                <span px="4" py="2" rounded="full" bg="slate-800" text="slate-200">HTML-first under the hood</span>
+              </div>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      <section class="section-space">
+        <div class="feature-grid">
+          <article class="demo-card" rounded="3xl" p="5">
+            <h3 m="0" font-size="xl" weight="bold">Use direct props</h3>
+            <p mt="3" mb="0" text="slate-600">For keys JSX handles cleanly: <code>bg</code>, <code>p</code>, <code>rounded</code>, <code>text</code>.</p>
+          </article>
+          <article class="demo-card" rounded="3xl" p="5">
+            <h3 m="0" font-size="xl" weight="bold">Use aliases when needed</h3>
+            <p mt="3" mb="0" text="slate-600">For dashed canonical keys: <code>fontSize</code>, <code>minH</code>, <code>borderColor</code>, <code>gridCols</code>.</p>
+          </article>
+          <article class="demo-card" rounded="3xl" p="5">
+            <h3 m="0" font-size="xl" weight="bold">Use <code>attrs</code> for exact parity</h3>
+            <p mt="3" mb="0" text="slate-600">When you want React snippets to visually match HTML examples exactly.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./site/app.js"></script>
+  </body>
+</html>

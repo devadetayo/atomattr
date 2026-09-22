@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playground — Atomattr</title>
+    <meta name="description" content="Interactive Atomattr playground with HTML, React, and Vite starter modes." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Syntax highlighting: use the same Foundation code theme in both
+         light and dark modes so the syntax colors stay consistent. -->
+    <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
+    <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
+
+    <style>
+      html {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.015em;
+      }
+
+      code, pre, pre code, #playground-editor, #playground-highlight {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      pre code.hljs {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+
+      summary {
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      /* Highlight-within-textarea: the textarea sits on top of the
+         highlighted <pre><code>, with its own glyphs made transparent
+         so only the caret and selection are visible — the colored
+         text underneath is what actually shows. */
+      #playground-editor,
+      #playground-highlight-pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        tab-size: 2;
+        box-sizing: border-box;
+      }
+      #playground-editor {
+        color: transparent;
+        background: transparent;
+        caret-color: #6366f1;
+      }
+      #playground-highlight-pre {
+        pointer-events: none;
+      }
+    </style>
+    <link rel="stylesheet" href="./src/style-data/defaults.css" />
+    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+    <link rel="stylesheet" href="./assets/showcase.css" />
+  </head>
+
+  <body
+    bg="#fff" dark-bg="grey-950"
+    text="text"
+    min-h="screen">
+
+    <main class="page-shell">
+
+      <!-- ================================================= -->
+      <!-- PLAYGROUND -->
+      <!-- ================================================= -->
+
+      <section
+        data-playground
+        display="flex"
+        flex-col
+        min-h="screen"
+      >
+
+        <!-- Toolbar -->
+
+        <div
+          display="flex"
+          items="center"
+          justify="between"
+          gap="3"
+          px="4"
+          py="2.5"
+          border-b="1px"
+          border-color="gray-100"
+          dark-border-color="gray-900"
+        >
+
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" aria-label="Atomattr homepage">
+            <img src="./assets/images/logo.png" alt="Atomattr" h="6" dark-display="none" display="flex">
+            <img src="./assets/images/logo.dark.png" alt="Atomattr" h="6" dark-display="flex" display="none">
+            <span font-weight="700" font-size="md">Playground</span>
+          </a>
+
+          <div display="flex" items="center" gap="2">
+
+            <button
+              id="playground-reset"
+              type="button"
+              aria-label="Reset editor"
+              display="flex"
+              items="center"
+              justify="center"
+              bg="transparent"
+              border="border"
+              text="muted"
+              w="9"
+              h="9"
+              rounded="lg"
+            >
+              <i class="ri-refresh-line" font-size="16"></i>
+            </button>
+
+            <button
+              id="playground-run"
+              type="button"
+              display="flex"
+              items="center"
+              gap="1.5"
+              bg="primary"
+              text="white"
+              px="4"
+              py="2"
+              rounded="lg"
+              font-size="sm"
+              font-weight="600"
+            >
+              <i class="ri-play-fill" font-size="15"></i>
+              Run
+            </button>
+
+            <span w="1px" h="6" bg="gray-200" dark-bg="gray-800" mx="1"></span>
+
+            <div display="flex" items="center" gap="1" bg="grey-100" dark-bg="gray-900" rounded="lg" p="1">
+
+              <button type="button" data-layout="split" aria-label="Side-by-side view" aria-pressed="true" display="flex" items="center" justify="center" bg="#fff" dark-bg="gray-800" text="primary" w="8" h="8" rounded="md">
+                <i class="ri-layout-column-line" font-size="15"></i>
+              </button>
+
+              <button type="button" data-layout="stacked" aria-label="Stacked view" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md">
+                <i class="ri-layout-row-line" font-size="15"></i>
+              </button>
+
+              <button type="button" data-layout="editor" aria-label="Editor only" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md">
+                <i class="ri-code-s-slash-line" font-size="15"></i>
+              </button>
+
+              <button type="button" data-layout="preview" aria-label="Preview only" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md">
+                <i class="ri-eye-line" font-size="15"></i>
+              </button>
+
+            </div>
+
+            <button type="button" aria-label="Toggle color theme" data-color-toggle bg="transparent" border="border" text="text" p="3" rounded="lg" display="flex" items="center" justify="center">
+              <i class="ri-sun-line" font-size="20" data-color-toggle-icon></i>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Tabs -->
+
+        <div
+          display="flex"
+          items="center"
+          justify="between"
+          px="4"
+          border-b="1px"
+          border-color="gray-100"
+          dark-border-color="gray-900"
+        >
+
+          <div display="flex" gap="6">
+            <button type="button" data-language="html" aria-pressed="true" bg="transparent" text="primary" border-b="2px" border-color="primary" pt="3" pb="2.5" font-size="sm" font-weight="600">HTML</button>
+            <button type="button" data-language="react" aria-pressed="false" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600">React</button>
+            <button type="button" data-language="vite" aria-pressed="false" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600">Vite</button>
+          </div>
+
+          <span id="playground-title" text="muted" font-size="xs">Plain HTML snippet</span>
+
+        </div>
+
+
+        <!-- Split editor / preview -->
+
+        <div
+          id="playground-split"
+          data-layout-view="split"
+          display="grid"
+          grid-cols="1"
+          flex="1"
+          lg-grid-cols="2" min-h="full"
+        >
+
+          <div
+            data-pane="editor"
+            display="flex"
+            flex-col
+            position="relative"
+            border-r="1px"
+            lg-border-r="1px"
+            border-color="gray-100"
+            dark-border-color="gray-900"
+          >
+
+            <!-- Highlighted layer sits behind the textarea; the textarea's
+                 own glyphs are transparent (see head styles) so this is
+                 the text you actually see. -->
+            <pre
+              id="playground-highlight-pre"
+              aria-hidden="true"
+              position="absolute"
+              top="0" left="0" right="0" bottom="0"
+              overflow="hidden"
+              p="6"
+              font-size="sm"
+              line-height="relaxed"
+            ><code id="playground-highlight" class="language-html"></code></pre>
+
+            <textarea
+              id="playground-editor"
+              spellcheck="false"
+              position="absolute"
+              top="0" left="0" right="0" bottom="0"
+              w="full"
+              h="full"
+              p="6"
+              border="0"
+              outline="none"
+              resize="none"
+              font-size="sm"
+              line-height="relaxed"
+            ></textarea>
+
+          </div>
+
+          <div
+            data-pane="preview"
+            position="relative"
+            display="flex"
+            flex-col
+            bg="#fff"
+          >
+
+            <span
+              position="absolute"
+              top="3"
+              right="3"
+              z="10"
+              display="inline-flex"
+              items="center"
+              gap="1.5"
+              rounded="full"
+              px="2.5"
+              py="1"
+              font-size="xs"
+              font-weight="600"
+              bg="success/10"
+              text="success"
+            >
+              <span w="1.5" h="1.5" rounded="full" bg="success"></span>
+              Live
+            </span>
+
+            <iframe
+              id="playground-preview"
+              title="Atomattr preview"
+              w="full"
+              h="full"
+              border="0"
+              display="block"
+            ></iframe>
+
+          </div>
+
+        </div>
+
+        <div px="4" display="none" flex-col gap="1">
+          <p id="playground-helper" mt="2" mb="0" text="muted" font-size="xs" line-height="relaxed"></p>
+          <p id="playground-note" mt="0" mb="0" text="muted" font-size="xs" line-height="relaxed"></p>
+        </div>
+
+
+        <!-- Tips drawer -->
+
+        <details id="playground-tips" border-t="1px" border-color="gray-200" dark-border-color="gray-800" fixed bottom="0" left="0" w="full" bg="#fff" dark-bg="gray-950" z="20">
+
+          <summary
+            display="flex"
+            items="center"
+            justify="between"
+            px="4"
+            py="3"
+            cursor="pointer"
+            font-size="sm"
+            font-weight="600"
+            text="muted"
+          >
+            <span display="flex" items="center" gap="2">
+              <i class="ri-lightbulb-line"></i>
+              Tips
+            </span>
+            <i class="ri-arrow-down-s-line"></i>
+          </summary>
+
+          <pre px="4" pb="5" mt="0" text="muted" font-size="sm" line-height="relaxed">Try spacing: p="6" gap="4"
+Try colors: bg="blue-700" text="white"
+Try state: hover-bg="slate-950"
+Try layout: display="flex" items="center" justify="between"
+Try responsive: md-grid-cols="3"</pre>
+
+        </details>
+
+      </section>
+
+    </main>
+
+    <script>
+      // Layout-view toggle for the playground split pane. Self-contained —
+      // toggles the "grid-cols" attribute directly, which atomattr's
+      // attribute-selector CSS picks up live, plus show/hide per pane.
+      (function () {
+        const split = document.getElementById('playground-split');
+        if (!split) return;
+
+        const buttons = document.querySelectorAll('[data-layout]');
+        const editorPane = split.querySelector('[data-pane="editor"]');
+        const previewPane = split.querySelector('[data-pane="preview"]');
+
+        function setLayout(mode) {
+          split.dataset.layoutView = mode;
+
+          if (mode === 'editor') {
+            editorPane.style.display = 'flex';
+            previewPane.style.display = 'none';
+            split.setAttribute('lg-grid-cols', '1');
+          } else if (mode === 'preview') {
+            editorPane.style.display = 'none';
+            previewPane.style.display = 'flex';
+            split.setAttribute('lg-grid-cols', '1');
+          } else if (mode === 'stacked') {
+            editorPane.style.display = 'flex';
+            previewPane.style.display = 'flex';
+            split.setAttribute('lg-grid-cols', '1');
+          } else {
+            editorPane.style.display = 'flex';
+            previewPane.style.display = 'flex';
+            split.setAttribute('lg-grid-cols', '2');
+          }
+
+          buttons.forEach((btn) => {
+            const active = btn.dataset.layout === mode;
+            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+            btn.setAttribute('bg', active ? '#fff' : 'transparent');
+            btn.setAttribute('text', active ? 'primary' : 'muted');
+          });
+        }
+
+        buttons.forEach((btn) => {
+          btn.addEventListener('click', () => setLayout(btn.dataset.layout));
+        });
+      })();
+
+      // Visual active state for the HTML / React / Vite tabs. Purely
+      // cosmetic — leaves loading the right starter snippet to app.js
+      // via the same data-language hook.
+      (function () {
+        const tabs = document.querySelectorAll('[data-language]');
+        tabs.forEach((tab) => {
+          tab.addEventListener('click', () => {
+            tabs.forEach((t) => {
+              const active = t === tab;
+              t.setAttribute('aria-pressed', active ? 'true' : 'false');
+              t.setAttribute('text', active ? 'primary' : 'muted');
+              t.setAttribute('border-color', active ? 'primary' : 'transparent');
+            });
+          });
+        });
+      })();
+    </script>
+
+    <script type="module" src="./site/app.js"></script>
+
+    <!-- Syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script>
+      // Live syntax highlighting for the code editor. A plain <textarea>
+      // can never show colored text on its own — the browser renders its
+      // value as flat, uncolored text no matter what. So the editor's own
+      // characters are made transparent (see head styles) and a matching
+      // <pre><code> sits behind it, re-highlighted with hljs on every
+      // keystroke. Scroll position is kept in sync between the two so
+      // they stay pixel-aligned as you scroll a long snippet.
+      (function () {
+        const editor = document.getElementById('playground-editor');
+        const codeEl = document.getElementById('playground-highlight');
+        const pre = document.getElementById('playground-highlight-pre');
+        if (!editor || !codeEl || !pre || typeof hljs === 'undefined') return;
+
+        const starter = '<div bg="surface" p="6" rounded="xl" border="border">\n'
+          + '  <h3 font-weight="bold" mb="2">Hello Atomattr</h3>\n'
+          + '  <p text="muted">Edit this snippet and watch the preview update.</p>\n'
+          + '</div>';
+
+        function refreshHighlight() {
+          codeEl.textContent = editor.value;
+          codeEl.removeAttribute('data-highlighted');
+          hljs.highlightElement(codeEl);
+        }
+
+        function buildPreviewDoc(snippet) {
+          const safeSnippet = String(snippet).replace(/<\/script/gi, '<\\/script');
+          return '<!doctype html>'
+            + '<html><head><meta charset="UTF-8">'
+            + '<link rel="stylesheet" href="./src/style-data/defaults.css">'
+            + '<link rel="stylesheet" href="./assets/remixicon/remixicon.css">'
+            + '<link rel="stylesheet" href="./assets/showcase.css">'
+            + '<style>body{margin:0;padding:1rem;font-family:"DM Sans","IBM Plex Sans",system-ui,sans-serif;}</sty' + 'le>'
+            + '</he' + 'ad><body>' + safeSnippet + '</bo' + 'dy></ht' + 'ml>';
+        }
+
+        const preview = document.getElementById('playground-preview');
+        function renderPreview() {
+          if (preview) preview.srcdoc = buildPreviewDoc(editor.value);
+        }
+
+        // Live: re-highlight and re-render on every keystroke, batched to
+        // one update per frame so fast typing doesn't thrash the iframe.
+        let renderScheduled = false;
+        function scheduleUpdate() {
+          if (renderScheduled) return;
+          renderScheduled = true;
+          requestAnimationFrame(() => {
+            renderScheduled = false;
+            refreshHighlight();
+            renderPreview();
+          });
+        }
+
+        editor.value = editor.value || starter;
+        refreshHighlight();
+        renderPreview();
+
+        editor.addEventListener('input', scheduleUpdate);
+
+        // app.js (type="module") loads real default/tab code into the
+        // textarea after this script already ran, and does it by setting
+        // .value directly rather than firing an "input" event — so this
+        // watch loop catches that (and any other programmatic change,
+        // like tab switches or resets) and updates both layers live too.
+        let lastSeenValue = editor.value;
+        function watchForExternalChanges() {
+          if (editor.value !== lastSeenValue) {
+            lastSeenValue = editor.value;
+            scheduleUpdate();
+          }
+          requestAnimationFrame(watchForExternalChanges);
+        }
+        requestAnimationFrame(watchForExternalChanges);
+
+        editor.addEventListener('scroll', () => {
+          pre.scrollTop = editor.scrollTop;
+          pre.scrollLeft = editor.scrollLeft;
+        });
+
+        const runBtn = document.getElementById('playground-run');
+        if (runBtn) runBtn.addEventListener('click', renderPreview);
+
+        const resetBtn = document.getElementById('playground-reset');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            editor.value = starter;
+            refreshHighlight();
+            renderPreview();
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
