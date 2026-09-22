@@ -1,0 +1,71 @@
+Ignore source files (users only need dist)
+
+src/
+rollup.config.js
+
+Ignore website/demo files
+
+index.html
+docs.html
+playground.html
+cheatsheet.html
+blog.html
+blog/
+assets/
+
+Ignore dev config
+
+.gitignore
+.npmignore
+node_modules/
+
+
+### 2. The `package.json` Files List
+
+You have already configured this correctly, but let's double-check. In your `package.json`, the `files` array acts as a "whitelist". NPM will **ONLY** include files listed here, ignoring everything else (unless forced by other rules).
+
+```json
+"files": [
+  "dist",
+  "README.md",
+  "LICENSE"
+]
+
+
+How it works together:
+
+GitHub: Sees everything (Source, Website, Docs).
+
+NPM: Sees only what is in the dist folder + README/LICENSE.
+
+3. The Launch Sequence (Executing the Plan)
+
+Now that your protection is in place, follow these steps to launch.
+
+Step A: Local Build (The "Production" Artifact)
+
+Run this to ensure your dist/ folder is fresh and perfect.
+
+npm run build
+
+
+Step B: Git Push (The Website Launch)
+
+This pushes everything to GitHub so your site goes live.
+
+git init
+git add .
+git commit -m "Launch: Quanta AtomAttr v0.0.1"
+git branch -M main
+git remote add origin https://github.com/devadetayo/quanta-atomattr.git
+git push -u origin main
+
+
+Action: Go to GitHub Settings -> Pages -> Source: main / root. Your website is now online!
+
+Step C: NPM Publish (The Library Launch)
+
+This pushes only the engine to the registry.
+
+npm login
+npm publish --access public

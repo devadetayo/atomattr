@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing AtomAttr - AtomAttr Blog</title>
+
+    <!-- 1. LOAD ENGINE -->
+    <!-- Adjusted path for nested folder -->
+    <link rel="stylesheet" href="../dist/defaults.css">
+    <script src="../dist/atomattr.min.js" defer></script>
+
+    <!-- 2. FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- CORE SETUP --- */
+        :root {
+            --primary-glow: #3b82f6;
+            --header-height: 4rem;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--surface);
+            color: var(--text);
+        }
+
+        /* --- TEXT GRADIENT --- */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- ARTICLE STYLING --- */
+        article h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        article p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        article ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        article li {
+            margin-bottom: 0.5rem;
+        }
+
+        article code {
+            background: var(--surface-alt);
+            color: var(--primary);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        article pre {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- MOBILE MENU --- */
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body bg="surface" text="text" min-h="100vh" flex col>
+
+    <!-- NAVBAR -->
+    <nav sticky top="0" z="50" w="full" bg="surface" bg-opacity="0.9" backdrop-blur="12px" border-b="1px"
+        border-color="border">
+        <div max-w="1400px" mx="auto" px="4" h="4rem" flex items="center" justify="between">
+
+            <!-- Logo -->
+            <a href="../index.html" flex items="center" gap="3" style="text-decoration:none;" text="text" group>
+                <div w="2rem" h="2rem" bg="linear-gradient(135deg, #3b82f6, #9333ea)" radius="md" flex items="center"
+                    justify="center" shadow="sm">
+                    <svg w="1.2rem" text="white" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <div flex col justify="center">
+                    <span weight="700" size="1.1rem" leading="1" tracking="-0.02em">AtomAttr</span>
+                    <span text="text-dim" size="0.75rem" weight="500" tracking="wide">BLOG</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div hidden lg-flex items="center" gap="6">
+                <a href="../index.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Home</a>
+                <a href="../docs.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Docs</a>
+                <a href="../playground.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
+                    transition="colors" style="text-decoration:none;">Playground</a>
+                <a href="../blog.html" text="primary" weight="600" size="0.9rem" transition="colors"
+                    style="text-decoration:none;">Blog</a>
+
+                <div w="1px" h="1.5rem" bg="border"></div>
+
+                <button id="themeToggle" bg="surface-alt" border="1px" border-color="border" p="0.5rem" radius="xl"
+                    hover-border-color="text-dim" transition="all" cursor="pointer">
+                    <svg class="sun" w="1rem" h="1rem" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menuOpen" lg-hidden bg="transparent" border="none" p="2" text="text">
+                <svg w="1.5rem" h="1.5rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="6" flex col
+        gap="6" shadow="2xl" border-l="1px" border-color="border" lg-hidden>
+        <div flex justify="between" items="center" mb="4">
+            <span weight="700" size="1.25rem">Menu</span>
+            <button id="menuClose" bg="surface-alt" p="2" radius="xl" border="none"><svg w="1.5rem" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg></button>
+        </div>
+        <a href="../index.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Home</a>
+        <a href="../docs.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Documentation</a>
+        <a href="../playground.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Playground</a>
+        <a href="../blog.html" text="primary" size="1.1rem" weight="600" style="text-decoration:none;">Blog</a>
+    </div>
+
+    <!-- ARTICLE HEADER -->
+    <header pt="6rem" pb="4rem" px="4" text-align="center" max-w="50rem" mx="auto">
+        <div flex gap="2" justify="center" mb="4" text="primary" weight="700" size="0.9rem" uppercase tracking="wide">
+            <span>Engineering</span> • <span>Nov 25, 2025</span>
+        </div>
+        <h1 size="2.5rem" md-size="3.5rem" weight="800" leading="1.2" mb="6">
+            Introducing AtomAttr: The Runtime CSS Revolution
+        </h1>
+        <div flex items="center" justify="center" gap="3">
+            <div w="2.5rem" h="2.5rem" bg="slate-200" radius="full"></div>
+            <div text-align="left">
+                <p weight="700" size="0.95rem" mb="0">Adetayo</p>
+                <p text="text-dim" size="0.85rem">Creator of AtomAttr</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- ARTICLE CONTENT -->
+    <main w="full" max-w="48rem" mx="auto" px="4" pb="8rem">
+        <article>
+            <p>For years, frontend development has been dominated by the build step. Webpack, Rollup, Vite, PostCSS...
+                the list goes on. While these tools are powerful, they introduce a layer of complexity that can be
+                overkill for many projects. We asked ourselves: <strong>What if you could just write HTML?</strong></p>
+
+            <h2>The Problem with Static CSS</h2>
+            <p>Traditional CSS requires you to maintain a separate stylesheet file. Utility frameworks like Tailwind CSS
+                improved this by moving styles into the HTML, but they still require a heavy Node.js build process to
+                generate the final CSS file. This creates a barrier to entry for backend developers, beginners, and
+                those working on legacy stacks.</p>
+
+            <h2>The AtomAttr Solution</h2>
+            <p>AtomAttr takes a different approach. Instead of compiling your CSS at build time, it compiles it at
+                <strong>runtime</strong>, right in the user's browser. This might sound slow, but thanks to modern
+                JavaScript engines and the MutationObserver API, it happens in milliseconds.
+            </p>
+
+            <pre><code>&lt;div flex justify="center" items="center" h="screen" bg="slate-900"&gt;
+    &lt;h1 text="white" size="3rem"&gt;Hello World&lt;/h1&gt;
+&lt;/div&gt;</code></pre>
+
+            <p>With the code above, AtomAttr scans the DOM, identifies the attributes, generates the corresponding
+                atomic CSS classes, and injects them into the page style. It's instant, responsive, and requires zero
+                configuration.</p>
+
+            <h2>Key Benefits</h2>
+            <ul>
+                <li><strong>Zero Config:</strong> No `npm install`, no `tailwind.config.js`. Just a script tag.</li>
+                <li><strong>Framework Agnostic:</strong> Works with React, Vue, PHP, Rails, or plain HTML.</li>
+                <li><strong>Tiny Footprint:</strong> The engine is less than 10KB gzipped.</li>
+            </ul>
+
+            <p>We believe this is the future of rapid prototyping and simpler web development. Try it out in the <a
+                    href="../playground.html" text="primary">Playground</a> today.</p>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer bg="surface-alt" border-t="1px" border-color="border" pt="5rem" pb="3rem">
+        <div max-w="1400px" mx="auto" px="4" text-align="center" text="text-dim" size="0.85rem">
+            &copy; 2025 Quanta Labs. Released under MIT License.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('mobile-menu');
+            const menuOpen = document.getElementById('menuOpen');
+            const menuClose = document.getElementById('menuClose');
+            const themeBtn = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            // Mobile Menu
+            menuOpen.addEventListener('click', () => menu.classList.add('open'));
+            menuClose.addEventListener('click', () => menu.classList.remove('open'));
+
+            // Theme Toggle
+            themeBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // Init State
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+
+            // Force Engine Start
+            if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start();
+        });
+    </script>
+</body>
+
+</html>
