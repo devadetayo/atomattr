@@ -10,6 +10,7 @@ export default {
         format: 'iife',
         name: 'AtomAttr',
         sourcemap: false,
+        inlineDynamicImports: true,
     },
     plugins: [
         resolve(),

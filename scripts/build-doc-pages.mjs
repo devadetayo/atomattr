@@ -148,11 +148,8 @@ platforms: React, React Native, HTML`),
 
 add('installation.html', 'Installation', 'Install Atomattr, load the base stylesheet, and start the DOM engine for plain HTML or framework usage.', [
   sec('package', 'Install the package', [para('Use the package when you want Atomattr in an app bundle.'), code('terminal', 'npm install atomattr')]),
-  sec('plain-html', 'Plain HTML', [para('For static pages, include the defaults stylesheet and start the engine once after the page loads.'), code('index.html', `<link rel="stylesheet" href="/src/style-data/defaults.css">
-<script type="module">
-  import { startAtomAttr } from '/src/index.js';
-  startAtomAttr();
-</script>`)]),
+  sec('plain-html', 'Plain HTML', [para('For static pages, load the defaults stylesheet and browser bundle.'), code('index.html', `<link rel="stylesheet" href="/dist/defaults.css">
+<script src="/dist/atomattr.min.js" defer></script>`)]),
   sec('vite-react', 'Vite or React', [para('In an app entry, import the stylesheet and call <code>startAtomAttr()</code>. React components can then emit the same attribute contract.'), code('main.tsx', `import { startAtomAttr } from 'atomattr';
 import 'atomattr/defaults.css';
 
@@ -251,16 +248,13 @@ add('html.html', 'HTML', 'Use Atomattr directly in HTML by loading the defaults 
   sec('page-setup', 'Page setup', [para('HTML is the canonical Atomattr target. The browser engine scans attributes, generates CSS rules for what it finds, and refreshes when the DOM changes.'), code('index.html', `<!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="/src/style-data/defaults.css">
+    <link rel="stylesheet" href="/dist/defaults.css">
   </head>
   <body bg="gray-50" text="gray-950">
     <main p="6">
       <h1 font-size="4xl" font-weight="bold">HTML first</h1>
     </main>
-    <script type="module">
-      import { startAtomAttr } from '/src/index.js';
-      startAtomAttr();
-    </script>
+    <script src="/dist/atomattr.min.js" defer></script>
   </body>
 </html>`)]),
   sec('component-example', 'Component example', [para('A complete HTML component usually combines layout, spacing, color, typography, radius, border, and state attributes.'), code('pricing-card.html', `<article display="flex" flex-col gap="5" p="6" bg="white" dark-bg="gray-900" rounded="2xl" border="border" shadow="md">
@@ -834,7 +828,7 @@ function render(page) {
   <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
   <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
   <style>html{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Inter",sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
-  <link rel="stylesheet" href="/src/style-data/defaults.css">
+  <link rel="stylesheet" href="/dist/defaults.css">
   <link rel="stylesheet" href="/assets/remixicon/remixicon.css">
   <link rel="stylesheet" href="/assets/showcase.css">
 </head>
@@ -864,6 +858,7 @@ function render(page) {
     </div>
   </main>
   ${searchDataScript(page)}
+  <script src="/dist/atomattr.min.js" defer></script>
   <script type="module" src="/site/app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>

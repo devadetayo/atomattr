@@ -7,11 +7,11 @@
   <meta name="description" content="Apply text decoration, decoration styles, casing, and italic state.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
   <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
-  <style>html{font-family:'DM Sans','IBM Plex Sans','Inter',system-ui,sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
-  <link rel="stylesheet" href="/src/style-data/defaults.css">
+  <style>html{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Inter",sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
+  <link rel="stylesheet" href="/dist/defaults.css">
   <link rel="stylesheet" href="/assets/remixicon/remixicon.css">
   <link rel="stylesheet" href="/assets/showcase.css">
 </head>
@@ -176,9 +176,7 @@
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
       <span text="gray-400" font-size="sm">responsive.html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div decoration="4" md-decoration="6"&gt;
-  &lt;!-- numeric tokens (e.g. decoration="4") select values from the decoration/thickness scale --&gt;
-  &lt;!-- For the decoration line type (underline/line-through/none) prefer keywords: decoration="underline" --&gt;
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div decoration="4" md-decoration="6" text-decoration="4"&gt;
   Decoration and case can change at a breakpoint without moving to a stylesheet.
 &lt;/div&gt;</code></pre>
   </div>
@@ -187,7 +185,6 @@
       <span text="gray-400" font-size="sm">states-and-theme.html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button decoration="4" hover-decoration="4" dark-decoration="4"&gt;
-  &lt;!-- thickness tokens applied here; to set the line type use decoration="underline" etc. --&gt;
   Decoration and case with hover and dark mode
 &lt;/button&gt;</code></pre>
   </div></section>
@@ -202,12 +199,11 @@
       <span text="gray-400" font-size="sm">combined-pattern.html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article display="flex" flex-col gap="3" p="5" rounded="xl" border="border" decoration="4" md-decoration="6"&gt;
-  &lt;!-- decoration="4" chooses a thickness from the scale; to set the visible line use decoration="underline" --&gt;
   &lt;h3 font-size="lg" font-weight="bold"&gt;Decoration and case pattern&lt;/h3&gt;
   &lt;p text="muted" line-height="relaxed"&gt;
     Combine the attribute with layout, spacing, and color so the whole component remains readable.
   &lt;/p&gt;
-  &lt;button text-decoration="underline" hover-text-decoration="underline" px="4" py="2" rounded="lg"&gt;
+  &lt;button text-decoration="4" hover-text-decoration="4" px="4" py="2" rounded="lg"&gt;
     Continue
   &lt;/button&gt;
 &lt;/article&gt;</code></pre>
@@ -232,6 +228,7 @@
   </div></section>
         <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
     <a href="typography-alignment.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
+    <p text="muted" font-size="sm" mb="2">Previous</p>
     <div display="flex" items="center" justify="center" gap="4">
       <i class="ri-arrow-left-line"></i>
       <strong>Text Alignment</strong>
@@ -240,6 +237,7 @@
     <p text="muted" font-size="sm" line-height="relaxed" mt="2">Typography</p>
   </a>
     <a href="typography-overflow.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
+    <p text="muted" font-size="sm" mb="2">Next</p>
     <div display="flex" items="center" justify="center" gap="4">
       
       <strong>Text Overflow</strong>
@@ -259,6 +257,7 @@
     </div>
   </main>
   
+  <script src="/dist/atomattr.min.js" defer></script>
   <script type="module" src="/site/app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>

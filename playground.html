@@ -62,7 +62,7 @@
         pointer-events: none;
       }
     </style>
-    <link rel="stylesheet" href="./src/style-data/defaults.css" />
+    <link rel="stylesheet" href="./dist/defaults.css" />
     <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
     <link rel="stylesheet" href="./assets/showcase.css" />
   </head>
@@ -394,6 +394,7 @@ Try responsive: md-grid-cols="3"</pre>
       })();
     </script>
 
+    <script src="./dist/atomattr.min.js" defer></script>
     <script type="module" src="./site/app.js"></script>
 
     <!-- Syntax highlighting -->
@@ -429,11 +430,13 @@ Try responsive: md-grid-cols="3"</pre>
           const safeSnippet = String(snippet).replace(/<\/script/gi, '<\\/script');
           return '<!doctype html>'
             + '<html><head><meta charset="UTF-8">'
-            + '<link rel="stylesheet" href="./src/style-data/defaults.css">'
+            + '<link rel="stylesheet" href="./dist/defaults.css">'
             + '<link rel="stylesheet" href="./assets/remixicon/remixicon.css">'
             + '<link rel="stylesheet" href="./assets/showcase.css">'
             + '<style>body{margin:0;padding:1rem;font-family:"DM Sans","IBM Plex Sans",system-ui,sans-serif;}</sty' + 'le>'
-            + '</he' + 'ad><body>' + safeSnippet + '</bo' + 'dy></ht' + 'ml>';
+            + '</he' + 'ad><body>' + safeSnippet
+            + '<script src="./dist/atomattr.min.js"></scr' + 'ipt>'
+            + '</bo' + 'dy></ht' + 'ml>';
         }
 
         const preview = document.getElementById('playground-preview');

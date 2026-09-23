@@ -7,11 +7,11 @@
   <meta name="description" content="Install Atomattr, load the base stylesheet, and start the DOM engine for plain HTML or framework usage.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
   <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
-  <style>html{font-family:'DM Sans','IBM Plex Sans','Inter',system-ui,sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
-  <link rel="stylesheet" href="/src/style-data/defaults.css">
+  <style>html{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Inter",sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
+  <link rel="stylesheet" href="/dist/defaults.css">
   <link rel="stylesheet" href="/assets/remixicon/remixicon.css">
   <link rel="stylesheet" href="/assets/showcase.css">
 </head>
@@ -162,16 +162,13 @@
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-bash">npm install atomattr</code></pre>
   </div></section>
-<section id="plain-html" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Plain HTML</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">For static pages, include the defaults stylesheet and start the engine once after the page loads.</p>
+<section id="plain-html" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Plain HTML</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">For static pages, load the defaults stylesheet and browser bundle.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
       <span text="gray-400" font-size="sm">index.html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;link rel="stylesheet" href="/src/style-data/defaults.css"&gt;
-&lt;script type="module"&gt;
-  import { startAtomAttr } from '/src/index.js';
-  startAtomAttr();
-&lt;/script&gt;</code></pre>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;link rel="stylesheet" href="/dist/defaults.css"&gt;
+&lt;script src="/dist/atomattr.min.js" defer&gt;&lt;/script&gt;</code></pre>
   </div></section>
 <section id="vite-react" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Vite or React</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">In an app entry, import the stylesheet and call <code>startAtomAttr()</code>. React components can then emit the same attribute contract.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
@@ -203,18 +200,22 @@ startAtomAttr();</code></pre>
   </div></section>
         <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
     <a href="search.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
+    <p text="muted" font-size="sm" mb="2">Previous</p>
     <div display="flex" items="center" justify="center" gap="4">
       <i class="ri-arrow-left-line"></i>
       <strong>Search</strong>
       
     </div>
+    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
   </a>
     <a href="syntax.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
+    <p text="muted" font-size="sm" mb="2">Next</p>
     <div display="flex" items="center" justify="center" gap="4">
       
       <strong>Syntax</strong>
       <i class="ri-arrow-right-line"></i>
     </div>
+    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
   </a>
   </nav>
       </div>
@@ -227,6 +228,7 @@ startAtomAttr();</code></pre>
     </div>
   </main>
   
+  <script src="/dist/atomattr.min.js" defer></script>
   <script type="module" src="/site/app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>

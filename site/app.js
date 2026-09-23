@@ -1,6 +1,7 @@
-import { refreshAtomAttr, startAtomAttr } from '../src/index.js';
-import { DICTIONARY } from '../src/style-data/dictionary.js';
-import {
+const {
+  refreshAtomAttr,
+  startAtomAttr,
+  DICTIONARY,
   BREAKPOINTS,
   COLORS,
   FONT_SIZE_SCALE,
@@ -12,7 +13,7 @@ import {
   SHADOW_PRESETS,
   SPACING_SCALE,
   VALUE_ALIASES,
-} from '../src/style-data/variables.js';
+} = window.AtomAttr;
 
 const STORAGE_KEY = 'atomattr-theme';
 

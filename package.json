@@ -1,18 +1,41 @@
 {
   "name": "atomattr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Attribute-first styling for HTML and React Native.",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:library && npm run build:site",
+    "build:library": "rollup -c && node scripts/copy-defaults.mjs",
+    "build:site": "vite build && node scripts/copy-library-to-site.mjs",
     "preview": "vite preview",
     "test": "node --test tests/*.test.js"
   },
+  "files": [
+    "dist/atomattr.min.js",
+    "dist/defaults.css",
+    "src",
+    "react/atom.tsx",
+    "react/index.ts",
+    "react/primitives.tsx",
+    "react/useTheme.tsx",
+    "react-native/atom",
+    "react-native/components",
+    "react-native/gridUtils.tsx",
+    "react-native/index.ts",
+    "react-native/primitives.tsx",
+    "react-native/style-engine.ts",
+    "react-native/useAtom.tsx",
+    "README.md",
+    "RELEASE_NOTES.md",
+    "types.d.ts"
+  ],
   "exports": {
     ".": "./src/index.js",
     "./react": "./react/index.ts",
-    "./defaults.css": "./src/style-data/defaults.css"
+    "./react-native": "./react-native/index.ts",
+    "./defaults.css": "./dist/defaults.css",
+    "./browser": "./dist/atomattr.min.js"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -21,6 +44,10 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.60.2",
     "vite": "^5.4.10",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
