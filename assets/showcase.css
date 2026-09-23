@@ -7,7 +7,7 @@
   --surface: var(--surface);
   --surface-raised: var(--slate-50);
   --border: var(--border);
-  --text: var(--black);
+  --text: #000;
   --text-muted: var(--slate-500);
   --primary: var(--primary);
   --danger: var(--red-600);
@@ -32,7 +32,7 @@ html.dark {
   --surface: var(--slate-900);
   --surface-raised: var(--slate-800);
   --border: var(--slate-700);
-  --text: var(--white);
+  --text: #fff;
   --text-muted: var(--slate-400);
   --primary: var(--primary);
   --danger: var(--red-400);

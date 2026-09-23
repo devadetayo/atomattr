@@ -243,13 +243,13 @@ function setupSiteNav() {
             <a href="${root}index.html#community" aria-label="Open Discord community" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" text-decoration="none" hover-bg="primary/10">
               <i class="ri-discord-fill" font-size="20" color="indigo-500"></i>
             </a>
-            <a href="${root}support.html" aria-label="Open voice chat support" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" text-decoration="none" hover-bg="primary/10">
+            <a href="${root}support.html" aria-label="Open voice chat support" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" dark-text="#fff" text-decoration="none" hover-bg="primary/10">
               <i class="ri-github-fill" font-size="20"></i>
             </a>
-            <button type="button" aria-label="Toggle color theme" data-theme-toggle bg="transparent" border="border" text="text" p="3" rounded="lg" display="flex" items="center" justify="center">
+           <button type="button" aria-label="Toggle color theme" data-theme-toggle bg="transparent" text="text" dark-text="#fff" p="3" rounded="lg" display="flex" items="center" justify="center" border="none">
               <i class="ri-moon-line" font-size="20"></i>
             </button>
-            <button type="button" aria-label="Open navigation" aria-expanded="false" data-mobile-toggle="main-nav" display="flex" md-display="none" bg="transparent" border="border" text="text" p="3" rounded="lg" items="center" justify="center">
+            <button type="button" aria-label="Open navigation" aria-expanded="false" data-mobile-toggle="main-nav" display="flex" md-display="none" bg="transparent" text="text" dark-text="#fff" p="3" rounded="lg" items="center" justify="center" border="none">
               <i class="ri-menu-line" font-size="24" data-mobile-toggle-icon></i>
             </button>
           </div>
