@@ -1,10 +1,6 @@
 /**
  * QUANTA ATOMATTR - PREFLIGHT & PALETTE
-<<<<<<< HEAD
  * Version: 1.0.0
-=======
- * Version: 0.0.3 Beta
->>>>>>> c8ec279c4d068a7424101ada2032f505b126f390
  */
 
 /* --- 1. THE NUKE (PREFLIGHT RESET) --- */
@@ -18,26 +14,14 @@
 }
 
 html {
-<<<<<<< HEAD
     -webkit-text-size-adjust: 100%;
     -moz-tab-size: 4;
     tab-size: 4;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif;
-=======
-    line-height: 1.5;
-    -webkit-text-size-adjust: 100%;
-    -moz-tab-size: 4;
-    tab-size: 4;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
->>>>>>> c8ec279c4d068a7424101ada2032f505b126f390
 }
 
 body {
     margin: 0;
-<<<<<<< HEAD
-=======
-    line-height: inherit;
->>>>>>> c8ec279c4d068a7424101ada2032f505b126f390
 }
 
 hr {
@@ -262,7 +246,6 @@ video {
     --slate-900: #0f172a;
     --slate-950: #020617;
 
-<<<<<<< HEAD
     /* grey */
     --grey-50: #f9fafb;
     --grey-100: #f3f4f6;
@@ -275,20 +258,6 @@ video {
     --grey-800: #1f2937;
     --grey-900: #111827;
     --grey-950: #030712;
-=======
-    /* Gray */
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
-    --gray-950: #030712;
->>>>>>> c8ec279c4d068a7424101ada2032f505b126f390
 
     /* Zinc */
     --zinc-50: #fafafa;
@@ -561,7 +530,6 @@ video {
     --text-dim: var(--slate-500);
     --border: var(--slate-200);
 
-<<<<<<< HEAD
     /* --- ATOMATTR SEMANTIC TOKENS (override these in your theme) --- */
     --aa-color-primary: var(--primary);
     --aa-color-secondary: var(--secondary);
@@ -581,8 +549,6 @@ video {
     --aa-color-input: var(--slate-200);
     --aa-color-ring: var(--blue-500);
 
-=======
->>>>>>> c8ec279c4d068a7424101ada2032f505b126f390
     /* --- SPACING SCALE --- */
     --s-0: 0px;
     --s-0_5: 0.125rem;
@@ -646,7 +612,6 @@ html.dark {
 [rotate],
 [translate-x],
 [translate-y],
-<<<<<<< HEAD
 [skew-x],
 [skew-y],
 
@@ -672,11 +637,3 @@ html.dark {
 [focus-skew-y]:focus {
     transform: var(--aa-x) var(--aa-y) var(--aa-rotate) var(--aa-scale) var(--aa-skew-x) var(--aa-skew-y);
 }
-=======
-[hover-scale]:hover,
-[hover-rotate]:hover,
-[active-scale]:active,
-[focus-scale]:focus {
-    transform: var(--aa-x) var(--aa-y) var(--aa-rotate) var(--aa-scale);
-}
->>>>>>> c8ec279c4d068a7424101ada2032f505b126f390

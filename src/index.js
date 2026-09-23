@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { refreshAtomAttr, startEngine, stopEngine } from './engine/engine.js';
 import { clearGeneratedRules } from './engine/generator.js';
 import { DICTIONARY } from './style-data/dictionary.js';
@@ -70,18 +69,3 @@ export {
   startEngine as startAtomAttr,
   stopEngine as stopAtomAttr,
 };
-=======
-import { startEngine } from './engine/engine.js';
-
-// Auto-start in browser environment
-if (typeof window !== 'undefined') {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startEngine);
-    } else {
-        startEngine();
-    }
-}
-
-// Export 'start' explicitly so window.AtomAttr.start() works
-export const start = startEngine;
->>>>>>> c8ec279c4d068a7424101ada2032f505b126f390
