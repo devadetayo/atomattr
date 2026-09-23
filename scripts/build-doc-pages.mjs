@@ -817,6 +817,7 @@ function searchDataScript(page) {
 function render(page) {
   const canonicalPath = page.file === 'docs.html' ? 'docs.html' : `docs/${page.file}`;
   const canonicalUrl = `https://devadetayo.github.io/atomattr/${canonicalPath}`;
+  const assetPrefix = page.file === 'docs.html' ? './' : '../';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -829,7 +830,7 @@ function render(page) {
   <title>${page.title} - Atomattr Docs</title>
   <meta name="description" content="${page.intro.replace(/"/g, '&quot;')}">
   <link rel="canonical" href="${canonicalUrl}">
-  <link rel="icon" href="/assets/favico/favico.png" type="image/png">
+  <link rel="icon" href="${assetPrefix}assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="${page.title} - Atomattr Docs">
@@ -874,9 +875,9 @@ function render(page) {
   <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
   <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
   <style>html{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Inter",sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
-  <link rel="stylesheet" href="./atomattr/dist/defaults.css" />
-  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
-  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="${assetPrefix}dist/defaults.css" />
+  <link rel="stylesheet" href="${assetPrefix}assets/remixicon/remixicon.css" />
+  <link rel="stylesheet" href="${assetPrefix}assets/showcase.css" />
 </head>
 <body bg="#fff" dark-bg="grey-950" text="text" min-h="screen">
   <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" backdrop-blur="md"></header>
@@ -904,8 +905,8 @@ function render(page) {
     </div>
   </main>
   ${searchDataScript(page)}
-  <script src="./dist/atomattr.min.js" defer></script>
-  <script type="module" src="./site/app.js"></script>
+  <script src="${assetPrefix}dist/atomattr.min.js" defer></script>
+  <script type="module" src="${assetPrefix}site/app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>
 </body>
