@@ -67,6 +67,7 @@
     <style>
     html {
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif;
+      width: 100%;
     }
 
     h1, h2, h3 {
@@ -94,6 +95,7 @@
   bg="#fff" dark-bg="grey-950"
   text="text"
   min-h="screen"
+  p="0" m="0"
 >
 
   <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" backdrop-blur="md"></header>
@@ -101,16 +103,11 @@
 
   <main>
 
-    <script src="./dist/atomattr.min.js" defer></script>
-    <script type="module" src="./site/app.js"></script>
-
     <!-- ================================================= -->
     <!-- HERO -->
     <!-- ================================================= -->
 
     <section
-      w="full"
-      mx="auto"
       px="4"
       lg-px="6"
       xl-px="12"
@@ -119,7 +116,7 @@
       lg-py="16"
     >
 
-      <div md-max-w="60vw" mx="auto" text-align="center"
+      <div md-max-w="60vw" md-mx="auto" text-align="center"
       >
         <a
           href="docs.html"
@@ -175,7 +172,7 @@
 
         <p
           max-w="2xl"
-          mx="auto"
+          md-mx="auto"
           font-size="lg"
           md-font-size="xl"
           text="muted"
@@ -248,8 +245,11 @@
       <!-- Hero editor -->
 
       <div
-        max-w="5xl"
-        mx="auto"
+        md-mx="auto"
+        display="flex"
+        flex-col
+        w="full"
+        flex="1"
         mt="16"
         bg="grey-100"
         dark-bg="gray-900"
@@ -316,7 +316,7 @@
           md-px="8"
           overflow="auto"
           font-size="sm"
-          line-height="relaxed"
+          line-height="relaxed" max-w="full"
         ><code class="language-html">&lt;section bg="surface" p="8" rounded="2xl" display="grid" grid-cols="1"  md-grid-cols="2"  gap="8"&gt;
   &lt;div&gt;
     &lt;h1 font-size="5xl"  font-weight="bold"&gt;
@@ -342,7 +342,7 @@
 
     <section
       id="features"
-      mx="auto"
+      md-mx="auto"
       px="4"
       lg-px="6"
       xl-px="12"
@@ -541,7 +541,7 @@
 
     <section
       id="examples"
-      mx="auto"
+      md-mx="auto"
       px="4"
       lg-px="6"
       xl-px="12"
@@ -770,7 +770,7 @@
 
     <section
       id="platforms"
-      mx="auto"
+      md-mx="auto"
       px="4"
       lg-px="6"
       xl-px="12"
@@ -829,7 +829,7 @@
         >
 
           <article
-            mx="auto"
+            md-mx="auto"
             bg="grey-100"
             dark-bg="gray-900"
             rounded="2xl"
@@ -882,7 +882,7 @@
 
 
           <article
-            mx="auto"
+            md-mx="auto"
             bg="grey-100"
             dark-bg="gray-900"
             rounded="2xl"
@@ -944,7 +944,7 @@
 
     <section
       id="colors"
-      mx="auto"
+      md-mx="auto"
       px="4"
       lg-px="6"
       xl-px="12"
@@ -1216,7 +1216,7 @@
 
     <section
       id="community"
-      mx="auto"
+      md-mx="auto"
       px="4"
       lg-px="6"
       xl-px="12"
@@ -1406,7 +1406,7 @@
     <!-- ================================================= -->
 
     <section
-      mx="auto"
+      md-mx="auto"
       px="4"
       lg-px="6"
       xl-px="12"
@@ -1544,8 +1544,7 @@
   >
 
     <div
-      max-w="7xl"
-      mx="auto"
+      md-mx="auto"
       px="4"
       md-px="6"
       lg-px="8"
@@ -1741,6 +1740,9 @@
     </div>
 
   </footer>
+
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script type="module" src="./site/app.js"></script>
   
 
   <!-- Reads real computed values for anything marked data-token-value,
