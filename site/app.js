@@ -215,7 +215,7 @@ function setupSiteNav() {
     ];
 
     mount.innerHTML = `
-        <nav mx="auto" px="4" lg-px="6" xl-px="6" py="2" display="flex" items="center" justify="between" gap="6" bg="white/40" dark-bg="gray-950/40" border="1px" border-color="gray-200/60" dark-border-color="gray-800/60" rounded="full" shadow="lg" backdrop-blur="8px">
+        <nav px="4" lg-px="6" xl-px="6" py="2" display="flex" items="center" justify="between" gap="6" bg="white/40" dark-bg="gray-950/40" border="1px" border-color="gray-200/60" dark-border-color="gray-800/60" rounded="full" shadow="lg" backdrop-blur="8px" w="full">
           <a href="${root}index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
             <img src="${root}assets/images/logo.png" alt="Atomattr" h="6" dark-display="none" display="flex">
             <img src="${root}assets/images/logo.dark.png" alt="Atomattr" h="6" dark-display="flex" display="none">
@@ -243,14 +243,14 @@ function setupSiteNav() {
             <a href="${root}index.html#community" aria-label="Open Discord community" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" text-decoration="none" hover-bg="primary/10">
               <i class="ri-discord-fill" font-size="20" color="indigo-500"></i>
             </a>
-            <a href="${root}support.html" aria-label="Open voice chat support" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" dark-text="#fff" text-decoration="none" hover-bg="primary/10">
-              <i class="ri-github-fill" font-size="20"></i>
+            <a href="${root}support.html" aria-label="Open voice chat support" display="none" md-display="flex" items="center" justify="center" p="2" rounded="lg" text="text" dark-text="#fff" text-decoration="none" hover-bg="primary/10">
+              <i class="ri-github-fill" font-size="xl"></i>
             </a>
-           <button type="button" aria-label="Toggle color theme" data-theme-toggle bg="transparent" text="text" dark-text="#fff" p="3" rounded="lg" display="flex" items="center" justify="center" border="none">
-              <i class="ri-moon-line" font-size="20"></i>
+           <button type="button" aria-label="Toggle color theme" data-theme-toggle bg="transparent" text="text" dark-text="#fff" p="2" rounded="lg" display="flex" items="center" justify="center" border="none">
+              <i class="ri-moon-line" font-size="xl"></i>
             </button>
-            <button type="button" aria-label="Open navigation" aria-expanded="false" data-mobile-toggle="main-nav" display="flex" md-display="none" bg="transparent" text="text" dark-text="#fff" p="3" rounded="lg" items="center" justify="center" border="none">
-              <i class="ri-menu-line" font-size="24" data-mobile-toggle-icon></i>
+            <button type="button" aria-label="Open navigation" aria-expanded="false" data-mobile-toggle="main-nav" display="flex" md-display="none" bg="transparent" text="text" dark-text="#fff" p="2" rounded="lg" items="center" justify="center" border="none">
+              <i class="ri-menu-line" font-size="xl" data-mobile-toggle-icon></i>
             </button>
           </div>
         </nav>
