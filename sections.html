@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse production-ready AtomAttr UI sections for product marketing and SaaS sites." />
+    <title>Sections — AtomAttr UI</title>
+    <link rel="stylesheet" href="./dist/defaults.css" />
+    <link rel="stylesheet" href="./assets/showcase.css" />
+    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  </head>
+  <body data-page-scope="Sections" bg="#f8f7f5" dark-bg="gray-950" text="text" min-h="screen" p="0" m="0">
+    <header position="sticky" top="0" z="50" bg="#f8f7f5" dark-bg="gray-950" border-b="1" border-b-color="gray-200" dark-border-color="gray-900" backdrop-blur="md">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" justify="between" gap="4">
+        <a href="./index.html" display="inline-flex" items="center" gap="3" text-decoration="none" color="inherit">
+          <span w="10" h="10" rounded="xl" bg="primary" display="flex" items="center" justify="center" text="white" font-size="lg" font-weight="700">A</span>
+          <div>
+            <div font-size="sm" font-weight="700" letter-spacing="wide">ATOMATTR</div>
+            <div font-size="xs" text="muted">UI library</div>
+          </div>
+        </a>
+        <nav display="none" lg-display="flex" items="center" gap="5" font-size="sm">
+          <a href="./components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+          <a href="./sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+          <a href="./templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+        </nav>
+        <div display="flex" items="center" gap="3">
+          <button type="button" data-theme-toggle="light" bg="gray-100" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" text="text" rounded="full" px="3" py="2" font-size="sm" aria-label="Toggle light and dark theme">Light</button>
+          <a href="./playground.html" display="inline-flex" items="center" justify="center" bg="primary" text="white" px="4" py="2" rounded="full" text-decoration="none" font-size="sm" font-weight="600">Playground</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="catalog">
+      <section bg-gradient="linear-gradient(180deg, color-mix(in oklch, var(--aa-color-primary) 8%, transparent), transparent 80%)">
+        <div max-w="7xl" mx="auto" px="4" md-px="8" py="10" lg-py="16">
+          <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="4">SECTION LIBRARY</p>
+          <h1 font-size="5xl" md-font-size="6xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="5">Landing pages start with sections that sell the story.</h1>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" max-w="2xl">From hero sections and pricing blocks to trust rails and FAQs, these building blocks are designed to be dropped into real product pages with minimal rework.</p>
+        </div>
+      </section>
+
+      <section bg="gray-50" dark-bg="gray-900" border-t="1" border-t-color="gray-200" dark-border-color="gray-800" border-b="1" border-b-color="gray-200" dark-border-color="gray-800">
+        <div max-w="7xl" mx="auto" px="4" md-px="8" py="12" lg-py="16">
+          <div display="flex" flex-col lg-flex-row items="start" lg-items="center" justify="between" gap="5" mb="8">
+            <div>
+              <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="3">DISCOVER</p>
+              <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0">Composable marketing sections</h2>
+            </div>
+            <label for="search-input" sr-only>Search sections</label>
+            <div display="flex" items="center" gap="2" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="full" px="4" py="2.5" w="full" lg-max-w="lg">
+              <i class="ri-search-line" text="muted"></i>
+              <input id="search-input" type="search" placeholder="Search heroes, pricing, testimonials, footers…" bg="transparent" border="0" text="text" w="full" outline="none" />
+            </div>
+          </div>
+
+          <div id="category-filters" display="flex" gap="2" wrap mb="8"></div>
+          <div id="catalog-grid" display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="3" gap="5"></div>
+          <div id="empty-state" hidden bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="8" mt="8">
+            <h3 m="0" mb="2" font-size="xl">No section matches</h3>
+            <p m="0" text="muted">Try a broader keyword or switch categories.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./dist/atomattr.min.js" defer></script>
+    <script type="module" src="./catalog.js"></script>
+  </body>
+</html>

@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Installation - Atomattr Docs</title>
-  <meta name="description" content="Install Atomattr, load the base stylesheet, and start the DOM engine for plain HTML or framework usage.">
+  <meta name="description" content="Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/installation.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Installation - Atomattr Docs">
-  <meta property="og:description" content="Install Atomattr, load the base stylesheet, and start the DOM engine for plain HTML or framework usage.">
+  <meta property="og:description" content="Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/installation.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Installation - Atomattr Docs">
-  <meta name="twitter:description" content="Install Atomattr, load the base stylesheet, and start the DOM engine for plain HTML or framework usage.">
+  <meta name="twitter:description" content="Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,77 +213,105 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Installation</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Install Atomattr, load the base stylesheet, and start the DOM engine for plain HTML or framework usage.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.</p>
         </div>
-        <section id="package" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Install the package</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use the package when you want Atomattr in an app bundle.</p>
+        <section id="install-in-a-javascript-project" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Install in a JavaScript project</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Install the package from your project directory. This is the setup for Vite, React, Svelte, and other JavaScript build tools.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">terminal</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">bash</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-bash">npm install atomattr</code></pre>
-  </div></section>
-<section id="plain-html" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Plain HTML</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">For static pages, load the defaults stylesheet and browser bundle.</p>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">npm install atomattr</code></pre>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The package provides the browser engine and <code>defaults.css</code>. Vite is a build tool, not a framework: use the framework-specific section below if your app uses React or Svelte.</p></section>
+<section id="plain-html-with-a-local-package-build" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Plain HTML with a local package build</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">If you are working in this repository or have built Atomattr from source, run <code>npm run build:library</code> first. The generated files live under <code>/dist</code> in the project root. Reference them from a page served by the same project:</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">index.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;link rel="stylesheet" href="/dist/defaults.css"&gt;
 &lt;script src="/dist/atomattr.min.js" defer&gt;&lt;/script&gt;</code></pre>
-  </div></section>
-<section id="vite-react" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Vite or React</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">In an app entry, import the stylesheet and call <code>startAtomAttr()</code>. React components can then emit the same attribute contract.</p>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">For a standalone static HTML file with no local build, use the published browser bundle and stylesheet from a CDN. Replace <code>1.0.1</code> with the version you intend to pin:</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">main.tsx</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-tsx">import { startAtomAttr } from 'atomattr';
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atomattr@1.0.1/dist/defaults.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/atomattr@1.0.1/dist/atomattr.min.js" defer&gt;&lt;/script&gt;</code></pre>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Keep the stylesheet and script on the same Atomattr version. The deferred script starts the engine after the HTML has been parsed.</p></section>
+<section id="vite-with-plain-html" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Vite with plain HTML</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Import the stylesheet and engine from the JavaScript entry point, such as <code>src/main.js</code>:</p>
+<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
+    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
+      <span text="gray-400" font-size="sm">js</span><i class="ri-file-code-line" text="gray-500"></i>
+    </div>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">// src/main.js
 import 'atomattr/defaults.css';
+import { startAtomAttr } from 'atomattr';
 
 startAtomAttr();</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The engine also starts automatically when imported in a browser. Calling <code>startAtomAttr()</code> explicitly is useful when you want to show where startup happens; it is safe to call more than once. For inserted markup, call <code>refreshAtomAttr(container)</code> if you need the new rules immediately; the engine also observes DOM changes.</p></section>
+<section id="react-with-vite" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">React with Vite</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Import the engine and stylesheet once in the app entry (<code>src/main.jsx</code> or <code>src/main.tsx</code>). Importing <code>atomattr/react</code> also ensures the engine is started, so this explicit call is optional when using the React primitives.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">installation-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">tsx</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Installation&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">// src/main.tsx
+import 'atomattr/defaults.css';
+import { startAtomAttr } from 'atomattr';
+import { Box, Txt } from 'atomattr/react';
+
+startAtomAttr();
+
+export function App() {
+  return (
+    &lt;Box bg="surface" p="6" rounded="xl"&gt;
+      &lt;Txt text="foreground"&gt;Atomattr in React&lt;/Txt&gt;
+    &lt;/Box&gt;
+  );
+}</code></pre>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">In React, use JSX-friendly camel-case props for dashed names, for example <code>fontSize</code> for the HTML attribute <code>font-size</code>. See the <a href="react.html">React guide</a> for aliases and complete examples.</p></section>
+<section id="svelte-with-vite" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Svelte with Vite</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Import the global stylesheet and start the engine once from your Svelte entry point (<code>src/main.js</code> or <code>src/main.ts</code>):</p>
+<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
+    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
+      <span text="gray-400" font-size="sm">js</span><i class="ri-file-code-line" text="gray-500"></i>
+    </div>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">// src/main.js
+import 'atomattr/defaults.css';
+import { startAtomAttr } from 'atomattr';
+import { mount } from 'svelte';
+import App from './App.svelte';
+
+startAtomAttr();
+mount(App, { target: document.getElementById('app') });</code></pre>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use canonical dashed HTML attributes in Svelte markup. For example:</p>
+<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
+    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
+      <span text="gray-400" font-size="sm">svelte</span><i class="ri-file-code-line" text="gray-500"></i>
+    </div>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section bg="surface" p="6" rounded="xl"&gt;
+  &lt;h1 font-size="2xl" font-weight="bold"&gt;Atomattr in Svelte&lt;/h1&gt;
 &lt;/section&gt;</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="search.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Search</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
-  </a>
-    <a href="syntax.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Syntax</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">This setup assumes a Svelte version/compiler that preserves unknown attributes on native HTML elements. Atomattr does not provide a Svelte component package.</p></section>
+<section id="verify-the-setup" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Verify the setup</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Put a visible style on a native element, such as <code>&lt;div p="4" bg="primary" text="white"&gt;Ready&lt;/div&gt;</code>. Check that the content has padding and a colored background. If it does not, confirm the stylesheet loaded, the browser engine was imported or its script was loaded, and the attributes use supported Atomattr names. The <a href="html.html">HTML guide</a>, <a href="react.html">React guide</a>, and <a href="syntax.html">syntax reference</a> explain the markup in more detail.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="syntax.html" aria-label="Next page: Syntax" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Syntax</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#package" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Install the package</a>
-<a data-toc-link href="#plain-html" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Plain HTML</a>
-<a data-toc-link href="#vite-react" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Vite or React</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#install-in-a-javascript-project" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Install in a JavaScript project</a>
+<a data-toc-link href="#plain-html-with-a-local-package-build" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Plain HTML with a local package build</a>
+<a data-toc-link href="#vite-with-plain-html" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Vite with plain HTML</a>
+<a data-toc-link href="#react-with-vite" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">React with Vite</a>
+<a data-toc-link href="#svelte-with-vite" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Svelte with Vite</a>
+<a data-toc-link href="#verify-the-setup" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Verify the setup</a></div></div>
       </aside>
     </div>
   </main>

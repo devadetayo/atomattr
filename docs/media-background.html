@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Background images - Atomattr Docs</title>
-  <meta name="description" content="Control background images and positioning.">
+  <meta name="description" content="Use CSS background properties for decorative or cropped image surfaces.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/media-background.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Background images - Atomattr Docs">
-  <meta property="og:description" content="Control background images and positioning.">
+  <meta property="og:description" content="Use CSS background properties for decorative or cropped image surfaces.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/media-background.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Background images - Atomattr Docs">
-  <meta name="twitter:description" content="Control background images and positioning.">
+  <meta name="twitter:description" content="Use CSS background properties for decorative or cropped image surfaces.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,106 +213,32 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">MEDIA</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Background images</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Control background images and positioning.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Use CSS background properties for decorative or cropped image surfaces.</p>
         </div>
-        <section id="when-to-use" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">When to use it</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Control background images and positioning. Use this page when you are deciding which attribute belongs on an element and what kind of value that attribute expects. The examples start small on purpose, then build toward patterns you are likely to repeat in real interfaces.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">A helpful way to read Atomattr is to scan the element from left to right: layout first, then spacing, then color, then typography, then interaction. You do not have to follow that order perfectly, but keeping related attributes near each other makes a component easier for the next person to understand.</p>
+        <section id="set-an-image" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Set an image</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>bg-image</code> with <code>url(...)</code> or a CSS gradient to set <code>background-image</code>. Background images are decorative and are not exposed as image content to assistive technology, so do not use them as the only presentation of important information.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">basic.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section bg-image="url('/hero.jpg')" bg-size="cover" bg-position="center"&gt;...&lt;/section&gt;</code></pre>
-  </div></section>
-<section id="more-examples" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">More examples</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">These examples show the same attribute family in practical situations. Copy the closest pattern first, then swap the values for your design system.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">quick-start.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div bg-image="primary"&gt;
-  Background images quick start
-&lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">responsive.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div bg-image="primary" md-bg-image="primary" bg-size="primary"&gt;
-  Background images can change at a breakpoint without moving to a stylesheet.
-&lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">states-and-theme.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button bg-image="primary" hover-bg-image="primary/80" dark-bg-image="gray-900"&gt;
-  Background images with hover and dark mode
-&lt;/button&gt;</code></pre>
-  </div></section>
-<section id="attributes" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Attributes</h2><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Attribute</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">CSS output</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>bg-image</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>background-image</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>bg-size</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>background-size</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>bg-position</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>background-position</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>bg-repeat</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>background-repeat</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>bg-attachment</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>background-attachment</code></td></tr></tbody>
-  </table></div></section>
-<section id="tips" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Reading the syntax</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use the base attribute for the default style. Add breakpoint prefixes for layout changes, state prefixes for interaction, and <code>dark-</code> prefixes when a theme needs a different value. This keeps the full behavior of the element visible without sending the reader into a second file.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">If an attribute maps to a CSS property, the value usually follows that property. When Atomattr has a scale for the property, short tokens such as <code>4</code>, <code>xl</code>, <code>muted</code>, or <code>primary/80</code> make the common cases fast. When a design needs precision, raw CSS values are still valid.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">combined-pattern.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article display="flex" flex-col gap="3" p="5" rounded="xl" border="border" bg-image="primary" md-bg-image="primary"&gt;
-  &lt;h3 font-size="lg" font-weight="bold"&gt;Background images pattern&lt;/h3&gt;
-  &lt;p text="muted" line-height="relaxed"&gt;
-    Combine the attribute with layout, spacing, and color so the whole component remains readable.
-  &lt;/p&gt;
-  &lt;button bg-size="primary" hover-bg-size="primary/80" px="4" py="2" rounded="lg"&gt;
-    Continue
-  &lt;/button&gt;
-&lt;/article&gt;</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">background-images-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Background Images&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section bg-image="url('/hero.jpg')" bg-size="cover" bg-position="center" min-h="60"&gt;
+  &lt;h1&gt;Text remains real page content&lt;/h1&gt;
 &lt;/section&gt;</code></pre>
   </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="media-object.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Object Fit</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Media</p>
-  </a>
-    <a href="interactivity-cursor.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Cursor and Pointer</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Interactivity</p>
+<section id="size-position-and-repeat" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Size, position, and repeat</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>bg-size="cover"</code> to fill the box while cropping as needed, or <code>contain</code> to show the full image. <code>bg-position</code> controls the crop focus; <code>bg-repeat</code> controls tiling. These values follow CSS background properties.</p></section>
+<section id="attachment-and-accessibility" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Attachment and accessibility</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl"><code>bg-attachment</code> accepts CSS values such as <code>scroll</code>, <code>fixed</code>, and <code>local</code>; fixed backgrounds can behave differently on mobile and may affect performance. For meaningful imagery, use an <code>&lt;img&gt;</code> with appropriate alternative text and the <a href="media-object.html">object fit</a> attributes.</p></section>
+<section id="attributes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Attributes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The table lists background image, size, position, repeat, and attachment attributes.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="interactivity-cursor.html" aria-label="Next page: Cursor and Pointer" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Cursor and Pointer</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#when-to-use" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">When to use it</a>
-<a data-toc-link href="#more-examples" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">More examples</a>
-<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a>
-<a data-toc-link href="#tips" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Reading the syntax</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#set-an-image" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Set an image</a>
+<a data-toc-link href="#size-position-and-repeat" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Size, position, and repeat</a>
+<a data-toc-link href="#attachment-and-accessibility" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attachment and accessibility</a>
+<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a></div></div>
       </aside>
     </div>
   </main>

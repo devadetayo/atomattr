@@ -1,158 +1,159 @@
 # Getting Started
 
-## The Model
+This guide explains how to install and initialize AtomAttr in plain HTML, Vite, React, and Svelte projects. Each section includes minimal copy-paste examples and common pitfalls so you won't make mistakes.
 
-AtomAttr is HTML-first.
+## Quick overview
 
-That means the canonical API is the attribute language itself:
+AtomAttr is an "HTML-first" attribute-driven styling engine. You author classes via attributes like `bg="blue-600"` or `p="6"` and the runtime generates and injects the matching CSS rules. Initialize the runtime once per page/app.
 
-- `bg="blue-600"`
-- `p="6"`
-- `font-size="3xl"`
-- `min-h="screen"`
-- `hover-bg="slate-950"`
-- `md-grid-cols="3"`
+## Install
 
-React exists to make that model ergonomic, not to replace it.
+- CDN (fast start): include the defaults stylesheet and a small runtime module from your served files or CDN.
+- NPM (recommended for apps): `npm install atomattr` and import the runtime and defaults stylesheet in your app entry.
 
-## How It Works
+### Files you need to point to
 
-- The engine scans the DOM for AtomAttr attributes.
-- Each attribute is parsed into:
-  - a canonical property key
-  - an optional modifier chain like `hover`, `md`, `dark`, `group-hover`
-  - a value
-- AtomAttr generates the CSS rule for that exact attribute/value pair.
-- The rule is injected once and reused.
+- `defaults.css` — the base design tokens/styles. Must load before your app styles that rely on variables.
+- runtime module (exports `startAtomAttr`) — call once on app startup.
 
-## Canonical Attributes
+## 1) HTML (plain, without bundler)
 
-Canonical means “this is the real key the engine understands.”
-
-Examples:
-
-- `font-size`
-- `grid-cols`
-- `border-color`
-- `translate-x`
-- `backdrop-blur`
-
-In HTML, use those names directly.
-
-In React, use:
-
-- the same key when JSX allows it comfortably
-- camel aliases when the canonical key has dashes
-
-Examples:
-
-- `fontSize` -> `font-size`
-- `gridCols` -> `grid-cols`
-- `borderColor` -> `border-color`
-- `minH` -> `min-h`
-
-## HTML Setup
-
-Add the defaults stylesheet and start the engine:
+Copy these into your HTML file. Ensure paths to `defaults.css` and `index.js` are correct relative to your server root.
 
 ```html
-<link rel="stylesheet" href="/src/style-data/defaults.css" />
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/src/style-data/defaults.css" />
+    <title>AtomAttr — HTML Example</title>
+  </head>
+  <body>
+    <div bg="blue-600" p="6" rounded="md">Hello AtomAttr (HTML)</div>
 
-<script type="module">
-  import { startAtomAttr } from '/src/index.js';
-  startAtomAttr();
-</script>
+    <script type="module">
+      import { startAtomAttr } from '/src/index.js';
+      // Start once when the page loads
+      startAtomAttr();
+    </script>
+  </body>
+</html>
 ```
 
-### Customize semantic colors
+Common mistakes (HTML):
+- Wrong path to `defaults.css` — verify the file is served and the link returns 200.
+- Calling `startAtomAttr` multiple times — only call once per page.
 
-Semantic color attributes resolve through CSS variables. Override the variables after loading the defaults stylesheet to theme an application without changing component markup:
+## 2) Vite (or other bundler) — quick setup
 
-```css
-:root {
-  --aa-color-primary: #7c3aed;
-  --aa-color-surface: #ffffff;
-  --aa-color-foreground: #1f2937;
-}
+Install via NPM and import the stylesheet and starter in your entry (e.g. `main.js`/`main.ts`):
 
-html.dark {
-  --aa-color-primary: #a78bfa;
-}
+```bash
+npm install atomattr
 ```
 
-Use them with attributes such as `bg="primary"`, `text="foreground"`, and `border-color="border"`.
-
-## React Setup
-
-Start the engine once near app startup:
-
-```tsx
-import { startAtomAttr } from 'atomattr';
+```js
+// main.js (Vite)
 import 'atomattr/defaults.css';
+import { startAtomAttr } from 'atomattr';
 
 startAtomAttr();
+
+// ...your app bootstrap (React/Svelte/Vue) goes here
 ```
 
-Then render AtomAttr primitives:
+Notes for Vite:
+- If you use SSR, only call `startAtomAttr()` on the client (e.g. inside a client entry or after hydration).
+- Ensure `defaults.css` is included in the client bundle or loaded as a static asset.
+
+## 3) React
+
+Install the package and import the CSS at your application root. Start the runtime once (for example in `index.tsx` before `createRoot`).
+
+```bash
+npm install atomattr
+```
+
+```tsx
+// index.tsx
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import 'atomattr/defaults.css';
+import { startAtomAttr } from 'atomattr';
+import App from './App';
+
+startAtomAttr();
+
+createRoot(document.getElementById('root')!).render(<App />);
+```
+
+JSX examples
 
 ```tsx
 import { Box, H2, Txt } from 'atomattr/react';
 
-<Box bg="white" p="6" rounded="2xl" shadow="lg">
-  <H2 fontSize="2xl" weight="black">Card title</H2>
-  <Txt mt="2" text="slate-600">Same contract, React wrapper.</Txt>
-</Box>
+export default function Card() {
+  return (
+    <Box bg="white" p="6" rounded="2xl" shadow="lg">
+      <H2 fontSize="2xl" weight="black">Card title</H2>
+      <Txt mt="2" text="slate-600">Same contract, React wrapper.</Txt>
+    </Box>
+  );
+}
 ```
 
-## Modifiers
+React tips:
+- Use `attrs` if you need the exact canonical attribute name with dashes: `<Box attrs={{ 'font-size': '4xl' }} />`.
+- Prefer starting the runtime once at app entry, not inside components.
 
-Modifiers are prefixes added before the canonical prop key.
+## 4) Svelte
 
-Supported groups:
+Svelte apps can use the same runtime. Initialize on mount so it runs only in the browser.
 
-- breakpoints: `sm`, `md`, `lg`, `xl`, `2xl`
-- pseudo states: `hover`, `focus`, `focus-visible`, `focus-within`, `active`, `visited`, `disabled`, `checked`, `required`, `invalid`, `first`, `last`, `odd`, `even`
-- theme: `dark`
-- group state: `group-hover`
+```bash
+npm install atomattr
+```
 
-Examples:
+```svelte
+<!-- App.svelte -->
+<script>
+  import 'atomattr/defaults.css';
+  import { onMount } from 'svelte';
+  let start;
+  onMount(async () => {
+    const mod = await import('atomattr');
+    mod.startAtomAttr();
+  });
+</script>
+
+<main bg="brand" p="6">Hello from Svelte + AtomAttr</main>
+```
+
+Svelte tips:
+- Import `defaults.css` at the top-level so styles are available before components mount.
+- Use `onMount` to call `startAtomAttr()` to avoid running the runtime during SSR.
+
+## Modifiers and tokens (short)
+
+- Modifiers are prefixes: `hover-`, `md-`, `group-hover-`, `dark-`, etc.
+- Tokens: spacing `0, 0.5, 1, 2, 4, 6`, sizes `full`, `screen`, radius `sm, md, lg`, colors like `slate-900`.
+
+Example:
 
 ```html
-<button bg="brand" hover-bg="slate-950" md-px="6"></button>
-
-<div group>
-  <span group-hover-text="brand"></span>
-</div>
+<button bg="brand" hover-bg="slate-950" md-px="6">Click</button>
 ```
 
-## Tokens
+## Troubleshooting
 
-Common value tokens are built in:
+- Styles don't appear: confirm `defaults.css` is loaded and `startAtomAttr()` was run.
+- Attributes ignored: check for typos and ensure the runtime scanned the DOM (call `startAtomAttr()` after dynamic DOM updates or use its mutation observer option).
+- Multiple init calls: remove duplicate `startAtomAttr()` calls; call once at app start.
 
-- spacing: `0`, `0.5`, `1`, `2`, `4`, `6`, `8`, `12`, `16`, `24`
-- sizes: `full`, `half`, `third`, `quarter`, `fit`, `min`, `max`, `screen`
-- radius: `none`, `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `3xl`, `full`
-- font sizes: `xs`, `sm`, `base`, `lg`, `xl`, `2xl` through `9xl`
-- shadows: `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `inner`, `none`
-- colors: Tailwind-style palette names like `slate-900`, `blue-600`, `rose-400`, plus `white`, `black`, `transparent`, `current`, `inherit`
+## Next steps
 
-Raw CSS is allowed too:
+- Use the examples above to verify your environment (HTML, Vite, React, or Svelte).
+- After confirming the base setup, check component pages in `/docs/` for example-specific updates.
 
-- `w="320px"`
-- `bg="#101828"`
-- `gap="2rem"`
-- `rotate="12deg"`
-
-## React Escape Hatch
-
-Use `attrs` when you want exact canonical keys instead of aliases:
-
-```tsx
-<Box attrs={{ 'font-size': '4xl', 'min-h': 'screen', 'grid-cols': '3' }} />
-```
-
-This is useful for:
-
-- copy-pasting from HTML examples
-- keeping React snippets visually identical to HTML snippets
-- using keys you do not want to camel-case
+If you want, I can now update the next docs HTML file with similar clarity and examples.

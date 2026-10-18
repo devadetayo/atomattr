@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Width and height - Atomattr Docs</title>
-  <meta name="description" content="Set element dimensions with width, height, and combined size attributes.">
+  <meta name="description" content="Set an element's width, height, or equal dimensions with CSS sizing properties.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/sizing-width-height.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Width and height - Atomattr Docs">
-  <meta property="og:description" content="Set element dimensions with width, height, and combined size attributes.">
+  <meta property="og:description" content="Set an element's width, height, or equal dimensions with CSS sizing properties.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/sizing-width-height.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Width and height - Atomattr Docs">
-  <meta name="twitter:description" content="Set element dimensions with width, height, and combined size attributes.">
+  <meta name="twitter:description" content="Set an element's width, height, or equal dimensions with CSS sizing properties.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,111 +213,39 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">SIZING</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Width and height</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Set element dimensions with width, height, and combined size attributes.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Set an element's width, height, or equal dimensions with CSS sizing properties.</p>
         </div>
-        <section id="when-to-use" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">When to use it</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Set element dimensions with width, height, and combined size attributes. Use this page when you are deciding which attribute belongs on an element and what kind of value that attribute expects. The examples start small on purpose, then build toward patterns you are likely to repeat in real interfaces.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">A helpful way to read Atomattr is to scan the element from left to right: layout first, then spacing, then color, then typography, then interaction. You do not have to follow that order perfectly, but keeping related attributes near each other makes a component easier for the next person to understand.</p>
+        <section id="width-and-height" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Width and height</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>w</code> and <code>h</code> to set width and height. Numeric values such as <code>w="64"</code> use the spacing scale; common sizing tokens include <code>full</code>, <code>half</code>, <code>third</code>, <code>quarter</code>, <code>fit</code>, <code>min</code>, <code>max</code>, and <code>screen</code>. Raw values such as <code>20rem</code>, <code>50%</code>, <code>min(100%, 40rem)</code>, and <code>calc(...)</code> are also passed to CSS.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">basic.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button size="10" rounded="full"&gt;...&lt;/button&gt;</code></pre>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;img src="avatar.jpg" alt="Profile" w="16" h="16" rounded="full" object="cover"&gt;
+&lt;main w="full" max-w="72rem" mx="auto"&gt;Page content&lt;/main&gt;</code></pre>
   </div></section>
-<section id="more-examples" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">More examples</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">These examples show the same attribute family in practical situations. Copy the closest pattern first, then swap the values for your design system.</p>
+<section id="equal-dimensions" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Equal dimensions</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>size</code> when an element should have the same width and height, such as an icon button or avatar. It maps to the CSS <code>width</code> and <code>height</code> properties. For a square shape that should preserve its proportion when only one dimension is set, use <code>aspect="square"</code> instead.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">quick-start.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div w="4"&gt;
-  Width and height quick start
-&lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">responsive.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div w="4" md-w="6" h="4"&gt;
-  Width and height can change at a breakpoint without moving to a stylesheet.
-&lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">states-and-theme.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button w="4" hover-w="4" dark-w="4"&gt;
-  Width and height with hover and dark mode
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button size="12" display="grid" place-items="center" rounded="full" aria-label="Add"&gt;
+  &lt;span aria-hidden="true"&gt;+&lt;/span&gt;
 &lt;/button&gt;</code></pre>
   </div></section>
-<section id="attributes" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Attributes</h2><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Attribute</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">CSS output</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>w</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>width</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>h</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>height</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>size</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>width, height</code></td></tr></tbody>
-  </table></div></section>
-<section id="scale" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Useful scale values</h2><div mb="8"><h3 font-size="lg" font-weight="bold" mb="3">Width and height</h3><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Token</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Value</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>4px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>8px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>3</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>12px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>4</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>16px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>20px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>6</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>24px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>7</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>28px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>8</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>32px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>9</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>36px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>10</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>40px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>11</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>44px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>12</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>48px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>14</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>56px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>16</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>64px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>20</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>80px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>24</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>96px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>28</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>112px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>32</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>128px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>36</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>144px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>40</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>160px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>44</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>176px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>48</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>192px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>52</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>208px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>56</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>224px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>60</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>240px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>64</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>256px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>72</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>288px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>80</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>320px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>96</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>384px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>6px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>10px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>3.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>14px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>px</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>auto</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>auto</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>full</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>100%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>half</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>50%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>third</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>33.333333%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>quarter</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>25%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>fit</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>fit-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>screen</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>100vw</code></td></tr></tbody>
-  </table></div></div></section>
-<section id="tips" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Reading the syntax</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use the base attribute for the default style. Add breakpoint prefixes for layout changes, state prefixes for interaction, and <code>dark-</code> prefixes when a theme needs a different value. This keeps the full behavior of the element visible without sending the reader into a second file.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">If an attribute maps to a CSS property, the value usually follows that property. When Atomattr has a scale for the property, short tokens such as <code>4</code>, <code>xl</code>, <code>muted</code>, or <code>primary/80</code> make the common cases fast. When a design needs precision, raw CSS values are still valid.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">combined-pattern.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article display="flex" flex-col gap="3" p="5" rounded="xl" border="border" w="4" md-w="6"&gt;
-  &lt;h3 font-size="lg" font-weight="bold"&gt;Width and height pattern&lt;/h3&gt;
-  &lt;p text="muted" line-height="relaxed"&gt;
-    Combine the attribute with layout, spacing, and color so the whole component remains readable.
-  &lt;/p&gt;
-  &lt;button h="4" hover-h="4" px="4" py="2" rounded="lg"&gt;
-    Continue
-  &lt;/button&gt;
-&lt;/article&gt;</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">width-and-height-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Width and Height&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="spacing-margin.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Margin</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Spacing</p>
-  </a>
-    <a href="sizing-min-max.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Min and Max Size</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Sizing</p>
+<section id="constrain-the-result" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Constrain the result</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use the min/max sizing attributes when content or its parent should limit the chosen size. Percentage dimensions depend on the relevant containing block, and <code>h="full"</code> may require a parent with a definite height. Viewport units can be affected by mobile browser chrome; consider <code>dvh</code> or <code>svh</code> where appropriate.</p></section>
+<section id="attributes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Attributes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The table lists width, height, and equal-size attributes. Values follow CSS length and sizing rules, with scale tokens resolved by Atomattr.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="sizing-min-max.html" aria-label="Next page: Min and Max Size" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Min and Max Size</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#when-to-use" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">When to use it</a>
-<a data-toc-link href="#more-examples" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">More examples</a>
-<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a>
-<a data-toc-link href="#scale" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Useful scale values</a>
-<a data-toc-link href="#tips" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Reading the syntax</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#width-and-height" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Width and height</a>
+<a data-toc-link href="#equal-dimensions" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Equal dimensions</a>
+<a data-toc-link href="#constrain-the-result" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Constrain the result</a>
+<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a></div></div>
       </aside>
     </div>
   </main>

@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Syntax - Atomattr Docs</title>
-  <meta name="description" content="The Atomattr syntax is one consistent shape: a property name, an optional modifier prefix, and a value.">
+  <meta name="description" content="Put the styling property in the attribute name and its CSS value in the attribute value.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/syntax.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Syntax - Atomattr Docs">
-  <meta property="og:description" content="The Atomattr syntax is one consistent shape: a property name, an optional modifier prefix, and a value.">
+  <meta property="og:description" content="Put the styling property in the attribute name and its CSS value in the attribute value.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/syntax.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Syntax - Atomattr Docs">
-  <meta name="twitter:description" content="The Atomattr syntax is one consistent shape: a property name, an optional modifier prefix, and a value.">
+  <meta name="twitter:description" content="Put the styling property in the attribute name and its CSS value in the attribute value.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="primary" bg="primary/10" font-weight="600" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,71 +213,42 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Syntax</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">The Atomattr syntax is one consistent shape: a property name, an optional modifier prefix, and a value.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Put the styling property in the attribute name and its CSS value in the attribute value.</p>
         </div>
-        <section id="base" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Base attributes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">A base attribute applies at every viewport size and state unless a more specific prefixed attribute overrides it.</p>
+        <section id="base-attributes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Base attributes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Atomattr recognizes registered styling attributes on HTML elements. The attribute name selects a CSS property or a supported shorthand; the value provides a token, keyword, or CSS value. For example, <code>p="4"</code> selects padding and resolves the spacing token, while <code>bg="primary"</code> selects a background color.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">base.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button px="4" py="2" bg="primary" text="white" rounded="lg"&gt;
   Save
 &lt;/button&gt;</code></pre>
   </div></section>
-<section id="prefixes" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Prefixes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Prefixes attach to the attribute name: <code>md-p</code>, <code>hover-bg</code>, <code>dark-text</code>, <code>group-hover-opacity</code>, <code>before-content</code>. You can combine supported prefixes when the selector needs both conditions.</p>
+<section id="prefixes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Prefixes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Modifiers are prefixes on the property attribute name: <code>md-p</code>, <code>hover-bg</code>, <code>dark-text</code>, <code>group-hover-opacity</code>, <code>cq-md-grid-cols</code>, and <code>before-content</code>. Breakpoints and container queries wrap a rule; theme, group, state, and pseudo-element modifiers alter its selector. Only registered property names and supported modifiers are parsed.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">prefixes.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article p="4" md-p="8" bg="white" dark-bg="gray-900" hover-shadow="lg"&gt;
-  The styling changes by breakpoint, theme, and state.
+  The same element can respond to several contexts.
 &lt;/article&gt;</code></pre>
-  </div></section>
-<section id="canonical" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Canonical names</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">HTML attribute names are the source of truth. Use dashed names such as <code>font-size</code>, <code>min-h</code>, <code>grid-cols</code>, and <code>border-color</code>. React can provide aliases, but it normalizes back to these names.</p></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">syntax-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Syntax&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="installation.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Installation</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
-  </a>
-    <a href="values.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Values</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Prefixes can be composed, for example <code>md-dark-hover-bg</code>. Modifier parsing uses hyphens, so use the documented order shown in examples when combining prefixes.</p></section>
+<section id="html-names-and-framework-props" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">HTML names and framework props</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">In HTML, use the registered canonical name, usually lower-case and dashed: <code>font-size</code>, <code>min-h</code>, <code>grid-cols</code>, and <code>border-color</code>. React primitives provide camel-case aliases for names that JSX cannot conveniently express, then normalize them to canonical HTML attributes. For exact or less common names, use the React <code>attrs</code> escape hatch. See the <a href="react.html">React guide</a>.</p>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Unknown styling names do not generate rules. Native attributes such as <code>href</code>, <code>alt</code>, <code>disabled</code>, <code>src</code>, <code>role</code>, and event handlers retain their normal platform meaning.</p></section>
+<section id="limits" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Limits</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Atomattr generates CSS for the properties in its dictionary. It does not accept arbitrary property names, CSS selectors, or a class-string grammar. The browser still determines whether a CSS value or modern feature is valid and supported. Use ordinary CSS for rules that need selectors or conditions outside the documented modifiers.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="values.html" aria-label="Next page: Values" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Values</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#base" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Base attributes</a>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#base-attributes" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Base attributes</a>
 <a data-toc-link href="#prefixes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Prefixes</a>
-<a data-toc-link href="#canonical" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Canonical names</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+<a data-toc-link href="#html-names-and-framework-props" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">HTML names and framework props</a>
+<a data-toc-link href="#limits" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Limits</a></div></div>
       </aside>
     </div>
   </main>

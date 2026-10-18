@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Values - Atomattr Docs</title>
-  <meta name="description" content="Values can be scale tokens, semantic tokens, raw CSS values, or CSS functions depending on the property.">
+  <meta name="description" content="Use documented design tokens for common choices or pass a valid CSS value for precision.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/values.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Values - Atomattr Docs">
-  <meta property="og:description" content="Values can be scale tokens, semantic tokens, raw CSS values, or CSS functions depending on the property.">
+  <meta property="og:description" content="Use documented design tokens for common choices or pass a valid CSS value for precision.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/values.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Values - Atomattr Docs">
-  <meta name="twitter:description" content="Values can be scale tokens, semantic tokens, raw CSS values, or CSS functions depending on the property.">
+  <meta name="twitter:description" content="Use documented design tokens for common choices or pass a valid CSS value for precision.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="primary" bg="primary/10" font-weight="600" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,67 +213,42 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Values</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Values can be scale tokens, semantic tokens, raw CSS values, or CSS functions depending on the property.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Use documented design tokens for common choices or pass a valid CSS value for precision.</p>
         </div>
-        <section id="scale-values" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Scale values</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Spacing, sizing, radius, font size, weight, line-height, and shadows have named scales. For example, <code>p="6"</code> maps through the spacing scale, while <code>rounded="xl"</code> maps through the radius scale.</p>
-<div mb="8"><h3 font-size="lg" font-weight="bold" mb="3">Spacing scale</h3><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Token</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Value</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>4px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>8px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>3</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>12px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>4</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>16px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>20px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>6</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>24px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>7</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>28px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>8</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>32px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>9</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>36px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>10</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>40px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>11</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>44px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>12</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>48px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>14</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>56px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>16</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>64px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>20</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>80px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>24</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>96px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>28</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>112px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>32</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>128px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>36</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>144px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>40</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>160px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>44</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>176px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>48</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>192px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>52</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>208px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>56</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>224px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>60</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>240px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>64</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>256px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>72</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>288px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>80</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>320px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>96</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>384px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>6px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>10px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>3.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>14px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>px</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>auto</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>auto</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>full</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>100%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>half</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>50%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>third</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>33.333333%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>quarter</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>25%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>fit</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>fit-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>screen</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>100vw</code></td></tr></tbody>
-  </table></div></div></section>
-<section id="raw-values" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Raw values</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When you need precision, use regular CSS values such as <code>42px</code>, <code>12rem</code>, <code>calc(100vh - 4rem)</code>, or <code>linear-gradient(...)</code>.</p>
+        <section id="scale-tokens" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Scale tokens</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Some properties resolve short values through Atomattr scales. For example, spacing properties such as <code>p</code> map <code>4</code> to <code>16px</code>; <code>rounded="xl"</code> maps to a radius preset; <code>font-size="2xl"</code> maps to a font-size preset; and <code>shadow="md"</code> maps to a shadow preset. These scales are property-specific: <code>4</code> does not mean the same thing for every attribute.</p>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The generated reference tables show the CSS property for each attribute. Use the focused pages for <a href="spacing-padding.html">spacing</a>, <a href="sizing-width-height.html">sizing</a>, <a href="typography-font.html">typography</a>, <a href="colors-backgrounds.html">colors</a>, and <a href="effects-shadow.html">effects</a> for their value conventions.</p></section>
+<section id="raw-css-values" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Raw CSS values</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a value is not a token, Atomattr generally passes it through to the mapped CSS property. Use units where CSS expects them, and use valid CSS syntax for functions, keywords, and multi-part values.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">raw-values.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section min-h="calc(100vh - 64px)" bg-gradient="linear-gradient(135deg, #0f172a, #2563eb)"&gt;
-  Exact CSS values still work.
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section min-h="calc(100vh - 4rem)" p="1.25rem" bg="linear-gradient(135deg, #0f172a, #2563eb)"&gt;
+  Precise CSS values
 &lt;/section&gt;</code></pre>
-  </div></section>
-<section id="opacity-suffixes" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Opacity suffixes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Color-like values can use opacity suffixes such as <code>primary/10</code>, <code>white/80</code>, and <code>gray-950/70</code>.</p></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Raw values are still subject to CSS property rules and browser support. Atomattr does not validate every value against the browser's CSS grammar.</p></section>
+<section id="colors-and-alpha" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Colors and alpha</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Color attributes accept palette names, semantic color names, CSS colors, and supported color functions. Append <code>/</code> and an opacity percentage for an alpha color, for example <code>primary/10</code> or <code>white/80</code>. Values such as <code>16 / 9</code> are ratios for <code>aspect</code>; the same text should not be assumed to work on unrelated properties.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">values-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Values&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</code></pre>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div bg="primary/10" text="gray-900" border-color="rgb(20 30 40 / 25%)"&gt;
+  Color values follow the color property.
+&lt;/div&gt;</code></pre>
   </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="syntax.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Syntax</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
-  </a>
-    <a href="responsive.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Responsive</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
+<section id="boolean-attributes-and-bare-helpers" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Boolean attributes and bare helpers</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Boolean-style dictionary entries can be written bare when the attribute name itself selects the declaration, for example <code>&lt;div hidden&gt;&lt;/div&gt;</code> or <code>&lt;div flex&gt;&lt;/div&gt;</code>. Most property attributes need a value, such as <code>display="grid"</code> or <code>aspect="square"</code>. Keep native HTML attributes (such as <code>disabled</code>, <code>src</code>, and <code>alt</code>) in their normal HTML roles.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="responsive.html" aria-label="Next page: Responsive" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Responsive</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#scale-values" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Scale values</a>
-<a data-toc-link href="#raw-values" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Raw values</a>
-<a data-toc-link href="#opacity-suffixes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Opacity suffixes</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#scale-tokens" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Scale tokens</a>
+<a data-toc-link href="#raw-css-values" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Raw CSS values</a>
+<a data-toc-link href="#colors-and-alpha" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Colors and alpha</a>
+<a data-toc-link href="#boolean-attributes-and-bare-helpers" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Boolean attributes and bare helpers</a></div></div>
       </aside>
     </div>
   </main>

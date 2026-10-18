@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>React - Atomattr Docs</title>
-  <meta name="description" content="Use JSX-friendly props while still emitting the same canonical Atomattr attributes that the HTML engine understands.">
+  <meta name="description" content="Use AtomAttr React primitives to normalize JSX props into the browser engine's canonical attributes.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/react.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="React - Atomattr Docs">
-  <meta property="og:description" content="Use JSX-friendly props while still emitting the same canonical Atomattr attributes that the HTML engine understands.">
+  <meta property="og:description" content="Use AtomAttr React primitives to normalize JSX props into the browser engine's canonical attributes.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/react.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="React - Atomattr Docs">
-  <meta name="twitter:description" content="Use JSX-friendly props while still emitting the same canonical Atomattr attributes that the HTML engine understands.">
+  <meta name="twitter:description" content="Use AtomAttr React primitives to normalize JSX props into the browser engine's canonical attributes.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,96 +213,39 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">PLATFORM GUIDES</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">React</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Use JSX-friendly props while still emitting the same canonical Atomattr attributes that the HTML engine understands.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Use AtomAttr React primitives to normalize JSX props into the browser engine's canonical attributes.</p>
         </div>
-        <section id="aliases" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">JSX aliases</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Simple names can be passed directly: <code>bg</code>, <code>p</code>, <code>text</code>, <code>rounded</code>. Dashed HTML names use camel aliases such as <code>fontSize</code>, <code>minH</code>, <code>gridCols</code>, and <code>borderColor</code>.</p>
+        <section id="install-and-start" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Install and start</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Install <code>atomattr</code> and <code>react</code> / <code>react-dom</code> in the app, then import <code>atomattr/defaults.css</code> once. Importing <code>atomattr/react</code> starts the DOM engine in the browser. You can also call <code>startAtomAttr()</code> from the main package explicitly; repeated starts are safe.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">Card.tsx</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">tsx</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-tsx">&lt;Box bg="surface" p="6" rounded="xl" border="border"&gt;
-  &lt;H1 fontSize="3xl" weight="bold"&gt;React writes Atomattr&lt;/H1&gt;
-&lt;/Box&gt;</code></pre>
-  </div></section>
-<section id="full-component" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Full component</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use the React primitives to keep the component tree expressive while preserving the same styling vocabulary.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">PricingCard.tsx</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-tsx">import { Box, H1, Txt, Btn, Row, Badge } from 'atomattr/react';
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">import 'atomattr/defaults.css';
+import { Box, H1, Txt, Btn } from 'atomattr/react';
 
-export function PricingCard() {
+export function Card() {
   return (
-    &lt;Box bg="surface" p="6" rounded="2xl" border="border" shadow="md"&gt;
-      &lt;Row items="center" justify="between" gap="3"&gt;
-        &lt;H1 fontSize="2xl" weight="bold"&gt;Pro&lt;/H1&gt;
-        &lt;Badge bg="primary/10" text="primary"&gt;Popular&lt;/Badge&gt;
-      &lt;/Row&gt;
-      &lt;Txt mt="4" text="muted" leading="relaxed"&gt;
-        React props normalize to the same Atomattr attributes.
-      &lt;/Txt&gt;
-      &lt;Btn mt="6" px="4" py="2.5" rounded="lg" bg="primary" text="white"&gt;
-        Start trial
-      &lt;/Btn&gt;
+    &lt;Box bg="surface" p="6" rounded="xl" border="border"&gt;
+      &lt;H1 fontSize="3xl" fontWeight="bold"&gt;React with AtomAttr&lt;/H1&gt;
+      &lt;Txt text="muted"&gt;Props become canonical HTML attributes.&lt;/Txt&gt;
+      &lt;Btn mt="4" bg="primary" hoverBg="primary/80"&gt;Continue&lt;/Btn&gt;
     &lt;/Box&gt;
   );
 }</code></pre>
   </div></section>
-<section id="attrs-prop" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Canonical attrs prop</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>attrs</code> when you want to pass exact Atomattr names from JSX.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">Exact.tsx</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-tsx">&lt;Box attrs={{ 'font-size': '3xl', 'min-h': 'screen', 'hover-bg': 'primary/10' }} /&gt;</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">react-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">import { Box, Txt, Btn } from 'atomattr/react';
-
-export function PracticeCard() {
-  return (
-    &lt;Box bg="surface" rounded="2xl" border="border" p="6"&gt;
-      &lt;Txt fontSize="xl" weight="bold"&gt;React&lt;/Txt&gt;
-      &lt;Txt mt="2" text="muted" leading="relaxed"&gt;
-        Swap values while keeping the component readable.
-      &lt;/Txt&gt;
-      &lt;Btn mt="4" bg="primary" text="white" rounded="lg" px="4" py="2"&gt;
-        Try it
-      &lt;/Btn&gt;
-    &lt;/Box&gt;
-  );
-}</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="html.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>HTML</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Platform Guides</p>
-  </a>
-    <a href="react-native.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>React Native</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Platform Guides</p>
+<section id="prop-names" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Prop names</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Simple attributes such as <code>bg</code>, <code>p</code>, <code>text</code>, and <code>rounded</code> can be used directly. Dashed attribute names have camel aliases such as <code>fontSize</code>, <code>minH</code>, <code>gridCols</code>, and <code>borderColor</code>. Modifier names can be passed with their camel-style aliases where the React primitive supports them. Use <code>attrs={{ 'font-size': '2xl', 'hover-bg': 'primary/80' }}</code> to spell exact canonical names.</p></section>
+<section id="native-html-props-and-refs" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Native HTML props and refs</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The primitives render semantic HTML elements and accept normal React props for their element type. Choose the appropriate primitive or <code>as</code> target for the content, and use native accessibility props such as <code>aria-label</code>, <code>disabled</code>, and <code>type</code> as needed. Use the package types and <a href="react-native.html">React Native guide</a> for native apps; browser primitives do not render native views.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="react-native.html" aria-label="Next page: React Native" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>React Native</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#aliases" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">JSX aliases</a>
-<a data-toc-link href="#full-component" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Full component</a>
-<a data-toc-link href="#attrs-prop" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Canonical attrs prop</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#install-and-start" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Install and start</a>
+<a data-toc-link href="#prop-names" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Prop names</a>
+<a data-toc-link href="#native-html-props-and-refs" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Native HTML props and refs</a></div></div>
       </aside>
     </div>
   </main>

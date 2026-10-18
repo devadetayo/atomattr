@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>React Native - Atomattr Docs</title>
-  <meta name="description" content="Use Atomattr ideas in React Native with primitives that translate supported attributes into native style objects.">
+  <meta name="description" content="Build native interfaces with AtomAttr's React Native primitives and style engine.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/react-native.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="React Native - Atomattr Docs">
-  <meta property="og:description" content="Use Atomattr ideas in React Native with primitives that translate supported attributes into native style objects.">
+  <meta property="og:description" content="Build native interfaces with AtomAttr's React Native primitives and style engine.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/react-native.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="React Native - Atomattr Docs">
-  <meta name="twitter:description" content="Use Atomattr ideas in React Native with primitives that translate supported attributes into native style objects.">
+  <meta name="twitter:description" content="Build native interfaces with AtomAttr's React Native primitives and style engine.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,83 +213,40 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">PLATFORM GUIDES</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">React Native</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Use Atomattr ideas in React Native with primitives that translate supported attributes into native style objects.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Build native interfaces with AtomAttr's React Native primitives and style engine.</p>
         </div>
-        <section id="basic-screen" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Basic screen</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">React Native does not use browser CSS, so the implementation maps the shared styling vocabulary into native style objects where the platform supports it.</p>
+        <section id="install-and-import" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Install and import</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Install AtomAttr in a React Native project using the package manager supported by your app setup. Import native primitives from <code>atomattr/react-native</code>; do not load the browser engine or <code>defaults.css</code> in a native screen.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">ProfileScreen.tsx</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">tsx</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-tsx">import { Box, Txt, Btn, Row } from 'atomattr/react-native';
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">import { Box, Txt, Btn, Row } from 'atomattr/react-native';
 
 export function ProfileScreen() {
   return (
     &lt;Box flex={1} bg="gray-50" p="6"&gt;
-      &lt;Box bg="white" rounded="2xl" p="5" shadow="md"&gt;
-        &lt;Txt fontSize="2xl" weight="bold"&gt;Welcome back&lt;/Txt&gt;
-        &lt;Txt mt="2" text="muted" lineHeight="relaxed"&gt;
-          Native views, familiar Atomattr-style props.
-        &lt;/Txt&gt;
-        &lt;Row mt="5" gap="3"&gt;
-          &lt;Btn bg="primary" text="white" px="4" py="2" rounded="lg"&gt;
-            Continue
-          &lt;/Btn&gt;
-        &lt;/Row&gt;
-      &lt;/Box&gt;
+      &lt;Row gap="3" items="center"&gt;
+        &lt;Box size="14" rounded="full" bg="primary" /&gt;
+        &lt;Txt fontSize="2xl" fontWeight="bold"&gt;Ada Lovelace&lt;/Txt&gt;
+      &lt;/Row&gt;
+      &lt;Btn mt="5" bg="primary"&gt;Follow&lt;/Btn&gt;
     &lt;/Box&gt;
   );
 }</code></pre>
   </div></section>
-<section id="platform-differences" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Platform differences</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">HTML supports selectors like hover and pseudo-elements. React Native does not have the same selector model, so docs should treat native support as platform-aware rather than identical.</p></section>
-<section id="mental-model" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Same mental model</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The goal is consistency: spacing, color, typography, layout, and radius should read similarly across HTML, React, and React Native even when the runtime output is different.</p></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">react-native-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">import { Box, Txt, Btn } from 'atomattr/react-native';
-
-export function PracticeCard() {
-  return (
-    &lt;Box bg="white" rounded="2xl" p="5" gap="3"&gt;
-      &lt;Txt fontSize="xl" weight="bold"&gt;React Native&lt;/Txt&gt;
-      &lt;Txt text="muted" lineHeight="relaxed"&gt;
-        Change spacing, color, and radius values to see the native output.
-      &lt;/Txt&gt;
-      &lt;Btn bg="primary" text="white" rounded="lg" px="4" py="2"&gt;
-        Try it
-      &lt;/Btn&gt;
-    &lt;/Box&gt;
-  );
-}</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="react.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>React</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Platform Guides</p>
-  </a>
-    <a href="react-native-layout.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>React Native Layout</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Platform Guides</p>
+<section id="native-style-model" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Native style model</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The native engine translates supported attributes into React Native style objects. It shares some naming and token ideas with the browser package, but CSS-only features such as selectors, media queries, container queries, pseudo-elements, and arbitrary CSS functions do not automatically translate.</p></section>
+<section id="components-and-support" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Components and support</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The package includes native primitives and input wrappers. Check the <a href="react-native-layout.html">layout guide</a> and <a href="react-native-inputs.html">input guide</a>, along with TypeScript definitions in the installed version, for the supported props and value forms. Test behavior on both iOS and Android when platform support differs.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="react-native-layout.html" aria-label="Next page: React Native Layout" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>React Native Layout</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#basic-screen" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Basic screen</a>
-<a data-toc-link href="#platform-differences" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Platform differences</a>
-<a data-toc-link href="#mental-model" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Same mental model</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#install-and-import" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Install and import</a>
+<a data-toc-link href="#native-style-model" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Native style model</a>
+<a data-toc-link href="#components-and-support" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Components and support</a></div></div>
       </aside>
     </div>
   </main>

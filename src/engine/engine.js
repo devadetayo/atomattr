@@ -4,6 +4,26 @@ import { shouldIgnoreAttribute } from '../style-data/variables.js';
 
 let observer = null;
 let started = false;
+const pendingElements = new Set();
+const pendingTrees = new Set();
+let flushScheduled = false;
+
+function scheduleProcess(root, includeDescendants = false) {
+  if (root?.nodeType === 1) (includeDescendants ? pendingTrees : pendingElements).add(root);
+  if (flushScheduled) return;
+  flushScheduled = true;
+  const flush = () => {
+    flushScheduled = false;
+    const elements = Array.from(pendingElements);
+    const trees = Array.from(pendingTrees);
+    pendingElements.clear();
+    pendingTrees.clear();
+    for (const element of elements) processElement(element);
+    for (const tree of trees) processTree(tree);
+  };
+  if (typeof requestAnimationFrame === 'function') requestAnimationFrame(flush);
+  else Promise.resolve().then(flush);
+}
 
 function processElement(element) {
   if (!element || element.nodeType !== 1 || !element.attributes) return;
@@ -42,12 +62,12 @@ export function startEngine() {
   observer = new MutationObserver(mutations => {
     for (const mutation of mutations) {
       if (mutation.type === 'attributes') {
-        processElement(mutation.target);
+        scheduleProcess(mutation.target);
       }
 
       if (mutation.type === 'childList') {
         mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) processTree(node);
+          if (node.nodeType === 1) scheduleProcess(node, true);
         });
       }
     }
@@ -62,6 +82,9 @@ export function startEngine() {
 
 export function stopEngine() {
   if (observer) observer.disconnect();
+  pendingElements.clear();
+  pendingTrees.clear();
+  flushScheduled = false;
   observer = null;
   started = false;
 }

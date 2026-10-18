@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#5b5cf6">
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
-  <title>Getting started with Atomattr - Atomattr Docs</title>
-  <meta name="description" content="A clear map of Atomattr: how the attribute syntax works, where each reference page lives, and how to read the examples.">
+  <title>Getting started with AtomAttr - Atomattr Docs</title>
+  <meta name="description" content="Learn the attribute model, set up the browser engine, and find the right guide for each feature.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs.html">
   <link rel="icon" href="./assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
-  <meta property="og:title" content="Getting started with Atomattr - Atomattr Docs">
-  <meta property="og:description" content="A clear map of Atomattr: how the attribute syntax works, where each reference page lives, and how to read the examples.">
+  <meta property="og:title" content="Getting started with AtomAttr - Atomattr Docs">
+  <meta property="og:description" content="Learn the attribute model, set up the browser engine, and find the right guide for each feature.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -23,8 +23,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
-  <meta name="twitter:title" content="Getting started with Atomattr - Atomattr Docs">
-  <meta name="twitter:description" content="A clear map of Atomattr: how the attribute syntax works, where each reference page lives, and how to read the examples.">
+  <meta name="twitter:title" content="Getting started with AtomAttr - Atomattr Docs">
+  <meta name="twitter:description" content="Learn the attribute model, set up the browser engine, and find the right guide for each feature.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="docs/performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -195,85 +212,35 @@
       <div px="4" md-pl="calc(20dvw + 4rem)" lg-pr="calc(20dvw + 2rem)" pt="8" md-pt="12" w="full" max-w="100dvw" display="flex" flex-col gap="10" overflow-x="hidden" flex="1">
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p>
-          <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Getting started with Atomattr</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">A clear map of Atomattr: how the attribute syntax works, where each reference page lives, and how to read the examples.</p>
+          <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Getting started with AtomAttr</h1>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Learn the attribute model, set up the browser engine, and find the right guide for each feature.</p>
         </div>
-        <section id="model" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">The model</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Atomattr styles elements with HTML attributes. Instead of writing a class string and jumping into a stylesheet, you write the styling decision directly on the element: <code>bg="surface"</code>, <code>p="6"</code>, <code>rounded="xl"</code>, <code>border="border"</code>.</p>
+        <section id="the-model" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">The model</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">AtomAttr maps registered HTML attributes to generated CSS. Put a property name on the element and its value in the attribute value. The browser engine scans the document, inserts rules for attributes it recognizes, and watches for DOM changes.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">card.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article bg="surface" p="6" rounded="xl" border="border"&gt;
-  &lt;h3 font-size="xl" font-weight="bold" mb="2"&gt;Profile card&lt;/h3&gt;
-  &lt;p text="muted"&gt;The markup carries the styling contract.&lt;/p&gt;
+  &lt;h2 font-size="xl" font-weight="bold" mb="2"&gt;Profile card&lt;/h2&gt;
+  &lt;p text="muted"&gt;The markup carries the styling choices.&lt;/p&gt;
 &lt;/article&gt;</code></pre>
-  </div></section>
-<section id="reading-pages" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">How to read these pages</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Each page is intentionally small. Start with the explanation, copy the example, then use the table to see the supported attributes and the CSS property each one maps to.</p>
-<div display="grid" grid-cols="1" md-grid-cols="3" gap="5" max-w="4xl" mb="8">
-    <a href="docs/syntax.html" text-decoration="none" text="text" bg="#fff" dark-bg="gray-900" border="1px solid gray-100" dark-border-color="gray-800" rounded="2xl" p="5" display="block">
-      <h3 font-size="lg" font-weight="bold" mb="2">Syntax</h3>
-      <p text="muted" line-height="relaxed">The grammar behind every attribute.</p>
-    </a>
-    <a href="docs/responsive.html" text-decoration="none" text="text" bg="#fff" dark-bg="gray-900" border="1px solid gray-100" dark-border-color="gray-800" rounded="2xl" p="5" display="block">
-      <h3 font-size="lg" font-weight="bold" mb="2">Responsive</h3>
-      <p text="muted" line-height="relaxed">Breakpoint prefixes such as sm, md, and lg.</p>
-    </a>
-    <a href="docs/cheatsheet.html" text-decoration="none" text="text" bg="#fff" dark-bg="gray-900" border="1px solid gray-100" dark-border-color="gray-800" rounded="2xl" p="5" display="block">
-      <h3 font-size="lg" font-weight="bold" mb="2">Cheatsheet</h3>
-      <p text="muted" line-height="relaxed">Every registered key in one compact page.</p>
-    </a></div></section>
-<section id="example-flow" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">A real flow</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Most UI starts by combining layout, spacing, color, borders, and state attributes. The same pattern scales from a small button to a complete page section.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">product-card.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article display="flex" flex-col gap="4" p="6" bg="white" dark-bg="gray-900" rounded="2xl" border="border"&gt;
-  &lt;div display="flex" items="center" justify="center" gap="4"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Starter plan&lt;/h3&gt;
-    &lt;span px="3" py="1" rounded="full" bg="primary/10" text="primary"&gt;Popular&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;p text="muted" line-height="relaxed"&gt;Readable attributes, no class soup.&lt;/p&gt;
-  &lt;button px="4" py="2" rounded="lg" bg="primary" text="white" hover-bg="primary/80"&gt;
-    Choose plan
-  &lt;/button&gt;
-&lt;/article&gt;</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">overview-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Overview&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <div border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="2xl" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex><strong>Start here</strong></div>
-    <a href="docs/search.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Search</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">To use it in an app, follow the <a href="installation.html">installation guide</a>. The <a href="syntax.html">syntax guide</a> explains how attributes and modifier prefixes are parsed; <a href="values.html">values</a> explains tokens and CSS values.</p></section>
+<section id="find-an-attribute-or-feature" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Find an attribute or feature</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The <a href="cheatsheet.html">cheatsheet</a> lists every registered styling name and its CSS mapping. Use <a href="search.html">search</a> to find a property by name, CSS output, value, or modifier. Topic references group related attributes, such as <a href="layout-display.html">layout</a>, <a href="spacing-padding.html">spacing</a>, <a href="colors-backgrounds.html">color</a>, and <a href="typography-font.html">typography</a>.</p></section>
+<section id="choose-the-right-guide" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Choose the right guide</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">- Use <a href="responsive.html">responsive attributes</a> for viewport breakpoints and <a href="container-queries.html">container queries</a> for ancestor size thresholds. - Use <a href="states.html">states</a>, <a href="dark-mode.html">dark mode</a>, and <a href="pseudo-elements.html">pseudo-elements</a> for supported selector modifiers. - Use the <a href="html.html">HTML guide</a> for browser markup, the <a href="react.html">React guide</a> for JSX props, and the <a href="react-native.html">React Native guide</a> for native primitives. - Use <a href="performance.html">performance</a> for runtime behavior and current limits.</p></section>
+<section id="copy-and-adapt-a-component" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Copy and adapt a component</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">AtomAttr UI provides examples that can be previewed and copied as HTML. Start with a pattern in the <a href="ui.html">UI library</a>, then check its attributes against the reference pages and adapt its semantics, content, and responsive behavior to your app.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="docs/search.html" aria-label="Next page: Search" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Search</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#model" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">The model</a>
-<a data-toc-link href="#reading-pages" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">How to read these pages</a>
-<a data-toc-link href="#example-flow" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">A real flow</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#the-model" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">The model</a>
+<a data-toc-link href="#find-an-attribute-or-feature" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Find an attribute or feature</a>
+<a data-toc-link href="#choose-the-right-guide" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Choose the right guide</a>
+<a data-toc-link href="#copy-and-adapt-a-component" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Copy and adapt a component</a></div></div>
       </aside>
     </div>
   </main>

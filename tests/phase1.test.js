@@ -59,6 +59,14 @@ test('parses focus and pseudo-element modifiers', () => {
   assert.match(beforeParsed.selector, /::before/);
 });
 
+test('maps structural and selected state variants to valid CSS pseudo-classes', () => {
+  assert.match(parseAttribute('first-bg', 'white').selector, /:first-child$/);
+  assert.match(parseAttribute('last-bg', 'white').selector, /:last-child$/);
+  assert.match(parseAttribute('odd-bg', 'white').selector, /:nth-child\(odd\)$/);
+  assert.match(parseAttribute('even-bg', 'white').selector, /:nth-child\(even\)$/);
+  assert.match(parseAttribute('selected-bg', 'white').selector, /:checked$/);
+});
+
 test('generates border, outline, and ring utilities correctly', () => {
   const styleTag = installDocumentStub();
   clearGeneratedRules();
@@ -141,4 +149,80 @@ test('supports canonical scroll property attributes and the scroll-snap alias', 
   assert.match(rules, /scroll-snap-stop: always;/);
   assert.match(rules, /scroll-margin-block-start: 2px;/);
   assert.match(rules, /scroll-padding-inline: 1rem;/);
+});
+
+test('supports modern CSS property names commonly used in framework-based UI', () => {
+  const styleTag = installDocumentStub();
+  clearGeneratedRules();
+
+  generateAndInjectRule(parseAttribute('font-family', '"Inter", sans-serif'));
+  generateAndInjectRule(parseAttribute('font-style', 'italic'));
+  generateAndInjectRule(parseAttribute('background-blend-mode', 'multiply'));
+  generateAndInjectRule(parseAttribute('mix-blend-mode', 'screen'));
+  generateAndInjectRule(parseAttribute('mask-image', 'radial-gradient(circle, black 0%, transparent 100%)'));
+
+  const rules = styleTag.sheet.cssRules.join('\n');
+  assert.match(rules, /font-family: \"Inter\", sans-serif;/);
+  assert.match(rules, /font-style: italic;/);
+  assert.match(rules, /background-blend-mode: multiply;/);
+  assert.match(rules, /mix-blend-mode: screen;/);
+  assert.match(rules, /mask-image: radial-gradient\(circle, black 0%, transparent 100%\);/);
+});
+
+test('parses container query variants and composes them with states and responsive variants', () => {
+  const parsed = parseAttribute('cq-md-hover-bg', 'oklch(60% 0.2 250)');
+  assert.ok(parsed);
+  assert.match(parsed.wrapperStart, /@container \(min-width: 768px\)/);
+  assert.match(parsed.selector, /:hover/);
+  assert.match(parsed.wrapperEnd, /\}/);
+
+  const combined = parseAttribute('md-cq-sm-focus-visible-p', '4');
+  assert.ok(combined);
+  assert.match(combined.wrapperStart, /@media/);
+  assert.match(combined.wrapperStart, /@container/);
+  assert.match(combined.selector, /:focus-visible/);
+});
+
+test('container query variants work with an unnamed inline-size ancestor', () => {
+  const parsed = parseAttribute('cq-md-grid-cols', '2');
+  assert.equal(parsed.wrapperStart, '@container (min-width: 768px) { ');
+  const namedAncestor = parseAttribute('container', 'card / inline-size');
+  assert.equal(namedAncestor.propKey, 'container');
+});
+
+test('aspect video and square aliases resolve to valid ratios', () => {
+  const styleTag = installDocumentStub();
+  clearGeneratedRules();
+  generateAndInjectRule(parseAttribute('aspect', 'video'));
+  generateAndInjectRule(parseAttribute('aspect', 'square'));
+  const rules = styleTag.sheet.cssRules.join('\n');
+  assert.match(rules, /aspect-ratio: 16 \/ 9;/);
+  assert.match(rules, /aspect-ratio: 1 \/ 1;/);
+});
+
+test('generates modern CSS declarations without rewriting compound values', () => {
+  const styleTag = installDocumentStub();
+  clearGeneratedRules();
+
+  const examples = [
+    ['container-type', 'inline-size'],
+    ['text-wrap', 'balance'],
+    ['content-visibility', 'auto'],
+    ['contain-intrinsic-size', 'auto 20rem'],
+    ['field-sizing', 'content'],
+    ['animation-timeline', 'view(block)'],
+    ['position-area', 'block-end span-inline-start'],
+    ['clip-path', 'inset(0 round 1rem)'],
+    ['view-transition-name', 'card'],
+    ['inset-inline-start', 'calc(100% - 1rem)'],
+  ];
+  for (const [attribute, value] of examples) {
+    generateAndInjectRule(parseAttribute(attribute, value));
+  }
+
+  const rules = styleTag.sheet.cssRules.join('\n');
+  for (const [attribute, value] of examples) {
+    assert.ok(rules.includes(`${attribute}="${value}"`), `selector missing ${attribute}`);
+    assert.ok(rules.includes(`${attribute === 'inset-inline-start' ? 'inset-inline-start' : attribute}: ${value};`), `declaration missing ${attribute}`);
+  }
 });

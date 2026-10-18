@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse and copy published AtomAttr UI components and sections." />
+    <title>AtomAttr UI Library</title>
+    <link rel="stylesheet" href="./dist/defaults.css" />
+    <link rel="stylesheet" href="./assets/showcase.css" />
+    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  </head>
+  <body data-page-scope="all" bg="#f8f7f5" dark-bg="gray-950" text="text" min-h="screen" p="0" m="0">
+    <header data-catalog-header position="sticky" top="0" z="50" bg="#f8f7f5" dark-bg="gray-950" border-b="1" border-b-color="gray-200" dark-border-color="gray-900" backdrop-blur="md">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" justify="between" gap="4">
+        <a href="./index.html" display="inline-flex" items="center" gap="3" text-decoration="none" color="inherit">
+          <span w="10" h="10" rounded="xl" bg="primary" display="flex" items="center" justify="center" text="white" font-size="lg" font-weight="700">A</span>
+          <div>
+            <div font-size="sm" font-weight="700" letter-spacing="wide">ATOMATTR</div>
+            <div font-size="xs" text="muted">UI library</div>
+          </div>
+        </a>
+
+        <nav display="none" lg-display="flex" items="center" gap="5" font-size="sm">
+          <a href="./components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+          <a href="./sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+          <a href="./templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+        </nav>
+
+        <div display="flex" items="center" gap="3">
+          <button type="button" data-theme-toggle="light" bg="gray-100" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" text="text" rounded="full" px="3" py="2" font-size="sm" aria-label="Toggle light and dark theme">Light</button>
+          <a href="./playground.html" display="inline-flex" items="center" justify="center" bg="primary" text="white" px="4" py="2" rounded="full" text-decoration="none" font-size="sm" font-weight="600">Playground</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section bg-gradient="linear-gradient(180deg, color-mix(in oklch, var(--aa-color-primary) 8%, transparent), transparent 80%)">
+        <div max-w="7xl" mx="auto" px="4" md-px="8" py="10" lg-py="16">
+          <div display="grid" grid-cols="1" lg-grid-cols="2" gap="10" items="center">
+            <div>
+              <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="4">READY-MADE DESIGN SYSTEM</p>
+              <h1 font-size="5xl" md-font-size="6xl" lg-font-size="7xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="5">
+                Build product pages faster with AtomAttr.
+              </h1>
+              <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="8" max-w="2xl">
+                Explore published UI components and reusable sections. Preview each pattern, inspect its source, and copy AtomAttr HTML or React-ready code.
+              </p>
+
+              <div display="flex" flex-col sm-flex-row items="center" gap="3" mb="8">
+                <a href="./catalog.html" bg="primary" text="white" px="6" py="3.5" rounded="full" text-decoration="none" font-weight="600">Browse catalog</a>
+                <a href="./components.html" border="1" border-color="gray-300" dark-border-color="gray-700" text="text" px="6" py="3.5" rounded="full" text-decoration="none" font-weight="600">Browse components</a>
+              </div>
+
+              <div display="grid" grid-cols="2" gap="4" max-w="lg">
+                <div bg="#fff" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="4">
+                  <p m="0" font-size="2xl" font-weight="700">20</p>
+                  <p m="0" mt="1" text="muted" font-size="sm">published patterns</p>
+                </div>
+                <div bg="#fff" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="4">
+                  <p m="0" font-size="2xl" font-weight="700">2</p>
+                  <p m="0" mt="1" text="muted" font-size="sm">frameworks</p>
+                </div>
+                <div bg="#fff" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="4">
+                  <p m="0" font-size="2xl" font-weight="700">2</p>
+                  <p m="0" mt="1" text="muted" font-size="sm">source formats</p>
+                </div>
+              </div>
+            </div>
+
+            <div bg="#fff" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="3xl" p="5" shadow="xl">
+              <div display="flex" items="center" justify="between" gap="3" pb="4" border-b="1" border-b-color="gray-200" dark-border-color="gray-800">
+                <div>
+                  <p m="0" font-size="xs" text="muted" letter-spacing="wide">SAMPLE DASHBOARD · ILLUSTRATIVE VALUES</p>
+                  <h2 m="0" font-size="xl" font-weight="700">Product overview</h2>
+                </div>
+                <span bg="gray-100" dark-bg="gray-800" text="muted" px="2" py="1" rounded="full" font-size="xs">Example</span>
+              </div>
+
+              <div mt="5" display="grid" gap="4">
+                <div bg="gray-50" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="4">
+                  <div display="flex" items="center" justify="between" mb="3">
+                    <span font-size="sm" text="muted">Revenue</span>
+                    <span text="success" font-size="sm" font-weight="600">+12.8%</span>
+                  </div>
+                  <p m="0" font-size="4xl" font-weight="700">$128.4K</p>
+                </div>
+
+                <div display="grid" grid-cols="2" gap="4">
+                  <div bg="gray-50" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="4">
+                    <p m="0" font-size="sm" text="muted">New users</p>
+                    <p m="0" mt="2" font-size="2xl" font-weight="700">18.6K</p>
+                  </div>
+                  <div bg="gray-50" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="4">
+                    <p m="0" font-size="sm" text="muted">Avg. growth</p>
+                    <p m="0" mt="2" font-size="2xl" font-weight="700">4.8%</p>
+                  </div>
+                </div>
+
+                <div bg="primary" text="white" rounded="2xl" p="4">
+                  <div display="flex" items="center" justify="between" gap="3">
+                    <div>
+                      <p m="0" font-size="sm" text="#fff/80">This week</p>
+                      <p m="0" mt="2" font-size="2xl" font-weight="700">7 launches</p>
+                    </div>
+                    <span w="12" h="12" rounded="full" bg="#fff" text="primary" display="flex" items="center" justify="center"><i class="ri-arrow-right-up-line"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section bg="gray-50" dark-bg="gray-900" border-t="1" border-t-color="gray-200" dark-border-color="gray-800" border-b="1" border-b-color="gray-200" dark-border-color="gray-800">
+        <div max-w="7xl" mx="auto" px="4" md-px="8" py="12" lg-py="16">
+          <div display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="4" gap="5">
+            <a href="./components.html" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-bg="gray-50" dark-hover-bg="gray-800">
+              <p text="primary" font-size="xs" font-weight="700" tracking="wide">COMPONENTS</p>
+              <h3 font-size="2xl" font-weight="700" m="0">Navigation, cards, forms</h3>
+              <p m="0" text="muted" line-height="relaxed">Reusable building blocks for product interfaces and admin areas.</p>
+            </a>
+
+            <a href="./sections.html" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-bg="gray-50" dark-hover-bg="gray-800">
+              <p text="success" font-size="xs" font-weight="700" tracking="wide">SECTIONS</p>
+              <h3 font-size="2xl" font-weight="700" m="0">Hero, pricing, and more</h3>
+              <p m="0" text="muted" line-height="relaxed">Launch sections that work for product sites, customer pages, and docs.</p>
+            </a>
+
+            <a href="./templates.html" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-bg="gray-50" dark-hover-bg="gray-800">
+              <p text="warning" font-size="xs" font-weight="700" tracking="wide">TEMPLATES</p>
+              <h3 font-size="2xl" font-weight="700" m="0">No templates published yet</h3>
+              <p m="0" text="muted" line-height="relaxed">Complete pages will be listed when their preview and source are ready.</p>
+            </a>
+
+            <a href="./docs/installation.html" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-bg="gray-50" dark-hover-bg="gray-800">
+              <p text="primary" font-size="xs" font-weight="700" tracking="wide">GET STARTED</p>
+              <h3 font-size="2xl" font-weight="700" m="0">Install AtomAttr</h3>
+              <p m="0" text="muted" line-height="relaxed">Read the framework installation guide before using these patterns.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section bg="#fff" dark-bg="gray-950" border-b="1" border-b-color="gray-200" dark-border-color="gray-800">
+        <div max-w="7xl" mx="auto" px="4" md-px="8" py="12" lg-py="16">
+          <div display="grid" grid-cols="1" lg-grid-cols="2" gap="8" items="start">
+            <div>
+              <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="3">WHY IT WORKS</p>
+              <h2 font-size="4xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="4">The library matches how teams actually build.</h2>
+              <p text="muted" line-height="relaxed" m="0">AtomAttr keeps design tokens, breakpoints, and dark mode in the markup itself, so each pattern is readable, themeable, and easy to customize.</p>
+            </div>
+
+            <div display="flex" flex-col gap="4" bg="gray-50" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="5">
+              <div display="grid" grid-cols="3" gap="3" text="sm">
+                <span bg="gray-100" dark-bg="gray-800" rounded="lg" p="3" text="muted">Responsive</span>
+                <span bg="gray-100" dark-bg="gray-800" rounded="lg" p="3" text="muted">Dark mode</span>
+                <span bg="gray-100" dark-bg="gray-800" rounded="lg" p="3" text="muted">Tokens</span>
+              </div>
+              <div display="grid" grid-cols="3" gap="3" text="sm">
+                <span bg="gray-100" dark-bg="gray-800" rounded="lg" p="3" text="muted">HTML</span>
+                <span bg="gray-100" dark-bg="gray-800" rounded="lg" p="3" text="muted">React</span>
+                <span bg="gray-100" dark-bg="gray-800" rounded="lg" p="3" text="muted">Product UI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer border-t="1" border-t-color="gray-100" dark-border-color="gray-900">
+      <div max-w="7xl" mx="auto" px="4" lg-px="8" py="8" display="flex" flex-col sm-flex-row items="start" sm-items="center" justify="between" gap="3" text="muted" font-size="sm">
+        <b text="text">AtomAttr UI</b>
+        <span>Copy it. Own it. Change it.</span>
+        <a href="./index.html" text="primary" text-decoration="none">Powered by AtomAttr ↗</a>
+        <a href="https://github.com/devadetayo/atomattr" text="primary" text-decoration="none">Repository ↗</a>
+      </div>
+    </footer>
+
+    <script src="./dist/atomattr.min.js" defer></script>
+    <script type="module" src="./catalog.js"></script>
+  </body>
+</html>

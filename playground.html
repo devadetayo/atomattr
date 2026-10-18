@@ -2,513 +2,1498 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <meta name="theme-color" content="#5b5cf6" />
     <meta name="robots" content="index, follow" />
     <title>Playground — Atomattr</title>
-    <meta name="description" content="Interactive Atomattr playground with HTML, React, and Vite starter modes." />
+    <meta name="description" content="Interactive Atomattr playground: write HTML and CSS, see the result live, test responsive viewports, and share your snippet." />
     <link rel="canonical" href="https://devadetayo.github.io/atomattr/playground.html" />
     <link rel="icon" href="assets/favico/favico.png" type="image/png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Atomattr" />
     <meta property="og:title" content="Playground — Atomattr" />
-    <meta property="og:description" content="Interactive Atomattr playground with HTML, React, and Vite starter modes." />
+    <meta property="og:description" content="Interactive Atomattr playground: write HTML and CSS, see the result live, test responsive viewports, and share your snippet." />
     <meta property="og:url" content="https://devadetayo.github.io/atomattr/playground.html" />
     <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Playground — Atomattr" />
-    <meta name="twitter:description" content="Interactive Atomattr playground with HTML, React, and Vite starter modes." />
+    <meta name="twitter:description" content="Interactive Atomattr playground: write HTML and CSS, see the result live, test responsive viewports, and share your snippet." />
     <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Syntax highlighting: use the same Foundation code theme in both
-         light and dark modes so the syntax colors stay consistent. -->
-    <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
-    <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
-
     <style>
-      html {
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif;
-      }
+      /* Only editor internals live here: a transparent <textarea> must line up
+         glyph-for-glyph with its highlighted <pre>, so those metrics are fixed
+         in px. Everything else in this page is styled with Atomattr attributes. */
+      html { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif; -webkit-text-size-adjust: 100%; }
+      h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.015em; }
+      summary { list-style: none; }
+      summary::-webkit-details-marker { display: none; }
 
-      h1, h2, h3 {
-        font-family: 'Space Grotesk', sans-serif;
-        letter-spacing: -0.015em;
+      .pg-ed-light {
+        --ed-bg:#ffffff; --ed-fg:#24292f; --ed-gutter-bg:#f6f8fa; --ed-gutter-fg:#8c959f;
+        --ed-caret:#4f46e5; --ed-sel:rgba(99,102,241,.22);
+        --tk-punct:#57606a; --tk-tag:#116329; --tk-attr:#0550ae; --tk-str:#0a3069;
+        --tk-com:#6e7781; --tk-num:#0550ae; --tk-kw:#cf222e; --tk-sel:#6639ba;
       }
+      .pg-ed-dark {
+        --ed-bg:#0d1117; --ed-fg:#e6edf3; --ed-gutter-bg:#0d1117; --ed-gutter-fg:#6e7681;
+        --ed-caret:#a5b4fc; --ed-sel:rgba(129,140,248,.30);
+        --tk-punct:#8b949e; --tk-tag:#7ee787; --tk-attr:#79c0ff; --tk-str:#a5d6ff;
+        --tk-com:#8b949e; --tk-num:#79c0ff; --tk-kw:#ff7b72; --tk-sel:#d2a8ff;
+      }
+      .pg-ed-surface { background: var(--ed-bg); color: var(--ed-fg); }
+      .pg-ed-surface:focus-within { box-shadow: inset 0 0 0 1px var(--ed-caret); }
+      .pg-code {
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px; line-height: 20px; tab-size: 2; -moz-tab-size: 2;
+        margin: 0; box-sizing: border-box; font-variant-ligatures: none;
+      }
+      /* Touch screens: slightly larger code, and 16px on iOS so Safari does not zoom on focus. */
+      @media (max-width: 1023px) { .pg-code { font-size: 14px; line-height: 22px; } }
+      @supports (-webkit-touch-callout: none) {
+        @media (max-width: 1023px) { .pg-code { font-size: 16px; line-height: 24px; } }
+      }
+      .pg-pre, .pg-ta {
+        position: absolute; inset: 0; margin: 0; border: 0;
+        padding: 12px 16px 40px; white-space: pre; overflow-wrap: normal; word-break: normal;
+      }
+      .pg-pre { overflow: hidden; pointer-events: none; color: var(--ed-fg); }
+      .pg-pre code { font: inherit; display: block; background: none; padding: 0; color: inherit; }
+      .pg-ta {
+        overflow: auto; resize: none; outline: none; background: transparent;
+        color: transparent; -webkit-text-fill-color: transparent; caret-color: var(--ed-caret);
+        overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+      }
+      .pg-ta::selection { background: var(--ed-sel); -webkit-text-fill-color: transparent; }
+      .pg-gutter {
+        flex: none; overflow: hidden; text-align: right; user-select: none; white-space: pre;
+        padding: 12px 10px 40px 12px; background: var(--ed-gutter-bg); color: var(--ed-gutter-fg);
+      }
+      .pg-pre .hljs-tag { color: var(--tk-punct); }
+      .pg-pre .hljs-name { color: var(--tk-tag); }
+      .pg-pre .hljs-attr, .pg-pre .hljs-attribute { color: var(--tk-attr); }
+      .pg-pre .hljs-string { color: var(--tk-str); }
+      .pg-pre .hljs-comment, .pg-pre .hljs-meta { color: var(--tk-com); font-style: italic; }
+      .pg-pre .hljs-number, .pg-pre .hljs-literal, .pg-pre .hljs-variable { color: var(--tk-num); }
+      .pg-pre .hljs-keyword, .pg-pre .hljs-built_in { color: var(--tk-kw); }
+      .pg-pre .hljs-selector-tag, .pg-pre .hljs-selector-class, .pg-pre .hljs-selector-id,
+      .pg-pre .hljs-selector-attr, .pg-pre .hljs-selector-pseudo { color: var(--tk-sel); }
 
-      code, pre, pre code, #playground-editor, #playground-highlight {
-        font-family: 'JetBrains Mono', monospace;
-      }
-
-      pre code.hljs {
-        background: transparent !important;
-        padding: 0 !important;
-      }
-
-      summary {
-        list-style: none;
-      }
-      summary::-webkit-details-marker {
-        display: none;
-      }
-
-      /* Highlight-within-textarea: the textarea sits on top of the
-         highlighted <pre><code>, with its own glyphs made transparent
-         so only the caret and selection are visible — the colored
-         text underneath is what actually shows. */
-      #playground-editor,
-      #playground-highlight-pre {
-        margin: 0;
-        white-space: pre-wrap;
-        word-break: break-word;
-        tab-size: 2;
-        box-sizing: border-box;
-      }
-      #playground-editor {
-        color: transparent;
-        background: transparent;
-        caret-color: #6366f1;
-      }
-      #playground-highlight-pre {
-        pointer-events: none;
-      }
+      #pg-canvas { background-image: radial-gradient(rgba(128,128,128,.22) 1px, transparent 1px); background-size: 16px 16px; }
+      #pg-keybar, #pg-drawer-body { scrollbar-width: none; }
+      #pg-keybar::-webkit-scrollbar, #pg-drawer-body::-webkit-scrollbar { display: none; }
+      [data-playground] button, #pg-drawer button { font-family: inherit; -webkit-tap-highlight-color: transparent; }
+      [data-playground] button:focus-visible,
+      [data-playground] [role="separator"]:focus-visible,
+      #pg-drawer button:focus-visible { outline: 2px solid #6366f1; outline-offset: 1px; }
+      @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
     </style>
     <link rel="stylesheet" href="./dist/defaults.css" />
     <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
     <link rel="stylesheet" href="./assets/showcase.css" />
   </head>
 
-  <body
-    bg="#fff" dark-bg="grey-950"
-    text="text"
-    min-h="screen">
-
+  <body bg="#fff" dark-bg="grey-950" text="text" min-h="screen">
     <main class="page-shell">
 
-      <!-- ================================================= -->
-      <!-- PLAYGROUND -->
-      <!-- ================================================= -->
+      <section data-playground display="flex" flex-col style="height:100vh;height:100dvh;min-height:0;">
 
-      <section
-        data-playground
-        display="flex"
-        flex-col
-        min-h="screen"
-      >
+        <!-- ================= Toolbar =================
+             data-m="mobile" → shown only on small screens, data-m="desktop" → only on large.
+             data-d is the display value used when shown. -->
+        <div id="pg-toolbar" display="flex" items="center" justify="between" gap="2" px="3" py="2" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="30" style="min-height:52px;flex:none;">
 
-        <!-- Toolbar -->
-
-        <div
-          display="flex"
-          items="center"
-          justify="between"
-          gap="3"
-          px="4"
-          py="2.5"
-          border-b="1px"
-          border-color="gray-100"
-          dark-border-color="gray-900"
-        >
-
-          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" aria-label="Atomattr homepage">
-            <img src="./assets/images/logo.png" alt="Atomattr" h="6" dark-display="none" display="flex">
-            <img src="./assets/images/logo.dark.png" alt="Atomattr" h="6" dark-display="flex" display="none">
-            <span font-weight="700" font-size="md">Playground</span>
-          </a>
+          <div display="flex" items="center" gap="2" style="min-width:0;">
+            <button id="pg-menu" type="button" data-m="mobile" data-d="flex" aria-label="Open menu" title="Menu" aria-controls="pg-drawer" aria-expanded="false" display="none" items="center" justify="center" bg="transparent" border="border" text="text" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
+              <i class="ri-menu-2-line" font-size="18"></i>
+            </button>
+            <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" aria-label="Atomattr homepage">
+              <img src="./assets/images/logo.png" alt="Atomattr" h="6" dark-display="none" display="flex">
+              <img src="./assets/images/logo.dark.png" alt="Atomattr" h="6" dark-display="flex" display="none">
+            </a>
+            <span data-m="desktop" data-d="block" w="1px" h="6" bg="gray-200" dark-bg="gray-800"></span>
+            <div id="dd-example" data-m="desktop" data-d="block" position="relative"></div>
+          </div>
 
           <div display="flex" items="center" gap="2">
 
-            <button
-              id="playground-reset"
-              type="button"
-              aria-label="Reset editor"
-              display="flex"
-              items="center"
-              justify="center"
-              bg="transparent"
-              border="border"
-              text="muted"
-              w="9"
-              h="9"
-              rounded="lg"
-            >
-              <i class="ri-refresh-line" font-size="16"></i>
-            </button>
-
-            <button
-              id="playground-run"
-              type="button"
-              display="flex"
-              items="center"
-              gap="1.5"
-              bg="primary"
-              text="white"
-              px="4"
-              py="2"
-              rounded="lg"
-              font-size="sm"
-              font-weight="600"
-            >
-              <i class="ri-play-fill" font-size="15"></i>
-              Run
-            </button>
-
-            <span w="1px" h="6" bg="gray-200" dark-bg="gray-800" mx="1"></span>
-
-            <div display="flex" items="center" gap="1" bg="grey-100" dark-bg="gray-900" rounded="lg" p="1">
-
-              <button type="button" data-layout="split" aria-label="Side-by-side view" aria-pressed="true" display="flex" items="center" justify="center" bg="#fff" dark-bg="gray-800" text="primary" w="8" h="8" rounded="md">
-                <i class="ri-layout-column-line" font-size="15"></i>
-              </button>
-
-              <button type="button" data-layout="stacked" aria-label="Stacked view" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md">
-                <i class="ri-layout-row-line" font-size="15"></i>
-              </button>
-
-              <button type="button" data-layout="editor" aria-label="Editor only" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md">
-                <i class="ri-code-s-slash-line" font-size="15"></i>
-              </button>
-
-              <button type="button" data-layout="preview" aria-label="Preview only" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md">
-                <i class="ri-eye-line" font-size="15"></i>
-              </button>
-
+            <div id="pg-layout-seg" data-m="desktop" data-d="flex" display="flex" items="center" gap="1" bg="gray-100" dark-bg="gray-900" rounded="lg" p="1" role="group" aria-label="Workspace layout">
+              <button type="button" data-layout="split" title="Side by side" aria-label="Side-by-side view" aria-pressed="true" display="flex" items="center" justify="center" bg="#fff" dark-bg="gray-800" text="primary" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-layout-column-line" font-size="15"></i></button>
+              <button type="button" data-layout="stacked" title="Stacked" aria-label="Stacked view" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-layout-row-line" font-size="15"></i></button>
+              <button type="button" data-layout="editor" title="Editor only" aria-label="Editor only" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-code-s-slash-line" font-size="15"></i></button>
+              <button type="button" data-layout="preview" title="Expand preview" aria-label="Preview only" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-eye-line" font-size="15"></i></button>
             </div>
 
-            <button type="button" aria-label="Toggle color theme" data-color-toggle bg="transparent" border="border" text="text" p="3" rounded="lg" display="flex" items="center" justify="center">
-              <i class="ri-sun-line" font-size="20" data-color-toggle-icon></i>
+            <span data-m="desktop" data-d="block" w="1px" h="6" bg="gray-200" dark-bg="gray-800" mx="1"></span>
+
+            <button id="pg-run" type="button" title="Run (Ctrl/⌘ + Enter)" aria-label="Run preview" display="flex" items="center" gap="1.5" bg="primary" text="white" px="3" h="9" rounded="lg" font-size="sm" font-weight="600" cursor="pointer">
+              <i class="ri-play-fill" font-size="15"></i>
+            </button>
+
+            <button id="pg-reset" type="button" data-m="desktop" data-d="flex" title="Reset to example" aria-label="Reset to example" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
+              <i class="ri-restart-line" font-size="16"></i>
+            </button>
+
+            <button id="pg-share" type="button" title="Copy a shareable link to this code" aria-label="Copy share link" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
+              <i class="ri-share-line" font-size="16"></i>
+            </button>
+
+            <button type="button" aria-label="Toggle color theme" title="Toggle site color theme" data-color-toggle bg="transparent" border="border" text="text" w="9" h="9" rounded="lg" display="flex" items="center" justify="center" cursor="pointer">
+              <i class="ri-sun-line" font-size="18" data-color-toggle-icon></i>
             </button>
 
           </div>
-
         </div>
 
+        <!-- ================= Workspace ================= -->
+        <div id="pg-workspace" display="flex" flex="1" style="min-height:0;min-width:0;">
 
-        <!-- Tabs -->
+          <!-- Editor pane -->
+          <div id="pg-editor-pane" data-pane="editor" display="flex" flex-col style="min-width:0;min-height:0;">
 
-        <div
-          display="flex"
-          items="center"
-          justify="between"
-          px="4"
-          border-b="1px"
-          border-color="gray-100"
-          dark-border-color="gray-900"
-        >
+            <div display="flex" items="center" justify="between" gap="2" px="4" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="20" style="min-height:42px;flex:none;">
+              <div display="flex" gap="5" role="tablist" aria-label="Source files">
+                <button type="button" role="tab" data-tab="html" aria-selected="true" display="flex" items="center" gap="1.5" bg="transparent" text="primary" border-b="2px" border-color="primary" pt="3" pb="2.5" font-size="sm" font-weight="600" cursor="pointer"><i class="ri-html5-line" font-size="15"></i>HTML</button>
+                <button type="button" role="tab" data-tab="css" aria-selected="false" display="flex" items="center" gap="1.5" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600" cursor="pointer"><i class="ri-css3-line" font-size="15"></i>CSS</button>
+              </div>
+              <div display="flex" items="center" gap="2">
+                <div id="dd-editor-theme" data-m="desktop" data-d="block" position="relative"></div>
+                <button id="pg-copy" type="button" title="Copy HTML" aria-label="Copy HTML" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10">
+                  <i class="ri-file-copy-line" font-size="15"></i>
+                </button>
+              </div>
+            </div>
 
-          <div display="flex" gap="6">
-            <button type="button" data-language="html" aria-pressed="true" bg="transparent" text="primary" border-b="2px" border-color="primary" pt="3" pb="2.5" font-size="sm" font-weight="600">HTML</button>
-            <button type="button" data-language="react" aria-pressed="false" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600">React</button>
-            <button type="button" data-language="vite" aria-pressed="false" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600">Vite</button>
-          </div>
+            <div id="pg-ed-body" class="pg-ed-surface pg-ed-light" position="relative" flex="1" style="min-height:0;">
+              <div data-editor="html" style="position:absolute;inset:0;display:flex;">
+                <div class="pg-gutter pg-code" aria-hidden="true"></div>
+                <div style="position:relative;flex:1;min-width:0;">
+                  <pre class="pg-code pg-pre" aria-hidden="true"><code></code></pre>
+                  <textarea class="pg-code pg-ta" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="HTML source"></textarea>
+                </div>
+              </div>
+              <div data-editor="css" style="position:absolute;inset:0;display:none;">
+                <div class="pg-gutter pg-code" aria-hidden="true"></div>
+                <div style="position:relative;flex:1;min-width:0;">
+                  <pre class="pg-code pg-pre" aria-hidden="true"><code></code></pre>
+                  <textarea class="pg-code pg-ta" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="CSS source"></textarea>
+                </div>
+              </div>
+            </div>
 
-          <span id="playground-title" text="muted" font-size="xs">Plain HTML snippet</span>
-
-        </div>
-
-
-        <!-- Split editor / preview -->
-
-        <div
-          id="playground-split"
-          data-layout-view="split"
-          display="grid"
-          grid-cols="1"
-          flex="1"
-          lg-grid-cols="2" min-h="full"
-        >
-
-          <div
-            data-pane="editor"
-            display="flex"
-            flex-col
-            position="relative"
-            border-r="1px"
-            lg-border-r="1px"
-            border-color="gray-100"
-            dark-border-color="gray-900"
-          >
-
-            <!-- Highlighted layer sits behind the textarea; the textarea's
-                 own glyphs are transparent (see head styles) so this is
-                 the text you actually see. -->
-            <pre
-              id="playground-highlight-pre"
-              aria-hidden="true"
-              position="absolute"
-              top="0" left="0" right="0" bottom="0"
-              overflow="hidden"
-              p="6"
-              font-size="sm"
-              line-height="relaxed"
-            ><code id="playground-highlight" class="language-html"></code></pre>
-
-            <textarea
-              id="playground-editor"
-              spellcheck="false"
-              position="absolute"
-              top="0" left="0" right="0" bottom="0"
-              w="full"
-              h="full"
-              p="6"
-              border="0"
-              outline="none"
-              resize="none"
-              font-size="sm"
-              line-height="relaxed"
-            ></textarea>
+            <!-- Quick-insert keys for touch keyboards (filled by script) -->
+            <div id="pg-keybar" data-m="mobile" data-d="flex" role="toolbar" aria-label="Quick insert" display="none" items="center" gap="1" px="2" border-t="1px" border-color="gray-100" dark-border-color="gray-900" bg="#fff" dark-bg="grey-950" style="flex:none;overflow-x:auto;min-height:44px;"></div>
 
           </div>
 
-          <div
-            data-pane="preview"
-            position="relative"
-            display="flex"
-            flex-col
-            bg="#fff"
-          >
+          <!-- Divider -->
+          <div id="pg-divider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Resize editor and preview" title="Drag to resize · double-click to reset" bg="gray-100" dark-bg="gray-900" style="flex:none;width:6px;cursor:col-resize;touch-action:none;"></div>
 
-            <span
-              position="absolute"
-              top="3"
-              right="3"
-              z="10"
-              display="inline-flex"
-              items="center"
-              gap="1.5"
-              rounded="full"
-              px="2.5"
-              py="1"
-              font-size="xs"
-              font-weight="600"
-              bg="success/10"
-              text="success"
-            >
-              <span w="1.5" h="1.5" rounded="full" bg="success"></span>
-              Live
+          <!-- Preview pane -->
+          <div id="pg-preview-pane" data-pane="preview" display="flex" flex-col style="min-width:0;min-height:0;flex:1 1 0;">
+
+            <div display="flex" items="center" justify="between" gap="2" px="3" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="20" style="min-height:42px;flex:none;">
+              <div display="flex" items="center" gap="2">
+                <div id="dd-viewport" position="relative"></div>
+                <button id="pg-viewport-reset" type="button" title="Back to responsive (fit) viewport" aria-label="Back to responsive viewport" display="none" items="center" gap="1" bg="transparent" text="primary" px="2" h="8" rounded="lg" font-size="xs" font-weight="600" cursor="pointer" hover-bg="primary/10"><i class="ri-fullscreen-exit-line" font-size="14"></i>Fit</button>
+              </div>
+              <div display="flex" items="center" gap="3">
+                <span id="pg-size" text="muted" font-size="xs" aria-live="off" style="font-variant-numeric:tabular-nums;"></span>
+                <div id="dd-preview-theme" data-m="desktop" data-d="block" position="relative"></div>
+              </div>
+            </div>
+
+            <div position="relative" flex="1" style="min-height:0;">
+              <div id="pg-canvas" bg="gray-100" dark-bg="gray-900" style="position:absolute;inset:0;overflow:auto;">
+                <div id="pg-stage" style="display:flex;height:100%;box-sizing:border-box;">
+                  <iframe id="pg-frame" title="Atomattr preview" sandbox="allow-scripts" style="border:0;display:block;background:#fff;flex:none;margin:0 auto;width:100%;height:100%;"></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ================= Console / tips ================= -->
+        <div id="pg-bottom" display="none" flex-col border-t="1px" border-color="gray-100" dark-border-color="gray-900" bg="#fff" dark-bg="grey-950" style="height:168px;flex:none;min-height:0;">
+          <div display="flex" items="center" justify="between" px="4" border-b="1px" border-color="gray-100" dark-border-color="gray-900">
+            <div display="flex" gap="5" role="tablist" aria-label="Panel">
+              <button type="button" role="tab" data-bottom="console" aria-selected="true" bg="transparent" text="primary" border-b="2px" border-color="primary" pt="2" pb="1.5" font-size="xs" font-weight="600" cursor="pointer">Console</button>
+              <button type="button" role="tab" data-bottom="tips" aria-selected="false" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="2" pb="1.5" font-size="xs" font-weight="600" cursor="pointer">Tips</button>
+            </div>
+            <div display="flex" items="center" gap="1">
+              <button id="pg-console-clear" type="button" title="Clear preview messages" aria-label="Clear console" bg="transparent" text="muted" px="2" h="6" rounded="md" font-size="xs" cursor="pointer" hover-bg="primary/10">Clear</button>
+              <button id="pg-bottom-close" type="button" title="Close panel" aria-label="Close panel" display="flex" items="center" justify="center" bg="transparent" text="muted" w="6" h="6" rounded="md" cursor="pointer" hover-bg="primary/10"><i class="ri-close-line" font-size="14"></i></button>
+            </div>
+          </div>
+          <div id="pg-console" px="4" py="2" font-size="xs" style="flex:1;overflow:auto;min-height:0;font-family:'JetBrains Mono',ui-monospace,monospace;"></div>
+          <div id="pg-tips" display="none" px="4" py="2" font-size="xs" text="muted" line-height="relaxed" style="flex:1;overflow:auto;min-height:0;">
+            <div>Spacing: <code>p="6" gap="4"</code> · Colors: <code>bg="blue-700" text="white"</code> · State: <code>hover-bg="slate-950"</code></div>
+            <div>Layout: <code>display="flex" items="center" justify="between"</code> · Responsive: <code>md-grid-cols="3"</code> · Dark: <code>dark-bg="grey-950"</code></div>
+            <div mt="1" data-m="desktop" data-d="block">Shortcuts: <code>Ctrl/⌘ + Enter</code> re-run · <code>Ctrl/⌘ + S</code> save now · <code>Tab</code> / <code>Shift + Tab</code> indent / outdent · <code>Esc</code> then <code>Tab</code> leaves the editor</div>
+            <div mt="1" data-m="mobile" data-d="block" display="none">Use the key row above the keyboard for <code>Tab</code>, <code>=""</code> and other symbols. <code>Run</code> jumps to the preview.</div>
+          </div>
+        </div>
+
+        <!-- ================= Status bar (desktop) ================= -->
+        <div id="pg-statusbar" data-m="desktop" data-d="flex" display="flex" items="center" justify="between" gap="3" px="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900" text="muted" font-size="xs" style="min-height:30px;flex:none;flex-wrap:wrap;">
+          <div display="flex" items="center" gap="3">
+            <span display="inline-flex" items="center" gap="1.5" role="status" aria-live="polite">
+              <span id="pg-dot" w="2" h="2" rounded="full" bg="#9ca3af" style="display:inline-block;"></span>
+              <span id="pg-status" text="text">Starting…</span>
             </span>
-
-            <iframe
-              id="playground-preview"
-              title="Atomattr preview"
-              w="full"
-              h="full"
-              border="0"
-              display="block"
-            ></iframe>
-
+            <span id="pg-save" text="muted"></span>
           </div>
-
+          <div display="flex" items="center" gap="3">
+            <span id="pg-cursor" style="font-variant-numeric:tabular-nums;">Ln 1, Col 1</span>
+            <button id="pg-console-btn" type="button" title="Show console" aria-label="Show console" display="flex" items="center" gap="1.5" bg="transparent" text="muted" px="2" h="6" rounded="md" font-size="xs" cursor="pointer" hover-bg="primary/10">
+              <i class="ri-terminal-box-line" font-size="14"></i>Console
+              <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
+              <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
+            </button>
+            <button id="pg-tips-btn" type="button" title="Tips and shortcuts" aria-label="Show tips" display="flex" items="center" gap="1.5" bg="transparent" text="muted" px="2" h="6" rounded="md" font-size="xs" cursor="pointer" hover-bg="primary/10">
+              <i class="ri-lightbulb-line" font-size="14"></i>Tips
+            </button>
+          </div>
         </div>
 
-        <div px="4" display="none" flex-col gap="1">
-          <p id="playground-helper" mt="2" mb="0" text="muted" font-size="xs" line-height="relaxed"></p>
-          <p id="playground-note" mt="0" mb="0" text="muted" font-size="xs" line-height="relaxed"></p>
-        </div>
-
-
-        <!-- Tips drawer -->
-
-        <details id="playground-tips" border-t="1px" border-color="gray-200" dark-border-color="gray-800" fixed bottom="0" left="0" w="full" bg="#fff" dark-bg="gray-950" z="20">
-
-          <summary
-            display="flex"
-            items="center"
-            justify="between"
-            px="4"
-            py="3"
-            cursor="pointer"
-            font-size="sm"
-            font-weight="600"
-            text="muted"
-          >
-            <span display="flex" items="center" gap="2">
-              <i class="ri-lightbulb-line"></i>
-              Tips
+        <!-- ================= Bottom tab bar (mobile) ================= -->
+        <nav id="pg-mobile-nav" data-m="mobile" data-d="flex" display="none" items="stretch" border-t="1px" border-color="gray-100" dark-border-color="gray-900" bg="#fff" dark-bg="grey-950" aria-label="Workspace panels" style="flex:none;padding-bottom:env(safe-area-inset-bottom, 0px);">
+          <button type="button" data-mobile-pane="editor" aria-pressed="true" display="flex" flex-col items="center" justify="center" gap="0.5" bg="transparent" text="muted" font-size="xs" font-weight="600" cursor="pointer" style="flex:1;min-height:52px;">
+            <i class="ri-code-s-slash-line" font-size="20"></i><span>Code</span>
+          </button>
+          <button type="button" data-mobile-pane="preview" aria-pressed="false" display="flex" flex-col items="center" justify="center" gap="0.5" bg="transparent" text="muted" font-size="xs" font-weight="600" cursor="pointer" style="flex:1;min-height:52px;">
+            <i class="ri-eye-line" font-size="20"></i><span>Preview</span>
+          </button>
+          <button id="pg-m-console" type="button" aria-pressed="false" aria-label="Toggle console" display="flex" flex-col items="center" justify="center" gap="0.5" bg="transparent" text="muted" font-size="xs" font-weight="600" cursor="pointer" style="flex:1;min-height:52px;">
+            <i class="ri-terminal-box-line" font-size="20"></i>
+            <span display="flex" items="center" gap="1.5">Console
+              <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
+              <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
             </span>
-            <i class="ri-arrow-down-s-line"></i>
-          </summary>
-
-          <pre px="4" pb="5" mt="0" text="muted" font-size="sm" line-height="relaxed">Try spacing: p="6" gap="4"
-Try colors: bg="blue-700" text="white"
-Try state: hover-bg="slate-950"
-Try layout: display="flex" items="center" justify="between"
-Try responsive: md-grid-cols="3"</pre>
-
-        </details>
+          </button>
+        </nav>
 
       </section>
-
     </main>
 
-    <script>
-      // Layout-view toggle for the playground split pane. Self-contained —
-      // toggles the "grid-cols" attribute directly, which atomattr's
-      // attribute-selector CSS picks up live, plus show/hide per pane.
-      (function () {
-        const split = document.getElementById('playground-split');
-        if (!split) return;
+    <!-- Toast -->
+    <div id="pg-toast" role="status" aria-live="polite" display="none" items="center" gap="3" bg="#111827" text="white" px="4" py="2" rounded="lg" font-size="sm" z="50" style="position:fixed;left:50%;bottom:44px;transform:translateX(-50%);max-width:92vw;box-shadow:0 8px 28px rgba(0,0,0,.3);">
+      <span id="pg-toast-msg"></span>
+      <button id="pg-toast-action" type="button" display="none" bg="transparent" text="#a5b4fc" font-weight="600" font-size="sm" cursor="pointer"></button>
+    </div>
 
-        const buttons = document.querySelectorAll('[data-layout]');
-        const editorPane = split.querySelector('[data-pane="editor"]');
-        const previewPane = split.querySelector('[data-pane="preview"]');
-
-        function setLayout(mode) {
-          split.dataset.layoutView = mode;
-
-          if (mode === 'editor') {
-            editorPane.style.display = 'flex';
-            previewPane.style.display = 'none';
-            split.setAttribute('lg-grid-cols', '1');
-          } else if (mode === 'preview') {
-            editorPane.style.display = 'none';
-            previewPane.style.display = 'flex';
-            split.setAttribute('lg-grid-cols', '1');
-          } else if (mode === 'stacked') {
-            editorPane.style.display = 'flex';
-            previewPane.style.display = 'flex';
-            split.setAttribute('lg-grid-cols', '1');
-          } else {
-            editorPane.style.display = 'flex';
-            previewPane.style.display = 'flex';
-            split.setAttribute('lg-grid-cols', '2');
-          }
-
-          buttons.forEach((btn) => {
-            const active = btn.dataset.layout === mode;
-            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-            btn.setAttribute('bg', active ? '#fff' : 'transparent');
-            btn.setAttribute('text', active ? 'primary' : 'muted');
-          });
-        }
-
-        buttons.forEach((btn) => {
-          btn.addEventListener('click', () => setLayout(btn.dataset.layout));
-        });
-      })();
-
-      // Visual active state for the HTML / React / Vite tabs. Purely
-      // cosmetic — leaves loading the right starter snippet to app.js
-      // via the same data-language hook.
-      (function () {
-        const tabs = document.querySelectorAll('[data-language]');
-        tabs.forEach((tab) => {
-          tab.addEventListener('click', () => {
-            tabs.forEach((t) => {
-              const active = t === tab;
-              t.setAttribute('aria-pressed', active ? 'true' : 'false');
-              t.setAttribute('text', active ? 'primary' : 'muted');
-              t.setAttribute('border-color', active ? 'primary' : 'transparent');
-            });
-          });
-        });
-      })();
-    </script>
+    <!-- ================= Slide-in menu (mobile) ================= -->
+    <div id="pg-drawer-scrim" display="none" aria-hidden="true" style="position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.5);opacity:0;transition:opacity .22s ease;"></div>
+    <aside id="pg-drawer" role="dialog" aria-modal="true" aria-label="Playground menu" aria-hidden="true" display="flex" flex-col bg="#fff" dark-bg="grey-950" border-r="1px" border-color="gray-100" dark-border-color="gray-900" style="position:fixed;top:0;bottom:0;left:0;width:min(86vw,320px);z-index:61;transform:translateX(-100%);visibility:hidden;transition:transform .22s ease, visibility 0s .22s;box-shadow:0 0 40px rgba(0,0,0,.25);padding-bottom:env(safe-area-inset-bottom, 0px);">
+      <div display="flex" items="center" justify="between" px="4" border-b="1px" border-color="gray-100" dark-border-color="gray-900" style="min-height:52px;flex:none;">
+        <strong font-size="sm" font-weight="700">Playground</strong>
+        <button id="pg-drawer-close" type="button" aria-label="Close menu" title="Close" display="flex" items="center" justify="center" bg="transparent" border="border" text="text" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-close-line" font-size="18"></i></button>
+      </div>
+      <div id="pg-drawer-body" px="3" py="3" style="flex:1;overflow-y:auto;min-height:0;overscroll-behavior:contain;"></div>
+    </aside>
 
     <script src="./dist/atomattr.min.js" defer></script>
     <script type="module" src="./site/app.js"></script>
-
-    <!-- Syntax highlighting -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
 
     <script>
-      // Live syntax highlighting for the code editor. A plain <textarea>
-      // can never show colored text on its own — the browser renders its
-      // value as flat, uncolored text no matter what. So the editor's own
-      // characters are made transparent (see head styles) and a matching
-      // <pre><code> sits behind it, re-highlighted with hljs on every
-      // keystroke. Scroll position is kept in sync between the two so
-      // they stay pixel-aligned as you scroll a long snippet.
-      (function () {
-        const editor = document.getElementById('playground-editor');
-        const codeEl = document.getElementById('playground-highlight');
-        const pre = document.getElementById('playground-highlight-pre');
-        if (!editor || !codeEl || !pre || typeof hljs === 'undefined') return;
+    (function () {
+      'use strict';
 
-        const starter = '<div bg="surface" p="6" rounded="xl" border="border">\n'
-          + '  <h3 font-weight="bold" mb="2">Hello Atomattr</h3>\n'
-          + '  <p text="muted">Edit this snippet and watch the preview update.</p>\n'
-          + '</div>';
+      /* ------------------------------------------------------------------ *
+       * Helpers
+       * ------------------------------------------------------------------ */
+      var doc = document;
+      function $(s, r) { return (r || doc).querySelector(s); }
+      function $$(s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); }
+      function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+      // Element builder. `_t` sets textContent (the key "text" is an Atomattr attribute).
+      function h(tag, attrs, kids) {
+        var e = doc.createElement(tag);
+        if (attrs) Object.keys(attrs).forEach(function (k) {
+          var v = attrs[k];
+          if (v === false || v == null) return;
+          if (k === '_t') e.textContent = v;
+          else if (k === 'style') e.style.cssText = v;
+          else e.setAttribute(k, v === true ? '' : v);
+        });
+        (kids || []).forEach(function (c) { if (c) e.appendChild(typeof c === 'string' ? doc.createTextNode(c) : c); });
+        return e;
+      }
+      function setAttrs(el, map) {
+        Object.keys(map).forEach(function (k) {
+          if (map[k] === null) el.removeAttribute(k); else el.setAttribute(k, map[k]);
+        });
+      }
+      function fmtTime(t) { try { return new Date(t).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); } catch (e) { return ''; } }
 
-        function refreshHighlight() {
-          codeEl.textContent = editor.value;
-          codeEl.removeAttribute('data-highlighted');
-          hljs.highlightElement(codeEl);
-        }
+      var store = {
+        get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+        set: function (k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+      };
+      var WORK_KEY = 'atomattr-playground:work:v2';
+      var PREF_KEY = 'atomattr-playground:prefs:v2';
 
-        function buildPreviewDoc(snippet) {
-          const safeSnippet = String(snippet).replace(/<\/script/gi, '<\\/script');
-          return '<!doctype html>'
-            + '<html><head><meta charset="UTF-8">'
-            + '<link rel="stylesheet" href="./dist/defaults.css">'
-            + '<link rel="stylesheet" href="./assets/remixicon/remixicon.css">'
-            + '<link rel="stylesheet" href="./assets/showcase.css">'
-            + '<style>body{margin:0;padding:1rem;font-family:"DM Sans","IBM Plex Sans",system-ui,sans-serif;}</sty' + 'le>'
-            + '</he' + 'ad><body>' + safeSnippet
-            + '<script src="./dist/atomattr.min.js"></scr' + 'ipt>'
-            + '</bo' + 'dy></ht' + 'ml>';
-        }
+      /* ------------------------------------------------------------------ *
+       * Examples (attribute syntax taken from what this site already uses)
+       * ------------------------------------------------------------------ */
+      var EXAMPLES = [
+        { group: 'Start' },
+        { id: 'starter', title: 'Starter', icon: 'ri-flashlight-line',
+          html: '<div p="6" display="flex" flex-col gap="4">\n  <div bg="surface" p="6" rounded="xl" border="border">\n    <span class="badge">New</span>\n    <h3 font-weight="bold" mb="2">Hello Atomattr</h3>\n    <p text="muted" mb="4">Edit this snippet and watch the preview update.</p>\n    <button type="button" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Get started</button>\n  </div>\n  <p text="muted" font-size="xs">Attributes style the elements. Ordinary CSS lives in the CSS tab.</p>\n</div>',
+          css: '/* Atomattr styles elements through attributes;\n   ordinary CSS works alongside it. */\n.badge {\n  display: inline-block;\n  margin-bottom: 8px;\n  padding: 2px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n  background: rgba(91, 92, 246, 0.12);\n  color: #5b5cf6;\n}\n' },
+        { group: 'Layout' },
+        { id: 'layout', title: 'Page layout', icon: 'ri-layout-top-line',
+          html: '<div display="flex" flex-col gap="4" p="2">\n  <header display="flex" items="center" justify="between" bg="surface" px="4" py="3" rounded="lg" border="border">\n    <strong>Atomattr</strong>\n    <span text="muted" font-size="sm">Docs · Playground</span>\n  </header>\n  <main bg="surface" p="6" rounded="lg" border="border">\n    <h3 font-weight="bold" mb="2">Page layout</h3>\n    <p text="muted">A header, a main area and a footer, stacked with flex and gap.</p>\n  </main>\n  <footer text="muted" font-size="xs" px="2">© Atomattr</footer>\n</div>', css: '' },
+        { id: 'flexbox', title: 'Flexbox', icon: 'ri-align-justify',
+          html: '<div p="2" display="flex" flex-col gap="4">\n  <nav display="flex" items="center" justify="between" gap="3" bg="surface" px="4" py="3" rounded="lg" border="border">\n    <strong>Brand</strong>\n    <div display="flex" items="center" gap="4" text="muted" font-size="sm">\n      <span>Docs</span><span>Pricing</span><span>Blog</span>\n    </div>\n    <button type="button" bg="primary" text="white" px="3" py="1.5" rounded="md" font-size="sm" font-weight="600">Sign in</button>\n  </nav>\n  <div display="flex" items="center" justify="center" gap="3" bg="surface" p="6" rounded="lg" border="border">\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">items="center"</span>\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">justify="center"</span>\n  </div>\n</div>', css: '' },
+        { id: 'grid', title: 'Grid', icon: 'ri-grid-line',
+          html: '<div p="2">\n  <div display="grid" grid-cols="2" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">One</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Two</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Three</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Four</div>\n  </div>\n</div>', css: '' },
+        { group: 'Responsive' },
+        { id: 'responsive', title: 'Responsive grid', icon: 'ri-device-line',
+          html: '<div p="2" display="flex" flex-col gap="3">\n  <p text="muted" font-size="sm">Switch the viewport above: 1 column on mobile, 3 from md, 4 from lg.</p>\n  <div display="grid" grid-cols="1" md-grid-cols="3" lg-grid-cols="4" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">Card 1</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 2</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 3</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 4</div>\n  </div>\n</div>', css: '' },
+        { group: 'Components' },
+        { id: 'buttons', title: 'Buttons', icon: 'ri-cursor-line',
+          html: '<div p="4" display="flex" items="center" gap="3">\n  <button type="button" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Primary</button>\n  <button type="button" bg="transparent" border="border" text="text" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="primary/10">Outline</button>\n  <button type="button" bg="success/10" text="success" px="4" py="2" rounded="lg" font-size="sm" font-weight="600">Soft</button>\n</div>', css: '' },
+        { id: 'cards', title: 'Cards', icon: 'ri-layout-grid-line',
+          html: '<div p="2" display="grid" grid-cols="1" md-grid-cols="3" gap="4">\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-rocket-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Fast</h3>\n    <p text="muted" font-size="sm">Style with attributes, no class names.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-palette-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Expressive</h3>\n    <p text="muted" font-size="sm">States and breakpoints are prefixes.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-shield-check-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Predictable</h3>\n    <p text="muted" font-size="sm">Plain CSS still works alongside.</p>\n  </div>\n</div>', css: '' },
+        { id: 'forms', title: 'Form + custom dropdown', icon: 'ri-edit-box-line',
+          html: '<form p="4" display="flex" flex-col gap="4" onsubmit="return false">\n  <label display="flex" flex-col gap="1.5" font-size="sm" font-weight="600">\n    Email\n    <input type="email" placeholder="you@example.com" w="full" px="3" py="2" rounded="lg" border="border" bg="transparent" text="text" font-size="sm">\n  </label>\n\n  <!-- A custom dropdown built from <details>, so every part takes Atomattr attributes. -->\n  <div display="flex" flex-col gap="1.5">\n    <span font-size="sm" font-weight="600">Plan</span>\n    <details position="relative">\n      <summary display="flex" items="center" justify="between" px="3" py="2" rounded="lg" border="border" font-size="sm" cursor="pointer">\n        Choose a plan\n        <i class="ri-arrow-down-s-line"></i>\n      </summary>\n      <div bg="surface" border="border" rounded="lg" p="1" w="full" z="10" style="position:absolute;top:calc(100% + 4px);left:0;">\n        <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Starter</div>\n        <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Team</div>\n        <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Enterprise</div>\n      </div>\n    </details>\n  </div>\n\n  <button type="submit" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600">Subscribe</button>\n</form>',
+          css: 'summary { list-style: none; }\nsummary::-webkit-details-marker { display: none; }\n' },
+        { group: 'Theming' },
+        { id: 'dark', title: 'Dark mode', icon: 'ri-moon-line',
+          html: '<div bg="#fff" dark-bg="grey-950" text="text" p="6" rounded="xl" border-b="1px" border-color="gray-100" dark-border-color="gray-900">\n  <h3 font-weight="bold" mb="2">Dark mode</h3>\n  <p text="muted" mb="4">dark-bg switches the background when the preview is dark. Try the Preview theme menu.</p>\n  <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">dark-bg="grey-950"</span>\n</div>', css: '' }
+      ];
+      var EXAMPLE_MAP = {};
+      EXAMPLES.forEach(function (e) { if (e.id) EXAMPLE_MAP[e.id] = e; });
 
-        const preview = document.getElementById('playground-preview');
-        function renderPreview() {
-          if (preview) preview.srcdoc = buildPreviewDoc(editor.value);
-        }
+      var VIEWPORTS = {
+        responsive: { label: 'Responsive', hint: 'Fit', icon: 'ri-fullscreen-line', w: 0, h: 0 },
+        mobile: { label: 'Mobile', hint: '390 × 844', icon: 'ri-smartphone-line', w: 390, h: 844 },
+        tablet: { label: 'Tablet', hint: '768 × 1024', icon: 'ri-tablet-line', w: 768, h: 1024 },
+        desktop: { label: 'Desktop', hint: '1280 × 800', icon: 'ri-computer-line', w: 1280, h: 800 }
+      };
+      var VIEWPORT_ITEMS = Object.keys(VIEWPORTS).map(function (k) { return { value: k, label: VIEWPORTS[k].label, hint: VIEWPORTS[k].hint, icon: VIEWPORTS[k].icon }; });
+      var EDITOR_THEME_ITEMS = [
+        { value: 'auto', label: 'Auto', icon: 'ri-contrast-2-line' },
+        { value: 'light', label: 'Light', icon: 'ri-sun-line' },
+        { value: 'dark', label: 'Dark', icon: 'ri-moon-line' }
+      ];
+      var PREVIEW_THEME_ITEMS = [
+        { value: 'system', label: 'System', icon: 'ri-contrast-2-line' },
+        { value: 'light', label: 'Light', icon: 'ri-sun-line' },
+        { value: 'dark', label: 'Dark', icon: 'ri-moon-line' }
+      ];
 
-        // Live: re-highlight and re-render on every keystroke, batched to
-        // one update per frame so fast typing doesn't thrash the iframe.
-        let renderScheduled = false;
-        function scheduleUpdate() {
-          if (renderScheduled) return;
-          renderScheduled = true;
-          requestAnimationFrame(() => {
-            renderScheduled = false;
-            refreshHighlight();
-            renderPreview();
+      /* ------------------------------------------------------------------ *
+       * Custom dropdown (no native <select>, every part carries Atomattr
+       * attributes). Listbox pattern with keyboard support.
+       * ------------------------------------------------------------------ */
+      var ddCount = 0;
+      var openDropdowns = [];
+      function closeOthers(except) { openDropdowns.slice().forEach(function (d) { if (d !== except) d.close(false); }); }
+      doc.addEventListener('pointerdown', function (e) {
+        openDropdowns.slice().forEach(function (d) { if (!d.root.contains(e.target)) d.close(false); });
+      });
+
+      function createDropdown(root, opts) {
+        var uid = 'dd' + (++ddCount);
+        var items = opts.items;
+        var value = opts.value;
+        var activeIdx = -1, isOpen = false, typeBuf = '', typeTimer = 0, iconOnly = false;
+        var height = opts.compact ? '8' : '9';
+
+        var trigIcon = h('i', { 'font-size': '15' });
+        var trigPrefix = h('span', { text: 'muted', _t: opts.prefix || '' });
+        var trigLabel = h('span');
+        var chevron = h('i', { class: 'ri-arrow-down-s-line', text: 'muted', 'font-size': '15' });
+        var trigger = h('button', {
+          type: 'button', 'aria-haspopup': 'listbox', 'aria-expanded': 'false', 'aria-label': opts.label, title: opts.label,
+          display: 'flex', items: 'center', gap: '2', bg: 'transparent', border: 'border', text: 'text',
+          px: '3', h: height, rounded: 'lg', 'font-size': 'sm', 'font-weight': '500', cursor: 'pointer', 'hover-bg': 'primary/10',
+          style: 'white-space:nowrap;'
+        }, [trigIcon, opts.prefix ? trigPrefix : null, trigLabel, chevron]);
+
+        var menu = h('div', {
+          role: 'listbox', id: uid + '-list', tabindex: '-1', 'aria-label': opts.label,
+          position: 'absolute', z: '40', bg: '#fff', 'dark-bg': 'gray-900', border: 'border', rounded: 'lg', p: '1',
+          style: 'display:none;top:calc(100% + 6px);min-width:' + (opts.minWidth || 200) + 'px;max-height:min(60vh,420px);overflow-y:auto;box-shadow:0 12px 32px rgba(0,0,0,.18);' + (opts.align === 'right' ? 'right:0;' : 'left:0;')
+        });
+        root.appendChild(trigger);
+        root.appendChild(menu);
+        trigger.setAttribute('aria-controls', uid + '-list');
+
+        var optionEls = [];
+        function build() {
+          menu.textContent = '';
+          optionEls = [];
+          items.forEach(function (it, i) {
+            if (it.group) {
+              menu.appendChild(h('div', { role: 'presentation', px: '3', pt: '2', pb: '1', 'font-size': 'xs', 'font-weight': '600', text: 'muted', style: 'text-transform:uppercase;letter-spacing:.06em;', _t: it.group }));
+              optionEls[i] = null;
+              return;
+            }
+            var selected = it.value === value;
+            var kids = [];
+            kids.push(h('span', { display: 'flex', items: 'center', gap: '2' }, [
+              it.icon ? h('i', { class: it.icon, 'font-size': '15', text: selected ? 'primary' : 'muted' }) : null,
+              h('span', { _t: it.label })
+            ]));
+            kids.push(h('span', { display: 'flex', items: 'center', gap: '2' }, [
+              it.hint ? h('span', { text: 'muted', 'font-size': 'xs', _t: it.hint }) : null,
+              h('i', { class: selected ? 'ri-check-line' : '', text: 'primary', 'font-size': '14', style: 'width:14px;display:inline-block;' })
+            ]));
+            var el = h('div', {
+              role: 'option', id: uid + '-o' + i, 'aria-selected': selected ? 'true' : 'false', 'data-index': String(i),
+              display: 'flex', items: 'center', justify: 'between', gap: '4', w: 'full', px: '3', py: '2', rounded: 'md',
+              'font-size': 'sm', 'font-weight': selected ? '600' : '400', text: selected ? 'primary' : 'text', bg: 'transparent', cursor: 'pointer',
+              style: 'box-sizing:border-box;white-space:nowrap;'
+            }, kids);
+            el.addEventListener('pointermove', function () { if (activeIdx !== i) setActive(i, false); });
+            el.addEventListener('click', function () { choose(i); });
+            menu.appendChild(el);
+            optionEls[i] = el;
           });
         }
 
-        editor.value = editor.value || starter;
-        refreshHighlight();
-        renderPreview();
-
-        editor.addEventListener('input', scheduleUpdate);
-
-        // app.js (type="module") loads real default/tab code into the
-        // textarea after this script already ran, and does it by setting
-        // .value directly rather than firing an "input" event — so this
-        // watch loop catches that (and any other programmatic change,
-        // like tab switches or resets) and updates both layers live too.
-        let lastSeenValue = editor.value;
-        function watchForExternalChanges() {
-          if (editor.value !== lastSeenValue) {
-            lastSeenValue = editor.value;
-            scheduleUpdate();
-          }
-          requestAnimationFrame(watchForExternalChanges);
+        function current() {
+          for (var i = 0; i < items.length; i++) if (!items[i].group && items[i].value === value) return items[i];
+          return null;
         }
-        requestAnimationFrame(watchForExternalChanges);
+        function renderTrigger(labelOverride) {
+          var it = current();
+          trigLabel.textContent = labelOverride || (it ? it.label : (opts.placeholder || ''));
+          var icon = it && it.icon ? it.icon : (opts.icon || '');
+          trigIcon.className = icon;
+          trigIcon.style.display = icon ? '' : 'none';
+          trigLabel.style.display = (iconOnly || opts.compact === 'icon') ? 'none' : '';
+          trigPrefix.style.display = iconOnly ? 'none' : '';
+          trigger.style.gap = iconOnly ? '4px' : '';
+          trigger.style.paddingLeft = iconOnly ? '10px' : '';
+          trigger.style.paddingRight = iconOnly ? '8px' : '';
+        }
+        function setActive(idx, scroll) {
+          if (activeIdx > -1 && optionEls[activeIdx]) optionEls[activeIdx].setAttribute('bg', 'transparent');
+          activeIdx = idx;
+          if (idx > -1 && optionEls[idx]) {
+            optionEls[idx].setAttribute('bg', 'primary/10');
+            menu.setAttribute('aria-activedescendant', optionEls[idx].id);
+            if (scroll !== false && optionEls[idx].scrollIntoView) optionEls[idx].scrollIntoView({ block: 'nearest' });
+          }
+        }
+        function step(dir) {
+          var n = items.length, i = activeIdx;
+          for (var c = 0; c < n; c++) {
+            i = (i + dir + n) % n;
+            if (!items[i].group) { setActive(i); return; }
+          }
+        }
+        function edge(last) {
+          var list = items.map(function (it, i) { return it.group ? -1 : i; }).filter(function (i) { return i > -1; });
+          if (list.length) setActive(last ? list[list.length - 1] : list[0]);
+        }
+        function choose(i) {
+          var it = items[i];
+          if (!it || it.group) return;
+          var changed = it.value !== value;
+          value = it.value;
+          build(); renderTrigger();
+          close(true);
+          if (changed && opts.onChange) opts.onChange(value, it);
+        }
+        function open() {
+          if (isOpen) return;
+          closeOthers(api);
+          isOpen = true;
+          build();
+          menu.style.display = 'block';
+          trigger.setAttribute('aria-expanded', 'true');
+          var idx = -1;
+          items.forEach(function (it, i) { if (!it.group && it.value === value) idx = i; });
+          if (idx < 0) { edge(false); } else { setActive(idx); }
+          openDropdowns.push(api);
+          try { menu.focus({ preventScroll: true }); } catch (e) { menu.focus(); }
+        }
+        function close(focusTrigger) {
+          if (!isOpen) return;
+          isOpen = false;
+          menu.style.display = 'none';
+          trigger.setAttribute('aria-expanded', 'false');
+          menu.removeAttribute('aria-activedescendant');
+          activeIdx = -1;
+          var k = openDropdowns.indexOf(api);
+          if (k > -1) openDropdowns.splice(k, 1);
+          if (focusTrigger) trigger.focus();
+        }
 
-        editor.addEventListener('scroll', () => {
-          pre.scrollTop = editor.scrollTop;
-          pre.scrollLeft = editor.scrollLeft;
+        trigger.addEventListener('click', function () { if (isOpen) close(true); else open(); });
+        trigger.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); open(); }
+        });
+        menu.addEventListener('keydown', function (e) {
+          switch (e.key) {
+            case 'ArrowDown': e.preventDefault(); step(1); break;
+            case 'ArrowUp': e.preventDefault(); step(-1); break;
+            case 'Home': e.preventDefault(); edge(false); break;
+            case 'End': e.preventDefault(); edge(true); break;
+            case 'Enter': case ' ': e.preventDefault(); if (activeIdx > -1) choose(activeIdx); break;
+            case 'Escape': e.preventDefault(); e.stopPropagation(); close(true); break;
+            case 'Tab': close(false); break;
+            default:
+              if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                clearTimeout(typeTimer);
+                typeBuf += e.key.toLowerCase();
+                typeTimer = setTimeout(function () { typeBuf = ''; }, 600);
+                for (var i = 0; i < items.length; i++) {
+                  if (!items[i].group && items[i].label.toLowerCase().indexOf(typeBuf) === 0) { setActive(i); break; }
+                }
+              }
+          }
+        });
+        menu.addEventListener('focusout', function (e) {
+          if (isOpen && !root.contains(e.relatedTarget)) close(false);
         });
 
-        const runBtn = document.getElementById('playground-run');
-        if (runBtn) runBtn.addEventListener('click', renderPreview);
+        var api = {
+          root: root,
+          open: open,
+          close: close,
+          getValue: function () { return value; },
+          setValue: function (v, labelOverride) { value = v; build(); renderTrigger(labelOverride); },
+          setLabel: function (t) { trigger.setAttribute('aria-label', t); trigger.title = t; },
+          setIconOnly: function (on) { iconOnly = !!on; renderTrigger(); }
+        };
+        build();
+        renderTrigger();
+        return api;
+      }
 
-        const resetBtn = document.getElementById('playground-reset');
-        if (resetBtn) {
-          resetBtn.addEventListener('click', () => {
-            editor.value = starter;
-            refreshHighlight();
-            renderPreview();
-          });
+      /* ------------------------------------------------------------------ *
+       * Elements and state
+       * ------------------------------------------------------------------ */
+      var workspace = $('#pg-workspace');
+      var editorPane = $('#pg-editor-pane');
+      var previewPane = $('#pg-preview-pane');
+      var divider = $('#pg-divider');
+      var frame = $('#pg-frame');
+      var stage = $('#pg-stage');
+      var edBody = $('#pg-ed-body');
+      var statusText = $('#pg-status');
+      var statusDot = $('#pg-dot');
+      var saveText = $('#pg-save');
+      var cursorText = $('#pg-cursor');
+      var sizeText = $('#pg-size');
+      var toast = $('#pg-toast');
+      if (!workspace || !frame || !edBody) return;
+
+      var prefs = { layout: 'split', ratio: 50, viewport: 'responsive', editorTheme: 'auto', previewTheme: 'system', tab: 'html' };
+      try { var rawPrefs = JSON.parse(store.get(PREF_KEY) || '{}'); Object.keys(prefs).forEach(function (k) { if (rawPrefs[k] != null) prefs[k] = rawPrefs[k]; }); } catch (e) { /* ignore */ }
+      if (!VIEWPORTS[prefs.viewport]) prefs.viewport = 'responsive';
+      if (['split', 'stacked', 'editor', 'preview'].indexOf(prefs.layout) < 0) prefs.layout = 'split';
+      prefs.ratio = Math.min(80, Math.max(20, Number(prefs.ratio) || 50));
+      function savePrefs() { store.set(PREF_KEY, JSON.stringify(prefs)); }
+
+      var state = { html: '', css: '', example: 'starter', tab: prefs.tab === 'css' ? 'css' : 'html', mobilePane: 'editor' };
+      var drawerRefresh = function () {};
+
+      /* ------------------------------------------------------------------ *
+       * Editors: transparent textarea over a highlighted <pre>
+       * ------------------------------------------------------------------ */
+      function makeEditor(lang, root) {
+        var ta = $('textarea', root), pre = $('pre', root), code = $('code', root), gutter = $('.pg-gutter', root);
+        var lineCount = 0, raf = 0, tabTrapOff = false;
+
+        function highlight() {
+          raf = 0;
+          var v = ta.value, out = null;
+          if (window.hljs) {
+            try { out = window.hljs.highlight(v, { language: lang === 'html' ? 'xml' : 'css', ignoreIllegals: true }).value; } catch (e) { out = null; }
+          }
+          if (out == null) out = esc(v);
+          code.innerHTML = out + (v.charAt(v.length - 1) === '\n' || v === '' ? ' ' : '');
+          var n = v.split('\n').length;
+          if (n !== lineCount) {
+            lineCount = n;
+            var nums = new Array(n);
+            for (var i = 0; i < n; i++) nums[i] = i + 1;
+            gutter.textContent = nums.join('\n');
+            gutter.style.width = (String(n).length + 3) + 'ch';
+          }
+          syncScroll();
         }
+        function schedule() { if (!raf) raf = requestAnimationFrame(highlight); }
+        function syncScroll() {
+          pre.scrollTop = ta.scrollTop; pre.scrollLeft = ta.scrollLeft; gutter.scrollTop = ta.scrollTop;
+        }
+        function insertText(text) {
+          ta.focus();
+          var ok = false;
+          try { ok = doc.execCommand('insertText', false, text); } catch (e) { ok = false; }
+          if (!ok) {
+            ta.setRangeText(text, ta.selectionStart, ta.selectionEnd, 'end');
+            ta.dispatchEvent(new Event('input', { bubbles: true }));
+          }
+        }
+        function indentSelection(outdent) {
+          var v = ta.value, s = ta.selectionStart, e = ta.selectionEnd;
+          if (!outdent && s === e) { insertText('  '); return; }
+          var ls = v.lastIndexOf('\n', s - 1) + 1;
+          var endRef = (e > s && v.charAt(e - 1) === '\n') ? e - 1 : e;
+          var le = v.indexOf('\n', endRef);
+          if (le === -1) le = v.length;
+          var block = v.slice(ls, le), lines = block.split('\n');
+          var out = lines.map(function (ln) {
+            if (!outdent) return '  ' + ln;
+            var m = ln.match(/^( {1,2}|\t)/);
+            return m ? ln.slice(m[0].length) : ln;
+          });
+          var nb = out.join('\n');
+          var d0 = outdent ? (lines[0].length - out[0].length) : 2;
+          ta.setSelectionRange(ls, le);
+          insertText(nb);
+          ta.setSelectionRange(Math.max(ls, s + (outdent ? -d0 : d0)), e + (nb.length - block.length));
+        }
+        function onKey(ev) {
+          var mod = ev.ctrlKey || ev.metaKey;
+          if (ev.key === 'Escape') { tabTrapOff = true; return; }
+          if (ev.key === 'Tab' && !mod && !ev.altKey) {
+            if (tabTrapOff) { tabTrapOff = false; return; }
+            ev.preventDefault(); indentSelection(ev.shiftKey); return;
+          }
+          tabTrapOff = false;
+          if (mod && ev.key === 'Enter') { ev.preventDefault(); fullReload(); return; }
+          if (mod && (ev.key === 's' || ev.key === 'S')) { ev.preventDefault(); saveNow(); flash('Saved locally'); return; }
+          if (ev.key === 'Enter' && !mod && !ev.shiftKey && !ev.altKey) {
+            var v = ta.value, s = ta.selectionStart, e = ta.selectionEnd;
+            var ls = v.lastIndexOf('\n', s - 1) + 1;
+            var indent = v.slice(ls, s).match(/^[ \t]*/)[0];
+            var before = v.charAt(s - 1), after = v.charAt(e);
+            ev.preventDefault();
+            if ((lang === 'html' && before === '>' && after === '<') || (lang === 'css' && before === '{' && after === '}')) {
+              insertText('\n' + indent + '  \n' + indent);
+              var pos = s + 1 + indent.length + 2;
+              ta.setSelectionRange(pos, pos);
+            } else if (lang === 'css' && before === '{') {
+              insertText('\n' + indent + '  ');
+            } else {
+              insertText('\n' + indent);
+            }
+          }
+        }
+        function cursor() {
+          var s = ta.selectionStart, before = ta.value.slice(0, s).split('\n');
+          cursorText.textContent = 'Ln ' + before.length + ', Col ' + (before[before.length - 1].length + 1);
+        }
+
+        ta.addEventListener('input', function () { schedule(); cursor(); onUserEdit(lang); });
+        ta.addEventListener('scroll', syncScroll);
+        ta.addEventListener('keydown', onKey);
+        ['keyup', 'click', 'focus', 'select'].forEach(function (n) { ta.addEventListener(n, cursor); });
+
+        return {
+          lang: lang, root: root, ta: ta,
+          get value() { return ta.value; },
+          set: function (v) { ta.value = v; ta.setSelectionRange(0, 0); ta.scrollTop = 0; ta.scrollLeft = 0; highlight(); },
+          focus: function () { ta.focus(); cursor(); },
+          rehighlight: highlight,
+          insert: insertText,
+          indent: function () { indentSelection(false); },
+          back: function (n) { var p = Math.max(0, ta.selectionStart - n); ta.setSelectionRange(p, p); }
+        };
+      }
+      var editors = {
+        html: makeEditor('html', $('[data-editor="html"]')),
+        css: makeEditor('css', $('[data-editor="css"]'))
+      };
+
+      /* ------------------------------------------------------------------ *
+       * Tabs
+       * ------------------------------------------------------------------ */
+      var tabButtons = $$('[data-tab]');
+      var copyBtn = $('#pg-copy');
+      function setTab(name, focus) {
+        state.tab = name; prefs.tab = name; savePrefs();
+        tabButtons.forEach(function (b) {
+          var on = b.getAttribute('data-tab') === name;
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+          setAttrs(b, { text: on ? 'primary' : 'muted', 'border-color': on ? 'primary' : 'transparent' });
+        });
+        editors.html.root.style.display = name === 'html' ? 'flex' : 'none';
+        editors.css.root.style.display = name === 'css' ? 'flex' : 'none';
+        var label = name === 'html' ? 'HTML' : 'CSS';
+        copyBtn.title = 'Copy ' + label; copyBtn.setAttribute('aria-label', 'Copy ' + label);
+        editors[name].rehighlight();
+        if (focus) editors[name].focus();
+      }
+      tabButtons.forEach(function (b) { b.addEventListener('click', function () { setTab(b.getAttribute('data-tab'), true); }); });
+
+      /* ------------------------------------------------------------------ *
+       * Quick-insert key row (touch keyboards have no Tab key and awkward symbols)
+       * ------------------------------------------------------------------ */
+      (function buildKeybar() {
+        var bar = $('#pg-keybar');
+        if (!bar) return;
+        var keys = [
+          { icon: 'ri-indent-increase', label: 'Indent', tab: true },
+          { t: '<' }, { t: '>' }, { t: '</', label: '</' }, { t: '/' },
+          { t: '=""', back: 1, label: '=""' }, { t: '"' },
+          { t: '{' }, { t: '}' }, { t: ':' }, { t: ';' }, { t: '#' }, { t: '(' }, { t: ')' }
+        ];
+        keys.forEach(function (k) {
+          var btn = h('button', {
+            type: 'button', 'aria-label': k.label && k.tab ? k.label : 'Insert ' + (k.t || ''),
+            display: 'flex', items: 'center', justify: 'center', bg: 'transparent', border: 'border', text: 'text',
+            rounded: 'md', 'font-size': 'sm', cursor: 'pointer',
+            style: 'flex:none;min-width:38px;height:34px;padding:0 10px;font-family:"JetBrains Mono",ui-monospace,monospace;'
+          }, [k.icon ? h('i', { class: k.icon, 'font-size': '16' }) : doc.createTextNode(k.label || k.t)]);
+          // Keep focus (and the on-screen keyboard) inside the editor.
+          btn.addEventListener('pointerdown', function (e) { e.preventDefault(); });
+          btn.addEventListener('click', function () {
+            var ed = editors[state.tab];
+            if (k.tab) { ed.focus(); ed.indent(); return; }
+            ed.insert(k.t);
+            if (k.back) ed.back(k.back);
+          });
+          bar.appendChild(btn);
+        });
       })();
+
+      /* ------------------------------------------------------------------ *
+       * Toast / clipboard
+       * ------------------------------------------------------------------ */
+      var toastTimer = 0, toastActionFn = null;
+      var toastMsg = $('#pg-toast-msg'), toastAction = $('#pg-toast-action');
+      function flash(msg, action) {
+        toastMsg.textContent = msg;
+        toastActionFn = action ? action.fn : null;
+        toastAction.style.display = action ? '' : 'none';
+        toastAction.textContent = action ? action.label : '';
+        toast.style.display = 'flex';
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.style.display = 'none'; toastActionFn = null; }, action ? 9000 : 2600);
+      }
+      toastAction.addEventListener('click', function () {
+        var fn = toastActionFn; toast.style.display = 'none'; toastActionFn = null;
+        if (fn) fn();
+      });
+      function copyText(text) {
+        function legacy() {
+          var t = h('textarea', { style: 'position:fixed;left:-9999px;top:0;opacity:0;' });
+          t.value = text; doc.body.appendChild(t); t.select();
+          var ok = false; try { ok = doc.execCommand('copy'); } catch (e) { ok = false; }
+          t.remove();
+          return ok;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return legacy(); });
+        }
+        return Promise.resolve(legacy());
+      }
+      copyBtn.addEventListener('click', function () {
+        var label = state.tab === 'html' ? 'HTML' : 'CSS';
+        copyText(editors[state.tab].value).then(function (ok) {
+          flash(ok ? label + ' copied' : 'Copy failed — select the text and copy it manually');
+        });
+      });
+
+      /* ------------------------------------------------------------------ *
+       * Diagnostics (non-fatal markup/CSS hints) and console
+       * ------------------------------------------------------------------ */
+      var VOID = { area: 1, base: 1, br: 1, col: 1, embed: 1, hr: 1, img: 1, input: 1, link: 1, meta: 1, param: 1, source: 1, track: 1, wbr: 1 };
+      var OPTIONAL_END = { p: 1, li: 1, dt: 1, dd: 1, tr: 1, td: 1, th: 1, thead: 1, tbody: 1, tfoot: 1, option: 1, optgroup: 1, colgroup: 1 };
+      function lintHtml(src) {
+        var out = [], stack = [];
+        function line(i) { return src.slice(0, i).split('\n').length; }
+        function warn(t, i) { if (out.length < 8) out.push({ level: 'warn', source: 'HTML', line: line(i), text: t }); }
+        var re = /<!--[\s\S]*?(?:-->|$)|<(script|style|textarea|title)\b(?:"[^"]*"|'[^']*'|[^'">])*>[\s\S]*?(?:<\/\1\s*>|$)|<(\/?)([a-zA-Z][\w:-]*)((?:"[^"]*"|'[^']*'|[^'">])*)(>|$)/gi;
+        var m;
+        while ((m = re.exec(src))) {
+          if (m[0].indexOf('<!--') === 0) { if (!/-->$/.test(m[0])) warn('Comment is never closed', m.index); continue; }
+          if (m[1]) {
+            if (!new RegExp('</' + m[1] + '\\s*>$', 'i').test(m[0])) warn('<' + m[1].toLowerCase() + '> is never closed', m.index);
+            if (m[1].toLowerCase() === 'script') warn('<script> tags are not executed in the preview', m.index);
+            continue;
+          }
+          var closing = m[2] === '/', name = m[3].toLowerCase();
+          if (m[5] === '') warn('<' + name + '> is missing its closing ">"', m.index);
+          if (closing) {
+            if (VOID[name] || OPTIONAL_END[name]) continue;
+            var idx = -1;
+            for (var k = stack.length - 1; k >= 0; k--) if (stack[k].name === name) { idx = k; break; }
+            if (idx === -1) { warn('Unexpected </' + name + '> with no matching opening tag', m.index); continue; }
+            for (var j = stack.length - 1; j > idx; j--) warn('<' + stack[j].name + '> (line ' + stack[j].line + ') is not closed before </' + name + '>', m.index);
+            stack.length = idx;
+          } else if (!VOID[name] && !OPTIONAL_END[name] && !/\/\s*$/.test(m[4])) {
+            stack.push({ name: name, line: line(m.index) });
+          }
+        }
+        stack.forEach(function (s) { if (out.length < 8) out.push({ level: 'warn', source: 'HTML', line: s.line, text: '<' + s.name + '> is never closed' }); });
+        return out;
+      }
+      function lintCss(src) {
+        var out = [];
+        if (/\/\*(?![\s\S]*?\*\/)/.test(src)) out.push({ level: 'warn', source: 'CSS', text: 'A comment is never closed' });
+        var clean = src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, '""');
+        var open = (clean.match(/\{/g) || []).length, close = (clean.match(/\}/g) || []).length;
+        if (open !== close) out.push({ level: 'warn', source: 'CSS', text: 'Unbalanced braces: ' + open + ' "{" and ' + close + ' "}"' });
+        return out;
+      }
+
+      var lintEntries = [], runtimeEntries = [];
+      var consoleEl = $('#pg-console');
+      function addRuntime(level, text, extra) {
+        if (runtimeEntries.length >= 200) runtimeEntries.shift();
+        runtimeEntries.push({ level: level, source: 'Preview', text: text, time: Date.now(), line: extra && extra.line });
+        renderConsole(); renderStatus();
+      }
+      function renderConsole() {
+        var all = lintEntries.concat(runtimeEntries);
+        consoleEl.textContent = '';
+        if (!all.length) {
+          consoleEl.appendChild(h('div', { text: 'muted', _t: 'No messages. Preview errors and markup warnings appear here.' }));
+        }
+        all.forEach(function (e) {
+          var color = e.level === 'error' ? '#dc2626' : '#d97706';
+          var where = e.source + (e.line ? ':' + e.line : '');
+          consoleEl.appendChild(h('div', { display: 'flex', gap: '2', py: '0.5' }, [
+            h('i', { class: e.level === 'error' ? 'ri-close-circle-line' : 'ri-error-warning-line', style: 'color:' + color + ';flex:none;' }),
+            h('span', { style: 'flex:1;white-space:pre-wrap;word-break:break-word;', _t: e.text }),
+            h('span', { text: 'muted', style: 'flex:none;', _t: where })
+          ]));
+        });
+        var errs = runtimeEntries.filter(function (e) { return e.level === 'error'; }).length;
+        var warns = lintEntries.length + runtimeEntries.filter(function (e) { return e.level === 'warn'; }).length;
+        // Badges exist in both the desktop status bar and the mobile tab bar.
+        $$('[data-badge-err]').forEach(function (b) { b.textContent = String(errs); b.style.display = errs ? 'inline-block' : 'none'; });
+        $$('[data-badge-warn]').forEach(function (b) { b.textContent = String(warns); b.style.display = warns ? 'inline-block' : 'none'; });
+      }
+
+      /* ------------------------------------------------------------------ *
+       * Status
+       * ------------------------------------------------------------------ */
+      var preview = { phase: 'loading', engineFailed: false, rendering: false };
+      var DOT = { ok: '#16a34a', busy: '#6366f1', warn: '#d97706', error: '#dc2626' };
+      function renderStatus() {
+        var kind = 'ok', msg = 'Ready';
+        var errs = runtimeEntries.filter(function (e) { return e.level === 'error'; }).length;
+        if (preview.phase === 'failed') { kind = 'error'; msg = 'Preview did not start — check that ./dist/atomattr.min.js and ./dist/defaults.css load'; }
+        else if (preview.engineFailed) { kind = 'error'; msg = 'Atomattr runtime failed to load (./dist/atomattr.min.js)'; }
+        else if (preview.phase === 'loading') { kind = 'busy'; msg = 'Loading preview…'; }
+        else if (preview.rendering) { kind = 'busy'; msg = 'Rendering…'; }
+        else if (errs) { kind = 'error'; msg = errs + (errs === 1 ? ' error' : ' errors') + ' in preview'; }
+        else if (lintEntries.length) { kind = 'warn'; msg = lintEntries.length + (lintEntries.length === 1 ? ' markup warning' : ' markup warnings'); }
+        statusText.textContent = msg;
+        statusDot.setAttribute('bg', DOT[kind]);
+      }
+
+      /* ------------------------------------------------------------------ *
+       * Preview iframe: one document, one engine. Updates are posted into it.
+       * ------------------------------------------------------------------ */
+      function bootstrap() {
+        var docId = document.documentElement.getAttribute('data-pg-doc');
+        var styleEl = document.getElementById('pg-user-css');
+        var curHtml = null, curCss = null, engine = null;
+        function post(m) { m.__pg = 1; m.doc = docId; try { window.parent.postMessage(m, '*'); } catch (e) { /* ignore */ } }
+        function fmt(a) {
+          if (a instanceof Error) return a.message;
+          if (typeof a === 'object' && a !== null) { try { return JSON.stringify(a); } catch (e) { return String(a); } }
+          return String(a);
+        }
+        window.__pgEngine = function (ok) { engine = ok; };
+        window.addEventListener('error', function (e) { post({ type: 'error', text: e.message || 'Script error', line: e.lineno || 0 }); });
+        window.addEventListener('unhandledrejection', function (e) { post({ type: 'error', text: 'Unhandled promise rejection: ' + fmt(e.reason) }); });
+        ['error', 'warn'].forEach(function (lvl) {
+          var orig = console[lvl];
+          console[lvl] = function () {
+            try { post({ type: 'console', level: lvl, text: [].map.call(arguments, fmt).join(' ') }); } catch (e) { /* ignore */ }
+            return orig.apply(console, arguments);
+          };
+        });
+        function theme(t) {
+          var de = document.documentElement;
+          de.classList.remove('dark', 'light'); de.removeAttribute('data-theme'); de.style.colorScheme = '';
+          if (t === 'dark' || t === 'light') { de.classList.add(t); de.setAttribute('data-theme', t); de.style.colorScheme = t; }
+        }
+        // rAF never fires inside a display:none iframe (the hidden pane on mobile),
+        // so acknowledge from a timer as well.
+        function ackRendered(id) {
+          var done = false;
+          function go() { if (done) return; done = true; post({ type: 'rendered', id: id }); }
+          requestAnimationFrame(go);
+          setTimeout(go, 60);
+        }
+        window.addEventListener('message', function (e) {
+          if (e.source !== window.parent) return;
+          var d = e.data;
+          if (!d || d.__pg !== 1) return;
+          try {
+            if (d.type === 'update') {
+              if (typeof d.css === 'string' && d.css !== curCss) { curCss = d.css; styleEl.textContent = d.css; }
+              if (typeof d.html === 'string' && d.html !== curHtml) { curHtml = d.html; document.body.innerHTML = d.html; }
+              ackRendered(d.id);
+            } else if (d.type === 'theme') {
+              theme(d.value);
+            }
+          } catch (err) {
+            post({ type: 'error', text: 'Render failed: ' + (err && err.message ? err.message : err) });
+            post({ type: 'rendered', id: d.id });
+          }
+        });
+        window.addEventListener('load', function () { post({ type: 'ready', engine: engine }); });
+      }
+      var BOOT = '(' + bootstrap.toString() + ')();';
+
+      function neutralize(html) { return String(html).replace(/<script\b/gi, '<script type="text/plain" data-pg-disabled'); }
+      function absUrl(p) { return new URL(p, location.href).href; }
+      var docSeq = 0, currentDoc = '0', built = null, renderId = 0, ackTimer = 0, readyTimer = 0, pendingTimer = 0;
+
+      function buildDoc(html, css, theme, id) {
+        var themeAttrs = (theme === 'dark' || theme === 'light') ? ' class="' + theme + '" data-theme="' + theme + '" style="color-scheme:' + theme + '"' : '';
+        return '<!doctype html><html lang="en" data-pg-doc="' + id + '"' + themeAttrs + '><head><meta charset="UTF-8">'
+          + '<meta name="viewport" content="width=device-width, initial-scale=1">'
+          + '<link rel="stylesheet" href="' + absUrl('./dist/defaults.css') + '">'
+          + '<link rel="stylesheet" href="' + absUrl('./assets/remixicon/remixicon.css') + '">'
+          + '<style id="pg-base">body{margin:0;padding:1rem;font-family:"DM Sans","IBM Plex Sans",system-ui,sans-serif}</style>'
+          + '<style id="pg-user-css">' + String(css).replace(/<\/style/gi, '<\\/style') + '</style>'
+          + '<script>' + BOOT + '</scr' + 'ipt>'
+          + '<script src="' + absUrl('./dist/atomattr.min.js') + '" defer onload="window.__pgEngine(true)" onerror="window.__pgEngine(false)"></scr' + 'ipt>'
+          + '</he' + 'ad><body>' + neutralize(html) + '</bo' + 'dy></ht' + 'ml>';
+      }
+
+      function fullReload() {
+        clearTimeout(readyTimer); clearTimeout(ackTimer); clearTimeout(pendingTimer);
+        currentDoc = String(++docSeq);
+        preview.phase = 'loading'; preview.engineFailed = false; preview.rendering = false;
+        runtimeEntries = []; renderConsole(); renderStatus();
+        built = { html: state.html, css: state.css, theme: prefs.previewTheme };
+        frame.srcdoc = buildDoc(state.html, state.css, prefs.previewTheme, currentDoc);
+        readyTimer = setTimeout(function () { if (preview.phase === 'loading') { preview.phase = 'failed'; renderStatus(); } }, 8000);
+      }
+
+      function pushUpdate() {
+        if (preview.phase !== 'ready' || !frame.contentWindow) return;
+        if (built && built.html === state.html && built.css === state.css) { preview.rendering = false; renderStatus(); return; }
+        built = { html: state.html, css: state.css, theme: built ? built.theme : prefs.previewTheme };
+        preview.rendering = true; renderStatus();
+        var id = ++renderId;
+        frame.contentWindow.postMessage({ __pg: 1, type: 'update', id: id, html: neutralize(state.html), css: state.css }, '*');
+        clearTimeout(ackTimer);
+        ackTimer = setTimeout(function () {
+          preview.rendering = false;
+          addRuntime('error', 'The preview did not respond to an update. Use Run to reload it.');
+        }, 4000);
+      }
+
+      var updateTimer = 0;
+      function scheduleUpdate() {
+        clearTimeout(updateTimer);
+        updateTimer = setTimeout(function () {
+          lintEntries = lintHtml(state.html).concat(lintCss(state.css));
+          renderConsole(); renderStatus();
+          pushUpdate();
+        }, 250);
+      }
+
+      window.addEventListener('message', function (e) {
+        if (e.source !== frame.contentWindow) return;
+        var d = e.data;
+        if (!d || d.__pg !== 1 || d.doc !== currentDoc) return;
+        if (d.type === 'ready') {
+          clearTimeout(readyTimer);
+          preview.phase = 'ready';
+          preview.engineFailed = d.engine === false;
+          renderStatus();
+          frame.contentWindow.postMessage({ __pg: 1, type: 'theme', value: prefs.previewTheme }, '*');
+          pushUpdate();
+        } else if (d.type === 'rendered') {
+          if (d.id === renderId) { clearTimeout(ackTimer); preview.rendering = false; renderStatus(); }
+        } else if (d.type === 'error') {
+          addRuntime('error', String(d.text || 'Error'), { line: d.line });
+        } else if (d.type === 'console') {
+          addRuntime(d.level === 'error' ? 'error' : 'warn', String(d.text || ''));
+        }
+      });
+
+      /* ------------------------------------------------------------------ *
+       * Persistence, backups and sharing
+       * ------------------------------------------------------------------ */
+      var dirty = false, saveTimer = 0, storageOk = true, savedAt = 0, backup = null;
+      function renderSave() {
+        var t;
+        if (!storageOk) t = '· Not saved (browser storage unavailable)';
+        else if (dirty) t = '· Unsaved changes';
+        else if (savedAt) t = '· Saved locally ' + fmtTime(savedAt);
+        else t = '';
+        saveText.textContent = t;
+        saveText.setAttribute('text', !storageOk ? '#d97706' : dirty ? '#d97706' : 'muted');
+      }
+      function saveNow() {
+        clearTimeout(saveTimer);
+        var ok = store.set(WORK_KEY, JSON.stringify({ v: 2, html: state.html, css: state.css, example: state.example, savedAt: Date.now() }));
+        storageOk = ok;
+        if (ok) { dirty = false; savedAt = Date.now(); }
+        renderSave();
+      }
+      function markDirty() { dirty = true; renderSave(); clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 900); }
+      window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+      // Mobile browsers rarely fire beforeunload; persist when the tab is hidden instead.
+      doc.addEventListener('visibilitychange', function () { if (doc.visibilityState === 'hidden' && dirty) saveNow(); });
+
+      function onUserEdit(lang) {
+        state[lang] = editors[lang].value;
+        markDirty(); scheduleUpdate();
+      }
+
+      function exampleLabel() { var ex = EXAMPLE_MAP[state.example]; return ex ? ex.title : null; }
+      var exampleDD = null, resetBtn = $('#pg-reset');
+      function setSource(html, css, exampleId, opts) {
+        state.html = html; state.css = css; state.example = exampleId;
+        editors.html.set(html); editors.css.set(css);
+        if (exampleDD) exampleDD.setValue(exampleId || '__custom', exampleLabel() ? null : 'Custom');
+        resetBtn.title = 'Reset to “' + (EXAMPLE_MAP[exampleId] ? EXAMPLE_MAP[exampleId].title : 'Starter') + '”';
+        resetBtn.setAttribute('aria-label', resetBtn.title);
+        if (!opts || !opts.silent) { markDirty(); }
+        lintEntries = lintHtml(html).concat(lintCss(css));
+        renderConsole(); renderStatus();
+        clearTimeout(updateTimer); pushUpdate();
+        drawerRefresh();
+      }
+      function takeBackup() { backup = { html: state.html, css: state.css, example: state.example }; }
+      function undoLoad() { if (backup) { var b = backup; backup = null; setSource(b.html, b.css, b.example); flash('Restored your previous code'); } }
+      function isModified() {
+        var ex = EXAMPLE_MAP[state.example];
+        return !ex || ex.html !== state.html || ex.css !== state.css;
+      }
+      function loadExample(id, announce) {
+        var ex = EXAMPLE_MAP[id] || EXAMPLE_MAP.starter;
+        var hadChanges = isModified();
+        takeBackup();
+        setSource(ex.html, ex.css, ex.id);
+        if (announce) flash('Loaded “' + ex.title + '”', hadChanges ? { label: 'Undo', fn: undoLoad } : null);
+      }
+
+      resetBtn.addEventListener('click', function () {
+        var id = EXAMPLE_MAP[state.example] ? state.example : 'starter';
+        loadExample(id, true);
+      });
+
+      // Share links: #code=<z|b>.<base64url>. Compressed when the browser supports it.
+      function b64u(bytes) {
+        var s = '', CH = 0x8000;
+        for (var i = 0; i < bytes.length; i += CH) s += String.fromCharCode.apply(null, bytes.subarray(i, i + CH));
+        return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      }
+      function fromB64u(str) {
+        str = str.replace(/-/g, '+').replace(/_/g, '/');
+        while (str.length % 4) str += '=';
+        var bin = atob(str), out = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+        return out;
+      }
+      function encodeShare(obj) {
+        var bytes = new TextEncoder().encode(JSON.stringify(obj));
+        if (typeof CompressionStream !== 'undefined') {
+          try {
+            var stream = new Blob([bytes]).stream().pipeThrough(new CompressionStream('deflate-raw'));
+            return new Response(stream).arrayBuffer().then(function (buf) { return 'z.' + b64u(new Uint8Array(buf)); }, function () { return 'b.' + b64u(bytes); });
+          } catch (e) { /* fall through */ }
+        }
+        return Promise.resolve('b.' + b64u(bytes));
+      }
+      function decodeShare(token) {
+        var kind = token.slice(0, 2), data;
+        try { data = fromB64u(token.slice(2)); } catch (e) { return Promise.reject(new Error('bad encoding')); }
+        var bytesP;
+        if (kind === 'z.') {
+          if (typeof DecompressionStream === 'undefined') return Promise.reject(new Error('This browser cannot open compressed share links'));
+          bytesP = new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer().then(function (b) { return new Uint8Array(b); });
+        } else if (kind === 'b.') { bytesP = Promise.resolve(data); }
+        else return Promise.reject(new Error('unknown format'));
+        return bytesP.then(function (bytes) {
+          if (bytes.length > 1000000) throw new Error('too large');
+          var obj = JSON.parse(new TextDecoder().decode(bytes));
+          if (!obj || typeof obj.h !== 'string' || typeof obj.c !== 'string') throw new Error('invalid payload');
+          return obj;
+        });
+      }
+      $('#pg-share').addEventListener('click', function () {
+        encodeShare({ v: 1, h: state.html, c: state.css }).then(function (token) {
+          var url = location.origin + location.pathname + '#code=' + token;
+          if (location.protocol === 'file:') url = location.href.split('#')[0] + '#code=' + token;
+          if (url.length > 16000) { flash('This snippet is too large for a share link (' + url.length + ' characters)'); return; }
+          copyText(url).then(function (ok) {
+            if (!ok) { flash('Could not copy the link'); return; }
+            flash(url.length > 8000
+              ? 'Link copied, but it is long (' + url.length + ' chars) and some apps may cut it off'
+              : 'Share link copied — anyone with it can read this code');
+          });
+        }).catch(function () { flash('Could not create a share link'); });
+      });
+
+      /* ------------------------------------------------------------------ *
+       * Slide-in menu (mobile): examples, preview size and themes
+       * ------------------------------------------------------------------ */
+      var drawer = $('#pg-drawer'), scrim = $('#pg-drawer-scrim'), menuBtn = $('#pg-menu');
+      var drawerBody = $('#pg-drawer-body'), drawerClose = $('#pg-drawer-close');
+      var drawerOpen = false, drawerReturnFocus = null, drawerLists = [];
+
+      function openDrawer() {
+        if (drawerOpen) return;
+        drawerOpen = true;
+        drawerReturnFocus = doc.activeElement;
+        closeOthers(null);
+        scrim.style.display = 'block';
+        requestAnimationFrame(function () { scrim.style.opacity = '1'; });
+        drawer.style.transition = 'transform .22s ease, visibility 0s';
+        drawer.style.visibility = 'visible';
+        drawer.style.transform = 'translateX(0)';
+        drawer.setAttribute('aria-hidden', 'false');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        doc.body.style.overflow = 'hidden';
+        drawerRefresh();
+        drawerClose.focus();
+      }
+      function closeDrawer(restoreFocus) {
+        if (!drawerOpen) return;
+        drawerOpen = false;
+        scrim.style.opacity = '0';
+        drawer.style.transition = 'transform .22s ease, visibility 0s .22s';
+        drawer.style.transform = 'translateX(-100%)';
+        drawer.style.visibility = 'hidden';
+        drawer.setAttribute('aria-hidden', 'true');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        doc.body.style.overflow = '';
+        setTimeout(function () { if (!drawerOpen) scrim.style.display = 'none'; }, 230);
+        if (restoreFocus !== false && drawerReturnFocus && drawerReturnFocus.focus) drawerReturnFocus.focus();
+      }
+      menuBtn.addEventListener('click', openDrawer);
+      drawerClose.addEventListener('click', function () { closeDrawer(true); });
+      scrim.addEventListener('click', function () { closeDrawer(true); });
+      doc.addEventListener('keydown', function (e) {
+        if (!drawerOpen) return;
+        if (e.key === 'Escape') { e.preventDefault(); closeDrawer(true); return; }
+        if (e.key === 'Tab') {
+          var f = $$('button', drawer).filter(function (b) { return b.offsetParent !== null; });
+          if (!f.length) return;
+          var first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+      // A vertical list (or grid) of toggle buttons that mirrors a piece of state.
+      function optionList(parent, items, getVal, onPick, o) {
+        o = o || {};
+        var box = h('div', o.grid ? { display: 'grid', 'grid-cols': String(o.grid), gap: '2' } : { display: 'flex', 'flex-col': true, gap: '0.5' });
+        var entries = [];
+        items.forEach(function (it) {
+          if (it.group) {
+            box.appendChild(h('div', { px: '3', pt: '3', pb: '1', 'font-size': 'xs', 'font-weight': '600', text: 'muted', style: 'text-transform:uppercase;letter-spacing:.06em;', _t: it.group }));
+            return;
+          }
+          var icon = it.icon ? h('i', { class: it.icon, 'font-size': o.grid ? '18' : '16' }) : null;
+          var attrs = o.grid
+            ? { display: 'flex', 'flex-col': true, items: 'center', justify: 'center', gap: '1', px: '2', py: '3', border: 'border', 'font-size': 'xs' }
+            : { display: 'flex', items: 'center', gap: '3', w: 'full', px: '3', 'font-size': 'sm' };
+          attrs.type = 'button'; attrs.rounded = 'lg'; attrs.cursor = 'pointer'; attrs['hover-bg'] = 'primary/10';
+          attrs.style = 'min-height:44px;box-sizing:border-box;' + (o.grid ? '' : 'text-align:left;');
+          var kids = [icon, h('span', { _t: it.label }), it.hint ? h('span', { text: 'muted', 'font-size': 'xs', style: 'margin-left:auto;', _t: it.hint }) : null];
+          var btn = h('button', attrs, kids);
+          btn.addEventListener('click', function () { onPick(it.value); if (o.closeAfter) closeDrawer(false); });
+          box.appendChild(btn);
+          entries.push({ btn: btn, value: it.value });
+        });
+        parent.appendChild(box);
+        return {
+          paint: function () {
+            var v = getVal();
+            entries.forEach(function (e) {
+              var on = e.value === v;
+              setAttrs(e.btn, { bg: on ? 'primary/10' : 'transparent', text: on ? 'primary' : 'text', 'font-weight': on ? '600' : '500' });
+              e.btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+          }
+        };
+      }
+      function drawerSection(title) {
+        var wrap = h('div', { mb: '5' }, [h('div', { px: '2', pb: '1.5', 'font-size': 'xs', 'font-weight': '600', text: 'muted', style: 'text-transform:uppercase;letter-spacing:.06em;', _t: title })]);
+        drawerBody.appendChild(wrap);
+        return wrap;
+      }
+      function buildDrawer() {
+        var exampleItems = EXAMPLES.map(function (e) { return e.group ? { group: e.group } : { value: e.id, label: e.title, icon: e.icon }; });
+        drawerLists.push(optionList(drawerSection('Examples'), exampleItems, function () { return state.example; }, function (v) { loadExample(v, true); }, { closeAfter: true }));
+        drawerLists.push(optionList(drawerSection('Preview size'), VIEWPORT_ITEMS, function () { return prefs.viewport; }, function (v) { setViewport(v); }));
+        drawerLists.push(optionList(drawerSection('Preview theme'), PREVIEW_THEME_ITEMS, function () { return prefs.previewTheme; }, function (v) { setPreviewTheme(v); }, { grid: 3 }));
+        drawerLists.push(optionList(drawerSection('Editor theme'), EDITOR_THEME_ITEMS, function () { return prefs.editorTheme; }, function (v) { setEditorTheme(v); }, { grid: 3 }));
+        var reset = h('button', {
+          type: 'button', display: 'flex', items: 'center', justify: 'center', gap: '2', w: 'full', px: '3', rounded: 'lg',
+          bg: 'transparent', border: 'border', text: 'text', 'font-size': 'sm', 'font-weight': '600', cursor: 'pointer', 'hover-bg': 'primary/10',
+          style: 'min-height:44px;box-sizing:border-box;'
+        }, [h('i', { class: 'ri-restart-line', 'font-size': '16' }), h('span', { _t: 'Reset to example' })]);
+        reset.addEventListener('click', function () { closeDrawer(false); resetBtn.click(); });
+        drawerBody.appendChild(reset);
+        drawerRefresh = function () { drawerLists.forEach(function (l) { l.paint(); }); };
+        drawerRefresh();
+      }
+
+      /* ------------------------------------------------------------------ *
+       * Layout, resizing, mobile tab bar
+       * ------------------------------------------------------------------ */
+      var mq = window.matchMedia ? window.matchMedia('(max-width: 1023px)') : { matches: false };
+      var layoutBtns = $$('[data-layout]'), mobileBtns = $$('[data-mobile-pane]');
+      var bottom = $('#pg-bottom'), consoleBox = $('#pg-console'), tipsBox = $('#pg-tips');
+      var mConsoleBtn = $('#pg-m-console');
+      function isMobile() { return !!mq.matches; }
+      function isColumn() { return isMobile() || prefs.layout === 'stacked'; }
+      function paintSeg(btns, activeFn) {
+        btns.forEach(function (b) {
+          var on = activeFn(b);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          setAttrs(b, { bg: on ? '#fff' : 'transparent', 'dark-bg': on ? 'gray-800' : null, text: on ? 'primary' : 'muted' });
+        });
+      }
+      function paintNav() {
+        mobileBtns.forEach(function (b) {
+          var on = b.getAttribute('data-mobile-pane') === state.mobilePane;
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          setAttrs(b, { bg: 'transparent', text: on ? 'primary' : 'muted' });
+        });
+        var consoleOpen = bottom.style.display === 'flex';
+        mConsoleBtn.setAttribute('aria-pressed', consoleOpen ? 'true' : 'false');
+        setAttrs(mConsoleBtn, { text: consoleOpen ? 'primary' : 'muted' });
+      }
+      function applyLayout() {
+        var mobile = isMobile();
+        var mode = mobile ? state.mobilePane : prefs.layout;
+        var showEditor = mode !== 'preview', showPreview = mode !== 'editor';
+        var column = mobile || mode === 'stacked';
+        workspace.style.flexDirection = column ? 'column' : 'row';
+        editorPane.style.display = showEditor ? 'flex' : 'none';
+        previewPane.style.display = showPreview ? 'flex' : 'none';
+        var both = showEditor && showPreview && !mobile;
+        divider.style.display = both ? 'block' : 'none';
+        divider.setAttribute('aria-orientation', column ? 'horizontal' : 'vertical');
+        divider.style.cursor = column ? 'row-resize' : 'col-resize';
+        divider.style.width = column ? 'auto' : '6px';
+        divider.style.height = column ? '6px' : 'auto';
+        divider.setAttribute('aria-valuenow', String(Math.round(prefs.ratio)));
+        divider.setAttribute('aria-valuemin', '20'); divider.setAttribute('aria-valuemax', '80');
+        if (both) {
+          editorPane.style.flex = '0 0 calc(' + prefs.ratio + '% - 3px)';
+          editorPane.style.minWidth = column ? '0' : '260px';
+        } else { editorPane.style.flex = '1 1 0'; editorPane.style.minWidth = '0'; }
+        previewPane.style.flex = '1 1 0';
+
+        // Show/hide chrome per breakpoint (data-m="mobile" | "desktop").
+        $$('[data-m]').forEach(function (el) {
+          var show = (el.getAttribute('data-m') === 'mobile') === mobile;
+          el.style.display = show ? (el.getAttribute('data-d') || 'flex') : 'none';
+        });
+        bottom.style.height = mobile ? 'min(38dvh, 240px)' : '168px';
+        toast.style.bottom = mobile ? 'calc(72px + env(safe-area-inset-bottom, 0px))' : '44px';
+        if (viewportDD) viewportDD.setIconOnly(mobile);
+        if (!mobile) closeDrawer(false);
+
+        paintSeg(layoutBtns, function (b) { return b.getAttribute('data-layout') === prefs.layout; });
+        paintNav();
+        if (showEditor) editors[state.tab].rehighlight();
+        measure();
+      }
+      layoutBtns.forEach(function (b) { b.addEventListener('click', function () { prefs.layout = b.getAttribute('data-layout'); savePrefs(); applyLayout(); }); });
+      mobileBtns.forEach(function (b) { b.addEventListener('click', function () { state.mobilePane = b.getAttribute('data-mobile-pane'); applyLayout(); }); });
+      if (mq.addEventListener) mq.addEventListener('change', applyLayout); else if (mq.addListener) mq.addListener(applyLayout);
+
+      var dragging = false;
+      function ratioFromEvent(e) {
+        var r = workspace.getBoundingClientRect();
+        return isColumn() ? (e.clientY - r.top) / r.height * 100 : (e.clientX - r.left) / r.width * 100;
+      }
+      function setRatio(p) { prefs.ratio = Math.min(80, Math.max(20, p)); applyLayout(); }
+      divider.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0) return;
+        e.preventDefault(); dragging = true;
+        try { divider.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+        frame.style.pointerEvents = 'none'; divider.setAttribute('bg', 'primary');
+      });
+      divider.addEventListener('pointermove', function (e) { if (dragging) setRatio(ratioFromEvent(e)); });
+      function endDrag() {
+        if (!dragging) return;
+        dragging = false; frame.style.pointerEvents = ''; setAttrs(divider, { bg: 'gray-100' }); savePrefs();
+      }
+      divider.addEventListener('pointerup', endDrag);
+      divider.addEventListener('pointercancel', endDrag);
+      divider.addEventListener('dblclick', function () { setRatio(50); savePrefs(); });
+      divider.addEventListener('keydown', function (e) {
+        var back = isColumn() ? 'ArrowUp' : 'ArrowLeft', fwd = isColumn() ? 'ArrowDown' : 'ArrowRight';
+        if (e.key === back) { e.preventDefault(); setRatio(prefs.ratio - 2); savePrefs(); }
+        else if (e.key === fwd) { e.preventDefault(); setRatio(prefs.ratio + 2); savePrefs(); }
+      });
+
+      /* ------------------------------------------------------------------ *
+       * Viewport presets (real iframe dimensions) + live size readout
+       * ------------------------------------------------------------------ */
+      var vpResetBtn = $('#pg-viewport-reset'), viewportDD = null;
+      function applyViewport() {
+        var vp = VIEWPORTS[prefs.viewport];
+        if (vp.w) {
+          stage.style.padding = '16px';
+          frame.style.width = vp.w + 'px';
+          frame.style.height = 'min(' + vp.h + 'px, 100%)';
+          frame.style.borderRadius = '10px';
+          frame.style.boxShadow = '0 0 0 1px rgba(128,128,128,.35), 0 8px 28px rgba(0,0,0,.18)';
+        } else {
+          stage.style.padding = '0';
+          frame.style.width = '100%'; frame.style.height = '100%';
+          frame.style.borderRadius = '0'; frame.style.boxShadow = 'none';
+        }
+        vpResetBtn.style.display = vp.w ? 'flex' : 'none';
+        if (viewportDD) viewportDD.setValue(prefs.viewport);
+        drawerRefresh();
+        measure();
+      }
+      function setViewport(v) { if (!VIEWPORTS[v]) return; prefs.viewport = v; savePrefs(); applyViewport(); }
+      function measure() {
+        var r = frame.getBoundingClientRect();
+        sizeText.textContent = Math.round(r.width) + ' × ' + Math.round(r.height);
+      }
+      if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measure).observe(frame);
+      window.addEventListener('resize', measure);
+      vpResetBtn.addEventListener('click', function () { setViewport('responsive'); });
+
+      /* ------------------------------------------------------------------ *
+       * Themes: editor theme and preview theme are independent
+       * ------------------------------------------------------------------ */
+      function pageIsDark() {
+        var de = doc.documentElement;
+        var attr = String(de.getAttribute('data-theme') || de.getAttribute('data-color-scheme') || '').toLowerCase();
+        if (de.classList.contains('dark') || attr === 'dark') return true;
+        if (de.classList.contains('light') || attr === 'light') return false;
+        return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      }
+      function applyEditorTheme() {
+        var dark = prefs.editorTheme === 'dark' || (prefs.editorTheme === 'auto' && pageIsDark());
+        edBody.classList.toggle('pg-ed-dark', dark);
+        edBody.classList.toggle('pg-ed-light', !dark);
+      }
+      try { new MutationObserver(function () { if (prefs.editorTheme === 'auto') applyEditorTheme(); }).observe(doc.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme', 'data-color-scheme'] }); } catch (e) { /* ignore */ }
+      if (window.matchMedia) {
+        var dm = window.matchMedia('(prefers-color-scheme: dark)');
+        if (dm.addEventListener) dm.addEventListener('change', function () { if (prefs.editorTheme === 'auto') applyEditorTheme(); });
+      }
+      var editorThemeDD = null, previewThemeDD = null;
+      function setEditorTheme(v) {
+        prefs.editorTheme = v; savePrefs(); applyEditorTheme();
+        if (editorThemeDD) editorThemeDD.setValue(v);
+        drawerRefresh();
+      }
+      function setPreviewTheme(v) {
+        prefs.previewTheme = v; savePrefs();
+        if (preview.phase === 'ready' && frame.contentWindow) frame.contentWindow.postMessage({ __pg: 1, type: 'theme', value: v }, '*');
+        if (previewThemeDD) previewThemeDD.setValue(v);
+        drawerRefresh();
+      }
+
+      /* ------------------------------------------------------------------ *
+       * Bottom panel
+       * ------------------------------------------------------------------ */
+      var bottomTabs = $$('[data-bottom]');
+      function showBottom(which) {
+        bottom.style.display = 'flex';
+        bottomTabs.forEach(function (b) {
+          var on = b.getAttribute('data-bottom') === which;
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+          setAttrs(b, { text: on ? 'primary' : 'muted', 'border-color': on ? 'primary' : 'transparent' });
+        });
+        consoleBox.style.display = which === 'console' ? 'block' : 'none';
+        tipsBox.style.display = which === 'tips' ? 'block' : 'none';
+        $('#pg-console-clear').style.display = which === 'console' ? '' : 'none';
+        paintNav();
+      }
+      function toggleBottom(which) {
+        var open = bottom.style.display === 'flex' && (which === 'console' ? consoleBox.style.display !== 'none' : tipsBox.style.display !== 'none');
+        if (open) { bottom.style.display = 'none'; paintNav(); } else showBottom(which);
+      }
+      $('#pg-console-btn').addEventListener('click', function () { toggleBottom('console'); });
+      $('#pg-tips-btn').addEventListener('click', function () { toggleBottom('tips'); });
+      mConsoleBtn.addEventListener('click', function () { toggleBottom('console'); });
+      $('#pg-bottom-close').addEventListener('click', function () { bottom.style.display = 'none'; paintNav(); });
+      bottomTabs.forEach(function (b) { b.addEventListener('click', function () { showBottom(b.getAttribute('data-bottom')); }); });
+      $('#pg-console-clear').addEventListener('click', function () { runtimeEntries = []; renderConsole(); renderStatus(); });
+      $('#pg-run').addEventListener('click', function () {
+        // On a phone the preview is a separate screen, so Run takes you to it.
+        if (isMobile() && state.mobilePane !== 'preview') { state.mobilePane = 'preview'; applyLayout(); }
+        fullReload();
+      });
+
+      /* ------------------------------------------------------------------ *
+       * Dropdowns (desktop toolbar)
+       * ------------------------------------------------------------------ */
+      var exampleItemsDD = EXAMPLES.map(function (e) {
+        return e.group ? { group: e.group } : { value: e.id, label: e.title, icon: e.icon };
+      });
+      exampleDD = createDropdown($('#dd-example'), {
+        label: 'Choose an example', prefix: 'Example', items: exampleItemsDD, value: 'starter', placeholder: 'Custom', minWidth: 240,
+        onChange: function (v) { loadExample(v, true); }
+      });
+      editorThemeDD = createDropdown($('#dd-editor-theme'), {
+        label: 'Editor theme', compact: true, align: 'right', minWidth: 150, value: prefs.editorTheme,
+        items: EDITOR_THEME_ITEMS,
+        onChange: function (v) { setEditorTheme(v); }
+      });
+      viewportDD = createDropdown($('#dd-viewport'), {
+        label: 'Preview size', compact: true, minWidth: 220, value: prefs.viewport,
+        items: VIEWPORT_ITEMS,
+        onChange: function (v) { setViewport(v); }
+      });
+      previewThemeDD = createDropdown($('#dd-preview-theme'), {
+        label: 'Preview theme', compact: true, align: 'right', prefix: 'Preview', minWidth: 160, value: prefs.previewTheme,
+        items: PREVIEW_THEME_ITEMS,
+        onChange: function (v) { setPreviewTheme(v); }
+      });
+
+      /* ------------------------------------------------------------------ *
+       * Init
+       * ------------------------------------------------------------------ */
+      bottom.style.display = 'none';
+      buildDrawer();
+      var saved = null;
+      try { saved = JSON.parse(store.get(WORK_KEY) || 'null'); } catch (e) { saved = null; }
+      var starter = EXAMPLE_MAP.starter;
+      if (saved && typeof saved.html === 'string' && typeof saved.css === 'string') {
+        savedAt = saved.savedAt || 0;
+        state.html = saved.html; state.css = saved.css;
+        setSource(saved.html, saved.css, EXAMPLE_MAP[saved.example] ? saved.example : null, { silent: true });
+      } else {
+        setSource(starter.html, starter.css, 'starter', { silent: true });
+      }
+      applyEditorTheme();
+      setTab(state.tab, false);
+      applyLayout();
+      applyViewport();
+      renderSave();
+      renderConsole();
+      fullReload();
+
+      // Open a shared link (#code=...) without losing the visitor's own work.
+      var hashMatch = /^#code=([zb]\.[A-Za-z0-9_-]+)$/.exec(location.hash);
+      if (hashMatch) {
+        decodeShare(hashMatch[1]).then(function (obj) {
+          takeBackup();
+          setSource(obj.h, obj.c, null);
+          saveNow();
+          try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ }
+          flash('Loaded a shared snippet', { label: 'Restore mine', fn: undoLoad });
+        }).catch(function (err) {
+          flash('This share link could not be opened (' + (err && err.message ? err.message : 'invalid') + ')');
+        });
+      }
+    })();
     </script>
   </body>
 </html>

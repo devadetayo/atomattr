@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../booklet-imposer"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "atomattr"
+	}
+}

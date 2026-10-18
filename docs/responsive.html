@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Responsive attributes - Atomattr Docs</title>
-  <meta name="description" content="Use breakpoint prefixes to change a value from a viewport width upward.">
+  <meta name="description" content="Apply mobile-first styles at registered viewport width thresholds.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/responsive.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Responsive attributes - Atomattr Docs">
-  <meta property="og:description" content="Use breakpoint prefixes to change a value from a viewport width upward.">
+  <meta property="og:description" content="Apply mobile-first styles at registered viewport width thresholds.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/responsive.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Responsive attributes - Atomattr Docs">
-  <meta name="twitter:description" content="Use breakpoint prefixes to change a value from a viewport width upward.">
+  <meta name="twitter:description" content="Apply mobile-first styles at registered viewport width thresholds.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="primary" bg="primary/10" font-weight="600" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,67 +213,42 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Responsive attributes</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Use breakpoint prefixes to change a value from a viewport width upward.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Apply mobile-first styles at registered viewport width thresholds.</p>
         </div>
-        <section id="breakpoints" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Breakpoints</h2><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Prefix</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Minimum width</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>sm</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>640px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>md</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>768px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>lg</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1024px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>xl</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1280px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2xl</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1536px</code></td></tr></tbody>
-  </table></div></section>
-<section id="mobile-first" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Mobile first</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Write the smallest layout first, then add larger breakpoint overrides. This keeps markup easy to scan.</p>
+        <section id="breakpoint-prefixes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Breakpoint prefixes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Write a base attribute for the default style, then prefix an attribute with a breakpoint to apply it at that minimum viewport width. The registered thresholds come from the exported <code>BREAKPOINTS</code> map.</p></section>
+<section id="mobile-first-example" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Mobile-first example</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">This grid has one column by default, two columns from <code>sm</code> upward, and four columns from <code>lg</code> upward. Each prefixed attribute changes only the named CSS property.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">responsive-grid.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
     <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div display="grid" grid-cols="1" sm-grid-cols="2" lg-grid-cols="4" gap="4"&gt;
-  &lt;article p="5" rounded="xl" border="border"&gt;One&lt;/article&gt;
-  &lt;article p="5" rounded="xl" border="border"&gt;Two&lt;/article&gt;
+  &lt;article&gt;One&lt;/article&gt;
+  &lt;article&gt;Two&lt;/article&gt;
+  &lt;article&gt;Three&lt;/article&gt;
+  &lt;article&gt;Four&lt;/article&gt;
 &lt;/div&gt;</code></pre>
   </div></section>
-<section id="overrides" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Overriding values</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">A breakpoint attribute only changes that specific property. Other attributes continue to come from the base rule.</p></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
+<section id="combining-modifiers" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Combining modifiers</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Supported prefixes can be combined, such as <code>md-dark-hover-bg</code>. Atomattr composes media wrappers and selector states around the same attribute rule. Prefixes must appear in a supported combination and the final property name must be registered.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">responsive-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Responsive&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="values.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Values</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
-  </a>
-    <a href="states.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>States</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Getting Started</p>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button bg="primary" md-px="6" dark-bg="gray-800" hover-bg="primary/80"&gt;
+  Responsive button
+&lt;/button&gt;</code></pre>
+  </div>
+<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>cq-sm</code>, <code>cq-md</code>, <code>cq-lg</code>, and <code>cq-xl</code> for ancestor container sizes; they are documented separately in <a href="container-queries.html">Container queries</a>. Viewport breakpoints and container thresholds are independent.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="modern-css.html" aria-label="Next page: Modern CSS" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Modern CSS</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#breakpoints" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Breakpoints</a>
-<a data-toc-link href="#mobile-first" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Mobile first</a>
-<a data-toc-link href="#overrides" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Overriding values</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#breakpoint-prefixes" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Breakpoint prefixes</a>
+<a data-toc-link href="#mobile-first-example" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Mobile-first example</a>
+<a data-toc-link href="#combining-modifiers" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Combining modifiers</a></div></div>
       </aside>
     </div>
   </main>

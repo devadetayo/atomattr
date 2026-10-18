@@ -17,6 +17,18 @@ const PSEUDO_LIST = [
   'checked',
   'required',
   'invalid',
+  'valid',
+  'optional',
+  'read-only',
+  'read-write',
+  'open',
+  'selected',
+  'indeterminate',
+  'placeholder-shown',
+  'empty',
+  'only',
+  'first-of-type',
+  'last-of-type',
   'first',
   'last',
   'odd',
@@ -300,6 +312,14 @@ export const GRID_ROWS_SCALE = {
 
 export const BREAKPOINTS = BREAKPOINT_MAP;
 export const PSEUDO_STATES = PSEUDO_LIST;
+// Container size modifiers use CSS @container and assume a nearest
+// size-query container (container-type: inline-size or size).
+export const CONTAINER_BREAKPOINTS = {
+  'cq-sm': '640px',
+  'cq-md': '768px',
+  'cq-lg': '1024px',
+  'cq-xl': '1280px',
+};
 
 export const VALUE_ALIASES = {
   start: 'flex-start',
@@ -547,12 +567,21 @@ SEMANTIC_COLORS['dark-input'] = COLORS['slate-800'];
 export const SPACING_PROPS = new Set([
   'p', 'pt', 'pb', 'pl', 'pr', 'px', 'py', 'ps', 'pe',
   'm', 'mt', 'mb', 'ml', 'mr', 'mx', 'my', 'ms', 'me',
+  'padding-inline', 'padding-inline-start', 'padding-inline-end',
+  'padding-block', 'padding-block-start', 'padding-block-end',
+  'margin-inline', 'margin-inline-start', 'margin-inline-end',
+  'margin-block', 'margin-block-start', 'margin-block-end',
   'gap', 'gap-x', 'gap-y',
   'w', 'h', 'min-w', 'max-w', 'min-h', 'max-h', 'size',
+  'min-inline-size', 'max-inline-size', 'min-block-size', 'max-block-size',
   'top', 'bottom', 'left', 'right', 'inset', 'inset-x', 'inset-y',
+  'inset-inline', 'inset-inline-start', 'inset-inline-end',
+  'inset-block', 'inset-block-start', 'inset-block-end',
   'translate-x', 'translate-y', 'translate-z',
   'border-spacing', 'text-indent', 'outline-offset',
   'border', 'border-width', 'border-t', 'border-b', 'border-l', 'border-r', 'border-x', 'border-y',
+  'border-inline', 'border-inline-start', 'border-inline-end',
+  'border-block', 'border-block-start', 'border-block-end',
   'outline',
 ]);
 

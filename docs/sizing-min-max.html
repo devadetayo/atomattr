@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Min and max size - Atomattr Docs</title>
-  <meta name="description" content="Constrain element dimensions with min and max attributes.">
+  <meta name="description" content="Set lower and upper size limits to keep layouts usable as content and viewports change.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/sizing-min-max.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Min and max size - Atomattr Docs">
-  <meta property="og:description" content="Constrain element dimensions with min and max attributes.">
+  <meta property="og:description" content="Set lower and upper size limits to keep layouts usable as content and viewports change.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/sizing-min-max.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Min and max size - Atomattr Docs">
-  <meta name="twitter:description" content="Constrain element dimensions with min and max attributes.">
+  <meta name="twitter:description" content="Set lower and upper size limits to keep layouts usable as content and viewports change.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,111 +213,41 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">SIZING</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Min and max size</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Constrain element dimensions with min and max attributes.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Set lower and upper size limits to keep layouts usable as content and viewports change.</p>
         </div>
-        <section id="when-to-use" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">When to use it</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Constrain element dimensions with min and max attributes. Use this page when you are deciding which attribute belongs on an element and what kind of value that attribute expects. The examples start small on purpose, then build toward patterns you are likely to repeat in real interfaces.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">A helpful way to read Atomattr is to scan the element from left to right: layout first, then spacing, then color, then typography, then interaction. You do not have to follow that order perfectly, but keeping related attributes near each other makes a component easier for the next person to understand.</p>
+        <section id="physical-dimensions" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Physical dimensions</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>min-w</code>, <code>max-w</code>, <code>min-h</code>, and <code>max-h</code> to constrain width and height. A common pattern gives content a maximum width and lets automatic side margins center it. Numeric values use the spacing scale; CSS lengths, percentages, viewport units, and functions can also be used.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">basic.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section min-h="screen" max-w="5xl" mx="auto"&gt;...&lt;/section&gt;</code></pre>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;main w="full" max-w="72rem" mx="auto" px="4"&gt;
+  &lt;h1&gt;Comfortable reading width&lt;/h1&gt;
+&lt;/main&gt;</code></pre>
   </div></section>
-<section id="more-examples" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">More examples</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">These examples show the same attribute family in practical situations. Copy the closest pattern first, then swap the values for your design system.</p>
+<section id="logical-dimensions" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Logical dimensions</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>min-inline-size</code>, <code>max-inline-size</code>, <code>min-block-size</code>, and <code>max-block-size</code> when constraints should follow the writing mode. Inline size roughly corresponds to width in horizontal writing; block size roughly corresponds to height.</p></section>
+<section id="avoiding-overflow" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Avoiding overflow</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Grid and flex children can have an automatic minimum size based on their content. <code>min-w="0"</code> or <code>min-inline-size="0"</code> lets a child shrink below that content width so overflow handling can work. Choose <code>overflow</code> behavior deliberately if content can exceed the constrained box.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">quick-start.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div min-w="4"&gt;
-  Min and max size quick start
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div display="flex" gap="4"&gt;
+  &lt;aside basis="14rem"&gt;Sidebar&lt;/aside&gt;
+  &lt;main grow="1" min-w="0" overflow-x="auto"&gt;Wide content&lt;/main&gt;
 &lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">responsive.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div min-w="4" md-min-w="6" max-w="4"&gt;
-  Min and max size can change at a breakpoint without moving to a stylesheet.
-&lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">states-and-theme.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button min-w="4" hover-min-w="4" dark-min-w="4"&gt;
-  Min and max size with hover and dark mode
-&lt;/button&gt;</code></pre>
   </div></section>
-<section id="attributes" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Attributes</h2><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Attribute</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">CSS output</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min-w</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min-width</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max-w</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max-width</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min-h</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min-height</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max-h</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max-height</code></td></tr></tbody>
-  </table></div></section>
-<section id="scale" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Useful scale values</h2><div mb="8"><h3 font-size="lg" font-weight="bold" mb="3">Min and max size</h3><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Token</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Value</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>4px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>8px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>3</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>12px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>4</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>16px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>20px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>6</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>24px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>7</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>28px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>8</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>32px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>9</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>36px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>10</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>40px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>11</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>44px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>12</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>48px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>14</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>56px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>16</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>64px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>20</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>80px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>24</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>96px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>28</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>112px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>32</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>128px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>36</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>144px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>40</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>160px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>44</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>176px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>48</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>192px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>52</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>208px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>56</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>224px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>60</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>240px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>64</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>256px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>72</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>288px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>80</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>320px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>96</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>384px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>6px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>10px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>3.5</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>14px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>px</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>1px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>auto</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>auto</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>full</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>100%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>half</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>50%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>third</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>33.333333%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>quarter</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>25%</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>fit</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>fit-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>min-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>max-content</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>screen</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>100vw</code></td></tr></tbody>
-  </table></div></div></section>
-<section id="tips" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Reading the syntax</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use the base attribute for the default style. Add breakpoint prefixes for layout changes, state prefixes for interaction, and <code>dark-</code> prefixes when a theme needs a different value. This keeps the full behavior of the element visible without sending the reader into a second file.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">If an attribute maps to a CSS property, the value usually follows that property. When Atomattr has a scale for the property, short tokens such as <code>4</code>, <code>xl</code>, <code>muted</code>, or <code>primary/80</code> make the common cases fast. When a design needs precision, raw CSS values are still valid.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">combined-pattern.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article display="flex" flex-col gap="3" p="5" rounded="xl" border="border" min-w="4" md-min-w="6"&gt;
-  &lt;h3 font-size="lg" font-weight="bold"&gt;Min and max size pattern&lt;/h3&gt;
-  &lt;p text="muted" line-height="relaxed"&gt;
-    Combine the attribute with layout, spacing, and color so the whole component remains readable.
-  &lt;/p&gt;
-  &lt;button max-w="4" hover-max-w="4" px="4" py="2" rounded="lg"&gt;
-    Continue
-  &lt;/button&gt;
-&lt;/article&gt;</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">min-and-max-size-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Min and Max Size&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="sizing-width-height.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Width and Height</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Sizing</p>
-  </a>
-    <a href="sizing-aspect.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Aspect Ratio</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Sizing</p>
+<section id="attributes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Attributes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The table lists physical and logical min/max size attributes and their CSS outputs.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="sizing-aspect.html" aria-label="Next page: Aspect Ratio" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Aspect Ratio</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#when-to-use" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">When to use it</a>
-<a data-toc-link href="#more-examples" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">More examples</a>
-<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a>
-<a data-toc-link href="#scale" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Useful scale values</a>
-<a data-toc-link href="#tips" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Reading the syntax</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#physical-dimensions" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Physical dimensions</a>
+<a data-toc-link href="#logical-dimensions" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Logical dimensions</a>
+<a data-toc-link href="#avoiding-overflow" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Avoiding overflow</a>
+<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a></div></div>
       </aside>
     </div>
   </main>

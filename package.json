@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:library && npm run build:site",
+    "build": "npm run build:library && npm run build:docs && npm run build:site",
     "build:library": "rollup -c && node scripts/copy-defaults.mjs",
     "build:site": "vite build && node scripts/copy-library-to-site.mjs",
     "preview": "vite preview",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "build:docs": "node scripts/build-doc-pages.mjs"
   },
   "files": [
     "dist/atomattr.min.js",

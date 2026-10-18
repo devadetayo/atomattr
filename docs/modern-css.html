@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b5cf6">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="devadetayo">
+  <title>Modern CSS capabilities - Atomattr Docs</title>
+  <meta name="description" content="Use registered AtomAttr attributes to emit modern CSS declarations supported by the browser.">
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/modern-css.html">
+  <link rel="icon" href="../assets/favico/favico.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Atomattr Docs">
+  <meta property="og:title" content="Modern CSS capabilities - Atomattr Docs">
+  <meta property="og:description" content="Use registered AtomAttr attributes to emit modern CSS declarations supported by the browser.">
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/modern-css.html">
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:see_also" content="https://github.com/devadetayo/atomattr">
+  <meta property="og:see_also" content="https://x.com/devadetayo">
+  <meta property="og:see_also" content="https://discord.gg/efCPNK2Wp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@devadetayo">
+  <meta name="twitter:creator" content="@devadetayo">
+  <meta name="twitter:title" content="Modern CSS capabilities - Atomattr Docs">
+  <meta name="twitter:description" content="Use registered AtomAttr attributes to emit modern CSS declarations supported by the browser.">
+  <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Atomattr",
+      "url": "https://devadetayo.github.io/atomattr/",
+      "logo": "https://devadetayo.github.io/atomattr/assets/favico/favico.png",
+      "sameAs": [
+        "https://github.com/devadetayo/atomattr",
+        "https://x.com/devadetayo",
+        "https://discord.gg/efCPNK2Wp"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "devadetayo",
+        "sameAs": [
+          "https://x.com/devadetayo",
+          "https://github.com/devadetayo"
+        ]
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
+  <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
+  <style>html{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Inter",sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
+  <link rel="stylesheet" href="../dist/defaults.css" />
+  <link rel="stylesheet" href="../assets/remixicon/remixicon.css" />
+  <link rel="stylesheet" href="../assets/showcase.css" />
+</head>
+<body bg="#fff" dark-bg="grey-950" text="text" min-h="screen">
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" backdrop-blur="md"></header>
+  <div display="flex" md-display="none" items="center" justify="between" px="4" py="3" bg="#fff" dark-bg="grey-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="sticky" top="68px" z="40">
+    <button type="button" aria-label="Open contents" aria-expanded="false" data-mobile-toggle="docs-sidebar" display="flex" items="center" gap="2" bg="grey-100" dark-bg="gray-900" text="text" border="border" px="3" py="2" rounded="lg" font-size="sm" font-weight="600"><i class="ri-menu-2-line" font-size="16" data-mobile-toggle-icon></i>Contents</button>
+    <span text="muted" font-size="sm" font-weight="500">Modern CSS</span>
+  </div>
+  <main class="page-shell">
+    <div class="docs-layout" display="flex" items="start">
+      <aside id="docs-sidebar" class="sidebar" p="5" w="86vw" sm-w="62vw" md-w="20dvw" display="none" md-display="block" fixed bg="#fff" dark-bg="grey-950" border-r="1px" border-color="grey-100" dark-border-color="grey-900" top="0" left="0" h="100dvh" pt="24" pb="8" z="45" overflow-y="auto">
+        <div w="full" display="flex" flex-col gap="6"><div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">GETTING STARTED</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="../docs.html">Overview</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="search.html">Search</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="installation.html">Installation</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="primary" bg="primary/10" font-weight="600" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">LAYOUT</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-display.html">Display</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-flex.html">Flexbox</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-grid.html">Grid</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-alignment.html">Alignment</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-gap.html">Gap</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">SPACING</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="spacing-padding.html">Padding</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="spacing-margin.html">Margin</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">SIZING</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-width-height.html">Width and Height</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-min-max.html">Min and Max Size</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-aspect.html">Aspect Ratio</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">POSITION</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="positioning.html">Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="inset-z-index.html">Inset and Z Index</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="overflow.html">Overflow</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">COLORS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-backgrounds.html">Backgrounds</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-text.html">Text Colors</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-gradients.html">Gradients</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-svg.html">SVG Colors</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">TYPOGRAPHY</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-font.html">Font Family and Size</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-weight-line.html">Weight and Line Height</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-alignment.html">Text Alignment</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-decoration.html">Decoration and Case</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-overflow.html">Text Overflow</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">BORDERS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-width-color.html">Border Width and Color</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-radius.html">Radius</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-outline-ring.html">Outline and Ring</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">EFFECTS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-shadow.html">Shadows</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-opacity.html">Opacity</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-transform.html">Transforms</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-filter.html">Filters</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-backdrop.html">Backdrop Filters</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MOTION</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="motion-transition.html">Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="motion-animation.html">Animation</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MEDIA</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="media-object.html">Object Fit</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="media-background.html">Background Images</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">INTERACTIVITY</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="interactivity-cursor.html">Cursor and Pointer</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="interactivity-scroll.html">Scroll Behavior</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">PLATFORM GUIDES</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="html.html">HTML</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react.html">React</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react-native.html">React Native</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react-native-layout.html">React Native Layout</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react-native-inputs.html">React Native Inputs</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MORE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="tables-lists.html">Tables and Lists</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="accessibility.html">Accessibility</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="tailwind-comparison.html">Tailwind Comparison</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="cheatsheet.html">Cheatsheet</a>
+    </div>
+  </div></div>
+      </aside>
+      <div px="4" md-pl="calc(20dvw + 4rem)" lg-pr="calc(20dvw + 2rem)" pt="8" md-pt="12" w="full" max-w="100dvw" display="flex" flex-col gap="10" overflow-x="hidden" flex="1">
+        <div max-w="3xl">
+          <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p>
+          <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Modern CSS capabilities</h1>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Use registered AtomAttr attributes to emit modern CSS declarations supported by the browser.</p>
+        </div>
+        <section id="container-queries" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Container queries</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Set <code>container="card / inline-size"</code> on an ancestor, then use a <code>cq-*</code> modifier on a descendant. The current modifiers cover fixed minimum widths and target the nearest eligible size container; they do not expose arbitrary query syntax or named-container selection. See <a href="container-queries.html">Container queries</a> for details.</p>
+<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
+    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
+    </div>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article container="card / inline-size" p="4" border="border"&gt;
+  &lt;div display="grid" grid-cols="1" cq-md-grid-cols="2" gap="4"&gt;
+    &lt;img object="cover" aspect="video" src="cover.jpg" alt=""&gt;
+    &lt;div&gt;&lt;h2 text-wrap="balance"&gt;A card that responds to its own width&lt;/h2&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+  </div></section>
+<section id="modern-property-coverage" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Modern property coverage</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The dictionary includes properties for logical sizing and insets, text wrapping and clamping, containment, field sizing, scroll and view timelines, anchor positioning, masks and clipping, and View Transitions. AtomAttr emits declarations; it does not polyfill features or make unsupported browser CSS work.</p></section>
+<section id="browser-support" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Browser support</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Feature support varies by browser and version. Check your support targets for anchor positioning, scroll-driven animation timelines, <code>field-sizing</code>, intrinsic-size interpolation, and other newer CSS features. Provide a fallback for any feature required to use the interface.</p></section>
+<section id="focused-guides" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Focused guides</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">- <a href="container-queries.html">Container queries</a>: set up a query container and use supported size modifiers. - <a href="anchor-positioning.html">Anchor positioning</a>: connect positioned elements to CSS anchors. - <a href="scroll-driven-animations.html">Scroll-driven animations</a>: use CSS scroll and view timelines. - <a href="view-transitions.html">View Transitions</a>: name elements participating in transition snapshots. - <a href="selectors.html">Selectors and states</a>: review the selector variants supported by the parser. - <a href="performance.html">Runtime and performance</a>: understand rule generation and mutation handling.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="container-queries.html" aria-label="Next page: Container Queries" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Container Queries</strong>
+  </a>
+  </nav>
+      </div>
+      <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#container-queries" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Container queries</a>
+<a data-toc-link href="#modern-property-coverage" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Modern property coverage</a>
+<a data-toc-link href="#browser-support" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Browser support</a>
+<a data-toc-link href="#focused-guides" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Focused guides</a></div></div>
+      </aside>
+    </div>
+  </main>
+  
+  <script src="../dist/atomattr.min.js" defer></script>
+  <script type="module" src="../site/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>

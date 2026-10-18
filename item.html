@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Preview, inspect, and copy an AtomAttr UI pattern." />
+    <title>Pattern — AtomAttr UI</title>
+    <link rel="stylesheet" href="./dist/defaults.css" />
+    <link rel="stylesheet" href="./assets/showcase.css" />
+    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  </head>
+  <body bg="#f8f7f5" dark-bg="gray-950" text="text" min-h="screen" p="0" m="0">
+    <header position="sticky" top="0" z="50" bg="#f8f7f5" dark-bg="gray-950" border-b="1" border-b-color="gray-200" dark-border-b-color="gray-900">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" justify="between" gap="4">
+        <a href="./catalog.html" display="inline-flex" items="center" gap="3" text-decoration="none" color="inherit"><span w="9" h="9" rounded="lg" bg="primary" display="flex" items="center" justify="center" text="white" font-weight="700">A</span><strong>AtomAttr UI</strong></a>
+        <nav aria-label="Main navigation" display="none" md-display="flex" items="center" gap="5" font-size="sm"><a href="./components.html" text="muted" text-decoration="none">Components</a><a href="./sections.html" text="muted" text-decoration="none">Sections</a><a href="./docs.html" text="muted" text-decoration="none">Framework docs</a></nav>
+        <button type="button" data-theme-toggle aria-label="Switch to dark theme" bg="gray-100" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" text="text" rounded="full" px="3" py="2" font-size="sm">Light</button>
+      </div>
+    </header>
+    <main id="catalog" min-h="screen"></main>
+    <footer border-t="1" border-t-color="gray-200" dark-border-t-color="gray-800"><div max-w="7xl" mx="auto" px="4" md-px="8" py="6" display="flex" flex-col sm-flex-row gap="3" justify="between" text="muted" font-size="sm"><span>AtomAttr UI</span><a href="./docs/installation.html" text="primary">Install AtomAttr</a><a href="./catalog.html" text="primary">Browse all patterns</a></div></footer>
+    <script src="./dist/atomattr.min.js" defer></script>
+    <script type="module" src="./catalog.js"></script>
+  </body>
+</html>

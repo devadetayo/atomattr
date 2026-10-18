@@ -350,6 +350,12 @@ function resolveSpacingShorthand(propKey, rawValue, isDark = false) {
 function resolveValue(propKey, rawValue, isDark = false) {
   const value = camelless(rawValue);
 
+  if (propKey === 'aspect') {
+    if (value === 'video') return '16 / 9';
+    if (value === 'square') return '1 / 1';
+    if (value === 'auto') return 'auto';
+  }
+
   if (value === 'screen') {
     if (['w', 'min-w', 'max-w'].includes(propKey)) return '100vw';
     if (['h', 'min-h', 'max-h'].includes(propKey)) return '100vh';
@@ -373,7 +379,12 @@ function resolveValue(propKey, rawValue, isDark = false) {
   if (LINE_HEIGHT_PROPS.has(propKey) && LINE_HEIGHT[value] !== undefined) return LINE_HEIGHT[value];
   if (LETTER_SPACING_PROPS.has(propKey) && LETTER_SPACING[value] !== undefined) return LETTER_SPACING[value];
   if (SHADOW_PROPS.has(propKey) && SHADOW_PRESETS[value] !== undefined) return SHADOW_PRESETS[value];
-  if (VALUE_ALIASES[value] !== undefined) return VALUE_ALIASES[value];
+  if (VALUE_ALIASES[value] !== undefined) {
+    if (value === 'screen' && !['w', 'min-w', 'max-w', 'h', 'min-h', 'max-h'].includes(propKey)) {
+      return value;
+    }
+    return VALUE_ALIASES[value];
+  }
 
   if ((propKey === 'grid-cols' || propKey === 'grid-rows') && /^\d+$/.test(value)) {
     return `repeat(${value}, minmax(0, 1fr))`;

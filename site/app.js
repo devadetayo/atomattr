@@ -199,57 +199,76 @@ function setupNavigation() {
 }
 
 function getRelativeRoot() {
-  return location.pathname.includes('/docs/') ? '../' : '';
+  if (location.pathname.includes('/docs/') || location.pathname.includes('/ui/')) {
+    return '../';
+  }
+  return '';
 }
 
 function setupSiteNav() {
   document.querySelectorAll('[data-site-nav]').forEach(mount => {
     const root = getRelativeRoot();
     const current = location.pathname.split('/').pop() || 'index.html';
-    const links = [
-      ['Features', `${root}index.html#features`, 'features'],
+    const isDocs = current === 'docs.html' || location.pathname.includes('/docs/');
+    const isUi = current === 'ui.html' || location.pathname.includes('/ui/');
+
+    const siteLinks = [
       ['Docs', `${root}docs.html`, 'docs'],
-      ['Search', `${root}search.html`, 'search'],
       ['Playground', `${root}playground.html`, 'playground'],
-      ['Community', `${root}index.html#community`, 'community'],
+      ['Guide', `${root}docs/cheatsheet.html`, 'cheatsheet'],
+      ['AtomAttr UI', `${root}ui.html`, 'ui'],
     ];
 
+    const docsLinks = [
+      ['Documentation home', `${root}docs.html`, 'docs-home'],
+      ['Installation', `${root}docs/installation.html`, 'installation'],
+      ['Attribute reference', `${root}docs/cheatsheet.html`, 'cheatsheet'],
+      ['Search docs', `${root}search.html`, 'search'],
+      ['AtomAttr UI', `${root}ui.html`, 'ui'],
+    ];
+
+    const uiLinks = [
+      ['Docs', `${root}docs.html`, 'docs'],
+      ['Playground', `${root}playground.html`, 'playground'],
+      ['Guide', `${root}docs/cheatsheet.html`, 'cheatsheet'],
+      ['AtomAttr UI', `${root}ui.html`, 'ui'],
+    ];
+
+    const links = isUi ? uiLinks : siteLinks;
+    const accent = isUi ? 'sky-600' : 'primary';
+    const shellClass = isUi ? 'ui-shell' : 'site-shell';
+
     mount.innerHTML = `
-        <nav px="4" lg-px="6" xl-px="6" py="2" display="flex" items="center" justify="between" gap="6" bg="white/40" dark-bg="gray-950/40" border="1px" border-color="gray-200/60" dark-border-color="gray-800/60" rounded="full" shadow="lg" backdrop-blur="8px" w="full">
-          <a href="${root}index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+        <nav class="${shellClass}" px="4" md-px="8" lg-px="10" xl-px="12" py="3" display="flex" items="center" justify="between" gap="4" w="full">
+          <a href="${root}index.html" aria-label="Atomattr home" display="flex" items="center" text="text" text-decoration="none" font-weight="bold" font-size="lg">
             <img src="${root}assets/images/logo.png" alt="Atomattr" h="6" dark-display="none" display="flex">
             <img src="${root}assets/images/logo.dark.png" alt="Atomattr" h="6" dark-display="flex" display="none">
           </a>
 
-          <div id="main-nav" display="none" fixed md-relative top="0" left="0" bg="#fff" dark-bg="gray-950" md-bg="transparent" md-dark-bg="transparent" md-display="flex" flex-col md-flex-row items="center" gap="6" w="full" md-w="auto" order="3" md-order="0" pt="4" md-pt="0" mt="16" md-mt="0" border-t="border" md-border="0">
+          <div id="main-nav" aria-label="${isUi ? 'AtomAttr UI navigation' : 'Main navigation'}" display="none" fixed md-relative top="0" left="0" bg="#fff" dark-bg="gray-950" md-bg="transparent" md-dark-bg="transparent" md-display="flex" flex-col md-flex-row items="center" gap="2" w="full" md-w="auto" order="3" md-order="0" pt="4" md-pt="0" mt="16" md-mt="0" border-t="border" md-border="0">
             ${links.map(([label, href, key]) => {
               const active =
                 (key === 'docs' && (current === 'docs.html' || location.pathname.includes('/docs/'))) ||
+                (key === 'ui-home' && (current === 'ui.html' || location.pathname.includes('/ui/'))) ||
+                (key === 'ui' && current === 'ui.html') ||
                 (key === 'search' && current === 'search.html') ||
-                (key === 'playground' && current === 'playground.html');
-              return `<a href="${href}" data-nav-link text="${active ? 'primary' : 'muted'}" text-decoration="none" font-weight="${active ? '600' : '500'}">${label}</a>`;
+                (key === 'playground' && current === 'playground.html') ||
+                (key === 'docs-home' && (current === 'docs.html' || location.pathname.includes('/docs/')));
+              return `<a href="${href}" data-nav-link text="${active ? accent : 'muted'}" text-decoration="none" font-weight="${active ? '600' : '500'}" px="4" py="1.5" hover-text="primary" transition="colors" duration="300ms" ease>${label}</a>`;
             }).join('')}
-            <div display="flex" md-display="none" items="center" gap="2" pt="2">
-              <a href="${root}index.html#community" aria-label="Open Discord community" display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" text-decoration="none" border="border">
-                <i class="ri-discord-fill" font-size="20" color="indigo-500"></i>
-              </a>
-              <a href="${root}support.html" aria-label="Open voice chat support" display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" text-decoration="none" border="border">
-                <i class="ri-github-fill" font-size="20"></i>
-              </a>
-            </div>
           </div>
 
           <div display="flex" items="center" gap="2">
-            <a href="${root}index.html#community" aria-label="Open Discord community" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="lg" text="text" text-decoration="none" hover-bg="primary/10">
+            <a href="${root}index.html#community" aria-label="Open Discord community" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="full" text="text" text-decoration="none" hover-bg="primary/10">
               <i class="ri-discord-fill" font-size="20" color="indigo-500"></i>
             </a>
-            <a href="${root}support.html" aria-label="Open voice chat support" display="none" md-display="flex" items="center" justify="center" p="2" rounded="lg" text="text" dark-text="#fff" text-decoration="none" hover-bg="primary/10">
+            <a href="${root}support.html" aria-label="Open voice chat support" display="none" md-display="flex" items="center" justify="center" p="2.5" rounded="full" text="text" dark-text="#fff" text-decoration="none" hover-bg="primary/10">
               <i class="ri-github-fill" font-size="xl"></i>
             </a>
-           <button type="button" aria-label="Toggle color theme" data-theme-toggle bg="transparent" text="text" dark-text="#fff" p="2" rounded="lg" display="flex" items="center" justify="center" border="none">
+           <button type="button" aria-label="Toggle color theme" data-theme-toggle bg="transparent" text="text" dark-text="#fff" p="2.5" rounded="full" display="flex" items="center" justify="center" border="0" hover-bg="primary/10">
               <i class="ri-moon-line" font-size="xl"></i>
             </button>
-            <button type="button" aria-label="Open navigation" aria-expanded="false" data-mobile-toggle="main-nav" display="flex" md-display="none" bg="transparent" text="text" dark-text="#fff" p="2" rounded="lg" items="center" justify="center" border="none">
+            <button type="button" aria-label="Open navigation" aria-expanded="false" data-mobile-toggle="main-nav" display="flex" md-display="none" bg="transparent" text="text" dark-text="#fff" p="2.5" rounded="full" items="center" justify="center" border="0">
               <i class="ri-menu-line" font-size="xl" data-mobile-toggle-icon></i>
             </button>
           </div>
@@ -540,6 +559,17 @@ function setupSearchPage() {
   renderResults('');
 }
 
+function setupCheatsheetFilter() {
+  const input = document.querySelector('[data-cheatsheet-filter]');
+  const table = document.querySelector('[data-cheatsheet-table] table');
+  if (!input || !table) return;
+  const rows = Array.from(table.querySelectorAll('tbody tr'));
+  input.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+    rows.forEach(row => { row.hidden = !row.textContent.toLowerCase().includes(query); });
+  });
+}
+
 function buildPreviewDocument(markup) {
   const baseHref = new URL('./', window.location.href).href;
   return `<!doctype html>
@@ -645,6 +675,7 @@ if (typeof document !== 'undefined') {
   setupDocsSidebar();
   setupPlayground();
   setupSearchPage();
+  setupCheatsheetFilter();
   refreshAtomAttr(document.body);
 }
 

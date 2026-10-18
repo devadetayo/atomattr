@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#5b5cf6">
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
-  <title>Radius - Atomattr Docs</title>
-  <meta name="description" content="Round all corners or specific corners.">
+  <title>Border radius - Atomattr Docs</title>
+  <meta name="description" content="Round an element's corners with uniform, side, or individual-corner radii.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/borders-radius.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
-  <meta property="og:title" content="Radius - Atomattr Docs">
-  <meta property="og:description" content="Round all corners or specific corners.">
+  <meta property="og:title" content="Border radius - Atomattr Docs">
+  <meta property="og:description" content="Round an element's corners with uniform, side, or individual-corner radii.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/borders-radius.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -23,8 +23,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
-  <meta name="twitter:title" content="Radius - Atomattr Docs">
-  <meta name="twitter:description" content="Round all corners or specific corners.">
+  <meta name="twitter:title" content="Border radius - Atomattr Docs">
+  <meta name="twitter:description" content="Round an element's corners with uniform, side, or individual-corner radii.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -195,112 +212,38 @@
       <div px="4" md-pl="calc(20dvw + 4rem)" lg-pr="calc(20dvw + 2rem)" pt="8" md-pt="12" w="full" max-w="100dvw" display="flex" flex-col gap="10" overflow-x="hidden" flex="1">
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">BORDERS</p>
-          <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Radius</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Round all corners or specific corners.</p>
+          <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Border radius</h1>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Round an element's corners with uniform, side, or individual-corner radii.</p>
         </div>
-        <section id="when-to-use" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">When to use it</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Round all corners or specific corners. Use this page when you are deciding which attribute belongs on an element and what kind of value that attribute expects. The examples start small on purpose, then build toward patterns you are likely to repeat in real interfaces.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">A helpful way to read Atomattr is to scan the element from left to right: layout first, then spacing, then color, then typography, then interaction. You do not have to follow that order perfectly, but keeping related attributes near each other makes a component easier for the next person to understand.</p>
+        <section id="radius-scale" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Radius scale</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>rounded</code> or <code>radius</code> to set all corners. Presets range from <code>none</code> through <code>3xl</code>, with <code>full</code> for a pill or circular edge. CSS lengths such as <code>1rem</code> can also be used. A circle requires a square box; radius alone does not make a rectangular image circular.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">basic.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;img rounded="2xl" md-rounded="3xl" alt=""&gt;</code></pre>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;img src="avatar.jpg" alt="Profile" size="16" object="cover" rounded="full"&gt;
+&lt;article rounded="2xl" border="border" p="5"&gt;Card&lt;/article&gt;</code></pre>
   </div></section>
-<section id="more-examples" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">More examples</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">These examples show the same attribute family in practical situations. Copy the closest pattern first, then swap the values for your design system.</p>
+<section id="individual-corners-and-edges" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Individual corners and edges</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use <code>rounded-t</code>, <code>rounded-b</code>, <code>rounded-l</code>, and <code>rounded-r</code> for paired physical corners. Use <code>rounded-tl</code>, <code>rounded-tr</code>, <code>rounded-bl</code>, and <code>rounded-br</code> for individual physical corners. Logical corners <code>rounded-ss</code>, <code>rounded-se</code>, <code>rounded-es</code>, and <code>rounded-ee</code> follow writing direction.</p></section>
+<section id="responsive-shapes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Responsive shapes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Radius is a normal CSS property, so it can use viewport and state modifiers when useful. For example, a card may have a smaller radius on a compact screen and a larger radius on a wide layout.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">quick-start.html</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div rounded="lg"&gt;
-  Radius quick start
-&lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">responsive.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;div rounded="lg" md-rounded="2xl" radius="lg"&gt;
-  Radius can change at a breakpoint without moving to a stylesheet.
-&lt;/div&gt;</code></pre>
-  </div>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">states-and-theme.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;button rounded="lg" hover-rounded="lg" dark-rounded="lg"&gt;
-  Radius with hover and dark mode
-&lt;/button&gt;</code></pre>
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article rounded="lg" md-rounded="2xl" border="border"&gt;Responsive corner radius&lt;/article&gt;</code></pre>
   </div></section>
-<section id="attributes" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Attributes</h2><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Attribute</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">CSS output</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>radius</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-t</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-top-left-radius, border-top-right-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-b</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-bottom-left-radius, border-bottom-right-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-l</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-top-left-radius, border-bottom-left-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-r</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-top-right-radius, border-bottom-right-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-tl</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-top-left-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-tr</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-top-right-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-bl</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-bottom-left-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-br</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-bottom-right-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-ss</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-start-start-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-se</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-start-end-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-es</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-end-start-radius</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>rounded-ee</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>border-end-end-radius</code></td></tr></tbody>
-  </table></div></section>
-<section id="scale" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Useful scale values</h2><div mb="8"><h3 font-size="lg" font-weight="bold" mb="3">Radius</h3><div overflow-x="auto" max-w="4xl" mb="8"><table w="full" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <thead><tr><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Token</th><th align="left" p="3" bg="gray-100" dark-bg="gray-900">Value</th></tr></thead>
-    <tbody><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>none</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>0px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>sm</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>base</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>4px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>md</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>6px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>lg</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>8px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>xl</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>12px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>2xl</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>16px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>3xl</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>24px</code></td></tr><tr><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>full</code></td><td p="3" border-t="1px" border-color="gray-100" dark-border-color="gray-800"><code>9999px</code></td></tr></tbody>
-  </table></div></div></section>
-<section id="tips" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Reading the syntax</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use the base attribute for the default style. Add breakpoint prefixes for layout changes, state prefixes for interaction, and <code>dark-</code> prefixes when a theme needs a different value. This keeps the full behavior of the element visible without sending the reader into a second file.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">If an attribute maps to a CSS property, the value usually follows that property. When Atomattr has a scale for the property, short tokens such as <code>4</code>, <code>xl</code>, <code>muted</code>, or <code>primary/80</code> make the common cases fast. When a design needs precision, raw CSS values are still valid.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">combined-pattern.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;article display="flex" flex-col gap="3" p="5" rounded="xl" border="border" rounded="lg" md-rounded="2xl"&gt;
-  &lt;h3 font-size="lg" font-weight="bold"&gt;Radius pattern&lt;/h3&gt;
-  &lt;p text="muted" line-height="relaxed"&gt;
-    Combine the attribute with layout, spacing, and color so the whole component remains readable.
-  &lt;/p&gt;
-  &lt;button radius="lg" hover-radius="lg" px="4" py="2" rounded="lg"&gt;
-    Continue
-  &lt;/button&gt;
-&lt;/article&gt;</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">radius-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section display="grid" gap="4" p="6" bg="gray-50" dark-bg="gray-950"&gt;
-  &lt;article bg="white" dark-bg="gray-900" rounded="2xl" border="border" p="5"&gt;
-    &lt;h3 font-size="xl" font-weight="bold"&gt;Radius&lt;/h3&gt;
-    &lt;p mt="2" text="muted" line-height="relaxed"&gt;
-      Use this as a small playground for the ideas on this page.
-    &lt;/p&gt;
-    &lt;button mt="4" bg="primary" text="white" hover-bg="primary/80" px="4" py="2" rounded="lg"&gt;
-      Try it
-    &lt;/button&gt;
-  &lt;/article&gt;
-&lt;/section&gt;</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="borders-width-color.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>Border Width and Color</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Borders</p>
-  </a>
-    <a href="borders-outline-ring.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>Outline and Ring</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Borders</p>
+<section id="attributes" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Attributes</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The table lists corner and edge radius attributes. Values follow CSS <code>border-radius</code> rules with the common AtomAttr radius scale.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="borders-outline-ring.html" aria-label="Next page: Outline and Ring" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>Outline and Ring</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#when-to-use" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">When to use it</a>
-<a data-toc-link href="#more-examples" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">More examples</a>
-<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a>
-<a data-toc-link href="#scale" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Useful scale values</a>
-<a data-toc-link href="#tips" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Reading the syntax</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#radius-scale" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Radius scale</a>
+<a data-toc-link href="#individual-corners-and-edges" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Individual corners and edges</a>
+<a data-toc-link href="#responsive-shapes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Responsive shapes</a>
+<a data-toc-link href="#attributes" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Attributes</a></div></div>
       </aside>
     </div>
   </main>

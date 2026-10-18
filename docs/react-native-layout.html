@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>React Native layout - Atomattr Docs</title>
-  <meta name="description" content="Build native layouts with flex, gap helpers, grid helpers, spacing, and sizing primitives.">
+  <meta name="description" content="Use the native layout properties and supported helpers exposed by AtomAttr's React Native entry.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/react-native-layout.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="React Native layout - Atomattr Docs">
-  <meta property="og:description" content="Build native layouts with flex, gap helpers, grid helpers, spacing, and sizing primitives.">
+  <meta property="og:description" content="Use the native layout properties and supported helpers exposed by AtomAttr's React Native entry.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/react-native-layout.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="React Native layout - Atomattr Docs">
-  <meta name="twitter:description" content="Build native layouts with flex, gap helpers, grid helpers, spacing, and sizing primitives.">
+  <meta name="twitter:description" content="Use the native layout properties and supported helpers exposed by AtomAttr's React Native entry.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -76,9 +76,26 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="values.html">Values</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="responsive.html">Responsive</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
+    </div>
+  </div>
+<div display="flex" flex-col gap="3">
+    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
+    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
+      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
     </div>
   </div>
 <div display="flex" flex-col gap="3">
@@ -196,97 +213,40 @@
         <div max-w="3xl">
           <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">PLATFORM GUIDES</p>
           <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">React Native layout</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="10">Build native layouts with flex, gap helpers, grid helpers, spacing, and sizing primitives.</p>
+          <p font-size="md" text="muted" line-height="relaxed" mb="4">Use the native layout properties and supported helpers exposed by AtomAttr's React Native entry.</p>
         </div>
-        <section id="flex-layout" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Flex layout</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">React Native layout is flexbox-first. Prefer rows, columns, spacing, and alignment props that map naturally to native layout.</p>
+        <section id="flex-layout" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Flex layout</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">React Native uses flexbox for layout. Import native primitives from <code>atomattr/react-native</code>; browser attributes and <code>defaults.css</code> are not involved. <code>Row</code> provides a row-oriented helper, while <code>Box</code> accepts supported native style props such as <code>flex</code>, spacing, alignment, and colors.</p>
 <div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
     <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">Stack.tsx</span><i class="ri-file-code-line" text="gray-500"></i>
+      <span text="gray-400" font-size="sm">tsx</span><i class="ri-file-code-line" text="gray-500"></i>
     </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-tsx">import { Box, Row, Txt } from 'atomattr/react-native';
+    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">import { Box, Row, Txt } from 'atomattr/react-native';
 
 export function StatsRow() {
   return (
     &lt;Row gap="3" items="center" justify="between"&gt;
-      &lt;Box p="4" rounded="xl" bg="white" flex={1}&gt;
+      &lt;Box flex={1} p="4" rounded="xl" bg="white"&gt;
         &lt;Txt text="muted"&gt;Revenue&lt;/Txt&gt;
-        &lt;Txt mt="1" fontSize="2xl" weight="bold"&gt;$12k&lt;/Txt&gt;
+        &lt;Txt fontSize="2xl" fontWeight="bold"&gt;$12k&lt;/Txt&gt;
       &lt;/Box&gt;
-      &lt;Box p="4" rounded="xl" bg="white" flex={1}&gt;
-        &lt;Txt text="muted"&gt;Orders&lt;/Txt&gt;
-        &lt;Txt mt="1" fontSize="2xl" weight="bold"&gt;340&lt;/Txt&gt;
-      &lt;/Box&gt;
+      &lt;Box flex={1} p="4" rounded="xl" bg="white"&gt;&lt;Txt&gt;Orders&lt;/Txt&gt;&lt;/Box&gt;
     &lt;/Row&gt;
   );
 }</code></pre>
   </div></section>
-<section id="grid-helper" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Grid helper</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When the native package exposes a grid helper, use it for repeated cells while keeping item styles local.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">GridExample.tsx</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-tsx">import { Grid, Box, Txt } from 'atomattr/react-native';
-
-export function FeatureGrid() {
-  return (
-    &lt;Grid columns={2} gap="3"&gt;
-      &lt;Box p="4" rounded="xl" bg="white"&gt;
-        &lt;Txt weight="bold"&gt;Fast&lt;/Txt&gt;
-      &lt;/Box&gt;
-      &lt;Box p="4" rounded="xl" bg="white"&gt;
-        &lt;Txt weight="bold"&gt;Readable&lt;/Txt&gt;
-      &lt;/Box&gt;
-    &lt;/Grid&gt;
-  );
-}</code></pre>
-  </div></section>
-<section id="practice" pt="4" pb="16" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="10">Practice patterns</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The fastest way to learn this page is to copy one example, paste it into the playground, and change one attribute at a time. Keep the structure stable while you experiment with values. Once the result feels right, move the same attributes into your real component.</p>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">When a component starts to feel noisy, group the attributes mentally by purpose: layout, spacing, color, type, border, effects, and state. Atomattr does not require a special order, but a consistent order makes examples easier to teach and production markup easier to review.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">react-native-layout-practice.html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">import { Box, Txt, Btn } from 'atomattr/react-native';
-
-export function PracticeCard() {
-  return (
-    &lt;Box bg="white" rounded="2xl" p="5" gap="3"&gt;
-      &lt;Txt fontSize="xl" weight="bold"&gt;React Native Layout&lt;/Txt&gt;
-      &lt;Txt text="muted" lineHeight="relaxed"&gt;
-        Change spacing, color, and radius values to see the native output.
-      &lt;/Txt&gt;
-      &lt;Btn bg="primary" text="white" rounded="lg" px="4" py="2"&gt;
-        Try it
-      &lt;/Btn&gt;
-    &lt;/Box&gt;
-  );
-}</code></pre>
-  </div></section>
-        <nav aria-label="Documentation pagination" display="flex" items="center" justify="between" gap="4" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="react-native.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Previous</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      <i class="ri-arrow-left-line"></i>
-      <strong>React Native</strong>
-      
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Platform Guides</p>
-  </a>
-    <a href="react-native-inputs.html" text-decoration="none" text="text" border="1px" border-color="gray-100" dark-border-color="gray-900" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="block" max-w="fit">
-    <p text="muted" font-size="sm" mb="2">Next</p>
-    <div display="flex" items="center" justify="center" gap="4">
-      
-      <strong>React Native Inputs</strong>
-      <i class="ri-arrow-right-line"></i>
-    </div>
-    <p text="muted" font-size="sm" line-height="relaxed" mt="2">Platform Guides</p>
+<section id="gap-and-grid-helpers" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Gap and grid helpers</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">React Native versions differ in support for <code>gap</code>, and the package includes grid helpers for layouts that need a predictable column structure. Follow the supported APIs in the installed package version and test on the platforms you ship; web CSS container queries, pseudo-states, and browser-only properties are not available in native styles.</p></section>
+<section id="platform-limits" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Platform limits</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Native style values and properties differ from CSS. Use the React Native reference pages for supported mappings, and inspect the native style engine when a property is not documented. Do not assume every browser AtomAttr attribute works in React Native.</p></section>
+        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
+    <a href="react-native-inputs.html" aria-label="Next page: React Native Inputs" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
+    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+    <strong>React Native Inputs</strong>
   </a>
   </nav>
       </div>
       <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
         <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#flex-layout" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Flex layout</a>
-<a data-toc-link href="#grid-helper" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Grid helper</a>
-<a data-toc-link href="#practice" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Practice patterns</a></div></div>
+<a data-toc-link href="#gap-and-grid-helpers" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Gap and grid helpers</a>
+<a data-toc-link href="#platform-limits" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Platform limits</a></div></div>
       </aside>
     </div>
   </main>

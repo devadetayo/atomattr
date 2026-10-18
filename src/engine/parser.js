@@ -1,7 +1,7 @@
 import { DICTIONARY } from '../style-data/dictionary.js';
-import { BREAKPOINTS, PSEUDO_STATES } from '../style-data/variables.js';
+import { BREAKPOINTS, CONTAINER_BREAKPOINTS, PSEUDO_STATES } from '../style-data/variables.js';
 
-const MODIFIERS = ['group-hover', 'dark', ...Object.keys(BREAKPOINTS), ...PSEUDO_STATES].sort(
+const MODIFIERS = ['group-hover', 'dark', ...Object.keys(BREAKPOINTS), ...Object.keys(CONTAINER_BREAKPOINTS), ...PSEUDO_STATES].sort(
   (left, right) => right.length - left.length
 );
 const PROP_KEYS = Object.keys(DICTIONARY).sort((left, right) => right.length - left.length);
@@ -14,13 +14,25 @@ const PSEUDO_STATE_ALIASES = {
   'focus-within': 'focus-within',
   disabled: 'disabled',
   checked: 'checked',
-  selected: 'selected',
+  selected: 'checked',
   pressed: 'active',
   open: 'open',
   valid: 'valid',
   invalid: 'invalid',
   required: 'required',
   'read-only': 'read-only',
+  optional: 'optional',
+  'read-write': 'read-write',
+  indeterminate: 'indeterminate',
+  'placeholder-shown': 'placeholder-shown',
+  empty: 'empty',
+  only: 'only-child',
+  'first-of-type': 'first-of-type',
+  'last-of-type': 'last-of-type',
+  first: 'first-child',
+  last: 'last-child',
+  odd: 'nth-child(odd)',
+  even: 'nth-child(even)',
 };
 
 function escapeAttribute(name) {
@@ -28,7 +40,11 @@ function escapeAttribute(name) {
 }
 
 function escapeAttributeValue(value) {
-  return String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  return String(value).replace(/[\\"\n\r\f\0]/g, character => {
+    const code = character.codePointAt(0);
+    if (character === '"' || character === '\\') return `\\${character}`;
+    return `\\${code.toString(16)} `;
+  });
 }
 
 function consumeModifiers(prefix) {
@@ -92,6 +108,14 @@ export function parseAttribute(attributeName, value) {
 
     if (BREAKPOINTS[modifier]) {
       wrapperStart += `@media (min-width: ${BREAKPOINTS[modifier]}) { `;
+      wrapperEnd = ` }${wrapperEnd}`;
+      continue;
+    }
+
+    if (CONTAINER_BREAKPOINTS[modifier]) {
+      // An unnamed query uses the nearest eligible ancestor. Emit an explicit
+      // inline-size query for reliable size containment across browsers.
+      wrapperStart += `@container (min-width: ${CONTAINER_BREAKPOINTS[modifier]}) { `;
       wrapperEnd = ` }${wrapperEnd}`;
       continue;
     }
