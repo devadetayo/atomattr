@@ -6,90 +6,73 @@
     <meta name="theme-color" content="#5b5cf6" />
     <meta name="robots" content="index, follow" />
     <title>Playground — Atomattr</title>
-    <meta name="description" content="Interactive Atomattr playground: write HTML and CSS, see the result live, test responsive viewports, and share your snippet." />
+    <meta name="description" content="Interactive Atomattr playground: write HTML, React, Vue, Svelte or Alpine with Atomattr attributes, see the result live, test devices, and share your snippet." />
     <link rel="canonical" href="https://devadetayo.github.io/atomattr/playground.html" />
     <link rel="icon" href="assets/favico/favico.png" type="image/png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Atomattr" />
     <meta property="og:title" content="Playground — Atomattr" />
-    <meta property="og:description" content="Interactive Atomattr playground: write HTML and CSS, see the result live, test responsive viewports, and share your snippet." />
+    <meta property="og:description" content="Interactive Atomattr playground: write HTML, React, Vue, Svelte or Alpine with Atomattr attributes, see the result live, test devices, and share your snippet." />
     <meta property="og:url" content="https://devadetayo.github.io/atomattr/playground.html" />
     <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Playground — Atomattr" />
-    <meta name="twitter:description" content="Interactive Atomattr playground: write HTML and CSS, see the result live, test responsive viewports, and share your snippet." />
+    <meta name="twitter:description" content="Interactive Atomattr playground: write HTML, React, Vue, Svelte or Alpine with Atomattr attributes, see the result live, test devices, and share your snippet." />
     <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
+    <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
 
     <style>
       /* Only editor internals live here: a transparent <textarea> must line up
-         glyph-for-glyph with its highlighted <pre>, so those metrics are fixed
-         in px. Everything else in this page is styled with Atomattr attributes. */
+         glyph-for-glyph with its highlighted <pre>, so those metrics are fixed.
+         The editor has no background of its own; it sits on the page. Everything
+         else is styled with Atomattr attributes. */
       html { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif; -webkit-text-size-adjust: 100%; }
       h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.015em; }
-      summary { list-style: none; }
-      summary::-webkit-details-marker { display: none; }
+      /* The playground is full-bleed: no page margins, padding or max-width around it. */
+      html, body { margin: 0 !important; padding: 0 !important; }
+      .page-shell { margin: 0 !important; padding: 0 !important; max-width: none !important; width: 100% !important; }
 
-      .pg-ed-light {
-        --ed-bg:#ffffff; --ed-fg:#24292f; --ed-gutter-bg:#f6f8fa; --ed-gutter-fg:#8c959f;
-        --ed-caret:#4f46e5; --ed-sel:rgba(99,102,241,.22);
-        --tk-punct:#57606a; --tk-tag:#116329; --tk-attr:#0550ae; --tk-str:#0a3069;
-        --tk-com:#6e7781; --tk-num:#0550ae; --tk-kw:#cf222e; --tk-sel:#6639ba;
+      /* JetBrains Mono advances 0.6em per glyph, so 15px gives exactly 9px per character.
+         A whole-pixel advance means the textarea caret and the highlighted layer can never
+         round differently and drift apart. !important keeps site-wide pre/code/textarea
+         rules from changing one layer and not the other. */
+      .pg-code, .pg-pre code, .pg-pre code * {
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+        font-size: 15px !important; line-height: 22px !important; tab-size: 2; -moz-tab-size: 2; box-sizing: border-box;
+        font-variant-ligatures: none !important; font-feature-settings: "liga" 0, "calt" 0 !important; font-kerning: none !important;
+        font-stretch: 100% !important; font-size-adjust: none !important; letter-spacing: 0 !important; word-spacing: 0 !important;
+        text-indent: 0 !important; text-transform: none !important; text-rendering: geometricPrecision !important;
+        -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
       }
-      .pg-ed-dark {
-        --ed-bg:#0d1117; --ed-fg:#e6edf3; --ed-gutter-bg:#0d1117; --ed-gutter-fg:#6e7681;
-        --ed-caret:#a5b4fc; --ed-sel:rgba(129,140,248,.30);
-        --tk-punct:#8b949e; --tk-tag:#7ee787; --tk-attr:#79c0ff; --tk-str:#a5d6ff;
-        --tk-com:#8b949e; --tk-num:#79c0ff; --tk-kw:#ff7b72; --tk-sel:#d2a8ff;
-      }
-      .pg-ed-surface { background: var(--ed-bg); color: var(--ed-fg); }
-      .pg-ed-surface:focus-within { box-shadow: inset 0 0 0 1px var(--ed-caret); }
-      .pg-code {
-        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-        font-size: 13px; line-height: 20px; tab-size: 2; -moz-tab-size: 2;
-        margin: 0; box-sizing: border-box; font-variant-ligatures: none;
-      }
-      /* Touch screens: slightly larger code, and 16px on iOS so Safari does not zoom on focus. */
-      @media (max-width: 1023px) { .pg-code { font-size: 14px; line-height: 22px; } }
-      @supports (-webkit-touch-callout: none) {
-        @media (max-width: 1023px) { .pg-code { font-size: 16px; line-height: 24px; } }
-      }
-      .pg-pre, .pg-ta {
-        position: absolute; inset: 0; margin: 0; border: 0;
-        padding: 12px 16px 40px; white-space: pre; overflow-wrap: normal; word-break: normal;
-      }
-      .pg-pre { overflow: hidden; pointer-events: none; color: var(--ed-fg); }
-      .pg-pre code { font: inherit; display: block; background: none; padding: 0; color: inherit; }
+      .pg-code { margin: 0; }
+      @supports (-webkit-touch-callout: none) { @media (max-width: 1023px) { .pg-code, .pg-pre code, .pg-pre code * { font-size: 16px !important; line-height: 24px !important; } } }
+
+      .pg-pre, .pg-ta { position: absolute; inset: 0; margin: 0; border: 0; padding: 12px 16px 40px; white-space: pre; overflow-wrap: normal; word-break: normal; }
+      .pg-wrap .pg-pre, .pg-wrap .pg-ta { white-space: pre-wrap; overflow-wrap: anywhere; }
+      .pg-wrap .pg-gutter { display: none; }
+      .pg-pre { overflow: hidden; pointer-events: none; background: none; }
+      .pg-pre code { display: block; color: inherit; }
+      /* Keep every glyph the same advance as the textarea underneath. */
+      .pg-pre code, .pg-pre code * { background: none !important; padding: 0 !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; font-weight: 400 !important; font-style: normal !important; }
+      .pg-ta { font-weight: 400; font-style: normal; padding: 12px 16px 40px; }
       .pg-ta {
-        overflow: auto; resize: none; outline: none; background: transparent;
-        color: transparent; -webkit-text-fill-color: transparent; caret-color: var(--ed-caret);
-        overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+        overflow: auto; resize: none; outline: none; background: transparent; color: transparent; -webkit-text-fill-color: transparent;
+        caret-color: #6366f1; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none;
       }
-      .pg-ta::selection { background: var(--ed-sel); -webkit-text-fill-color: transparent; }
-      .pg-gutter {
-        flex: none; overflow: hidden; text-align: right; user-select: none; white-space: pre;
-        padding: 12px 10px 40px 12px; background: var(--ed-gutter-bg); color: var(--ed-gutter-fg);
-      }
-      .pg-pre .hljs-tag { color: var(--tk-punct); }
-      .pg-pre .hljs-name { color: var(--tk-tag); }
-      .pg-pre .hljs-attr, .pg-pre .hljs-attribute { color: var(--tk-attr); }
-      .pg-pre .hljs-string { color: var(--tk-str); }
-      .pg-pre .hljs-comment, .pg-pre .hljs-meta { color: var(--tk-com); font-style: italic; }
-      .pg-pre .hljs-number, .pg-pre .hljs-literal, .pg-pre .hljs-variable { color: var(--tk-num); }
-      .pg-pre .hljs-keyword, .pg-pre .hljs-built_in { color: var(--tk-kw); }
-      .pg-pre .hljs-selector-tag, .pg-pre .hljs-selector-class, .pg-pre .hljs-selector-id,
-      .pg-pre .hljs-selector-attr, .pg-pre .hljs-selector-pseudo { color: var(--tk-sel); }
+      .pg-ta::-webkit-scrollbar { display: none; }
+      .pg-ta::selection { background: rgba(99,102,241,.28); -webkit-text-fill-color: transparent; }
+      .pg-gutter { flex: none; overflow: hidden; text-align: right; user-select: none; white-space: pre; padding: 12px 10px 40px 12px; opacity: .55; }
 
       #pg-canvas { background-image: radial-gradient(rgba(128,128,128,.22) 1px, transparent 1px); background-size: 16px 16px; }
-      #pg-keybar, #pg-drawer-body { scrollbar-width: none; }
-      #pg-keybar::-webkit-scrollbar, #pg-drawer-body::-webkit-scrollbar { display: none; }
-      [data-playground] button, #pg-drawer button { font-family: inherit; -webkit-tap-highlight-color: transparent; }
-      [data-playground] button:focus-visible,
-      [data-playground] [role="separator"]:focus-visible,
-      #pg-drawer button:focus-visible { outline: 2px solid #6366f1; outline-offset: 1px; }
+      #pg-keybar, #pg-panel-body { scrollbar-width: none; }
+      #pg-keybar::-webkit-scrollbar, #pg-panel-body::-webkit-scrollbar { display: none; }
+      [data-playground] button, #pg-panel button, #pg-ac button { font-family: inherit; -webkit-tap-highlight-color: transparent; }
+      [data-playground] button:focus-visible, [data-playground] [role="separator"]:focus-visible { outline: 2px solid #6366f1; outline-offset: 1px; }
       @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
     </style>
     <link rel="stylesheet" href="./dist/defaults.css" />
@@ -102,25 +85,19 @@
 
       <section data-playground display="flex" flex-col style="height:100vh;height:100dvh;min-height:0;">
 
-        <!-- ================= Toolbar =================
-             data-m="mobile" → shown only on small screens, data-m="desktop" → only on large.
-             data-d is the display value used when shown. -->
+        <!-- ================= Toolbar ================= -->
         <div id="pg-toolbar" display="flex" items="center" justify="between" gap="2" px="3" py="2" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="30" style="min-height:52px;flex:none;">
-
           <div display="flex" items="center" gap="2" style="min-width:0;">
-            <button id="pg-menu" type="button" data-m="mobile" data-d="flex" aria-label="Open menu" title="Menu" aria-controls="pg-drawer" aria-expanded="false" display="none" items="center" justify="center" bg="transparent" border="border" text="text" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
-              <i class="ri-menu-2-line" font-size="18"></i>
-            </button>
             <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" aria-label="Atomattr homepage">
               <img src="./assets/images/logo.png" alt="Atomattr" h="6" dark-display="none" display="flex">
               <img src="./assets/images/logo.dark.png" alt="Atomattr" h="6" dark-display="flex" display="none">
             </a>
             <span data-m="desktop" data-d="block" w="1px" h="6" bg="gray-200" dark-bg="gray-800"></span>
+            <div id="dd-lang" data-m="desktop" data-d="block" position="relative"></div>
             <div id="dd-example" data-m="desktop" data-d="block" position="relative"></div>
           </div>
 
           <div display="flex" items="center" gap="2">
-
             <div id="pg-layout-seg" data-m="desktop" data-d="flex" display="flex" items="center" gap="1" bg="gray-100" dark-bg="gray-900" rounded="lg" p="1" role="group" aria-label="Workspace layout">
               <button type="button" data-layout="split" title="Side by side" aria-label="Side-by-side view" aria-pressed="true" display="flex" items="center" justify="center" bg="#fff" dark-bg="gray-800" text="primary" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-layout-column-line" font-size="15"></i></button>
               <button type="button" data-layout="stacked" title="Stacked" aria-label="Stacked view" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-layout-row-line" font-size="15"></i></button>
@@ -133,88 +110,90 @@
             <button id="pg-run" type="button" title="Run (Ctrl/⌘ + Enter)" aria-label="Run preview" display="flex" items="center" gap="1.5" bg="primary" text="white" px="3" h="9" rounded="lg" font-size="sm" font-weight="600" cursor="pointer">
               <i class="ri-play-fill" font-size="15"></i>
             </button>
-
             <button id="pg-reset" type="button" data-m="desktop" data-d="flex" title="Reset to example" aria-label="Reset to example" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
               <i class="ri-restart-line" font-size="16"></i>
             </button>
-
             <button id="pg-share" type="button" title="Copy a shareable link to this code" aria-label="Copy share link" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
               <i class="ri-share-line" font-size="16"></i>
             </button>
-
             <button type="button" aria-label="Toggle color theme" title="Toggle site color theme" data-color-toggle bg="transparent" border="border" text="text" w="9" h="9" rounded="lg" display="flex" items="center" justify="center" cursor="pointer">
               <i class="ri-sun-line" font-size="18" data-color-toggle-icon></i>
             </button>
-
           </div>
         </div>
 
-        <!-- ================= Workspace ================= -->
-        <div id="pg-workspace" display="flex" flex="1" style="min-height:0;min-width:0;">
+        <!-- ================= Body: icon rail (mobile) + workspace ================= -->
+        <div id="pg-body" display="flex" flex="1" position="relative" style="min-height:0;min-width:0;overflow:hidden;">
 
-          <!-- Editor pane -->
-          <div id="pg-editor-pane" data-pane="editor" display="flex" flex-col style="min-width:0;min-height:0;">
+          <!-- Retracted sidebar: icons only; tapping one expands its panel -->
+          <nav id="pg-rail" data-m="mobile" data-d="flex" display="none" flex-col items="center" gap="1" py="2" border-r="1px" border-color="gray-100" dark-border-color="gray-900" bg="#fff" dark-bg="grey-950" aria-label="Playground menu" position="relative" z="35" style="flex:none;width:48px;box-sizing:border-box;"></nav>
+          <div id="pg-scrim" display="none" aria-hidden="true" z="33" style="position:absolute;top:0;bottom:0;left:48px;right:0;background:rgba(0,0,0,.4);"></div>
+          <aside id="pg-panel" role="dialog" aria-label="Playground options" aria-hidden="true" display="flex" flex-col bg="#fff" dark-bg="grey-950" border-r="1px" border-color="gray-100" dark-border-color="gray-900" z="34" style="position:absolute;top:0;bottom:0;left:48px;width:min(74vw,280px);transform:translateX(-110%);visibility:hidden;transition:transform .2s ease, visibility 0s .2s;box-shadow:0 0 32px rgba(0,0,0,.25);">
+            <div px="4" border-b="1px" border-color="gray-100" dark-border-color="gray-900" display="flex" items="center" style="min-height:44px;flex:none;"><strong id="pg-panel-title" font-size="sm" font-weight="700"></strong></div>
+            <div id="pg-panel-body" px="3" py="3" style="flex:1;overflow-y:auto;min-height:0;overscroll-behavior:contain;"></div>
+          </aside>
 
-            <div display="flex" items="center" justify="between" gap="2" px="4" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="20" style="min-height:42px;flex:none;">
-              <div display="flex" gap="5" role="tablist" aria-label="Source files">
-                <button type="button" role="tab" data-tab="html" aria-selected="true" display="flex" items="center" gap="1.5" bg="transparent" text="primary" border-b="2px" border-color="primary" pt="3" pb="2.5" font-size="sm" font-weight="600" cursor="pointer"><i class="ri-html5-line" font-size="15"></i>HTML</button>
-                <button type="button" role="tab" data-tab="css" aria-selected="false" display="flex" items="center" gap="1.5" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600" cursor="pointer"><i class="ri-css3-line" font-size="15"></i>CSS</button>
-              </div>
-              <div display="flex" items="center" gap="2">
-                <div id="dd-editor-theme" data-m="desktop" data-d="block" position="relative"></div>
-                <button id="pg-copy" type="button" title="Copy HTML" aria-label="Copy HTML" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10">
-                  <i class="ri-file-copy-line" font-size="15"></i>
-                </button>
-              </div>
-            </div>
+          <div id="pg-workspace" display="flex" flex="1" style="min-height:0;min-width:0;">
 
-            <div id="pg-ed-body" class="pg-ed-surface pg-ed-light" position="relative" flex="1" style="min-height:0;">
-              <div data-editor="html" style="position:absolute;inset:0;display:flex;">
-                <div class="pg-gutter pg-code" aria-hidden="true"></div>
-                <div style="position:relative;flex:1;min-width:0;">
-                  <pre class="pg-code pg-pre" aria-hidden="true"><code></code></pre>
-                  <textarea class="pg-code pg-ta" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="HTML source"></textarea>
+            <!-- Editor pane -->
+            <div id="pg-editor-pane" display="flex" flex-col style="min-width:0;min-height:0;">
+              <div display="flex" items="center" justify="between" gap="2" px="4" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="20" style="min-height:42px;flex:none;">
+                <div display="flex" gap="5" role="tablist" aria-label="Source files">
+                  <button type="button" role="tab" data-tab="code" aria-selected="true" display="flex" items="center" gap="1.5" bg="transparent" text="primary" border-b="2px" border-color="primary" pt="3" pb="2.5" font-size="sm" font-weight="600" cursor="pointer"><i id="pg-tab-icon" class="ri-html5-line" font-size="15"></i><span id="pg-tab-label">HTML</span></button>
+                  <button type="button" role="tab" data-tab="css" aria-selected="false" display="flex" items="center" gap="1.5" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600" cursor="pointer"><i class="ri-css3-line" font-size="15"></i>CSS</button>
+                </div>
+                <div display="flex" items="center" gap="2">
+                  <button id="pg-wrap-btn" type="button" title="Word wrap" aria-label="Toggle word wrap" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-text-wrap" font-size="15"></i></button>
+                  <button id="pg-pretty" type="button" title="Prettify (Alt + Shift + F)" aria-label="Prettify code" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-magic-line" font-size="15"></i></button>
+                  <button id="pg-copy" type="button" title="Copy code" aria-label="Copy code" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-file-copy-line" font-size="15"></i></button>
                 </div>
               </div>
-              <div data-editor="css" style="position:absolute;inset:0;display:none;">
-                <div class="pg-gutter pg-code" aria-hidden="true"></div>
-                <div style="position:relative;flex:1;min-width:0;">
-                  <pre class="pg-code pg-pre" aria-hidden="true"><code></code></pre>
-                  <textarea class="pg-code pg-ta" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="CSS source"></textarea>
+
+              <div id="pg-ed-body" text="text" position="relative" flex="1" style="min-height:0;">
+                <div data-editor="code" style="position:absolute;inset:0;display:flex;">
+                  <div class="pg-gutter pg-code" text="muted" aria-hidden="true"></div>
+                  <div style="position:relative;flex:1;min-width:0;">
+                    <pre class="pg-code pg-pre" aria-hidden="true"><code></code></pre>
+                    <textarea class="pg-code pg-ta" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="Source code"></textarea>
+                  </div>
+                </div>
+                <div data-editor="css" style="position:absolute;inset:0;display:none;">
+                  <div class="pg-gutter pg-code" text="muted" aria-hidden="true"></div>
+                  <div style="position:relative;flex:1;min-width:0;">
+                    <pre class="pg-code pg-pre" aria-hidden="true"><code></code></pre>
+                    <textarea class="pg-code pg-ta" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="CSS source"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div id="pg-keybar" data-m="mobile" data-d="flex" role="toolbar" aria-label="Quick insert" display="none" items="center" gap="1" px="2" border-t="1px" border-color="gray-100" dark-border-color="gray-900" style="flex:none;overflow-x:auto;min-height:44px;"></div>
+            </div>
+
+            <!-- Divider -->
+            <div id="pg-divider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Resize editor and preview" title="Drag to resize · double-click to reset" bg="gray-100" dark-bg="gray-900" style="flex:none;width:6px;cursor:col-resize;touch-action:none;"></div>
+
+            <!-- Preview pane -->
+            <div id="pg-preview-pane" display="flex" flex-col style="min-width:0;min-height:0;flex:1 1 0;">
+              <div display="flex" items="center" justify="between" gap="2" px="3" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="20" style="min-height:42px;flex:none;">
+                <div display="flex" items="center" gap="2">
+                  <div id="dd-device" data-m="desktop" data-d="block" position="relative"></div>
+                  <div id="dd-zoom" data-m="desktop" data-d="block" position="relative"></div>
+                </div>
+                <div display="flex" items="center" gap="3">
+                  <span id="pg-size" text="muted" font-size="xs" aria-live="off" style="font-variant-numeric:tabular-nums;white-space:nowrap;"></span>
+                  <div id="dd-preview-theme" data-m="desktop" data-d="block" position="relative"></div>
+                </div>
+              </div>
+              <div position="relative" flex="1" style="min-height:0;">
+                <div id="pg-canvas" bg="gray-100" dark-bg="gray-900" style="position:absolute;inset:0;overflow:auto;">
+                  <div id="pg-stage" style="display:flex;min-width:100%;min-height:100%;box-sizing:border-box;">
+                    <div id="pg-wrap" style="flex:none;margin:auto;">
+                      <iframe id="pg-frame" title="Atomattr preview" sandbox="allow-scripts" style="border:0;display:block;background:#fff;transform-origin:0 0;"></iframe>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <!-- Quick-insert keys for touch keyboards (filled by script) -->
-            <div id="pg-keybar" data-m="mobile" data-d="flex" role="toolbar" aria-label="Quick insert" display="none" items="center" gap="1" px="2" border-t="1px" border-color="gray-100" dark-border-color="gray-900" bg="#fff" dark-bg="grey-950" style="flex:none;overflow-x:auto;min-height:44px;"></div>
-
-          </div>
-
-          <!-- Divider -->
-          <div id="pg-divider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Resize editor and preview" title="Drag to resize · double-click to reset" bg="gray-100" dark-bg="gray-900" style="flex:none;width:6px;cursor:col-resize;touch-action:none;"></div>
-
-          <!-- Preview pane -->
-          <div id="pg-preview-pane" data-pane="preview" display="flex" flex-col style="min-width:0;min-height:0;flex:1 1 0;">
-
-            <div display="flex" items="center" justify="between" gap="2" px="3" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="relative" z="20" style="min-height:42px;flex:none;">
-              <div display="flex" items="center" gap="2">
-                <div id="dd-viewport" position="relative"></div>
-                <button id="pg-viewport-reset" type="button" title="Back to responsive (fit) viewport" aria-label="Back to responsive viewport" display="none" items="center" gap="1" bg="transparent" text="primary" px="2" h="8" rounded="lg" font-size="xs" font-weight="600" cursor="pointer" hover-bg="primary/10"><i class="ri-fullscreen-exit-line" font-size="14"></i>Fit</button>
-              </div>
-              <div display="flex" items="center" gap="3">
-                <span id="pg-size" text="muted" font-size="xs" aria-live="off" style="font-variant-numeric:tabular-nums;"></span>
-                <div id="dd-preview-theme" data-m="desktop" data-d="block" position="relative"></div>
-              </div>
-            </div>
-
-            <div position="relative" flex="1" style="min-height:0;">
-              <div id="pg-canvas" bg="gray-100" dark-bg="gray-900" style="position:absolute;inset:0;overflow:auto;">
-                <div id="pg-stage" style="display:flex;height:100%;box-sizing:border-box;">
-                  <iframe id="pg-frame" title="Atomattr preview" sandbox="allow-scripts" style="border:0;display:block;background:#fff;flex:none;margin:0 auto;width:100%;height:100%;"></iframe>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -234,8 +213,9 @@
           <div id="pg-tips" display="none" px="4" py="2" font-size="xs" text="muted" line-height="relaxed" style="flex:1;overflow:auto;min-height:0;">
             <div>Spacing: <code>p="6" gap="4"</code> · Colors: <code>bg="blue-700" text="white"</code> · State: <code>hover-bg="slate-950"</code></div>
             <div>Layout: <code>display="flex" items="center" justify="between"</code> · Responsive: <code>md-grid-cols="3"</code> · Dark: <code>dark-bg="grey-950"</code></div>
-            <div mt="1" data-m="desktop" data-d="block">Shortcuts: <code>Ctrl/⌘ + Enter</code> re-run · <code>Ctrl/⌘ + S</code> save now · <code>Tab</code> / <code>Shift + Tab</code> indent / outdent · <code>Esc</code> then <code>Tab</code> leaves the editor</div>
-            <div mt="1" data-m="mobile" data-d="block" display="none">Use the key row above the keyboard for <code>Tab</code>, <code>=""</code> and other symbols. <code>Run</code> jumps to the preview.</div>
+            <div mt="1">Autocomplete suggests Atomattr attributes and values as you type · <code>Ctrl + Space</code> opens it · <code>Tab</code> / <code>Enter</code> accepts</div>
+            <div mt="1" data-m="desktop" data-d="block">Shortcuts: <code>Ctrl/⌘ + Enter</code> re-run · <code>Ctrl/⌘ + S</code> save · <code>Alt + Shift + F</code> prettify · <code>Esc</code> then <code>Tab</code> leaves the editor</div>
+            <div mt="1" data-m="mobile" data-d="block" display="none">Use the key row above the keyboard for <code>Tab</code>, <code>=""</code> and other symbols.</div>
           </div>
         </div>
 
@@ -261,45 +241,35 @@
           </div>
         </div>
 
-        <!-- ================= Bottom tab bar (mobile) ================= -->
+        <!-- ================= Bottom nav (mobile): icons only ================= -->
         <nav id="pg-mobile-nav" data-m="mobile" data-d="flex" display="none" items="stretch" border-t="1px" border-color="gray-100" dark-border-color="gray-900" bg="#fff" dark-bg="grey-950" aria-label="Workspace panels" style="flex:none;padding-bottom:env(safe-area-inset-bottom, 0px);">
-          <button type="button" data-mobile-pane="editor" aria-pressed="true" display="flex" flex-col items="center" justify="center" gap="0.5" bg="transparent" text="muted" font-size="xs" font-weight="600" cursor="pointer" style="flex:1;min-height:52px;">
-            <i class="ri-code-s-slash-line" font-size="20"></i><span>Code</span>
-          </button>
-          <button type="button" data-mobile-pane="preview" aria-pressed="false" display="flex" flex-col items="center" justify="center" gap="0.5" bg="transparent" text="muted" font-size="xs" font-weight="600" cursor="pointer" style="flex:1;min-height:52px;">
-            <i class="ri-eye-line" font-size="20"></i><span>Preview</span>
-          </button>
-          <button id="pg-m-console" type="button" aria-pressed="false" aria-label="Toggle console" display="flex" flex-col items="center" justify="center" gap="0.5" bg="transparent" text="muted" font-size="xs" font-weight="600" cursor="pointer" style="flex:1;min-height:52px;">
-            <i class="ri-terminal-box-line" font-size="20"></i>
-            <span display="flex" items="center" gap="1.5">Console
-              <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
-              <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
-            </span>
+          <button type="button" data-mobile-pane="editor" aria-label="Code" title="Code" aria-pressed="true" display="flex" items="center" justify="center" bg="transparent" text="muted" cursor="pointer" style="flex:1;min-height:52px;"><i class="ri-code-s-slash-line" font-size="22"></i></button>
+          <button type="button" data-mobile-pane="preview" aria-label="Preview" title="Preview" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" cursor="pointer" style="flex:1;min-height:52px;"><i class="ri-eye-line" font-size="22"></i></button>
+          <button id="pg-m-console" type="button" aria-label="Toggle console" title="Console" aria-pressed="false" display="flex" items="center" justify="center" gap="1" bg="transparent" text="muted" cursor="pointer" style="flex:1;min-height:52px;">
+            <i class="ri-terminal-box-line" font-size="22"></i>
+            <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
+            <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
           </button>
         </nav>
 
       </section>
     </main>
 
+    <!-- Autocomplete popup -->
+    <div id="pg-ac" role="listbox" aria-label="Atomattr suggestions" display="none" bg="#fff" dark-bg="gray-900" border="border" rounded="lg" p="1" z="80" style="position:fixed;max-height:220px;min-width:170px;overflow-y:auto;box-shadow:0 12px 32px rgba(0,0,0,.22);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;"></div>
+
     <!-- Toast -->
-    <div id="pg-toast" role="status" aria-live="polite" display="none" items="center" gap="3" bg="#111827" text="white" px="4" py="2" rounded="lg" font-size="sm" z="50" style="position:fixed;left:50%;bottom:44px;transform:translateX(-50%);max-width:92vw;box-shadow:0 8px 28px rgba(0,0,0,.3);">
+    <div id="pg-toast" role="status" aria-live="polite" display="none" items="center" gap="3" bg="#111827" text="white" px="4" py="2" rounded="lg" font-size="sm" z="90" style="position:fixed;left:50%;bottom:44px;transform:translateX(-50%);max-width:92vw;box-shadow:0 8px 28px rgba(0,0,0,.3);">
       <span id="pg-toast-msg"></span>
       <button id="pg-toast-action" type="button" display="none" bg="transparent" text="#a5b4fc" font-weight="600" font-size="sm" cursor="pointer"></button>
     </div>
 
-    <!-- ================= Slide-in menu (mobile) ================= -->
-    <div id="pg-drawer-scrim" display="none" aria-hidden="true" style="position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.5);opacity:0;transition:opacity .22s ease;"></div>
-    <aside id="pg-drawer" role="dialog" aria-modal="true" aria-label="Playground menu" aria-hidden="true" display="flex" flex-col bg="#fff" dark-bg="grey-950" border-r="1px" border-color="gray-100" dark-border-color="gray-900" style="position:fixed;top:0;bottom:0;left:0;width:min(86vw,320px);z-index:61;transform:translateX(-100%);visibility:hidden;transition:transform .22s ease, visibility 0s .22s;box-shadow:0 0 40px rgba(0,0,0,.25);padding-bottom:env(safe-area-inset-bottom, 0px);">
-      <div display="flex" items="center" justify="between" px="4" border-b="1px" border-color="gray-100" dark-border-color="gray-900" style="min-height:52px;flex:none;">
-        <strong font-size="sm" font-weight="700">Playground</strong>
-        <button id="pg-drawer-close" type="button" aria-label="Close menu" title="Close" display="flex" items="center" justify="center" bg="transparent" border="border" text="text" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-close-line" font-size="18"></i></button>
-      </div>
-      <div id="pg-drawer-body" px="3" py="3" style="flex:1;overflow-y:auto;min-height:0;overscroll-behavior:contain;"></div>
-    </aside>
-
     <script src="./dist/atomattr.min.js" defer></script>
     <script type="module" src="./site/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
 
     <script>
     (function () {
@@ -326,64 +296,81 @@
         return e;
       }
       function setAttrs(el, map) {
-        Object.keys(map).forEach(function (k) {
-          if (map[k] === null) el.removeAttribute(k); else el.setAttribute(k, map[k]);
-        });
+        Object.keys(map).forEach(function (k) { if (map[k] === null) el.removeAttribute(k); else el.setAttribute(k, map[k]); });
       }
       function fmtTime(t) { try { return new Date(t).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); } catch (e) { return ''; } }
-
       var store = {
         get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
         set: function (k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
       };
-      var WORK_KEY = 'atomattr-playground:work:v2';
-      var PREF_KEY = 'atomattr-playground:prefs:v2';
+      var WORK_KEY = 'atomattr-playground:work:v3', OLD_WORK_KEY = 'atomattr-playground:work:v2', PREF_KEY = 'atomattr-playground:prefs:v3';
 
       /* ------------------------------------------------------------------ *
-       * Examples (attribute syntax taken from what this site already uses)
+       * Languages and examples
        * ------------------------------------------------------------------ */
-      var EXAMPLES = [
-        { group: 'Start' },
-        { id: 'starter', title: 'Starter', icon: 'ri-flashlight-line',
-          html: '<div p="6" display="flex" flex-col gap="4">\n  <div bg="surface" p="6" rounded="xl" border="border">\n    <span class="badge">New</span>\n    <h3 font-weight="bold" mb="2">Hello Atomattr</h3>\n    <p text="muted" mb="4">Edit this snippet and watch the preview update.</p>\n    <button type="button" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Get started</button>\n  </div>\n  <p text="muted" font-size="xs">Attributes style the elements. Ordinary CSS lives in the CSS tab.</p>\n</div>',
-          css: '/* Atomattr styles elements through attributes;\n   ordinary CSS works alongside it. */\n.badge {\n  display: inline-block;\n  margin-bottom: 8px;\n  padding: 2px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n  background: rgba(91, 92, 246, 0.12);\n  color: #5b5cf6;\n}\n' },
-        { group: 'Layout' },
-        { id: 'layout', title: 'Page layout', icon: 'ri-layout-top-line',
-          html: '<div display="flex" flex-col gap="4" p="2">\n  <header display="flex" items="center" justify="between" bg="surface" px="4" py="3" rounded="lg" border="border">\n    <strong>Atomattr</strong>\n    <span text="muted" font-size="sm">Docs · Playground</span>\n  </header>\n  <main bg="surface" p="6" rounded="lg" border="border">\n    <h3 font-weight="bold" mb="2">Page layout</h3>\n    <p text="muted">A header, a main area and a footer, stacked with flex and gap.</p>\n  </main>\n  <footer text="muted" font-size="xs" px="2">© Atomattr</footer>\n</div>', css: '' },
-        { id: 'flexbox', title: 'Flexbox', icon: 'ri-align-justify',
-          html: '<div p="2" display="flex" flex-col gap="4">\n  <nav display="flex" items="center" justify="between" gap="3" bg="surface" px="4" py="3" rounded="lg" border="border">\n    <strong>Brand</strong>\n    <div display="flex" items="center" gap="4" text="muted" font-size="sm">\n      <span>Docs</span><span>Pricing</span><span>Blog</span>\n    </div>\n    <button type="button" bg="primary" text="white" px="3" py="1.5" rounded="md" font-size="sm" font-weight="600">Sign in</button>\n  </nav>\n  <div display="flex" items="center" justify="center" gap="3" bg="surface" p="6" rounded="lg" border="border">\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">items="center"</span>\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">justify="center"</span>\n  </div>\n</div>', css: '' },
-        { id: 'grid', title: 'Grid', icon: 'ri-grid-line',
-          html: '<div p="2">\n  <div display="grid" grid-cols="2" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">One</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Two</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Three</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Four</div>\n  </div>\n</div>', css: '' },
-        { group: 'Responsive' },
-        { id: 'responsive', title: 'Responsive grid', icon: 'ri-device-line',
-          html: '<div p="2" display="flex" flex-col gap="3">\n  <p text="muted" font-size="sm">Switch the viewport above: 1 column on mobile, 3 from md, 4 from lg.</p>\n  <div display="grid" grid-cols="1" md-grid-cols="3" lg-grid-cols="4" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">Card 1</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 2</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 3</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 4</div>\n  </div>\n</div>', css: '' },
-        { group: 'Components' },
-        { id: 'buttons', title: 'Buttons', icon: 'ri-cursor-line',
-          html: '<div p="4" display="flex" items="center" gap="3">\n  <button type="button" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Primary</button>\n  <button type="button" bg="transparent" border="border" text="text" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="primary/10">Outline</button>\n  <button type="button" bg="success/10" text="success" px="4" py="2" rounded="lg" font-size="sm" font-weight="600">Soft</button>\n</div>', css: '' },
-        { id: 'cards', title: 'Cards', icon: 'ri-layout-grid-line',
-          html: '<div p="2" display="grid" grid-cols="1" md-grid-cols="3" gap="4">\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-rocket-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Fast</h3>\n    <p text="muted" font-size="sm">Style with attributes, no class names.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-palette-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Expressive</h3>\n    <p text="muted" font-size="sm">States and breakpoints are prefixes.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-shield-check-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Predictable</h3>\n    <p text="muted" font-size="sm">Plain CSS still works alongside.</p>\n  </div>\n</div>', css: '' },
-        { id: 'forms', title: 'Form + custom dropdown', icon: 'ri-edit-box-line',
-          html: '<form p="4" display="flex" flex-col gap="4" onsubmit="return false">\n  <label display="flex" flex-col gap="1.5" font-size="sm" font-weight="600">\n    Email\n    <input type="email" placeholder="you@example.com" w="full" px="3" py="2" rounded="lg" border="border" bg="transparent" text="text" font-size="sm">\n  </label>\n\n  <!-- A custom dropdown built from <details>, so every part takes Atomattr attributes. -->\n  <div display="flex" flex-col gap="1.5">\n    <span font-size="sm" font-weight="600">Plan</span>\n    <details position="relative">\n      <summary display="flex" items="center" justify="between" px="3" py="2" rounded="lg" border="border" font-size="sm" cursor="pointer">\n        Choose a plan\n        <i class="ri-arrow-down-s-line"></i>\n      </summary>\n      <div bg="surface" border="border" rounded="lg" p="1" w="full" z="10" style="position:absolute;top:calc(100% + 4px);left:0;">\n        <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Starter</div>\n        <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Team</div>\n        <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Enterprise</div>\n      </div>\n    </details>\n  </div>\n\n  <button type="submit" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600">Subscribe</button>\n</form>',
-          css: 'summary { list-style: none; }\nsummary::-webkit-details-marker { display: none; }\n' },
-        { group: 'Theming' },
-        { id: 'dark', title: 'Dark mode', icon: 'ri-moon-line',
-          html: '<div bg="#fff" dark-bg="grey-950" text="text" p="6" rounded="xl" border-b="1px" border-color="gray-100" dark-border-color="gray-900">\n  <h3 font-weight="bold" mb="2">Dark mode</h3>\n  <p text="muted" mb="4">dark-bg switches the background when the preview is dark. Try the Preview theme menu.</p>\n  <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">dark-bg="grey-950"</span>\n</div>', css: '' }
-      ];
-      var EXAMPLE_MAP = {};
-      EXAMPLES.forEach(function (e) { if (e.id) EXAMPLE_MAP[e.id] = e; });
-
-      var VIEWPORTS = {
-        responsive: { label: 'Responsive', hint: 'Fit', icon: 'ri-fullscreen-line', w: 0, h: 0 },
-        mobile: { label: 'Mobile', hint: '390 × 844', icon: 'ri-smartphone-line', w: 390, h: 844 },
-        tablet: { label: 'Tablet', hint: '768 × 1024', icon: 'ri-tablet-line', w: 768, h: 1024 },
-        desktop: { label: 'Desktop', hint: '1280 × 800', icon: 'ri-computer-line', w: 1280, h: 800 }
+      var LANGS = {
+        html:   { label: 'HTML',       tab: 'HTML',   icon: 'ri-html5-line',     hl: 'xml',        libs: [] },
+        react:  { label: 'React',      tab: 'JSX',    icon: 'ri-reactjs-line',   hl: 'javascript', libs: ['react@18.3.1/umd/react.development.js', 'react-dom@18.3.1/umd/react-dom.development.js', '@babel/standalone@7.26.4/babel.min.js'] },
+        vue:    { label: 'Vue',        tab: 'Vue',    icon: 'ri-vuejs-line',     hl: 'xml',        libs: ['vue@3.5.13/dist/vue.global.prod.js'] },
+        svelte: { label: 'Svelte',     tab: 'Svelte', icon: 'ri-fire-line',      hl: 'xml',        libs: ['svelte@3.59.2/compiler.js'] },
+        alpine: { label: 'Alpine.js',  tab: 'HTML',   icon: 'ri-mountain-line',  hl: 'xml',        libs: ['alpinejs@3.14.8/dist/cdn.min.js'], defer: true }
       };
-      var VIEWPORT_ITEMS = Object.keys(VIEWPORTS).map(function (k) { return { value: k, label: VIEWPORTS[k].label, hint: VIEWPORTS[k].hint, icon: VIEWPORTS[k].icon }; });
-      var EDITOR_THEME_ITEMS = [
-        { value: 'auto', label: 'Auto', icon: 'ri-contrast-2-line' },
-        { value: 'light', label: 'Light', icon: 'ri-sun-line' },
-        { value: 'dark', label: 'Dark', icon: 'ri-moon-line' }
-      ];
+      var LANG_ITEMS = Object.keys(LANGS).map(function (k) { return { value: k, label: LANGS[k].label, icon: LANGS[k].icon }; });
+
+      var EX = {
+        html: [
+          { id: 'starter', title: 'Starter', icon: 'ri-flashlight-line',
+            code: '<div p="6" display="flex" flex-col gap="4">\n  <div bg="surface" p="6" rounded="xl" border="border">\n    <span class="badge">New</span>\n    <h3 font-weight="bold" mb="2">Hello Atomattr</h3>\n    <p text="muted" mb="4">Edit this snippet and watch the preview update.</p>\n    <button type="button" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Get started</button>\n  </div>\n  <p text="muted" font-size="xs">Attributes style the elements. Ordinary CSS lives in the CSS tab.</p>\n</div>',
+            css: '/* Atomattr styles elements through attributes;\n   ordinary CSS works alongside it. */\n.badge {\n  display: inline-block;\n  margin-bottom: 8px;\n  padding: 2px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n  background: rgba(91, 92, 246, 0.12);\n  color: #5b5cf6;\n}\n' },
+          { id: 'flexbox', title: 'Flexbox', icon: 'ri-align-justify',
+            code: '<div p="2" display="flex" flex-col gap="4">\n  <nav display="flex" items="center" justify="between" gap="3" bg="surface" px="4" py="3" rounded="lg" border="border">\n    <strong>Brand</strong>\n    <div display="flex" items="center" gap="4" text="muted" font-size="sm">\n      <span>Docs</span><span>Pricing</span><span>Blog</span>\n    </div>\n    <button type="button" bg="primary" text="white" px="3" py="1.5" rounded="md" font-size="sm" font-weight="600">Sign in</button>\n  </nav>\n  <div display="flex" items="center" justify="center" gap="3" bg="surface" p="6" rounded="lg" border="border">\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">items="center"</span>\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">justify="center"</span>\n  </div>\n</div>', css: '' },
+          { id: 'grid', title: 'Grid', icon: 'ri-grid-line',
+            code: '<div p="2">\n  <div display="grid" grid-cols="2" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">One</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Two</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Three</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Four</div>\n  </div>\n</div>', css: '' },
+          { id: 'responsive', title: 'Responsive grid', icon: 'ri-device-line',
+            code: '<div p="2" display="flex" flex-col gap="3">\n  <p text="muted" font-size="sm">Pick a device above: 1 column on mobile, 3 from md, 4 from lg.</p>\n  <div display="grid" grid-cols="1" md-grid-cols="3" lg-grid-cols="4" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">Card 1</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 2</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 3</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 4</div>\n  </div>\n</div>', css: '' },
+          { id: 'cards', title: 'Cards', icon: 'ri-layout-grid-line',
+            code: '<div p="2" display="grid" grid-cols="1" md-grid-cols="3" gap="4">\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-rocket-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Fast</h3>\n    <p text="muted" font-size="sm">Style with attributes, no class names.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-palette-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Expressive</h3>\n    <p text="muted" font-size="sm">States and breakpoints are prefixes.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-shield-check-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Predictable</h3>\n    <p text="muted" font-size="sm">Plain CSS still works alongside.</p>\n  </div>\n</div>', css: '' },
+          { id: 'forms', title: 'Form + dropdown', icon: 'ri-edit-box-line',
+            code: '<form p="4" display="flex" flex-col gap="4" onsubmit="return false">\n  <label display="flex" flex-col gap="1.5" font-size="sm" font-weight="600">\n    Email\n    <input type="email" placeholder="you@example.com" w="full" px="3" py="2" rounded="lg" border="border" bg="transparent" text="text" font-size="sm">\n  </label>\n\n  <details position="relative">\n    <summary display="flex" items="center" justify="between" px="3" py="2" rounded="lg" border="border" font-size="sm" cursor="pointer">\n      Choose a plan\n      <i class="ri-arrow-down-s-line"></i>\n    </summary>\n    <div bg="surface" border="border" rounded="lg" p="1" w="full" z="10" style="position:absolute;top:calc(100% + 4px);left:0;">\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Starter</div>\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Team</div>\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Enterprise</div>\n    </div>\n  </details>\n\n  <button type="submit" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600">Subscribe</button>\n</form>',
+            css: 'summary { list-style: none; }\nsummary::-webkit-details-marker { display: none; }\n' },
+          { id: 'dark', title: 'Dark mode', icon: 'ri-moon-line',
+            code: '<div bg="#fff" dark-bg="grey-950" text="text" p="6" rounded="xl" border-b="1px" border-color="gray-100" dark-border-color="gray-900">\n  <h3 font-weight="bold" mb="2">Dark mode</h3>\n  <p text="muted" mb="4">dark-bg switches the background when the preview is dark. Try the Preview theme menu.</p>\n  <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">dark-bg="grey-950"</span>\n</div>', css: '' }
+        ],
+        react: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
+          code: 'const { useState } = React;\n\nfunction App() {\n  const [n, setN] = useState(0);\n  return (\n    <div p="6" bg="surface" rounded="xl" border="border">\n      <h3 font-weight="bold" mb="2">Hello React</h3>\n      <p text="muted" mb="4">Clicked {n} times</p>\n      <button type="button" onClick={() => setN(n + 1)} bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">\n        Click me\n      </button>\n    </div>\n  );\n}\n' }],
+        vue: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
+          code: '<template>\n  <div p="6" bg="surface" rounded="xl" border="border">\n    <h3 font-weight="bold" mb="2">Hello Vue</h3>\n    <p text="muted" mb="4">Count: {{ count }}</p>\n    <button type="button" @click="count++" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Add one</button>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return { count: 0 };\n  }\n};\n<\/script>\n' }],
+        svelte: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
+          code: '<script>\n  let count = 0;\n<\/script>\n\n<div p="6" bg="surface" rounded="xl" border="border">\n  <h3 font-weight="bold" mb="2">Hello Svelte</h3>\n  <p text="muted" mb="4">Count: {count}</p>\n  <button type="button" on:click={() => count++} bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Add one</button>\n</div>\n' }],
+        alpine: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
+          code: '<div x-data="{ open: false }" p="6" bg="surface" rounded="xl" border="border">\n  <h3 font-weight="bold" mb="2">Hello Alpine</h3>\n  <button type="button" @click="open = !open" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Toggle</button>\n  <p x-show="open" text="muted" mt="4">Now you see me.</p>\n</div>\n' }]
+      };
+      var EXMAP = {};
+      Object.keys(EX).forEach(function (l) { EXMAP[l] = {}; EX[l].forEach(function (e) { EXMAP[l][e.id] = e; }); });
+      function exampleItems(l) { return EX[l].map(function (e) { return { value: e.id, label: e.title, icon: e.icon }; }); }
+
+      /* ------------------------------------------------------------------ *
+       * Preview devices and zoom
+       * ------------------------------------------------------------------ */
+      var DEVICES = {
+        responsive: { label: 'Responsive', icon: 'ri-fullscreen-line', w: 0, h: 0, group: 'Flexible' },
+        desktop: { label: 'Desktop', icon: 'ri-computer-line', w: 1440, h: 900, group: 'Desktop' },
+        laptop: { label: 'Laptop', icon: 'ri-macbook-line', w: 1280, h: 800 },
+        'ipad-air': { label: 'iPad Air', icon: 'ri-tablet-line', w: 820, h: 1180, group: 'Tablet', r: 18 },
+        'ipad-mini': { label: 'iPad mini', icon: 'ri-tablet-line', w: 768, h: 1024, r: 18 },
+        'iphone-14': { label: 'iPhone 14', icon: 'ri-smartphone-line', w: 390, h: 844, group: 'Phone', r: 30 },
+        'iphone-14-pro-max': { label: 'iPhone 14 Pro Max', icon: 'ri-smartphone-line', w: 430, h: 932, r: 30 },
+        'iphone-se': { label: 'iPhone SE', icon: 'ri-smartphone-line', w: 375, h: 667, r: 24 },
+        'pixel-7': { label: 'Pixel 7', icon: 'ri-smartphone-line', w: 412, h: 915, r: 26 },
+        'galaxy-s20': { label: 'Galaxy S20', icon: 'ri-smartphone-line', w: 360, h: 800, r: 26 }
+      };
+      var DEVICE_ITEMS = [];
+      Object.keys(DEVICES).forEach(function (k) {
+        var d = DEVICES[k];
+        if (d.group) DEVICE_ITEMS.push({ group: d.group });
+        DEVICE_ITEMS.push({ value: k, label: d.label, icon: d.icon, hint: d.w ? d.w + ' × ' + d.h : 'Fill' });
+      });
+      var ZOOM_ITEMS = [{ value: 'fit', label: 'Fit to screen', icon: 'ri-fullscreen-line' }].concat(['50', '75', '100', '125', '150'].map(function (z) { return { value: z, label: z + '%', icon: 'ri-zoom-in-line' }; }));
       var PREVIEW_THEME_ITEMS = [
         { value: 'system', label: 'System', icon: 'ri-contrast-2-line' },
         { value: 'light', label: 'Light', icon: 'ri-sun-line' },
@@ -391,11 +378,81 @@
       ];
 
       /* ------------------------------------------------------------------ *
-       * Custom dropdown (no native <select>, every part carries Atomattr
-       * attributes). Listbox pattern with keyboard support.
+       * Atomattr vocabulary for autocomplete. Extend these lists freely:
+       * ATTR maps an attribute to a value kind, VALS holds the values per kind.
        * ------------------------------------------------------------------ */
-      var ddCount = 0;
-      var openDropdowns = [];
+      var L = function (s) { return s.split(' '); };
+      var COL = L('primary secondary text muted surface border success warning danger info white black transparent current primary/10 primary/20 primary/50 success/10 warning/10 danger/10 black/50 white/50');
+      L('slate gray grey zinc neutral stone red orange amber yellow lime green emerald teal cyan sky blue indigo violet purple fuchsia pink rose').forEach(function (n) {
+        L('50 100 200 300 400 500 600 700 800 900 950').forEach(function (s) { COL.push(n + '-' + s); });
+      });
+      var SP = L('0 0.5 1 1.5 2 2.5 3 4 5 6 8 10 12 16 20 24 32 40 48 64 auto px');
+      var VALS = {
+        color: COL, space: SP,
+        size: SP.concat(L('full screen fit min max 1/2 1/3 2/3 1/4 3/4 1px 100%')),
+        border: L('border 1px 2px 4px 0'),
+        textsize: L('xs sm base lg xl 2xl 3xl 4xl 5xl 12 14 16 18 20 24 32 48'),
+        weight: L('100 200 300 400 500 600 700 800 900 normal medium semibold bold'),
+        radius: L('none sm md lg xl 2xl 3xl full'),
+        display: L('block inline inline-block flex inline-flex grid inline-grid none contents'),
+        align: L('start center end stretch baseline'),
+        justify: L('start center end between around evenly'),
+        position: L('static relative absolute fixed sticky'),
+        flex: L('1 auto none initial'),
+        cols: L('1 2 3 4 5 6 7 8 9 10 11 12 none'),
+        z: L('0 10 20 30 40 50 auto'),
+        overflow: L('auto hidden scroll visible'),
+        cursor: L('pointer default not-allowed text move grab wait'),
+        opacity: L('0 5 10 20 25 30 40 50 60 70 75 80 90 100'),
+        shadow: L('none sm md lg xl 2xl'),
+        talign: L('left center right justify'),
+        tdeco: L('none underline line-through'),
+        ttrans: L('uppercase lowercase capitalize none'),
+        lineh: L('none tight snug normal relaxed loose'),
+        family: L('sans serif mono'),
+        wrap: L('wrap nowrap wrap-reverse')
+      };
+      var ATTR = {};
+      function def(kind, names) { L(names).forEach(function (n) { ATTR[n] = kind; }); }
+      def('color', 'bg text border-color fill stroke');
+      def('border', 'border border-t border-b border-l border-r border-x border-y');
+      def('space', 'p px py pt pb pl pr m mx my mt mb ml mr gap gap-x gap-y top right bottom left inset');
+      def('size', 'w h min-w min-h max-w max-h');
+      def('textsize', 'font-size'); def('weight', 'font-weight'); def('family', 'font-family'); def('lineh', 'line-height');
+      def('radius', 'rounded rounded-t rounded-b rounded-l rounded-r');
+      def('display', 'display'); def('align', 'items self content'); def('justify', 'justify');
+      def('position', 'position'); def('flex', 'flex'); def('cols', 'grid-cols grid-rows col-span row-span');
+      def('z', 'z'); def('overflow', 'overflow overflow-x overflow-y'); def('cursor', 'cursor');
+      def('opacity', 'opacity'); def('shadow', 'shadow'); def('talign', 'text-align'); def('tdeco', 'text-decoration');
+      def('ttrans', 'text-transform'); def('wrap', 'flex-wrap');
+      def('bool', 'flex-col flex-row');
+      var PFX = L('hover focus active dark sm md lg xl 2xl');
+      var BASES = Object.keys(ATTR);
+      var NAMES = BASES.slice();
+      PFX.forEach(function (p) { BASES.forEach(function (b) { if (ATTR[b] !== 'bool') NAMES.push(p + '-' + b); }); });
+      function baseOf(n) {
+        var again = true;
+        while (again) { again = false; for (var i = 0; i < PFX.length; i++) if (n.indexOf(PFX[i] + '-') === 0) { n = n.slice(PFX[i].length + 1); again = true; break; } }
+        return n;
+      }
+      function suggest(ctx) {
+        var p = ctx.partial.toLowerCase(), out = [];
+        if (ctx.type === 'name') {
+          var starts = [], inc = [];
+          NAMES.forEach(function (n) { if (n.indexOf(p) === 0) starts.push(n); else if (p.length > 1 && n.indexOf(p) > 0) inc.push(n); });
+          starts.sort(function (a, b) { return a.length - b.length; });
+          return starts.concat(inc).slice(0, 14).map(function (n) { return { label: n, hint: baseOf(n) !== n ? baseOf(n) : '', bool: ATTR[n] === 'bool', name: true }; });
+        }
+        var kind = ATTR[baseOf(ctx.attr)], list = VALS[kind];
+        if (!list) return out;
+        list.forEach(function (v) { if (v.indexOf(p) === 0 && v !== p) out.push({ label: v, hint: kind }); });
+        return out.slice(0, 40);
+      }
+
+      /* ------------------------------------------------------------------ *
+       * Custom dropdown (listbox pattern, Atomattr attributes only)
+       * ------------------------------------------------------------------ */
+      var ddCount = 0, openDropdowns = [];
       function closeOthers(except) { openDropdowns.slice().forEach(function (d) { if (d !== except) d.close(false); }); }
       doc.addEventListener('pointerdown', function (e) {
         openDropdowns.slice().forEach(function (d) { if (!d.root.contains(e.target)) d.close(false); });
@@ -403,79 +460,52 @@
 
       function createDropdown(root, opts) {
         var uid = 'dd' + (++ddCount);
-        var items = opts.items;
-        var value = opts.value;
-        var activeIdx = -1, isOpen = false, typeBuf = '', typeTimer = 0, iconOnly = false;
-        var height = opts.compact ? '8' : '9';
+        var items = opts.items, value = opts.value;
+        var activeIdx = -1, isOpen = false, typeBuf = '', typeTimer = 0, optionEls = [];
 
         var trigIcon = h('i', { 'font-size': '15' });
         var trigPrefix = h('span', { text: 'muted', _t: opts.prefix || '' });
         var trigLabel = h('span');
-        var chevron = h('i', { class: 'ri-arrow-down-s-line', text: 'muted', 'font-size': '15' });
         var trigger = h('button', {
           type: 'button', 'aria-haspopup': 'listbox', 'aria-expanded': 'false', 'aria-label': opts.label, title: opts.label,
           display: 'flex', items: 'center', gap: '2', bg: 'transparent', border: 'border', text: 'text',
-          px: '3', h: height, rounded: 'lg', 'font-size': 'sm', 'font-weight': '500', cursor: 'pointer', 'hover-bg': 'primary/10',
-          style: 'white-space:nowrap;'
-        }, [trigIcon, opts.prefix ? trigPrefix : null, trigLabel, chevron]);
-
+          px: '3', h: '8', rounded: 'lg', 'font-size': 'sm', 'font-weight': '500', cursor: 'pointer', 'hover-bg': 'primary/10', style: 'white-space:nowrap;'
+        }, [trigIcon, opts.prefix ? trigPrefix : null, trigLabel, h('i', { class: 'ri-arrow-down-s-line', text: 'muted', 'font-size': '15' })]);
         var menu = h('div', {
           role: 'listbox', id: uid + '-list', tabindex: '-1', 'aria-label': opts.label,
           position: 'absolute', z: '40', bg: '#fff', 'dark-bg': 'gray-900', border: 'border', rounded: 'lg', p: '1',
           style: 'display:none;top:calc(100% + 6px);min-width:' + (opts.minWidth || 200) + 'px;max-height:min(60vh,420px);overflow-y:auto;box-shadow:0 12px 32px rgba(0,0,0,.18);' + (opts.align === 'right' ? 'right:0;' : 'left:0;')
         });
-        root.appendChild(trigger);
-        root.appendChild(menu);
+        root.appendChild(trigger); root.appendChild(menu);
         trigger.setAttribute('aria-controls', uid + '-list');
 
-        var optionEls = [];
         function build() {
-          menu.textContent = '';
-          optionEls = [];
+          menu.textContent = ''; optionEls = [];
           items.forEach(function (it, i) {
             if (it.group) {
               menu.appendChild(h('div', { role: 'presentation', px: '3', pt: '2', pb: '1', 'font-size': 'xs', 'font-weight': '600', text: 'muted', style: 'text-transform:uppercase;letter-spacing:.06em;', _t: it.group }));
-              optionEls[i] = null;
-              return;
+              optionEls[i] = null; return;
             }
-            var selected = it.value === value;
-            var kids = [];
-            kids.push(h('span', { display: 'flex', items: 'center', gap: '2' }, [
-              it.icon ? h('i', { class: it.icon, 'font-size': '15', text: selected ? 'primary' : 'muted' }) : null,
-              h('span', { _t: it.label })
-            ]));
-            kids.push(h('span', { display: 'flex', items: 'center', gap: '2' }, [
-              it.hint ? h('span', { text: 'muted', 'font-size': 'xs', _t: it.hint }) : null,
-              h('i', { class: selected ? 'ri-check-line' : '', text: 'primary', 'font-size': '14', style: 'width:14px;display:inline-block;' })
-            ]));
+            var sel = it.value === value;
             var el = h('div', {
-              role: 'option', id: uid + '-o' + i, 'aria-selected': selected ? 'true' : 'false', 'data-index': String(i),
+              role: 'option', id: uid + '-o' + i, 'aria-selected': sel ? 'true' : 'false',
               display: 'flex', items: 'center', justify: 'between', gap: '4', w: 'full', px: '3', py: '2', rounded: 'md',
-              'font-size': 'sm', 'font-weight': selected ? '600' : '400', text: selected ? 'primary' : 'text', bg: 'transparent', cursor: 'pointer',
-              style: 'box-sizing:border-box;white-space:nowrap;'
-            }, kids);
+              'font-size': 'sm', 'font-weight': sel ? '600' : '400', text: sel ? 'primary' : 'text', bg: 'transparent', cursor: 'pointer', style: 'box-sizing:border-box;white-space:nowrap;'
+            }, [
+              h('span', { display: 'flex', items: 'center', gap: '2' }, [it.icon ? h('i', { class: it.icon, 'font-size': '15', text: sel ? 'primary' : 'muted' }) : null, h('span', { _t: it.label })]),
+              h('span', { display: 'flex', items: 'center', gap: '2' }, [it.hint ? h('span', { text: 'muted', 'font-size': 'xs', _t: it.hint }) : null, h('i', { class: sel ? 'ri-check-line' : '', text: 'primary', 'font-size': '14', style: 'width:14px;display:inline-block;' })])
+            ]);
             el.addEventListener('pointermove', function () { if (activeIdx !== i) setActive(i, false); });
             el.addEventListener('click', function () { choose(i); });
-            menu.appendChild(el);
-            optionEls[i] = el;
+            menu.appendChild(el); optionEls[i] = el;
           });
         }
-
-        function current() {
-          for (var i = 0; i < items.length; i++) if (!items[i].group && items[i].value === value) return items[i];
-          return null;
-        }
-        function renderTrigger(labelOverride) {
+        function current() { for (var i = 0; i < items.length; i++) if (!items[i].group && items[i].value === value) return items[i]; return null; }
+        function renderTrigger(over) {
           var it = current();
-          trigLabel.textContent = labelOverride || (it ? it.label : (opts.placeholder || ''));
+          trigLabel.textContent = over || (it ? it.label : (opts.placeholder || ''));
           var icon = it && it.icon ? it.icon : (opts.icon || '');
-          trigIcon.className = icon;
-          trigIcon.style.display = icon ? '' : 'none';
-          trigLabel.style.display = (iconOnly || opts.compact === 'icon') ? 'none' : '';
-          trigPrefix.style.display = iconOnly ? 'none' : '';
-          trigger.style.gap = iconOnly ? '4px' : '';
-          trigger.style.paddingLeft = iconOnly ? '10px' : '';
-          trigger.style.paddingRight = iconOnly ? '8px' : '';
+          trigIcon.className = icon; trigIcon.style.display = icon ? '' : 'none';
         }
         function setActive(idx, scroll) {
           if (activeIdx > -1 && optionEls[activeIdx]) optionEls[activeIdx].setAttribute('bg', 'transparent');
@@ -486,13 +516,7 @@
             if (scroll !== false && optionEls[idx].scrollIntoView) optionEls[idx].scrollIntoView({ block: 'nearest' });
           }
         }
-        function step(dir) {
-          var n = items.length, i = activeIdx;
-          for (var c = 0; c < n; c++) {
-            i = (i + dir + n) % n;
-            if (!items[i].group) { setActive(i); return; }
-          }
-        }
+        function step(dir) { var n = items.length, i = activeIdx; for (var c = 0; c < n; c++) { i = (i + dir + n) % n; if (!items[i].group) { setActive(i); return; } } }
         function edge(last) {
           var list = items.map(function (it, i) { return it.group ? -1 : i; }).filter(function (i) { return i > -1; });
           if (list.length) setActive(last ? list[list.length - 1] : list[0]);
@@ -501,40 +525,27 @@
           var it = items[i];
           if (!it || it.group) return;
           var changed = it.value !== value;
-          value = it.value;
-          build(); renderTrigger();
-          close(true);
+          value = it.value; build(); renderTrigger(); close(true);
           if (changed && opts.onChange) opts.onChange(value, it);
         }
         function open() {
           if (isOpen) return;
-          closeOthers(api);
-          isOpen = true;
-          build();
-          menu.style.display = 'block';
-          trigger.setAttribute('aria-expanded', 'true');
-          var idx = -1;
-          items.forEach(function (it, i) { if (!it.group && it.value === value) idx = i; });
-          if (idx < 0) { edge(false); } else { setActive(idx); }
+          closeOthers(api); isOpen = true; build();
+          menu.style.display = 'block'; trigger.setAttribute('aria-expanded', 'true');
+          var idx = -1; items.forEach(function (it, i) { if (!it.group && it.value === value) idx = i; });
+          if (idx < 0) edge(false); else setActive(idx);
           openDropdowns.push(api);
           try { menu.focus({ preventScroll: true }); } catch (e) { menu.focus(); }
         }
         function close(focusTrigger) {
           if (!isOpen) return;
-          isOpen = false;
-          menu.style.display = 'none';
-          trigger.setAttribute('aria-expanded', 'false');
-          menu.removeAttribute('aria-activedescendant');
-          activeIdx = -1;
-          var k = openDropdowns.indexOf(api);
-          if (k > -1) openDropdowns.splice(k, 1);
+          isOpen = false; menu.style.display = 'none'; trigger.setAttribute('aria-expanded', 'false');
+          menu.removeAttribute('aria-activedescendant'); activeIdx = -1;
+          var k = openDropdowns.indexOf(api); if (k > -1) openDropdowns.splice(k, 1);
           if (focusTrigger) trigger.focus();
         }
-
         trigger.addEventListener('click', function () { if (isOpen) close(true); else open(); });
-        trigger.addEventListener('keydown', function (e) {
-          if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); open(); }
-        });
+        trigger.addEventListener('keydown', function (e) { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); open(); } });
         menu.addEventListener('keydown', function (e) {
           switch (e.key) {
             case 'ArrowDown': e.preventDefault(); step(1); break;
@@ -546,74 +557,145 @@
             case 'Tab': close(false); break;
             default:
               if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-                clearTimeout(typeTimer);
-                typeBuf += e.key.toLowerCase();
+                clearTimeout(typeTimer); typeBuf += e.key.toLowerCase();
                 typeTimer = setTimeout(function () { typeBuf = ''; }, 600);
-                for (var i = 0; i < items.length; i++) {
-                  if (!items[i].group && items[i].label.toLowerCase().indexOf(typeBuf) === 0) { setActive(i); break; }
-                }
+                for (var i = 0; i < items.length; i++) if (!items[i].group && items[i].label.toLowerCase().indexOf(typeBuf) === 0) { setActive(i); break; }
               }
           }
         });
-        menu.addEventListener('focusout', function (e) {
-          if (isOpen && !root.contains(e.relatedTarget)) close(false);
-        });
+        menu.addEventListener('focusout', function (e) { if (isOpen && !root.contains(e.relatedTarget)) close(false); });
 
         var api = {
-          root: root,
-          open: open,
-          close: close,
-          getValue: function () { return value; },
-          setValue: function (v, labelOverride) { value = v; build(); renderTrigger(labelOverride); },
-          setLabel: function (t) { trigger.setAttribute('aria-label', t); trigger.title = t; },
-          setIconOnly: function (on) { iconOnly = !!on; renderTrigger(); }
+          root: root, open: open, close: close,
+          setValue: function (v, over) { value = v; build(); renderTrigger(over); },
+          setItems: function (list, v) { items = list; value = v; build(); renderTrigger(); }
         };
-        build();
-        renderTrigger();
+        build(); renderTrigger();
         return api;
       }
 
       /* ------------------------------------------------------------------ *
        * Elements and state
        * ------------------------------------------------------------------ */
-      var workspace = $('#pg-workspace');
-      var editorPane = $('#pg-editor-pane');
-      var previewPane = $('#pg-preview-pane');
-      var divider = $('#pg-divider');
-      var frame = $('#pg-frame');
-      var stage = $('#pg-stage');
-      var edBody = $('#pg-ed-body');
-      var statusText = $('#pg-status');
-      var statusDot = $('#pg-dot');
-      var saveText = $('#pg-save');
-      var cursorText = $('#pg-cursor');
-      var sizeText = $('#pg-size');
+      var workspace = $('#pg-workspace'), editorPane = $('#pg-editor-pane'), previewPane = $('#pg-preview-pane'), divider = $('#pg-divider');
+      var frame = $('#pg-frame'), canvas = $('#pg-canvas'), stage = $('#pg-stage'), wrapEl = $('#pg-wrap'), edBody = $('#pg-ed-body');
+      var statusText = $('#pg-status'), statusDot = $('#pg-dot'), saveText = $('#pg-save'), cursorText = $('#pg-cursor'), sizeText = $('#pg-size');
       var toast = $('#pg-toast');
       if (!workspace || !frame || !edBody) return;
 
-      var prefs = { layout: 'split', ratio: 50, viewport: 'responsive', editorTheme: 'auto', previewTheme: 'system', tab: 'html' };
+      var prefs = { layout: 'split', ratio: 50, device: 'responsive', zoom: 'fit', previewTheme: 'system', tab: 'code', wrap: false };
       try { var rawPrefs = JSON.parse(store.get(PREF_KEY) || '{}'); Object.keys(prefs).forEach(function (k) { if (rawPrefs[k] != null) prefs[k] = rawPrefs[k]; }); } catch (e) { /* ignore */ }
-      if (!VIEWPORTS[prefs.viewport]) prefs.viewport = 'responsive';
+      if (!DEVICES[prefs.device]) prefs.device = 'responsive';
+      if (!ZOOM_ITEMS.some(function (z) { return z.value === prefs.zoom; })) prefs.zoom = 'fit';
       if (['split', 'stacked', 'editor', 'preview'].indexOf(prefs.layout) < 0) prefs.layout = 'split';
       prefs.ratio = Math.min(80, Math.max(20, Number(prefs.ratio) || 50));
       function savePrefs() { store.set(PREF_KEY, JSON.stringify(prefs)); }
 
-      var state = { html: '', css: '', example: 'starter', tab: prefs.tab === 'css' ? 'css' : 'html', mobilePane: 'editor' };
-      var drawerRefresh = function () {};
+      var state = { lang: 'html', code: '', css: '', example: 'starter', tab: prefs.tab === 'css' ? 'css' : 'code', mobilePane: 'editor' };
+      var files = {};            // per-language work, keyed by language
+      var panelRefresh = function () {};
+
+      /* ------------------------------------------------------------------ *
+       * Autocomplete popup
+       * ------------------------------------------------------------------ */
+      var acEl = $('#pg-ac'), mirror = null;
+      var ac = { open: false, items: [], idx: 0, ctx: null, ed: null };
+
+      // Where is the caret? Inside a tag name area, or inside an attribute value?
+      function acContext(ta) {
+        var v = ta.value, pos = ta.selectionStart;
+        if (ta.selectionEnd !== pos) return null;
+        var before = v.slice(0, pos), lt = before.lastIndexOf('<');
+        if (lt < 0 || !/^<[a-zA-Z]/.test(before.slice(lt, lt + 2))) return null;
+        var s = before.slice(lt), q = null, qStart = -1, depth = 0;
+        for (var i = 1; i < s.length; i++) {
+          var c = s.charAt(i);
+          if (q) { if (c === q) q = null; continue; }
+          if (c === '"' || c === "'") { q = c; qStart = i; continue; }
+          if (c === '{') { depth++; continue; }
+          if (c === '}') { depth = Math.max(0, depth - 1); continue; }
+          if (c === '>' && depth === 0) return null;
+        }
+        if (q) {
+          var m = /([\w:@.-]+)\s*=\s*$/.exec(s.slice(0, qStart));
+          if (!m) return null;
+          var part = s.slice(qStart + 1);
+          return { type: 'value', attr: m[1], partial: part, start: pos - part.length, end: pos };
+        }
+        if (depth > 0) return null;
+        var w = /[\w-]*$/.exec(s)[0], prev = s.charAt(s.length - w.length - 1);
+        if (!/\s/.test(prev)) return null;
+        return { type: 'name', partial: w, start: pos - w.length, end: pos };
+      }
+      function caretPoint(ta) {
+        if (!mirror) { mirror = h('div', { style: 'position:fixed;left:-9999px;top:0;visibility:hidden;overflow:hidden;' }); doc.body.appendChild(mirror); }
+        var cs = getComputedStyle(ta);
+        ['fontFamily', 'fontSize', 'lineHeight', 'letterSpacing', 'tabSize', 'whiteSpace', 'overflowWrap', 'wordBreak', 'paddingTop', 'paddingLeft', 'paddingRight', 'boxSizing'].forEach(function (k) { mirror.style[k] = cs[k]; });
+        mirror.style.width = ta.clientWidth + 'px';
+        mirror.textContent = ta.value.slice(0, ta.selectionStart);
+        var mark = h('span', { _t: '\u200b' }); mirror.appendChild(mark);
+        var r = ta.getBoundingClientRect();
+        return { x: r.left + mark.offsetLeft - ta.scrollLeft, y: r.top + mark.offsetTop - ta.scrollTop, lh: parseFloat(cs.lineHeight) || 20 };
+      }
+      function acHide() { ac.open = false; acEl.style.display = 'none'; }
+      function acPaint() {
+        acEl.textContent = '';
+        ac.items.forEach(function (it, i) {
+          var on = i === ac.idx;
+          var row = h('div', { role: 'option', 'aria-selected': on ? 'true' : 'false', display: 'flex', items: 'center', justify: 'between', gap: '4', px: '2', py: '1', rounded: 'md', cursor: 'pointer', bg: on ? 'primary/10' : 'transparent', text: on ? 'primary' : 'text' },
+            [h('span', { _t: it.label }), it.hint ? h('span', { text: 'muted', style: 'font-size:11px;', _t: it.hint }) : null]);
+          row.addEventListener('pointerdown', function (e) { e.preventDefault(); ac.idx = i; acAccept(); });
+          acEl.appendChild(row);
+        });
+        var cur = acEl.children[ac.idx]; if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'nearest' });
+      }
+      function acUpdate(ed, force, typed) {
+        var ctx = acContext(ed.ta);
+        if (!ctx) { acHide(); return; }
+        var quoteJustTyped = typed === '"' || typed === "'";
+        if (!force && ctx.partial.length === 0 && !(ctx.type === 'value' && quoteJustTyped)) { acHide(); return; }
+        var items = suggest(ctx);
+        if (!items.length) { acHide(); return; }
+        ac.items = items; ac.idx = 0; ac.ctx = ctx; ac.ed = ed; ac.open = true;
+        acEl.style.display = 'block'; acPaint();
+        var pt = caretPoint(ed.ta), w = acEl.offsetWidth, hh = acEl.offsetHeight;
+        var x = Math.max(8, Math.min(pt.x, window.innerWidth - w - 8));
+        var y = pt.y + pt.lh + 4;
+        if (y + hh > window.innerHeight - 8) y = Math.max(8, pt.y - hh - 4);
+        acEl.style.left = x + 'px'; acEl.style.top = y + 'px';
+      }
+      function acAccept() {
+        if (!ac.open) return;
+        var it = ac.items[ac.idx], ctx = ac.ctx, ed = ac.ed;
+        acHide();
+        ed.ta.setSelectionRange(ctx.start, ctx.end);
+        if (ctx.type === 'name') {
+          ed.insert(it.bool ? it.label + ' ' : it.label + '=""');
+          if (!it.bool) { var p = ed.ta.selectionStart - 1; ed.ta.setSelectionRange(p, p); acUpdate(ed, true); }
+        } else { ed.insert(it.label); }
+      }
+      function acKey(ev, ed) {
+        if ((ev.ctrlKey || ev.metaKey) && ev.key === ' ') { ev.preventDefault(); acUpdate(ed, true); return true; }
+        if (!ac.open) return false;
+        if (ev.key === 'ArrowDown') { ev.preventDefault(); ac.idx = (ac.idx + 1) % ac.items.length; acPaint(); return true; }
+        if (ev.key === 'ArrowUp') { ev.preventDefault(); ac.idx = (ac.idx - 1 + ac.items.length) % ac.items.length; acPaint(); return true; }
+        if (ev.key === 'Enter' || ev.key === 'Tab') { ev.preventDefault(); acAccept(); return true; }
+        if (ev.key === 'Escape') { ev.preventDefault(); acHide(); return true; }
+        return false;
+      }
 
       /* ------------------------------------------------------------------ *
        * Editors: transparent textarea over a highlighted <pre>
        * ------------------------------------------------------------------ */
-      function makeEditor(lang, root) {
+      function makeEditor(kind, root) {
         var ta = $('textarea', root), pre = $('pre', root), code = $('code', root), gutter = $('.pg-gutter', root);
-        var lineCount = 0, raf = 0, tabTrapOff = false;
+        var lineCount = 0, raf = 0, tabTrapOff = false, useAC = kind === 'code';
+        function hlLang() { return kind === 'css' ? 'css' : LANGS[state.lang].hl; }
 
         function highlight() {
           raf = 0;
           var v = ta.value, out = null;
-          if (window.hljs) {
-            try { out = window.hljs.highlight(v, { language: lang === 'html' ? 'xml' : 'css', ignoreIllegals: true }).value; } catch (e) { out = null; }
-          }
+          if (window.hljs) { try { out = window.hljs.highlight(v, { language: hlLang(), ignoreIllegals: true }).value; } catch (e) { out = null; } }
           if (out == null) out = esc(v);
           code.innerHTML = out + (v.charAt(v.length - 1) === '\n' || v === '' ? ' ' : '');
           var n = v.split('\n').length;
@@ -627,39 +709,31 @@
           syncScroll();
         }
         function schedule() { if (!raf) raf = requestAnimationFrame(highlight); }
-        function syncScroll() {
-          pre.scrollTop = ta.scrollTop; pre.scrollLeft = ta.scrollLeft; gutter.scrollTop = ta.scrollTop;
-        }
+        function syncScroll() { pre.scrollTop = ta.scrollTop; pre.scrollLeft = ta.scrollLeft; gutter.scrollTop = ta.scrollTop; }
         function insertText(text) {
           ta.focus();
           var ok = false;
           try { ok = doc.execCommand('insertText', false, text); } catch (e) { ok = false; }
-          if (!ok) {
-            ta.setRangeText(text, ta.selectionStart, ta.selectionEnd, 'end');
-            ta.dispatchEvent(new Event('input', { bubbles: true }));
-          }
+          if (!ok) { ta.setRangeText(text, ta.selectionStart, ta.selectionEnd, 'end'); ta.dispatchEvent(new Event('input', { bubbles: true })); }
         }
         function indentSelection(outdent) {
           var v = ta.value, s = ta.selectionStart, e = ta.selectionEnd;
           if (!outdent && s === e) { insertText('  '); return; }
           var ls = v.lastIndexOf('\n', s - 1) + 1;
           var endRef = (e > s && v.charAt(e - 1) === '\n') ? e - 1 : e;
-          var le = v.indexOf('\n', endRef);
-          if (le === -1) le = v.length;
+          var le = v.indexOf('\n', endRef); if (le === -1) le = v.length;
           var block = v.slice(ls, le), lines = block.split('\n');
           var out = lines.map(function (ln) {
             if (!outdent) return '  ' + ln;
-            var m = ln.match(/^( {1,2}|\t)/);
-            return m ? ln.slice(m[0].length) : ln;
+            var m = ln.match(/^( {1,2}|\t)/); return m ? ln.slice(m[0].length) : ln;
           });
-          var nb = out.join('\n');
-          var d0 = outdent ? (lines[0].length - out[0].length) : 2;
-          ta.setSelectionRange(ls, le);
-          insertText(nb);
+          var nb = out.join('\n'), d0 = outdent ? (lines[0].length - out[0].length) : 2;
+          ta.setSelectionRange(ls, le); insertText(nb);
           ta.setSelectionRange(Math.max(ls, s + (outdent ? -d0 : d0)), e + (nb.length - block.length));
         }
         function onKey(ev) {
           var mod = ev.ctrlKey || ev.metaKey;
+          if (useAC && acKey(ev, api)) return;
           if (ev.key === 'Escape') { tabTrapOff = true; return; }
           if (ev.key === 'Tab' && !mod && !ev.altKey) {
             if (tabTrapOff) { tabTrapOff = false; return; }
@@ -668,54 +742,52 @@
           tabTrapOff = false;
           if (mod && ev.key === 'Enter') { ev.preventDefault(); fullReload(); return; }
           if (mod && (ev.key === 's' || ev.key === 'S')) { ev.preventDefault(); saveNow(); flash('Saved locally'); return; }
+          if (ev.altKey && ev.shiftKey && (ev.key === 'F' || ev.key === 'f')) { ev.preventDefault(); prettify(); return; }
           if (ev.key === 'Enter' && !mod && !ev.shiftKey && !ev.altKey) {
             var v = ta.value, s = ta.selectionStart, e = ta.selectionEnd;
-            var ls = v.lastIndexOf('\n', s - 1) + 1;
-            var indent = v.slice(ls, s).match(/^[ \t]*/)[0];
+            var ls = v.lastIndexOf('\n', s - 1) + 1, indent = v.slice(ls, s).match(/^[ \t]*/)[0];
             var before = v.charAt(s - 1), after = v.charAt(e);
             ev.preventDefault();
-            if ((lang === 'html' && before === '>' && after === '<') || (lang === 'css' && before === '{' && after === '}')) {
+            if ((kind === 'code' && before === '>' && after === '<') || (kind === 'css' && before === '{' && after === '}')) {
               insertText('\n' + indent + '  \n' + indent);
-              var pos = s + 1 + indent.length + 2;
-              ta.setSelectionRange(pos, pos);
-            } else if (lang === 'css' && before === '{') {
-              insertText('\n' + indent + '  ');
-            } else {
-              insertText('\n' + indent);
-            }
+              var pos = s + 1 + indent.length + 2; ta.setSelectionRange(pos, pos);
+            } else if (kind === 'css' && before === '{') insertText('\n' + indent + '  ');
+            else insertText('\n' + indent);
           }
         }
         function cursor() {
           var s = ta.selectionStart, before = ta.value.slice(0, s).split('\n');
           cursorText.textContent = 'Ln ' + before.length + ', Col ' + (before[before.length - 1].length + 1);
         }
-
-        ta.addEventListener('input', function () { schedule(); cursor(); onUserEdit(lang); });
-        ta.addEventListener('scroll', syncScroll);
+        ta.addEventListener('input', function (ev) {
+          schedule(); cursor(); onUserEdit(kind);
+          if (useAC) { if (ev.inputType && ev.inputType.indexOf('delete') === 0) acHide(); else acUpdate(api, false, ev.data); }
+        });
+        ta.addEventListener('scroll', function () { syncScroll(); acHide(); });
+        ta.addEventListener('blur', function () { setTimeout(acHide, 120); });
         ta.addEventListener('keydown', onKey);
         ['keyup', 'click', 'focus', 'select'].forEach(function (n) { ta.addEventListener(n, cursor); });
+        ta.addEventListener('click', acHide);
 
-        return {
-          lang: lang, root: root, ta: ta,
+        var api = {
+          kind: kind, root: root, ta: ta,
           get value() { return ta.value; },
           set: function (v) { ta.value = v; ta.setSelectionRange(0, 0); ta.scrollTop = 0; ta.scrollLeft = 0; highlight(); },
           focus: function () { ta.focus(); cursor(); },
-          rehighlight: highlight,
-          insert: insertText,
+          rehighlight: highlight, insert: insertText,
+          replaceAll: function (t) { ta.focus(); ta.select(); insertText(t); ta.setSelectionRange(0, 0); },
           indent: function () { indentSelection(false); },
-          back: function (n) { var p = Math.max(0, ta.selectionStart - n); ta.setSelectionRange(p, p); }
+          back: function (n) { var p = Math.max(0, ta.selectionStart - n); ta.setSelectionRange(p, p); },
+          wrap: function (on) { ta.wrap = on ? 'soft' : 'off'; highlight(); }
         };
+        return api;
       }
-      var editors = {
-        html: makeEditor('html', $('[data-editor="html"]')),
-        css: makeEditor('css', $('[data-editor="css"]'))
-      };
+      var editors = { code: makeEditor('code', $('[data-editor="code"]')), css: makeEditor('css', $('[data-editor="css"]')) };
 
       /* ------------------------------------------------------------------ *
-       * Tabs
+       * Tabs, word wrap, prettify, copy
        * ------------------------------------------------------------------ */
-      var tabButtons = $$('[data-tab]');
-      var copyBtn = $('#pg-copy');
+      var tabButtons = $$('[data-tab]'), copyBtn = $('#pg-copy'), wrapBtn = $('#pg-wrap-btn');
       function setTab(name, focus) {
         state.tab = name; prefs.tab = name; savePrefs();
         tabButtons.forEach(function (b) {
@@ -723,41 +795,52 @@
           b.setAttribute('aria-selected', on ? 'true' : 'false');
           setAttrs(b, { text: on ? 'primary' : 'muted', 'border-color': on ? 'primary' : 'transparent' });
         });
-        editors.html.root.style.display = name === 'html' ? 'flex' : 'none';
+        editors.code.root.style.display = name === 'code' ? 'flex' : 'none';
         editors.css.root.style.display = name === 'css' ? 'flex' : 'none';
-        var label = name === 'html' ? 'HTML' : 'CSS';
-        copyBtn.title = 'Copy ' + label; copyBtn.setAttribute('aria-label', 'Copy ' + label);
-        editors[name].rehighlight();
+        acHide(); editors[name].rehighlight();
         if (focus) editors[name].focus();
       }
       tabButtons.forEach(function (b) { b.addEventListener('click', function () { setTab(b.getAttribute('data-tab'), true); }); });
 
+      function applyWrap() {
+        edBody.classList.toggle('pg-wrap', !!prefs.wrap);
+        wrapBtn.setAttribute('aria-pressed', prefs.wrap ? 'true' : 'false');
+        setAttrs(wrapBtn, { text: prefs.wrap ? 'primary' : 'muted', bg: prefs.wrap ? 'primary/10' : 'transparent' });
+        editors.code.wrap(prefs.wrap); editors.css.wrap(prefs.wrap);
+      }
+      wrapBtn.addEventListener('click', function () { prefs.wrap = !prefs.wrap; savePrefs(); applyWrap(); });
+
+      function prettify() {
+        var ed = editors[state.tab], v = ed.value, out = null;
+        try {
+          if (state.tab === 'css') out = window.css_beautify && window.css_beautify(v, { indent_size: 2 });
+          else if (state.lang === 'react') out = window.js_beautify && window.js_beautify(v, { indent_size: 2, e4x: true, brace_style: 'collapse,preserve-inline' });
+          else out = window.html_beautify && window.html_beautify(v, { indent_size: 2, wrap_line_length: 100, wrap_attributes: 'auto', unformatted: ['code', 'pre'], extra_liners: [] });
+        } catch (e) { out = null; }
+        if (out == null) { flash('Prettify is unavailable (formatter did not load)'); return; }
+        if (out === v) { flash('Already formatted'); return; }
+        ed.replaceAll(out); flash('Formatted');
+      }
+      $('#pg-pretty').addEventListener('click', prettify);
+
       /* ------------------------------------------------------------------ *
-       * Quick-insert key row (touch keyboards have no Tab key and awkward symbols)
+       * Quick-insert key row (touch keyboards)
        * ------------------------------------------------------------------ */
       (function buildKeybar() {
         var bar = $('#pg-keybar');
         if (!bar) return;
-        var keys = [
-          { icon: 'ri-indent-increase', label: 'Indent', tab: true },
-          { t: '<' }, { t: '>' }, { t: '</', label: '</' }, { t: '/' },
-          { t: '=""', back: 1, label: '=""' }, { t: '"' },
-          { t: '{' }, { t: '}' }, { t: ':' }, { t: ';' }, { t: '#' }, { t: '(' }, { t: ')' }
-        ];
+        var keys = [{ icon: 'ri-indent-increase', tab: true }, { t: '<' }, { t: '>' }, { t: '</' }, { t: '/' }, { t: '=""', back: 1 }, { t: '"' }, { t: '{' }, { t: '}' }, { t: ':' }, { t: ';' }, { t: '#' }, { t: '(' }, { t: ')' }];
         keys.forEach(function (k) {
           var btn = h('button', {
-            type: 'button', 'aria-label': k.label && k.tab ? k.label : 'Insert ' + (k.t || ''),
-            display: 'flex', items: 'center', justify: 'center', bg: 'transparent', border: 'border', text: 'text',
-            rounded: 'md', 'font-size': 'sm', cursor: 'pointer',
+            type: 'button', 'aria-label': k.tab ? 'Indent' : 'Insert ' + k.t,
+            display: 'flex', items: 'center', justify: 'center', bg: 'transparent', border: 'border', text: 'text', rounded: 'md', 'font-size': 'sm', cursor: 'pointer',
             style: 'flex:none;min-width:38px;height:34px;padding:0 10px;font-family:"JetBrains Mono",ui-monospace,monospace;'
-          }, [k.icon ? h('i', { class: k.icon, 'font-size': '16' }) : doc.createTextNode(k.label || k.t)]);
-          // Keep focus (and the on-screen keyboard) inside the editor.
+          }, [k.icon ? h('i', { class: k.icon, 'font-size': '16' }) : doc.createTextNode(k.t)]);
           btn.addEventListener('pointerdown', function (e) { e.preventDefault(); });
           btn.addEventListener('click', function () {
             var ed = editors[state.tab];
             if (k.tab) { ed.focus(); ed.indent(); return; }
-            ed.insert(k.t);
-            if (k.back) ed.back(k.back);
+            ed.insert(k.t); if (k.back) ed.back(k.back);
           });
           bar.appendChild(btn);
         });
@@ -766,8 +849,7 @@
       /* ------------------------------------------------------------------ *
        * Toast / clipboard
        * ------------------------------------------------------------------ */
-      var toastTimer = 0, toastActionFn = null;
-      var toastMsg = $('#pg-toast-msg'), toastAction = $('#pg-toast-action');
+      var toastTimer = 0, toastActionFn = null, toastMsg = $('#pg-toast-msg'), toastAction = $('#pg-toast-action');
       function flash(msg, action) {
         toastMsg.textContent = msg;
         toastActionFn = action ? action.fn : null;
@@ -777,32 +859,23 @@
         clearTimeout(toastTimer);
         toastTimer = setTimeout(function () { toast.style.display = 'none'; toastActionFn = null; }, action ? 9000 : 2600);
       }
-      toastAction.addEventListener('click', function () {
-        var fn = toastActionFn; toast.style.display = 'none'; toastActionFn = null;
-        if (fn) fn();
-      });
+      toastAction.addEventListener('click', function () { var fn = toastActionFn; toast.style.display = 'none'; toastActionFn = null; if (fn) fn(); });
       function copyText(text) {
         function legacy() {
           var t = h('textarea', { style: 'position:fixed;left:-9999px;top:0;opacity:0;' });
           t.value = text; doc.body.appendChild(t); t.select();
           var ok = false; try { ok = doc.execCommand('copy'); } catch (e) { ok = false; }
-          t.remove();
-          return ok;
+          t.remove(); return ok;
         }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return legacy(); });
-        }
+        if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text).then(function () { return true; }, legacy);
         return Promise.resolve(legacy());
       }
       copyBtn.addEventListener('click', function () {
-        var label = state.tab === 'html' ? 'HTML' : 'CSS';
-        copyText(editors[state.tab].value).then(function (ok) {
-          flash(ok ? label + ' copied' : 'Copy failed — select the text and copy it manually');
-        });
+        copyText(editors[state.tab].value).then(function (ok) { flash(ok ? (state.tab === 'css' ? 'CSS' : LANGS[state.lang].tab) + ' copied' : 'Copy failed — select the text and copy it manually'); });
       });
 
       /* ------------------------------------------------------------------ *
-       * Diagnostics (non-fatal markup/CSS hints) and console
+       * Diagnostics and console
        * ------------------------------------------------------------------ */
       var VOID = { area: 1, base: 1, br: 1, col: 1, embed: 1, hr: 1, img: 1, input: 1, link: 1, meta: 1, param: 1, source: 1, track: 1, wbr: 1 };
       var OPTIONAL_END = { p: 1, li: 1, dt: 1, dd: 1, tr: 1, td: 1, th: 1, thead: 1, tbody: 1, tfoot: 1, option: 1, optgroup: 1, colgroup: 1 };
@@ -828,9 +901,7 @@
             if (idx === -1) { warn('Unexpected </' + name + '> with no matching opening tag', m.index); continue; }
             for (var j = stack.length - 1; j > idx; j--) warn('<' + stack[j].name + '> (line ' + stack[j].line + ') is not closed before </' + name + '>', m.index);
             stack.length = idx;
-          } else if (!VOID[name] && !OPTIONAL_END[name] && !/\/\s*$/.test(m[4])) {
-            stack.push({ name: name, line: line(m.index) });
-          }
+          } else if (!VOID[name] && !OPTIONAL_END[name] && !/\/\s*$/.test(m[4])) stack.push({ name: name, line: line(m.index) });
         }
         stack.forEach(function (s) { if (out.length < 8) out.push({ level: 'warn', source: 'HTML', line: s.line, text: '<' + s.name + '> is never closed' }); });
         return out;
@@ -843,9 +914,9 @@
         if (open !== close) out.push({ level: 'warn', source: 'CSS', text: 'Unbalanced braces: ' + open + ' "{" and ' + close + ' "}"' });
         return out;
       }
+      function lintAll() { return (state.lang === 'html' || state.lang === 'alpine' ? lintHtml(state.code) : []).concat(lintCss(state.css)); }
 
-      var lintEntries = [], runtimeEntries = [];
-      var consoleEl = $('#pg-console');
+      var lintEntries = [], runtimeEntries = [], consoleEl = $('#pg-console');
       function addRuntime(level, text, extra) {
         if (runtimeEntries.length >= 200) runtimeEntries.shift();
         runtimeEntries.push({ level: level, source: 'Preview', text: text, time: Date.now(), line: extra && extra.line });
@@ -854,12 +925,9 @@
       function renderConsole() {
         var all = lintEntries.concat(runtimeEntries);
         consoleEl.textContent = '';
-        if (!all.length) {
-          consoleEl.appendChild(h('div', { text: 'muted', _t: 'No messages. Preview errors and markup warnings appear here.' }));
-        }
+        if (!all.length) consoleEl.appendChild(h('div', { text: 'muted', _t: 'No messages. Preview errors and markup warnings appear here.' }));
         all.forEach(function (e) {
-          var color = e.level === 'error' ? '#dc2626' : '#d97706';
-          var where = e.source + (e.line ? ':' + e.line : '');
+          var color = e.level === 'error' ? '#dc2626' : '#d97706', where = e.source + (e.line ? ':' + e.line : '');
           consoleEl.appendChild(h('div', { display: 'flex', gap: '2', py: '0.5' }, [
             h('i', { class: e.level === 'error' ? 'ri-close-circle-line' : 'ri-error-warning-line', style: 'color:' + color + ';flex:none;' }),
             h('span', { style: 'flex:1;white-space:pre-wrap;word-break:break-word;', _t: e.text }),
@@ -868,14 +936,10 @@
         });
         var errs = runtimeEntries.filter(function (e) { return e.level === 'error'; }).length;
         var warns = lintEntries.length + runtimeEntries.filter(function (e) { return e.level === 'warn'; }).length;
-        // Badges exist in both the desktop status bar and the mobile tab bar.
         $$('[data-badge-err]').forEach(function (b) { b.textContent = String(errs); b.style.display = errs ? 'inline-block' : 'none'; });
         $$('[data-badge-warn]').forEach(function (b) { b.textContent = String(warns); b.style.display = warns ? 'inline-block' : 'none'; });
       }
 
-      /* ------------------------------------------------------------------ *
-       * Status
-       * ------------------------------------------------------------------ */
       var preview = { phase: 'loading', engineFailed: false, rendering: false };
       var DOT = { ok: '#16a34a', busy: '#6366f1', warn: '#d97706', error: '#dc2626' };
       function renderStatus() {
@@ -887,17 +951,18 @@
         else if (preview.rendering) { kind = 'busy'; msg = 'Rendering…'; }
         else if (errs) { kind = 'error'; msg = errs + (errs === 1 ? ' error' : ' errors') + ' in preview'; }
         else if (lintEntries.length) { kind = 'warn'; msg = lintEntries.length + (lintEntries.length === 1 ? ' markup warning' : ' markup warnings'); }
-        statusText.textContent = msg;
-        statusDot.setAttribute('bg', DOT[kind]);
+        statusText.textContent = msg; statusDot.setAttribute('bg', DOT[kind]);
       }
 
       /* ------------------------------------------------------------------ *
-       * Preview iframe: one document, one engine. Updates are posted into it.
+       * Preview iframe. One document per language; updates are posted into it.
+       * The runner below executes inside the iframe (it is stringified).
        * ------------------------------------------------------------------ */
       function bootstrap() {
         var docId = document.documentElement.getAttribute('data-pg-doc');
         var styleEl = document.getElementById('pg-user-css');
-        var curHtml = null, curCss = null, engine = null;
+        var curCode = null, curCss = null, curLang = null, engine = null;
+        var reactRoot = null, vueApp = null, svComp = null;
         function post(m) { m.__pg = 1; m.doc = docId; try { window.parent.postMessage(m, '*'); } catch (e) { /* ignore */ } }
         function fmt(a) {
           if (a instanceof Error) return a.message;
@@ -919,108 +984,125 @@
           de.classList.remove('dark', 'light'); de.removeAttribute('data-theme'); de.style.colorScheme = '';
           if (t === 'dark' || t === 'light') { de.classList.add(t); de.setAttribute('data-theme', t); de.style.colorScheme = t; }
         }
-        // rAF never fires inside a display:none iframe (the hidden pane on mobile),
-        // so acknowledge from a timer as well.
         function ackRendered(id) {
           var done = false;
           function go() { if (done) return; done = true; post({ type: 'rendered', id: id }); }
-          requestAnimationFrame(go);
-          setTimeout(go, 60);
+          requestAnimationFrame(go); setTimeout(go, 60);
+        }
+        function need(ok, name) { if (!ok) throw new Error(name + ' failed to load. Check your connection.'); }
+        function run(lang, code) {
+          var b = document.body;
+          if (lang === 'html' || lang === 'alpine') { b.innerHTML = code; return; }
+          if (lang === 'react') {
+            need(window.React && window.ReactDOM && window.Babel, 'React');
+            var src = code.replace(/^\s*import[^;\n]*;?\s*$/gm, '').replace(/export\s+default\s+/, 'window.__App=');
+            var js = Babel.transform(src, { presets: ['react'] }).code;
+            var App = new Function('React', 'ReactDOM', js + '\n;return typeof App!=="undefined"?App:window.__App;')(React, ReactDOM);
+            if (!App) throw new Error('Define a component named App (or export default one).');
+            if (!reactRoot) { b.innerHTML = '<div id="root"></div>'; reactRoot = ReactDOM.createRoot(document.getElementById('root')); }
+            reactRoot.render(React.createElement(App));
+            return;
+          }
+          if (lang === 'vue') {
+            need(window.Vue, 'Vue');
+            var t = /<template>([\s\S]*)<\/template>/.exec(code), s = /<script>([\s\S]*?)<\/script>/.exec(code), comp = {};
+            if (s) { var o = {}; new Function('window', s[1].replace(/export\s+default/, 'window.__c='))(o); comp = o.__c || {}; }
+            comp.template = t ? t[1] : code;
+            if (vueApp) vueApp.unmount();
+            b.innerHTML = '<div id="app"></div>';
+            vueApp = Vue.createApp(comp); vueApp.mount('#app');
+            return;
+          }
+          if (lang === 'svelte') {
+            need(window.svelte, 'Svelte');
+            var out = svelte.compile(code, { format: 'esm', name: 'App' }).js.code
+              .replace(/(from\s*['"])svelte(\/[^'"]*)?(['"])/g, function (m, a, p, c) { return a + 'https://esm.sh/svelte@3.59.2' + (p || '') + c; });
+            var url = URL.createObjectURL(new Blob([out], { type: 'text/javascript' }));
+            return import(url).then(function (mod) {
+              URL.revokeObjectURL(url);
+              if (svComp) svComp.$destroy();
+              b.innerHTML = '';
+              svComp = new mod.default({ target: b });
+            });
+          }
         }
         window.addEventListener('message', function (e) {
           if (e.source !== window.parent) return;
           var d = e.data;
           if (!d || d.__pg !== 1) return;
+          if (d.type === 'theme') { theme(d.value); return; }
+          if (d.type !== 'update') return;
+          function fail(err) { post({ type: 'error', text: 'Render failed: ' + (err && err.message ? err.message : err) }); post({ type: 'rendered', id: d.id }); }
           try {
-            if (d.type === 'update') {
-              if (typeof d.css === 'string' && d.css !== curCss) { curCss = d.css; styleEl.textContent = d.css; }
-              if (typeof d.html === 'string' && d.html !== curHtml) { curHtml = d.html; document.body.innerHTML = d.html; }
-              ackRendered(d.id);
-            } else if (d.type === 'theme') {
-              theme(d.value);
-            }
-          } catch (err) {
-            post({ type: 'error', text: 'Render failed: ' + (err && err.message ? err.message : err) });
-            post({ type: 'rendered', id: d.id });
-          }
+            if (typeof d.css === 'string' && d.css !== curCss) { curCss = d.css; styleEl.textContent = d.css; }
+            var p;
+            if (typeof d.code === 'string' && (d.code !== curCode || d.lang !== curLang)) { curCode = d.code; curLang = d.lang; p = run(d.lang, d.code); }
+            Promise.resolve(p).then(function () { ackRendered(d.id); }, fail);
+          } catch (err) { fail(err); }
         });
         window.addEventListener('load', function () { post({ type: 'ready', engine: engine }); });
       }
       var BOOT = '(' + bootstrap.toString() + ')();';
+      var CDN = 'https://cdn.jsdelivr.net/npm/';
 
-      function neutralize(html) { return String(html).replace(/<script\b/gi, '<script type="text/plain" data-pg-disabled'); }
+      function neutralize(lang, html) { return (lang === 'html' || lang === 'alpine') ? String(html).replace(/<script\b/gi, '<script type="text/plain" data-pg-disabled') : html; }
       function absUrl(p) { return new URL(p, location.href).href; }
-      var docSeq = 0, currentDoc = '0', built = null, renderId = 0, ackTimer = 0, readyTimer = 0, pendingTimer = 0;
+      var docSeq = 0, currentDoc = '0', built = null, renderId = 0, ackTimer = 0, readyTimer = 0;
 
-      function buildDoc(html, css, theme, id) {
+      function buildDoc(lang, css, theme, id) {
         var themeAttrs = (theme === 'dark' || theme === 'light') ? ' class="' + theme + '" data-theme="' + theme + '" style="color-scheme:' + theme + '"' : '';
+        var L = LANGS[lang];
+        var libs = L.libs.map(function (u) { return '<script src="' + CDN + u + '"' + (L.defer ? ' defer' : '') + '></scr' + 'ipt>'; }).join('');
         return '<!doctype html><html lang="en" data-pg-doc="' + id + '"' + themeAttrs + '><head><meta charset="UTF-8">'
           + '<meta name="viewport" content="width=device-width, initial-scale=1">'
           + '<link rel="stylesheet" href="' + absUrl('./dist/defaults.css') + '">'
           + '<link rel="stylesheet" href="' + absUrl('./assets/remixicon/remixicon.css') + '">'
-          + '<style id="pg-base">body{margin:0;padding:1rem;font-family:"DM Sans","IBM Plex Sans",system-ui,sans-serif}</style>'
+          + '<style id="pg-base">html{height:100%}body{margin:0;padding:0;min-height:100vh;box-sizing:border-box;font-family:"DM Sans","IBM Plex Sans",system-ui,sans-serif}#root,#app{min-height:100vh}</style>'
           + '<style id="pg-user-css">' + String(css).replace(/<\/style/gi, '<\\/style') + '</style>'
+          + libs
           + '<script>' + BOOT + '</scr' + 'ipt>'
           + '<script src="' + absUrl('./dist/atomattr.min.js') + '" defer onload="window.__pgEngine(true)" onerror="window.__pgEngine(false)"></scr' + 'ipt>'
-          + '</he' + 'ad><body>' + neutralize(html) + '</bo' + 'dy></ht' + 'ml>';
+          + '</he' + 'ad><body></bo' + 'dy></ht' + 'ml>';
       }
-
       function fullReload() {
-        clearTimeout(readyTimer); clearTimeout(ackTimer); clearTimeout(pendingTimer);
+        clearTimeout(readyTimer); clearTimeout(ackTimer);
         currentDoc = String(++docSeq);
         preview.phase = 'loading'; preview.engineFailed = false; preview.rendering = false;
         runtimeEntries = []; renderConsole(); renderStatus();
-        built = { html: state.html, css: state.css, theme: prefs.previewTheme };
-        frame.srcdoc = buildDoc(state.html, state.css, prefs.previewTheme, currentDoc);
-        readyTimer = setTimeout(function () { if (preview.phase === 'loading') { preview.phase = 'failed'; renderStatus(); } }, 8000);
+        built = null;
+        frame.srcdoc = buildDoc(state.lang, state.css, prefs.previewTheme, currentDoc);
+        readyTimer = setTimeout(function () { if (preview.phase === 'loading') { preview.phase = 'failed'; renderStatus(); } }, 12000);
       }
-
       function pushUpdate() {
         if (preview.phase !== 'ready' || !frame.contentWindow) return;
-        if (built && built.html === state.html && built.css === state.css) { preview.rendering = false; renderStatus(); return; }
-        built = { html: state.html, css: state.css, theme: built ? built.theme : prefs.previewTheme };
+        if (built && built.code === state.code && built.css === state.css && built.lang === state.lang) { preview.rendering = false; renderStatus(); return; }
+        built = { code: state.code, css: state.css, lang: state.lang };
         preview.rendering = true; renderStatus();
         var id = ++renderId;
-        frame.contentWindow.postMessage({ __pg: 1, type: 'update', id: id, html: neutralize(state.html), css: state.css }, '*');
+        frame.contentWindow.postMessage({ __pg: 1, type: 'update', id: id, lang: state.lang, code: neutralize(state.lang, state.code), css: state.css }, '*');
         clearTimeout(ackTimer);
-        ackTimer = setTimeout(function () {
-          preview.rendering = false;
-          addRuntime('error', 'The preview did not respond to an update. Use Run to reload it.');
-        }, 4000);
+        ackTimer = setTimeout(function () { preview.rendering = false; addRuntime('error', 'The preview did not respond to an update. Use Run to reload it.'); renderStatus(); }, 6000);
       }
-
       var updateTimer = 0;
       function scheduleUpdate() {
         clearTimeout(updateTimer);
-        updateTimer = setTimeout(function () {
-          lintEntries = lintHtml(state.html).concat(lintCss(state.css));
-          renderConsole(); renderStatus();
-          pushUpdate();
-        }, 250);
+        updateTimer = setTimeout(function () { lintEntries = lintAll(); renderConsole(); renderStatus(); pushUpdate(); }, 250);
       }
-
       window.addEventListener('message', function (e) {
         if (e.source !== frame.contentWindow) return;
         var d = e.data;
         if (!d || d.__pg !== 1 || d.doc !== currentDoc) return;
         if (d.type === 'ready') {
-          clearTimeout(readyTimer);
-          preview.phase = 'ready';
-          preview.engineFailed = d.engine === false;
-          renderStatus();
+          clearTimeout(readyTimer); preview.phase = 'ready'; preview.engineFailed = d.engine === false; renderStatus();
           frame.contentWindow.postMessage({ __pg: 1, type: 'theme', value: prefs.previewTheme }, '*');
           pushUpdate();
-        } else if (d.type === 'rendered') {
-          if (d.id === renderId) { clearTimeout(ackTimer); preview.rendering = false; renderStatus(); }
-        } else if (d.type === 'error') {
-          addRuntime('error', String(d.text || 'Error'), { line: d.line });
-        } else if (d.type === 'console') {
-          addRuntime(d.level === 'error' ? 'error' : 'warn', String(d.text || ''));
-        }
+        } else if (d.type === 'rendered') { if (d.id === renderId) { clearTimeout(ackTimer); preview.rendering = false; renderStatus(); } }
+        else if (d.type === 'error') addRuntime('error', String(d.text || 'Error'), { line: d.line });
+        else if (d.type === 'console') addRuntime(d.level === 'error' ? 'error' : 'warn', String(d.text || ''));
       });
 
       /* ------------------------------------------------------------------ *
-       * Persistence, backups and sharing
+       * Persistence, sources and sharing
        * ------------------------------------------------------------------ */
       var dirty = false, saveTimer = 0, storageOk = true, savedAt = 0, backup = null;
       function renderSave() {
@@ -1029,60 +1111,67 @@
         else if (dirty) t = '· Unsaved changes';
         else if (savedAt) t = '· Saved locally ' + fmtTime(savedAt);
         else t = '';
-        saveText.textContent = t;
-        saveText.setAttribute('text', !storageOk ? '#d97706' : dirty ? '#d97706' : 'muted');
+        saveText.textContent = t; saveText.setAttribute('text', !storageOk || dirty ? '#d97706' : 'muted');
       }
+      function stash() { files[state.lang] = { code: state.code, css: state.css, example: state.example }; }
       function saveNow() {
-        clearTimeout(saveTimer);
-        var ok = store.set(WORK_KEY, JSON.stringify({ v: 2, html: state.html, css: state.css, example: state.example, savedAt: Date.now() }));
-        storageOk = ok;
-        if (ok) { dirty = false; savedAt = Date.now(); }
+        clearTimeout(saveTimer); stash();
+        var ok = store.set(WORK_KEY, JSON.stringify({ v: 3, lang: state.lang, files: files, savedAt: Date.now() }));
+        storageOk = ok; if (ok) { dirty = false; savedAt = Date.now(); }
         renderSave();
       }
       function markDirty() { dirty = true; renderSave(); clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 900); }
       window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
-      // Mobile browsers rarely fire beforeunload; persist when the tab is hidden instead.
       doc.addEventListener('visibilitychange', function () { if (doc.visibilityState === 'hidden' && dirty) saveNow(); });
+      function onUserEdit(kind) { state[kind] = editors[kind].value; markDirty(); scheduleUpdate(); }
 
-      function onUserEdit(lang) {
-        state[lang] = editors[lang].value;
-        markDirty(); scheduleUpdate();
+      var exampleDD = null, langDD = null, resetBtn = $('#pg-reset');
+      function curEx() { return EXMAP[state.lang][state.example]; }
+      function applyLangUI() {
+        var L = LANGS[state.lang];
+        $('#pg-tab-label').textContent = L.tab; $('#pg-tab-icon').className = L.icon;
+        langDD.setValue(state.lang);
+        exampleDD.setItems(exampleItems(state.lang), state.example);
+        editors.code.rehighlight();
       }
-
-      function exampleLabel() { var ex = EXAMPLE_MAP[state.example]; return ex ? ex.title : null; }
-      var exampleDD = null, resetBtn = $('#pg-reset');
-      function setSource(html, css, exampleId, opts) {
-        state.html = html; state.css = css; state.example = exampleId;
-        editors.html.set(html); editors.css.set(css);
-        if (exampleDD) exampleDD.setValue(exampleId || '__custom', exampleLabel() ? null : 'Custom');
-        resetBtn.title = 'Reset to “' + (EXAMPLE_MAP[exampleId] ? EXAMPLE_MAP[exampleId].title : 'Starter') + '”';
-        resetBtn.setAttribute('aria-label', resetBtn.title);
-        if (!opts || !opts.silent) { markDirty(); }
-        lintEntries = lintHtml(html).concat(lintCss(css));
-        renderConsole(); renderStatus();
-        clearTimeout(updateTimer); pushUpdate();
-        drawerRefresh();
+      function setSource(code, css, exampleId, opts) {
+        state.code = code; state.css = css; state.example = exampleId;
+        editors.code.set(code); editors.css.set(css);
+        exampleDD.setValue(exampleId || '__custom', curEx() ? null : 'Custom');
+        var ex = curEx(), title = 'Reset to “' + (ex ? ex.title : 'Starter') + '”';
+        resetBtn.title = title; resetBtn.setAttribute('aria-label', title);
+        if (!opts || !opts.silent) markDirty();
+        lintEntries = lintAll(); renderConsole(); renderStatus();
+        clearTimeout(updateTimer); pushUpdate(); panelRefresh();
       }
-      function takeBackup() { backup = { html: state.html, css: state.css, example: state.example }; }
-      function undoLoad() { if (backup) { var b = backup; backup = null; setSource(b.html, b.css, b.example); flash('Restored your previous code'); } }
-      function isModified() {
-        var ex = EXAMPLE_MAP[state.example];
-        return !ex || ex.html !== state.html || ex.css !== state.css;
+      function useLang(l) { stash(); state.lang = l; applyLangUI(); }
+      function setLang(l) {
+        if (l === state.lang || !LANGS[l]) return;
+        var f = files[l], st = EX[l][0];
+        if (!f || typeof f.code !== 'string') f = { code: st.code, css: st.css, example: 'starter' };
+        preview.phase = 'loading';
+        useLang(l);
+        setSource(f.code, f.css, EXMAP[l][f.example] ? f.example : null);
+        fullReload();
       }
+      function takeBackup() { backup = { lang: state.lang, code: state.code, css: state.css, example: state.example }; }
+      function undoLoad() {
+        if (!backup) return;
+        var b = backup, changed = b.lang !== state.lang; backup = null;
+        if (changed) { preview.phase = 'loading'; useLang(b.lang); }
+        setSource(b.code, b.css, b.example);
+        if (changed) fullReload();
+        flash('Restored your previous code');
+      }
+      function isModified() { var ex = curEx(); return !ex || ex.code !== state.code || ex.css !== state.css; }
       function loadExample(id, announce) {
-        var ex = EXAMPLE_MAP[id] || EXAMPLE_MAP.starter;
-        var hadChanges = isModified();
-        takeBackup();
-        setSource(ex.html, ex.css, ex.id);
-        if (announce) flash('Loaded “' + ex.title + '”', hadChanges ? { label: 'Undo', fn: undoLoad } : null);
+        var ex = EXMAP[state.lang][id] || EX[state.lang][0], had = isModified();
+        takeBackup(); setSource(ex.code, ex.css, ex.id);
+        if (announce) flash('Loaded “' + ex.title + '”', had ? { label: 'Undo', fn: undoLoad } : null);
       }
+      resetBtn.addEventListener('click', function () { loadExample(curEx() ? state.example : 'starter', true); });
 
-      resetBtn.addEventListener('click', function () {
-        var id = EXAMPLE_MAP[state.example] ? state.example : 'starter';
-        loadExample(id, true);
-      });
-
-      // Share links: #code=<z|b>.<base64url>. Compressed when the browser supports it.
+      // Share links: #code=<z|b>.<base64url>, compressed when the browser supports it.
       function b64u(bytes) {
         var s = '', CH = 0x8000;
         for (var i = 0; i < bytes.length; i += CH) s += String.fromCharCode.apply(null, bytes.subarray(i, i + CH));
@@ -1112,7 +1201,7 @@
         if (kind === 'z.') {
           if (typeof DecompressionStream === 'undefined') return Promise.reject(new Error('This browser cannot open compressed share links'));
           bytesP = new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer().then(function (b) { return new Uint8Array(b); });
-        } else if (kind === 'b.') { bytesP = Promise.resolve(data); }
+        } else if (kind === 'b.') bytesP = Promise.resolve(data);
         else return Promise.reject(new Error('unknown format'));
         return bytesP.then(function (bytes) {
           if (bytes.length > 1000000) throw new Error('too large');
@@ -1122,133 +1211,97 @@
         });
       }
       $('#pg-share').addEventListener('click', function () {
-        encodeShare({ v: 1, h: state.html, c: state.css }).then(function (token) {
+        encodeShare({ v: 2, l: state.lang, h: state.code, c: state.css }).then(function (token) {
           var url = location.origin + location.pathname + '#code=' + token;
           if (location.protocol === 'file:') url = location.href.split('#')[0] + '#code=' + token;
           if (url.length > 16000) { flash('This snippet is too large for a share link (' + url.length + ' characters)'); return; }
           copyText(url).then(function (ok) {
             if (!ok) { flash('Could not copy the link'); return; }
-            flash(url.length > 8000
-              ? 'Link copied, but it is long (' + url.length + ' chars) and some apps may cut it off'
-              : 'Share link copied — anyone with it can read this code');
+            flash(url.length > 8000 ? 'Link copied, but it is long (' + url.length + ' chars) and some apps may cut it off' : 'Share link copied — anyone with it can read this code');
           });
         }).catch(function () { flash('Could not create a share link'); });
       });
 
       /* ------------------------------------------------------------------ *
-       * Slide-in menu (mobile): examples, preview size and themes
+       * Mobile icon rail: retracted by default, a tap expands that section
        * ------------------------------------------------------------------ */
-      var drawer = $('#pg-drawer'), scrim = $('#pg-drawer-scrim'), menuBtn = $('#pg-menu');
-      var drawerBody = $('#pg-drawer-body'), drawerClose = $('#pg-drawer-close');
-      var drawerOpen = false, drawerReturnFocus = null, drawerLists = [];
-
-      function openDrawer() {
-        if (drawerOpen) return;
-        drawerOpen = true;
-        drawerReturnFocus = doc.activeElement;
-        closeOthers(null);
-        scrim.style.display = 'block';
-        requestAnimationFrame(function () { scrim.style.opacity = '1'; });
-        drawer.style.transition = 'transform .22s ease, visibility 0s';
-        drawer.style.visibility = 'visible';
-        drawer.style.transform = 'translateX(0)';
-        drawer.setAttribute('aria-hidden', 'false');
-        menuBtn.setAttribute('aria-expanded', 'true');
-        doc.body.style.overflow = 'hidden';
-        drawerRefresh();
-        drawerClose.focus();
-      }
-      function closeDrawer(restoreFocus) {
-        if (!drawerOpen) return;
-        drawerOpen = false;
-        scrim.style.opacity = '0';
-        drawer.style.transition = 'transform .22s ease, visibility 0s .22s';
-        drawer.style.transform = 'translateX(-100%)';
-        drawer.style.visibility = 'hidden';
-        drawer.setAttribute('aria-hidden', 'true');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        doc.body.style.overflow = '';
-        setTimeout(function () { if (!drawerOpen) scrim.style.display = 'none'; }, 230);
-        if (restoreFocus !== false && drawerReturnFocus && drawerReturnFocus.focus) drawerReturnFocus.focus();
-      }
-      menuBtn.addEventListener('click', openDrawer);
-      drawerClose.addEventListener('click', function () { closeDrawer(true); });
-      scrim.addEventListener('click', function () { closeDrawer(true); });
-      doc.addEventListener('keydown', function (e) {
-        if (!drawerOpen) return;
-        if (e.key === 'Escape') { e.preventDefault(); closeDrawer(true); return; }
-        if (e.key === 'Tab') {
-          var f = $$('button', drawer).filter(function (b) { return b.offsetParent !== null; });
-          if (!f.length) return;
-          var first = f[0], last = f[f.length - 1];
-          if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
-          else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
-        }
-      });
-
-      // A vertical list (or grid) of toggle buttons that mirrors a piece of state.
+      var rail = $('#pg-rail'), panel = $('#pg-panel'), panelBody = $('#pg-panel-body'), panelTitle = $('#pg-panel-title'), scrim = $('#pg-scrim');
+      var panelId = null, panelList = null, railBtns = {};
+      var RAIL = [
+        { id: 'examples', icon: 'ri-apps-2-line', title: 'Examples', items: function () { return exampleItems(state.lang); }, get: function () { return state.example; }, set: function (v) { loadExample(v, true); }, close: true },
+        { id: 'lang', icon: 'ri-code-box-line', title: 'Language', items: function () { return LANG_ITEMS; }, get: function () { return state.lang; }, set: function (v) { setLang(v); }, close: true },
+        { id: 'device', icon: 'ri-smartphone-line', title: 'Device', items: function () { return DEVICE_ITEMS; }, get: function () { return prefs.device; }, set: function (v) { setDevice(v); } },
+        { id: 'zoom', icon: 'ri-zoom-in-line', title: 'Zoom', items: function () { return ZOOM_ITEMS; }, get: function () { return prefs.zoom; }, set: function (v) { setZoom(v); } },
+        { id: 'theme', icon: 'ri-contrast-2-line', title: 'Preview theme', items: function () { return PREVIEW_THEME_ITEMS; }, get: function () { return prefs.previewTheme; }, set: function (v) { setPreviewTheme(v); }, grid: 3 }
+      ];
+      // A list (or grid) of toggle buttons mirroring a piece of state.
       function optionList(parent, items, getVal, onPick, o) {
         o = o || {};
         var box = h('div', o.grid ? { display: 'grid', 'grid-cols': String(o.grid), gap: '2' } : { display: 'flex', 'flex-col': true, gap: '0.5' });
         var entries = [];
         items.forEach(function (it) {
-          if (it.group) {
-            box.appendChild(h('div', { px: '3', pt: '3', pb: '1', 'font-size': 'xs', 'font-weight': '600', text: 'muted', style: 'text-transform:uppercase;letter-spacing:.06em;', _t: it.group }));
-            return;
-          }
-          var icon = it.icon ? h('i', { class: it.icon, 'font-size': o.grid ? '18' : '16' }) : null;
+          if (it.group) { box.appendChild(h('div', { px: '3', pt: '3', pb: '1', 'font-size': 'xs', 'font-weight': '600', text: 'muted', style: 'text-transform:uppercase;letter-spacing:.06em;', _t: it.group })); return; }
           var attrs = o.grid
             ? { display: 'flex', 'flex-col': true, items: 'center', justify: 'center', gap: '1', px: '2', py: '3', border: 'border', 'font-size': 'xs' }
             : { display: 'flex', items: 'center', gap: '3', w: 'full', px: '3', 'font-size': 'sm' };
           attrs.type = 'button'; attrs.rounded = 'lg'; attrs.cursor = 'pointer'; attrs['hover-bg'] = 'primary/10';
           attrs.style = 'min-height:44px;box-sizing:border-box;' + (o.grid ? '' : 'text-align:left;');
-          var kids = [icon, h('span', { _t: it.label }), it.hint ? h('span', { text: 'muted', 'font-size': 'xs', style: 'margin-left:auto;', _t: it.hint }) : null];
-          var btn = h('button', attrs, kids);
-          btn.addEventListener('click', function () { onPick(it.value); if (o.closeAfter) closeDrawer(false); });
-          box.appendChild(btn);
-          entries.push({ btn: btn, value: it.value });
+          var btn = h('button', attrs, [it.icon ? h('i', { class: it.icon, 'font-size': o.grid ? '18' : '16' }) : null, h('span', { _t: it.label }), it.hint ? h('span', { text: 'muted', 'font-size': 'xs', style: 'margin-left:auto;', _t: it.hint }) : null]);
+          btn.addEventListener('click', function () { onPick(it.value); if (o.closeAfter) closePanel(true); });
+          box.appendChild(btn); entries.push({ btn: btn, value: it.value });
         });
         parent.appendChild(box);
-        return {
-          paint: function () {
-            var v = getVal();
-            entries.forEach(function (e) {
-              var on = e.value === v;
-              setAttrs(e.btn, { bg: on ? 'primary/10' : 'transparent', text: on ? 'primary' : 'text', 'font-weight': on ? '600' : '500' });
-              e.btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-            });
-          }
-        };
+        return { paint: function () {
+          var v = getVal();
+          entries.forEach(function (e) {
+            var on = e.value === v;
+            setAttrs(e.btn, { bg: on ? 'primary/10' : 'transparent', text: on ? 'primary' : 'text', 'font-weight': on ? '600' : '500' });
+            e.btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+        } };
       }
-      function drawerSection(title) {
-        var wrap = h('div', { mb: '5' }, [h('div', { px: '2', pb: '1.5', 'font-size': 'xs', 'font-weight': '600', text: 'muted', style: 'text-transform:uppercase;letter-spacing:.06em;', _t: title })]);
-        drawerBody.appendChild(wrap);
-        return wrap;
+      function paintRail() {
+        Object.keys(railBtns).forEach(function (id) {
+          var on = id === panelId;
+          setAttrs(railBtns[id], { bg: on ? 'primary/10' : 'transparent', text: on ? 'primary' : 'muted' });
+          railBtns[id].setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
       }
-      function buildDrawer() {
-        var exampleItems = EXAMPLES.map(function (e) { return e.group ? { group: e.group } : { value: e.id, label: e.title, icon: e.icon }; });
-        drawerLists.push(optionList(drawerSection('Examples'), exampleItems, function () { return state.example; }, function (v) { loadExample(v, true); }, { closeAfter: true }));
-        drawerLists.push(optionList(drawerSection('Preview size'), VIEWPORT_ITEMS, function () { return prefs.viewport; }, function (v) { setViewport(v); }));
-        drawerLists.push(optionList(drawerSection('Preview theme'), PREVIEW_THEME_ITEMS, function () { return prefs.previewTheme; }, function (v) { setPreviewTheme(v); }, { grid: 3 }));
-        drawerLists.push(optionList(drawerSection('Editor theme'), EDITOR_THEME_ITEMS, function () { return prefs.editorTheme; }, function (v) { setEditorTheme(v); }, { grid: 3 }));
-        var reset = h('button', {
-          type: 'button', display: 'flex', items: 'center', justify: 'center', gap: '2', w: 'full', px: '3', rounded: 'lg',
-          bg: 'transparent', border: 'border', text: 'text', 'font-size': 'sm', 'font-weight': '600', cursor: 'pointer', 'hover-bg': 'primary/10',
-          style: 'min-height:44px;box-sizing:border-box;'
-        }, [h('i', { class: 'ri-restart-line', 'font-size': '16' }), h('span', { _t: 'Reset to example' })]);
-        reset.addEventListener('click', function () { closeDrawer(false); resetBtn.click(); });
-        drawerBody.appendChild(reset);
-        drawerRefresh = function () { drawerLists.forEach(function (l) { l.paint(); }); };
-        drawerRefresh();
+      function openPanel(id) {
+        var sec = RAIL.filter(function (s) { return s.id === id; })[0];
+        if (!sec) return;
+        closeOthers(null);
+        panelId = id; panelTitle.textContent = sec.title; panelBody.textContent = '';
+        panelList = optionList(panelBody, sec.items(), sec.get, sec.set, { grid: sec.grid, closeAfter: sec.close });
+        panelRefresh = function () { if (panelList) panelList.paint(); };
+        panelRefresh();
+        scrim.style.display = 'block';
+        panel.style.transition = 'transform .2s ease, visibility 0s'; panel.style.visibility = 'visible'; panel.style.transform = 'translateX(0)';
+        panel.setAttribute('aria-hidden', 'false'); paintRail();
       }
+      function closePanel() {
+        if (panelId == null) return;
+        panelId = null; panelList = null; panelRefresh = function () {};
+        panel.style.transition = 'transform .2s ease, visibility 0s .2s'; panel.style.transform = 'translateX(-110%)'; panel.style.visibility = 'hidden';
+        panel.setAttribute('aria-hidden', 'true'); scrim.style.display = 'none'; paintRail();
+      }
+      RAIL.forEach(function (sec) {
+        var b = h('button', { type: 'button', 'aria-label': sec.title, title: sec.title, 'aria-pressed': 'false', display: 'flex', items: 'center', justify: 'center', bg: 'transparent', text: 'muted', w: '10', h: '10', rounded: 'lg', cursor: 'pointer', 'hover-bg': 'primary/10' }, [h('i', { class: sec.icon, 'font-size': '20' })]);
+        b.addEventListener('click', function () { if (panelId === sec.id) closePanel(); else openPanel(sec.id); });
+        rail.appendChild(b); railBtns[sec.id] = b;
+      });
+      var railReset = h('button', { type: 'button', 'aria-label': 'Reset to example', title: 'Reset to example', display: 'flex', items: 'center', justify: 'center', bg: 'transparent', text: 'muted', w: '10', h: '10', rounded: 'lg', cursor: 'pointer', 'hover-bg': 'primary/10', style: 'margin-top:auto;' }, [h('i', { class: 'ri-restart-line', 'font-size': '20' })]);
+      railReset.addEventListener('click', function () { closePanel(); resetBtn.click(); });
+      rail.appendChild(railReset);
+      scrim.addEventListener('click', closePanel);
+      doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panelId != null) { e.preventDefault(); closePanel(); } });
 
       /* ------------------------------------------------------------------ *
-       * Layout, resizing, mobile tab bar
+       * Layout, resizing, mobile bottom nav
        * ------------------------------------------------------------------ */
       var mq = window.matchMedia ? window.matchMedia('(max-width: 1023px)') : { matches: false };
       var layoutBtns = $$('[data-layout]'), mobileBtns = $$('[data-mobile-pane]');
-      var bottom = $('#pg-bottom'), consoleBox = $('#pg-console'), tipsBox = $('#pg-tips');
-      var mConsoleBtn = $('#pg-m-console');
+      var bottom = $('#pg-bottom'), consoleBox = $('#pg-console'), tipsBox = $('#pg-tips'), mConsoleBtn = $('#pg-m-console');
       function isMobile() { return !!mq.matches; }
       function isColumn() { return isMobile() || prefs.layout === 'stacked'; }
       function paintSeg(btns, activeFn) {
@@ -1261,18 +1314,14 @@
       function paintNav() {
         mobileBtns.forEach(function (b) {
           var on = b.getAttribute('data-mobile-pane') === state.mobilePane;
-          b.setAttribute('aria-pressed', on ? 'true' : 'false');
-          setAttrs(b, { bg: 'transparent', text: on ? 'primary' : 'muted' });
+          b.setAttribute('aria-pressed', on ? 'true' : 'false'); setAttrs(b, { text: on ? 'primary' : 'muted' });
         });
         var consoleOpen = bottom.style.display === 'flex';
-        mConsoleBtn.setAttribute('aria-pressed', consoleOpen ? 'true' : 'false');
-        setAttrs(mConsoleBtn, { text: consoleOpen ? 'primary' : 'muted' });
+        mConsoleBtn.setAttribute('aria-pressed', consoleOpen ? 'true' : 'false'); setAttrs(mConsoleBtn, { text: consoleOpen ? 'primary' : 'muted' });
       }
       function applyLayout() {
-        var mobile = isMobile();
-        var mode = mobile ? state.mobilePane : prefs.layout;
-        var showEditor = mode !== 'preview', showPreview = mode !== 'editor';
-        var column = mobile || mode === 'stacked';
+        var mobile = isMobile(), mode = mobile ? state.mobilePane : prefs.layout;
+        var showEditor = mode !== 'preview', showPreview = mode !== 'editor', column = mobile || mode === 'stacked';
         workspace.style.flexDirection = column ? 'column' : 'row';
         editorPane.style.display = showEditor ? 'flex' : 'none';
         previewPane.style.display = showPreview ? 'flex' : 'none';
@@ -1280,40 +1329,29 @@
         divider.style.display = both ? 'block' : 'none';
         divider.setAttribute('aria-orientation', column ? 'horizontal' : 'vertical');
         divider.style.cursor = column ? 'row-resize' : 'col-resize';
-        divider.style.width = column ? 'auto' : '6px';
-        divider.style.height = column ? '6px' : 'auto';
-        divider.setAttribute('aria-valuenow', String(Math.round(prefs.ratio)));
-        divider.setAttribute('aria-valuemin', '20'); divider.setAttribute('aria-valuemax', '80');
-        if (both) {
-          editorPane.style.flex = '0 0 calc(' + prefs.ratio + '% - 3px)';
-          editorPane.style.minWidth = column ? '0' : '260px';
-        } else { editorPane.style.flex = '1 1 0'; editorPane.style.minWidth = '0'; }
+        divider.style.width = column ? 'auto' : '6px'; divider.style.height = column ? '6px' : 'auto';
+        divider.setAttribute('aria-valuenow', String(Math.round(prefs.ratio))); divider.setAttribute('aria-valuemin', '20'); divider.setAttribute('aria-valuemax', '80');
+        if (both) { editorPane.style.flex = '0 0 calc(' + prefs.ratio + '% - 3px)'; editorPane.style.minWidth = column ? '0' : '260px'; }
+        else { editorPane.style.flex = '1 1 0'; editorPane.style.minWidth = '0'; }
         previewPane.style.flex = '1 1 0';
-
-        // Show/hide chrome per breakpoint (data-m="mobile" | "desktop").
         $$('[data-m]').forEach(function (el) {
           var show = (el.getAttribute('data-m') === 'mobile') === mobile;
           el.style.display = show ? (el.getAttribute('data-d') || 'flex') : 'none';
         });
         bottom.style.height = mobile ? 'min(38dvh, 240px)' : '168px';
         toast.style.bottom = mobile ? 'calc(72px + env(safe-area-inset-bottom, 0px))' : '44px';
-        if (viewportDD) viewportDD.setIconOnly(mobile);
-        if (!mobile) closeDrawer(false);
-
+        if (!mobile) closePanel();
         paintSeg(layoutBtns, function (b) { return b.getAttribute('data-layout') === prefs.layout; });
-        paintNav();
+        paintNav(); acHide();
         if (showEditor) editors[state.tab].rehighlight();
-        measure();
+        applyViewport();
       }
       layoutBtns.forEach(function (b) { b.addEventListener('click', function () { prefs.layout = b.getAttribute('data-layout'); savePrefs(); applyLayout(); }); });
       mobileBtns.forEach(function (b) { b.addEventListener('click', function () { state.mobilePane = b.getAttribute('data-mobile-pane'); applyLayout(); }); });
       if (mq.addEventListener) mq.addEventListener('change', applyLayout); else if (mq.addListener) mq.addListener(applyLayout);
 
       var dragging = false;
-      function ratioFromEvent(e) {
-        var r = workspace.getBoundingClientRect();
-        return isColumn() ? (e.clientY - r.top) / r.height * 100 : (e.clientX - r.left) / r.width * 100;
-      }
+      function ratioFromEvent(e) { var r = workspace.getBoundingClientRect(); return isColumn() ? (e.clientY - r.top) / r.height * 100 : (e.clientX - r.left) / r.width * 100; }
       function setRatio(p) { prefs.ratio = Math.min(80, Math.max(20, p)); applyLayout(); }
       divider.addEventListener('pointerdown', function (e) {
         if (e.button !== 0) return;
@@ -1322,12 +1360,8 @@
         frame.style.pointerEvents = 'none'; divider.setAttribute('bg', 'primary');
       });
       divider.addEventListener('pointermove', function (e) { if (dragging) setRatio(ratioFromEvent(e)); });
-      function endDrag() {
-        if (!dragging) return;
-        dragging = false; frame.style.pointerEvents = ''; setAttrs(divider, { bg: 'gray-100' }); savePrefs();
-      }
-      divider.addEventListener('pointerup', endDrag);
-      divider.addEventListener('pointercancel', endDrag);
+      function endDrag() { if (!dragging) return; dragging = false; frame.style.pointerEvents = ''; setAttrs(divider, { bg: 'gray-100' }); savePrefs(); }
+      divider.addEventListener('pointerup', endDrag); divider.addEventListener('pointercancel', endDrag);
       divider.addEventListener('dblclick', function () { setRatio(50); savePrefs(); });
       divider.addEventListener('keydown', function (e) {
         var back = isColumn() ? 'ArrowUp' : 'ArrowLeft', fwd = isColumn() ? 'ArrowDown' : 'ArrowRight';
@@ -1336,38 +1370,32 @@
       });
 
       /* ------------------------------------------------------------------ *
-       * Viewport presets (real iframe dimensions) + live size readout
+       * Device, zoom and the live size readout
        * ------------------------------------------------------------------ */
-      var vpResetBtn = $('#pg-viewport-reset'), viewportDD = null;
+      var deviceDD = null, zoomDD = null;
       function applyViewport() {
-        var vp = VIEWPORTS[prefs.viewport];
-        if (vp.w) {
-          stage.style.padding = '16px';
-          frame.style.width = vp.w + 'px';
-          frame.style.height = 'min(' + vp.h + 'px, 100%)';
-          frame.style.borderRadius = '10px';
-          frame.style.boxShadow = '0 0 0 1px rgba(128,128,128,.35), 0 8px 28px rgba(0,0,0,.18)';
-        } else {
-          stage.style.padding = '0';
-          frame.style.width = '100%'; frame.style.height = '100%';
-          frame.style.borderRadius = '0'; frame.style.boxShadow = 'none';
+        var cw = canvas.clientWidth, ch = canvas.clientHeight;
+        if (!cw || !ch) return;
+        var d = DEVICES[prefs.device], pad = d.w ? 16 : 0, s, W, H;
+        if (!d.w) { s = prefs.zoom === 'fit' ? 1 : Number(prefs.zoom) / 100; W = Math.floor(cw / s); H = Math.floor(ch / s); }
+        else {
+          W = d.w; H = d.h;
+          s = prefs.zoom === 'fit' ? Math.max(0.1, Math.min(1, (cw - pad * 2) / W, (ch - pad * 2) / H)) : Number(prefs.zoom) / 100;
         }
-        vpResetBtn.style.display = vp.w ? 'flex' : 'none';
-        if (viewportDD) viewportDD.setValue(prefs.viewport);
-        drawerRefresh();
-        measure();
+        frame.style.width = W + 'px'; frame.style.height = H + 'px'; frame.style.transform = 'scale(' + s + ')';
+        wrapEl.style.width = Math.round(W * s) + 'px'; wrapEl.style.height = Math.round(H * s) + 'px';
+        stage.style.padding = pad + 'px';
+        frame.style.borderRadius = d.w ? (d.r || 8) + 'px' : '0';
+        frame.style.boxShadow = d.w ? '0 0 0 1px rgba(128,128,128,.35), 0 8px 28px rgba(0,0,0,.18)' : 'none';
+        sizeText.textContent = W + ' × ' + H + ' · ' + Math.round(s * 100) + '%';
       }
-      function setViewport(v) { if (!VIEWPORTS[v]) return; prefs.viewport = v; savePrefs(); applyViewport(); }
-      function measure() {
-        var r = frame.getBoundingClientRect();
-        sizeText.textContent = Math.round(r.width) + ' × ' + Math.round(r.height);
-      }
-      if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measure).observe(frame);
-      window.addEventListener('resize', measure);
-      vpResetBtn.addEventListener('click', function () { setViewport('responsive'); });
+      function setDevice(v) { if (!DEVICES[v]) return; prefs.device = v; savePrefs(); if (deviceDD) deviceDD.setValue(v); applyViewport(); panelRefresh(); }
+      function setZoom(v) { prefs.zoom = v; savePrefs(); if (zoomDD) zoomDD.setValue(v); applyViewport(); panelRefresh(); }
+      if (typeof ResizeObserver !== 'undefined') new ResizeObserver(applyViewport).observe(canvas);
+      window.addEventListener('resize', applyViewport);
 
       /* ------------------------------------------------------------------ *
-       * Themes: editor theme and preview theme are independent
+       * Themes: highlight.js follows the site theme (foundation / monokai-sublime)
        * ------------------------------------------------------------------ */
       function pageIsDark() {
         var de = doc.documentElement;
@@ -1376,27 +1404,19 @@
         if (de.classList.contains('light') || attr === 'light') return false;
         return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
       }
-      function applyEditorTheme() {
-        var dark = prefs.editorTheme === 'dark' || (prefs.editorTheme === 'auto' && pageIsDark());
-        edBody.classList.toggle('pg-ed-dark', dark);
-        edBody.classList.toggle('pg-ed-light', !dark);
+      function applyHljsTheme() {
+        var dark = pageIsDark(), l = $('#hljs-light'), d = $('#hljs-dark');
+        if (l) l.media = dark ? 'not all' : 'all';
+        if (d) d.media = dark ? 'all' : 'not all';
       }
-      try { new MutationObserver(function () { if (prefs.editorTheme === 'auto') applyEditorTheme(); }).observe(doc.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme', 'data-color-scheme'] }); } catch (e) { /* ignore */ }
-      if (window.matchMedia) {
-        var dm = window.matchMedia('(prefers-color-scheme: dark)');
-        if (dm.addEventListener) dm.addEventListener('change', function () { if (prefs.editorTheme === 'auto') applyEditorTheme(); });
-      }
-      var editorThemeDD = null, previewThemeDD = null;
-      function setEditorTheme(v) {
-        prefs.editorTheme = v; savePrefs(); applyEditorTheme();
-        if (editorThemeDD) editorThemeDD.setValue(v);
-        drawerRefresh();
-      }
+      try { new MutationObserver(applyHljsTheme).observe(doc.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme', 'data-color-scheme'] }); } catch (e) { /* ignore */ }
+      if (window.matchMedia) { var dm = window.matchMedia('(prefers-color-scheme: dark)'); if (dm.addEventListener) dm.addEventListener('change', applyHljsTheme); }
+      var previewThemeDD = null;
       function setPreviewTheme(v) {
         prefs.previewTheme = v; savePrefs();
         if (preview.phase === 'ready' && frame.contentWindow) frame.contentWindow.postMessage({ __pg: 1, type: 'theme', value: v }, '*');
         if (previewThemeDD) previewThemeDD.setValue(v);
-        drawerRefresh();
+        panelRefresh();
       }
 
       /* ------------------------------------------------------------------ *
@@ -1407,77 +1427,57 @@
         bottom.style.display = 'flex';
         bottomTabs.forEach(function (b) {
           var on = b.getAttribute('data-bottom') === which;
-          b.setAttribute('aria-selected', on ? 'true' : 'false');
-          setAttrs(b, { text: on ? 'primary' : 'muted', 'border-color': on ? 'primary' : 'transparent' });
+          b.setAttribute('aria-selected', on ? 'true' : 'false'); setAttrs(b, { text: on ? 'primary' : 'muted', 'border-color': on ? 'primary' : 'transparent' });
         });
         consoleBox.style.display = which === 'console' ? 'block' : 'none';
         tipsBox.style.display = which === 'tips' ? 'block' : 'none';
         $('#pg-console-clear').style.display = which === 'console' ? '' : 'none';
-        paintNav();
+        paintNav(); applyViewport();
       }
       function toggleBottom(which) {
         var open = bottom.style.display === 'flex' && (which === 'console' ? consoleBox.style.display !== 'none' : tipsBox.style.display !== 'none');
-        if (open) { bottom.style.display = 'none'; paintNav(); } else showBottom(which);
+        if (open) { bottom.style.display = 'none'; paintNav(); applyViewport(); } else showBottom(which);
       }
       $('#pg-console-btn').addEventListener('click', function () { toggleBottom('console'); });
       $('#pg-tips-btn').addEventListener('click', function () { toggleBottom('tips'); });
       mConsoleBtn.addEventListener('click', function () { toggleBottom('console'); });
-      $('#pg-bottom-close').addEventListener('click', function () { bottom.style.display = 'none'; paintNav(); });
+      $('#pg-bottom-close').addEventListener('click', function () { bottom.style.display = 'none'; paintNav(); applyViewport(); });
       bottomTabs.forEach(function (b) { b.addEventListener('click', function () { showBottom(b.getAttribute('data-bottom')); }); });
       $('#pg-console-clear').addEventListener('click', function () { runtimeEntries = []; renderConsole(); renderStatus(); });
       $('#pg-run').addEventListener('click', function () {
-        // On a phone the preview is a separate screen, so Run takes you to it.
         if (isMobile() && state.mobilePane !== 'preview') { state.mobilePane = 'preview'; applyLayout(); }
         fullReload();
       });
 
       /* ------------------------------------------------------------------ *
-       * Dropdowns (desktop toolbar)
+       * Desktop dropdowns
        * ------------------------------------------------------------------ */
-      var exampleItemsDD = EXAMPLES.map(function (e) {
-        return e.group ? { group: e.group } : { value: e.id, label: e.title, icon: e.icon };
-      });
-      exampleDD = createDropdown($('#dd-example'), {
-        label: 'Choose an example', prefix: 'Example', items: exampleItemsDD, value: 'starter', placeholder: 'Custom', minWidth: 240,
-        onChange: function (v) { loadExample(v, true); }
-      });
-      editorThemeDD = createDropdown($('#dd-editor-theme'), {
-        label: 'Editor theme', compact: true, align: 'right', minWidth: 150, value: prefs.editorTheme,
-        items: EDITOR_THEME_ITEMS,
-        onChange: function (v) { setEditorTheme(v); }
-      });
-      viewportDD = createDropdown($('#dd-viewport'), {
-        label: 'Preview size', compact: true, minWidth: 220, value: prefs.viewport,
-        items: VIEWPORT_ITEMS,
-        onChange: function (v) { setViewport(v); }
-      });
-      previewThemeDD = createDropdown($('#dd-preview-theme'), {
-        label: 'Preview theme', compact: true, align: 'right', prefix: 'Preview', minWidth: 160, value: prefs.previewTheme,
-        items: PREVIEW_THEME_ITEMS,
-        onChange: function (v) { setPreviewTheme(v); }
-      });
+      langDD = createDropdown($('#dd-lang'), { label: 'Language or framework', prefix: 'Language', items: LANG_ITEMS, value: 'html', minWidth: 190, onChange: function (v) { setLang(v); } });
+      exampleDD = createDropdown($('#dd-example'), { label: 'Choose an example', prefix: 'Example', items: exampleItems('html'), value: 'starter', placeholder: 'Custom', minWidth: 240, onChange: function (v) { loadExample(v, true); } });
+      deviceDD = createDropdown($('#dd-device'), { label: 'Preview device', items: DEVICE_ITEMS, value: prefs.device, minWidth: 250, onChange: function (v) { setDevice(v); } });
+      zoomDD = createDropdown($('#dd-zoom'), { label: 'Preview zoom', items: ZOOM_ITEMS, value: prefs.zoom, minWidth: 170, onChange: function (v) { setZoom(v); } });
+      previewThemeDD = createDropdown($('#dd-preview-theme'), { label: 'Preview theme', align: 'right', prefix: 'Preview', items: PREVIEW_THEME_ITEMS, value: prefs.previewTheme, minWidth: 160, onChange: function (v) { setPreviewTheme(v); } });
 
       /* ------------------------------------------------------------------ *
        * Init
        * ------------------------------------------------------------------ */
       bottom.style.display = 'none';
-      buildDrawer();
       var saved = null;
       try { saved = JSON.parse(store.get(WORK_KEY) || 'null'); } catch (e) { saved = null; }
-      var starter = EXAMPLE_MAP.starter;
-      if (saved && typeof saved.html === 'string' && typeof saved.css === 'string') {
-        savedAt = saved.savedAt || 0;
-        state.html = saved.html; state.css = saved.css;
-        setSource(saved.html, saved.css, EXAMPLE_MAP[saved.example] ? saved.example : null, { silent: true });
-      } else {
-        setSource(starter.html, starter.css, 'starter', { silent: true });
+      if (saved && saved.v === 3 && saved.files && LANGS[saved.lang]) { files = saved.files; savedAt = saved.savedAt || 0; state.lang = saved.lang; }
+      else {
+        var old = null; try { old = JSON.parse(store.get(OLD_WORK_KEY) || 'null'); } catch (e) { old = null; }
+        if (old && typeof old.html === 'string') { files.html = { code: old.html, css: old.css || '', example: old.example }; savedAt = old.savedAt || 0; }
       }
-      applyEditorTheme();
+      var f0 = files[state.lang];
+      if (!f0 || typeof f0.code !== 'string' || typeof f0.css !== 'string') { var st0 = EX[state.lang][0]; f0 = { code: st0.code, css: st0.css, example: 'starter' }; }
+      applyLangUI();
+      setSource(f0.code, f0.css, EXMAP[state.lang][f0.example] ? f0.example : null, { silent: true });
+      applyHljsTheme();
+      applyWrap();
       setTab(state.tab, false);
       applyLayout();
-      applyViewport();
-      renderSave();
-      renderConsole();
+      renderSave(); renderConsole();
       fullReload();
 
       // Open a shared link (#code=...) without losing the visitor's own work.
@@ -1485,13 +1485,14 @@
       if (hashMatch) {
         decodeShare(hashMatch[1]).then(function (obj) {
           takeBackup();
+          var l = LANGS[obj.l] ? obj.l : 'html', changed = l !== state.lang;
+          if (changed) { preview.phase = 'loading'; useLang(l); }
           setSource(obj.h, obj.c, null);
+          if (changed) fullReload();
           saveNow();
           try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ }
           flash('Loaded a shared snippet', { label: 'Restore mine', fn: undoLoad });
-        }).catch(function (err) {
-          flash('This share link could not be opened (' + (err && err.message ? err.message : 'invalid') + ')');
-        });
+        }).catch(function (err) { flash('This share link could not be opened (' + (err && err.message ? err.message : 'invalid') + ')'); });
       }
     })();
     </script>
