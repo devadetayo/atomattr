@@ -13,6 +13,24 @@ Set `display="flex"` to make children flex items. Direction helpers such as `fle
 </div>
 ```
 
+```native
+import { Row, Box, Txt, Btn } from 'atomattr/react-native';
+
+// Native has no md- breakpoints: choose the layout per screen size in code.
+export function Profile() {
+  return (
+    <Row gap="4" items="center">
+      <Box size="12" rounded="full" bg="gray-200" />
+      <Box flex={1}>
+        <Txt fontWeight="bold">Profile</Txt>
+        <Txt text="muted">Supporting details</Txt>
+      </Box>
+      <Btn bg="primary">Follow</Btn>
+    </Row>
+  );
+}
+```
+
 ## Direction, wrapping, and spacing
 
 Use `flex-row` or `flex-col` for direction. Add `wrap` or `wrap-reverse` when items should move onto additional lines; `no-wrap` keeps them on one line. Use `gap`, `gap-x`, and `gap-y` to space items without adding margins to each child.

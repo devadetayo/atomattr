@@ -15,6 +15,16 @@ Use `leading` or `line-height` with tokens such as `tight`, `normal`, `relaxed`,
 </p>
 ```
 
+```native
+import { Txt } from 'atomattr/react-native';
+
+export const Lead = () => (
+  <Txt fontSize="lg" fontWeight="medium">
+    Comfortable line height makes this longer paragraph easier to read.
+  </Txt>
+);
+```
+
 ## Letter and word spacing
 
 Use `tracking` or `letter-spacing` for letter spacing and `word-spacing` for space between words. Values follow CSS, including tokens such as `wide` and `tight` for letter spacing or explicit lengths. Use increased tracking carefully for long passages because it can reduce readability.

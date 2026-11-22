@@ -1,0 +1,15 @@
+/* Atomattr motion keyframes. Keyframes cannot be written as attributes, so they live here;
+   everything else on the site is styled with Atomattr attributes (use animate="aa-… 20s linear infinite"). */
+@keyframes aa-marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes aa-marquee-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes aa-float   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes aa-shine   { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes aa-beam    { to { offset-distance: 100%; } }
+@keyframes aa-spin    { to { transform: rotate(360deg); } }
+@keyframes aa-rise    { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes aa-pulse   { 0%,100% { opacity: .45; transform: scale(1); } 50% { opacity: .9; transform: scale(1.08); } }
+@keyframes aa-grid    { from { background-position: 0 0; } to { background-position: 40px 40px; } }
+html.aa-js [data-reveal] { opacity: 0; }
+html.aa-js [data-reveal].is-in { animation: aa-rise .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0ms); }
+.aa-marquee:hover .aa-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .aa-track, [data-reveal].is-in { animation: none !important; opacity: 1 !important; } }

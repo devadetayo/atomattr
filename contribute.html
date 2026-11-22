@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="robots" content="index, follow" />
+  <title>Contribute a design — AtomAttr UI</title>
+  <meta name="description" content="Prepare and validate an AtomAttr UI community design package. Drafts stay in your browser until a review service exists." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/contribute.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="Contribute a design — AtomAttr UI" />
+  <meta property="og:description" content="Prepare and validate an AtomAttr UI community design package. Drafts stay in your browser until a review service exists." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/contribute.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contribute a design — AtomAttr UI" />
+  <meta name="twitter:description" content="Prepare and validate an AtomAttr UI community design package. Drafts stay in your browser until a review service exists." />
+  <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <style>
+    /* Only what attributes cannot express: fonts, gradient text, keycap depth, and form focus rings. */
+    html { font-family: 'DM Sans', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    code, kbd, .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .grad-text { background: linear-gradient(180deg, #fff 0%, #fff 35%, rgba(255,255,255,.55) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    html:not(.dark):not([data-theme="dark"]) .grad-text { background: linear-gradient(180deg, #0b0c0f 0%, #0b0c0f 40%, rgba(11,12,15,.6) 100%); -webkit-background-clip: text; background-clip: text; }
+    .keycap { box-shadow: 0 1px 0 rgba(255,255,255,.12) inset, 0 2px 0 rgba(0,0,0,.5); }
+    input, select { font-family: inherit; font-size: 16px; box-sizing: border-box; }
+    .search-wrap input { outline: none; min-width: 0; }
+    .search-wrap:focus-within, select:focus, input:focus, textarea:focus { outline: none; border-color: #5b5cf6 !important; box-shadow: 0 0 0 3px rgba(91,92,246,.25); }
+    textarea { font-family: inherit; font-size: 16px; box-sizing: border-box; resize: vertical; outline: none; }
+    .mono, textarea.mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+    input[type="checkbox"] { width: 1.1rem; height: 1.1rem; flex: none; accent-color: #5b5cf6; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+<link rel="stylesheet" href="assets/font.css">  <script src="./dist/atomattr.min.js"></script>
+</head>
+<body bg="#fff" dark-bg="#07080a" text="text" min-h="screen" p="0" m="0">
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="#07080a" border-b="1px" border-color="gray-100" dark-border-color="#ffffff/10" backdrop-blur="md"></header>
+
+  <main>
+
+    <!-- ============================== HERO ============================== -->
+    <section position="relative" overflow="hidden" bg-gradient="radial-gradient(60vw 28rem at 50% -10%, color-mix(in oklch, var(--blue-500) 30%, transparent), transparent 70%)">
+      <div position="absolute" top="0" left="0" w="full" h="full" opacity="40" aria-hidden="true" bg-gradient="repeating-linear-gradient(115deg, transparent 0 46px, color-mix(in oklch, var(--blue-500) 14%, transparent) 46px 48px)" style="mask-image:linear-gradient(180deg,#000 0%,transparent 62%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 62%);pointer-events:none;"></div>
+
+      <div position="relative" max-w="7xl" mx="auto" px="4" md-px="8" pt="14" lg-pt="20" pb="12" display="flex" flex-col items="center" align="center">
+        <span display="inline-flex" items="center" gap="2" bg="primary/10" text="primary" border="0" rounded="md" px="3" py="1" font-size="xs" font-weight="600" mb="7"><i class="ri-git-pull-request-line"></i> Community contributions</span>
+
+        <h1 class="grad-text" font-size="5xl" md-font-size="7xl" lg-font-size="8xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="6" w="full" md-max-w="70vw" lg-max-w="70vw">Prepare a design for review.</h1>
+
+        <p font-size="lg" md-font-size="xl" text="muted" line-height="relaxed" m="0" w="full" md-max-w="55vw" lg-max-w="46vw">Add your design details, preview markup, source and license. This site has no submission server or moderator queue yet, so this page validates your work and saves a private draft in this browser only. It does not upload or submit anything.</p>
+
+        <a href="./catalog.html" display="inline-flex" items="center" gap="2" mt="7" text="muted" hover-text="primary" text-decoration="none" font-weight="600"><i class="ri-arrow-left-line"></i> Back to the free gallery</a>
+      </div>
+    </section>
+
+
+    <!-- ============================== FORM ============================== -->
+    <section max-w="7xl" mx="auto" px="4" md-px="8" pb="16" lg-pb="24">
+
+      <div role="note" display="flex" items="start" gap="3" bg="warning/10" border="0" rounded="md" p="4" mb="8">
+        <i class="ri-information-line" text="warning" font-size="xl"></i>
+        <div>
+          <p m="0" font-weight="600">Draft only · not pending review</p>
+          <p m="0" mt="1" text="muted" font-size="sm" line-height="relaxed">Your draft stays in this browser until you download its JSON package. There is no review status until a server-side submission flow is configured.</p>
+        </div>
+      </div>
+
+      <div display="grid" grid-cols="1" lg-grid-cols="12" gap="8" items="start">
+
+        <div lg-col-span="8" bg="gray-100" dark-bg="#0e0f11" border="0" rounded="md" p="6" md-p="8">
+          <form id="contribution-form" display="grid" grid-cols="1" gap="5" novalidate>
+            <div><label for="design-title" display="block" mb="1.5" font-size="sm" font-weight="600">Design title <span text="danger" aria-hidden="true">*</span></label><input id="design-title" name="title" required maxlength="100" autocomplete="off" w="full" bg="gray-50" dark-bg="#07080a" border="0" rounded="md" px="4" py="3" text="text" /></div>
+            <div><label for="design-description" display="block" mb="1.5" font-size="sm" font-weight="600">Description <span text="danger" aria-hidden="true">*</span></label><textarea id="design-description" name="description" required maxlength="600" rows="3" w="full" bg="gray-50" dark-bg="#07080a" border="0" rounded="md" px="4" py="3" text="text" line-height="relaxed"></textarea></div>
+            <div display="grid" grid-cols="1" md-grid-cols="2" gap="5">
+              <div><label for="design-category" display="block" mb="1.5" font-size="sm" font-weight="600">Category <span text="danger" aria-hidden="true">*</span></label><select id="design-category" name="category" required w="full" bg="gray-50" dark-bg="#07080a" border="0" rounded="md" px="4" py="3" text="text"><option value="">Choose a category</option><option value="component">Component</option><option value="section">Section</option><option value="website">Complete website</option></select></div>
+              <div><label for="design-author" display="block" mb="1.5" font-size="sm" font-weight="600">Creator name <span text="danger" aria-hidden="true">*</span></label><input id="design-author" name="author" required maxlength="80" autocomplete="name" w="full" bg="gray-50" dark-bg="#07080a" border="0" rounded="md" px="4" py="3" text="text" /></div>
+            </div>
+            <div><label for="design-license" display="block" mb="1.5" font-size="sm" font-weight="600">License <span text="danger" aria-hidden="true">*</span></label><select id="design-license" name="license" required w="full" bg="gray-50" dark-bg="#07080a" border="0" rounded="md" px="4" py="3" text="text"><option value="">Choose a license</option><option value="MIT">MIT</option><option value="Apache-2.0">Apache-2.0</option><option value="CC BY 4.0">CC BY 4.0</option><option value="CC0-1.0">CC0-1.0</option><option value="Other">Other — specify in description</option></select><p m="0" mt="1.5" text="muted" font-size="sm">Only select a license if you have the right to publish the work under its terms.</p></div>
+            <div><label for="design-preview" display="block" mb="1.5" font-size="sm" font-weight="600">Preview markup <span text="danger" aria-hidden="true">*</span></label><textarea id="design-preview" name="preview" required rows="8" spellcheck="false" class="mono" w="full" bg="gray-50" dark-bg="#07080a" border="0" rounded="md" px="4" py="3" text="text" font-size="sm"></textarea><p m="0" mt="1.5" text="muted" font-size="sm">Maximum 2 MB. Preview content is stored as text and is not executed on this page.</p></div>
+            <div><label for="design-source" display="block" mb="1.5" font-size="sm" font-weight="600">Source files or notes</label><textarea id="design-source" name="source" rows="6" spellcheck="false" class="mono" w="full" bg="gray-50" dark-bg="#07080a" border="0" rounded="md" px="4" py="3" text="text" font-size="sm" placeholder="Paste source files or describe the files included in your package."></textarea></div>
+            <label display="flex" items="start" gap="3" text="muted" font-size="sm" line-height="relaxed"><input id="rights-confirmation" type="checkbox" required mt="0.5" />I have the right to submit this design and selected license, and I understand this draft is not uploaded or under review.</label>
+            <div display="flex" flex-col sm-flex-row gap="3" items="start">
+              <button type="submit" display="inline-flex" items="center" justify="center" gap="2" bg="primary" hover-bg="primary/80" text="white" border="0" rounded="md" px="6" py="3" font-weight="600" cursor="pointer" w="full" sm-w="fit"><i class="ri-save-line"></i> Validate and save draft</button>
+              <button id="download-draft" type="button" display="inline-flex" items="center" justify="center" gap="2" bg="gray-100" dark-bg="#ffffff/5" border="0" hover-bg="gray-200" dark-hover-bg="#ffffff/10" text="text" rounded="md" px="6" py="3" font-weight="600" cursor="pointer" w="full" sm-w="fit" disabled><i class="ri-download-2-line"></i> Download draft JSON</button>
+            </div>
+            <p id="form-status" role="status" aria-live="polite" text="muted" font-size="sm" m="0"></p>
+          </form>
+        </div>
+
+        <aside lg-col-span="4" display="flex" flex-col gap="4">
+          <div bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="5">
+            <h2 font-size="lg" font-weight="700" m="0" mb="3">What this page does</h2>
+            <div display="flex" flex-col gap="2.5" font-size="sm">
+              <span display="flex" items="start" gap="2"><i class="ri-check-line" text="success"></i> Checks the required fields</span>
+              <span display="flex" items="start" gap="2"><i class="ri-check-line" text="success"></i> Limits preview and source to 2 MB each</span>
+              <span display="flex" items="start" gap="2"><i class="ri-check-line" text="success"></i> Saves a draft in this browser</span>
+              <span display="flex" items="start" gap="2"><i class="ri-check-line" text="success"></i> Lets you download a JSON package</span>
+            </div>
+          </div>
+          <div bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="5">
+            <h2 font-size="lg" font-weight="700" m="0" mb="3">What it does not do</h2>
+            <div display="flex" flex-col gap="2.5" font-size="sm" text="muted">
+              <span display="flex" items="start" gap="2"><i class="ri-close-line" text="danger"></i> Upload or send your work anywhere</span>
+              <span display="flex" items="start" gap="2"><i class="ri-close-line" text="danger"></i> Queue it for review</span>
+              <span display="flex" items="start" gap="2"><i class="ri-close-line" text="danger"></i> Publish it to the gallery</span>
+            </div>
+          </div>
+          <a href="./playground.html" display="flex" items="center" gap="4" bg="gray-100" dark-bg="#0e0f11" border="0" rounded="md" p="4" text="text" text-decoration="none">
+            <span w="11" h="11" flex="none" rounded="md" bg="primary" text="white" display="flex" items="center" justify="center" font-size="xl"><i class="ri-terminal-box-line"></i></span>
+            <span flex="1"><b display="block" font-size="sm">Build it in the Playground</b><span text="muted" font-size="sm">Preview your markup first</span></span>
+            <i class="ri-arrow-right-up-line" text="muted" font-size="xl"></i>
+          </a>
+        </aside>
+
+      </div>
+
+      <!-- Drafts -->
+      <div mt="12" pt="8" border-t="1px solid gray-200" dark-border-color="#ffffff/10" aria-labelledby="draft-list-title" role="region">
+        <h2 id="draft-list-title" class="grad-text" font-size="3xl" md-font-size="4xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="3">Drafts saved in this browser</h2>
+        <p text="muted" line-height="relaxed" m="0" mb="6" w="full" md-max-w="40rem">Only local drafts can be tracked here. Submitted, pending, approved and rejected states need the future authenticated review service.</p>
+        <div id="draft-list" display="grid" gap="3" role="list" aria-live="polite"></div>
+        <p id="draft-empty" text="muted" font-size="sm" m="0">No local drafts saved yet.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer border-t="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
+
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
+
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p mt="4" text="muted" line-height="relaxed" w="full" lg-max-w="20rem">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Library</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+            <a href="sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+            <a href="templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Atomattr.</span>
+        <span display="flex" items="center" gap="2">Built with Atomattr <i class="ri-heart-3-line"></i></span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script type="module" src="./site/app.js"></script>
+  <script>
+    (() => {
+      const form = document.getElementById('contribution-form');
+      const preview = document.getElementById('design-preview');
+      const source = document.getElementById('design-source');
+      const download = document.getElementById('download-draft');
+      const status = document.getElementById('form-status');
+      const list = document.getElementById('draft-list');
+      const empty = document.getElementById('draft-empty');
+      const storageKey = 'atomattr-community-drafts-v1';
+      const maxBytes = 2 * 1024 * 1024;
+      const allowedPreview = (value) => typeof value === 'string' && value.trim().length > 0 && new TextEncoder().encode(value).length <= maxBytes;
+      const allowedSource = (value) => typeof value === 'string' && new TextEncoder().encode(value).length <= maxBytes;
+      let activeDraft = null;
+      const readDrafts = () => {
+        try { const value = JSON.parse(localStorage.getItem(storageKey) || '[]'); return Array.isArray(value) ? value : []; }
+        catch { return []; }
+      };
+      const drawDrafts = () => {
+        const drafts = readDrafts();
+        list.replaceChildren(...drafts.map((draft) => {
+          const row = document.createElement('article');
+          row.setAttribute('role', 'listitem');
+          row.setAttribute('bg', 'gray-50'); row.setAttribute('dark-bg', '#07080a'); row.setAttribute('border', '1px solid gray-200'); row.setAttribute('dark-border-color', '#ffffff/10'); row.setAttribute('rounded', 'xl'); row.setAttribute('p', '4');
+          const title = document.createElement('strong'); title.textContent = draft.title || 'Untitled draft';
+          const meta = document.createElement('p'); meta.textContent = `Local draft · not submitted · ${draft.category} · ${draft.license}`; meta.setAttribute('text', 'muted'); meta.setAttribute('font-size', 'sm'); meta.setAttribute('m', '0'); meta.setAttribute('mt', '1');
+          row.append(title, meta); return row;
+        }));
+        empty.hidden = drafts.length > 0;
+        if (!drafts.length) empty.removeAttribute('hidden');
+      };
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        status.textContent = '';
+        if (!form.reportValidity()) return;
+        if (!allowedPreview(preview.value) || !allowedSource(source.value)) {
+          status.textContent = 'Preview and source fields must each be smaller than 2 MB.'; return;
+        }
+        const data = new FormData(form);
+        activeDraft = {
+          schemaVersion: 1, id: globalThis.crypto?.randomUUID?.() || `draft-${Date.now()}-${Math.random().toString(36).slice(2)}`, title: String(data.get('title')).trim(),
+          description: String(data.get('description')).trim(), category: data.get('category'),
+          author: String(data.get('author')).trim(), license: data.get('license'),
+          preview: preview.value, source: source.value, status: 'local-draft-only',
+          savedAt: new Date().toISOString(),
+        };
+        try {
+          const drafts = readDrafts().filter((draft) => draft.id !== activeDraft.id);
+          drafts.unshift(activeDraft); localStorage.setItem(storageKey, JSON.stringify(drafts.slice(0, 20)));
+        } catch {
+          status.textContent = 'Could not save this draft in local browser storage. Downloading is still available.';
+        }
+        download.disabled = false; drawDrafts();
+        status.textContent = 'Draft saved in this browser. It has not been uploaded or submitted; no review queue is connected.';
+      });
+      download.addEventListener('click', () => {
+        if (!activeDraft) return;
+        const blob = new Blob([JSON.stringify(activeDraft, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob); const anchor = document.createElement('a');
+        anchor.href = url; anchor.download = `${activeDraft.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'atomattr-design'}-draft.json`;
+        anchor.click(); URL.revokeObjectURL(url);
+        status.textContent = 'Draft package downloaded. It has not been uploaded or submitted.';
+      });
+      drawDrafts();
+    })();
+  </script>
+  <script src="./assets/theme-icon.js" defer></script>
+<script src="assets/nav-search.js" defer></script></body>
+</html>

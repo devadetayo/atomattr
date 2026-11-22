@@ -7,13 +7,13 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="devadetayo">
   <title>Installation - Atomattr Docs</title>
-  <meta name="description" content="Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.">
+  <meta name="description" content="Pick the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime, so every web framework uses the same two pieces: the stylesheet and one call to start the engine.">
   <link rel="canonical" href="https://devadetayo.github.io/atomattr/docs/installation.html">
   <link rel="icon" href="../assets/favico/favico.png" type="image/png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Atomattr Docs">
   <meta property="og:title" content="Installation - Atomattr Docs">
-  <meta property="og:description" content="Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.">
+  <meta property="og:description" content="Pick the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime, so every web framework uses the same two pieces: the stylesheet and one call to start the engine.">
   <meta property="og:url" content="https://devadetayo.github.io/atomattr/docs/installation.html">
   <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
   <meta name="twitter:site" content="@devadetayo">
   <meta name="twitter:creator" content="@devadetayo">
   <meta name="twitter:title" content="Installation - Atomattr Docs">
-  <meta name="twitter:description" content="Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.">
+  <meta name="twitter:description" content="Pick the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime, so every web framework uses the same two pieces: the stylesheet and one call to start the engine.">
   <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png">
   <script type="application/ld+json">
     {
@@ -50,27 +50,24 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
   <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
-  <style>html{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Inter",sans-serif}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
+  <style>html{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Inter",sans-serif}h1,h2,h3{font-family:'DM Sans',sans-serif;letter-spacing:0}code,pre,pre code{font-family:'JetBrains Mono',monospace}pre code.hljs{background:transparent!important;padding:0!important}table{border-collapse:collapse}section{scroll-margin-top:120px}</style>
   <link rel="stylesheet" href="../dist/defaults.css" />
   <link rel="stylesheet" href="../assets/remixicon/remixicon.css" />
   <link rel="stylesheet" href="../assets/showcase.css" />
-</head>
+<link rel="stylesheet" href="../assets/font.css"></head>
 <body bg="#fff" dark-bg="grey-950" text="text" min-h="screen">
-  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" backdrop-blur="md"></header>
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" backdrop-blur="md"></header>
   <div display="flex" md-display="none" items="center" justify="between" px="4" py="3" bg="#fff" dark-bg="grey-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" position="sticky" top="68px" z="40">
     <button type="button" aria-label="Open contents" aria-expanded="false" data-mobile-toggle="docs-sidebar" display="flex" items="center" gap="2" bg="grey-100" dark-bg="gray-900" text="text" border="border" px="3" py="2" rounded="lg" font-size="sm" font-weight="600"><i class="ri-menu-2-line" font-size="16" data-mobile-toggle-icon></i>Contents</button>
-    <span text="muted" font-size="sm" font-weight="500">Installation</span>
+    <span text="muted" font-size="sm" font-weight="500">HTML</span>
   </div>
   <main class="page-shell">
     <div class="docs-layout" display="flex" items="start">
-      <aside id="docs-sidebar" class="sidebar" p="5" w="86vw" sm-w="62vw" md-w="20dvw" display="none" md-display="block" fixed bg="#fff" dark-bg="grey-950" border-r="1px" border-color="grey-100" dark-border-color="grey-900" top="0" left="0" h="100dvh" pt="24" pb="8" z="45" overflow-y="auto">
-        <div w="full" display="flex" flex-col gap="6"><div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">GETTING STARTED</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="../docs.html">Overview</a>
+      <aside id="docs-sidebar" class="sidebar" p="5" w="86vw" sm-w="62vw" md-w="20dvw" display="none" md-display="block" fixed bg="#fff" dark-bg="grey-950" border-r="1px" border-color="grey-100" dark-border-color="grey-900" top="0" left="0" h="100dvh" pt="24" pb="8" z="45" overflow-y="auto"><div w="full" display="flex" flex-col gap="6">
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">GETTING STARTED</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="../docs.html">Overview</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="search.html">Search</a>
 <a data-doc-page-link py="2" px="3" text="primary" bg="primary/10" font-weight="600" hover-text="text" w="full" display="flex" text-decoration="none" href="installation.html">Installation</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="syntax.html">Syntax</a>
@@ -79,246 +76,190 @@
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="modern-css.html">Modern CSS</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="states.html">States</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="dark-mode.html">Dark Mode</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="pseudo-elements.html">Pseudo Elements</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MODERN CSS</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="container-queries.html">Container Queries</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="anchor-positioning.html">Anchor Positioning</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="scroll-driven-animations.html">Scroll-driven Animations</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="view-transitions.html">View Transitions</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Runtime and Performance</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">LAYOUT</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-display.html">Display</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="selectors.html">Selectors and States</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">REFERENCE</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="performance.html">Performance</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">LAYOUT</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-display.html">Display</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-flex.html">Flexbox</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-grid.html">Grid</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-alignment.html">Alignment</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-gap.html">Gap</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">SPACING</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="spacing-padding.html">Padding</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="spacing-margin.html">Margin</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">SIZING</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-width-height.html">Width and Height</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="layout-gap.html">Gap</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">SPACING</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="spacing-padding.html">Padding</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="spacing-margin.html">Margin</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">SIZING</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-width-height.html">Width and Height</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-min-max.html">Min and Max Size</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-aspect.html">Aspect Ratio</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">POSITION</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="positioning.html">Positioning</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="sizing-aspect.html">Aspect Ratio</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">POSITION</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="positioning.html">Positioning</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="inset-z-index.html">Inset and Z Index</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="overflow.html">Overflow</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">COLORS</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-backgrounds.html">Backgrounds</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="overflow.html">Overflow</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">COLORS</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-backgrounds.html">Backgrounds</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-text.html">Text Colors</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-gradients.html">Gradients</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-svg.html">SVG Colors</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">TYPOGRAPHY</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-font.html">Font Family and Size</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="colors-svg.html">SVG Colors</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">TYPOGRAPHY</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-font.html">Font Family and Size</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-weight-line.html">Weight and Line Height</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-alignment.html">Text Alignment</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-decoration.html">Decoration and Case</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-overflow.html">Text Overflow</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">BORDERS</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-width-color.html">Border Width and Color</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="typography-overflow.html">Text Overflow</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">BORDERS</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-width-color.html">Border Width and Color</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-radius.html">Radius</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-outline-ring.html">Outline and Ring</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">EFFECTS</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-shadow.html">Shadows</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="borders-outline-ring.html">Outline and Ring</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">EFFECTS</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-shadow.html">Shadows</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-opacity.html">Opacity</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-transform.html">Transforms</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-filter.html">Filters</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-backdrop.html">Backdrop Filters</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MOTION</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="motion-transition.html">Transitions</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="motion-animation.html">Animation</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MEDIA</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="media-object.html">Object Fit</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="media-background.html">Background Images</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">INTERACTIVITY</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="interactivity-cursor.html">Cursor and Pointer</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="interactivity-scroll.html">Scroll Behavior</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">PLATFORM GUIDES</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="html.html">HTML</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="effects-backdrop.html">Backdrop Filters</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MOTION</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="motion-transition.html">Transitions</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="motion-animation.html">Animation</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MEDIA</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="media-object.html">Object Fit</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="media-background.html">Background Images</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">INTERACTIVITY</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="interactivity-cursor.html">Cursor and Pointer</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="interactivity-scroll.html">Scroll Behavior</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">PLATFORM GUIDES</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="html.html">HTML</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react.html">React</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="svelte.html">Svelte</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="vue.html">Vue</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="angular.html">Angular</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react-native.html">React Native</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react-native-layout.html">React Native Layout</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react-native-inputs.html">React Native Inputs</a>
-    </div>
-  </div>
-<div display="flex" flex-col gap="3">
-    <h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MORE</h3>
-    <div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900">
-      <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="tables-lists.html">Tables and Lists</a>
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="react-native-inputs.html">React Native Inputs</a></div></div>
+<div display="flex" flex-col gap="3"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide">MORE</h3><div display="flex" flex-col w="full" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="tables-lists.html">Tables and Lists</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="accessibility.html">Accessibility</a>
 <a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="tailwind-comparison.html">Tailwind Comparison</a>
-<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="cheatsheet.html">Cheatsheet</a>
-    </div>
-  </div></div>
-      </aside>
-      <div px="4" md-pl="calc(20dvw + 4rem)" lg-pr="calc(20dvw + 2rem)" pt="8" md-pt="12" w="full" max-w="100dvw" display="flex" flex-col gap="10" overflow-x="hidden" flex="1">
-        <div max-w="3xl">
-          <p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p>
-          <h1 font-size="2xl" md-font-size="4xl" font-weight="bold" tracking="tight" mb="4">Installation</h1>
-          <p font-size="md" text="muted" line-height="relaxed" mb="4">Choose the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime.</p>
-        </div>
-        <section id="install-in-a-javascript-project" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Install in a JavaScript project</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Install the package from your project directory. This is the setup for Vite, React, Svelte, and other JavaScript build tools.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">bash</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">npm install atomattr</code></pre>
-  </div>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The package provides the browser engine and <code>defaults.css</code>. Vite is a build tool, not a framework: use the framework-specific section below if your app uses React or Svelte.</p></section>
-<section id="plain-html-with-a-local-package-build" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Plain HTML with a local package build</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">If you are working in this repository or have built Atomattr from source, run <code>npm run build:library</code> first. The generated files live under <code>/dist</code> in the project root. Reference them from a page served by the same project:</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;link rel="stylesheet" href="/dist/defaults.css"&gt;
-&lt;script src="/dist/atomattr.min.js" defer&gt;&lt;/script&gt;</code></pre>
-  </div>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">For a standalone static HTML file with no local build, use the published browser bundle and stylesheet from a CDN. Replace <code>1.0.1</code> with the version you intend to pin:</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">html</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atomattr@1.0.1/dist/defaults.css"&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/atomattr@1.0.1/dist/atomattr.min.js" defer&gt;&lt;/script&gt;</code></pre>
-  </div>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Keep the stylesheet and script on the same Atomattr version. The deferred script starts the engine after the HTML has been parsed.</p></section>
-<section id="vite-with-plain-html" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Vite with plain HTML</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Import the stylesheet and engine from the JavaScript entry point, such as <code>src/main.js</code>:</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">js</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">// src/main.js
-import 'atomattr/defaults.css';
-import { startAtomAttr } from 'atomattr';
+<a data-doc-page-link py="2" px="3" text="muted" hover-bg="grey-100" dark-hover-bg="grey-900" hover-text="text" w="full" display="flex" text-decoration="none" href="cheatsheet.html">Cheatsheet</a></div></div>
+</div></aside>
+<div px="4" md-pl="calc(20dvw + 4rem)" lg-pr="calc(20dvw + 2rem)" pt="8" md-pt="12" w="full" max-w="100dvw" display="flex" flex-col gap="10" overflow-x="hidden" flex="1">
+        <div max-w="3xl"><p text="primary" font-size="sm" font-weight="bold" tracking="wide" mb="3">GETTING STARTED</p><h1 dark-text="gray-50" font-size="2xl" md-font-size="4xl" font-weight="800" tracking="tight" mb="4">Installation</h1><p font-size="lg" text="muted" line-height="relaxed" mb="4">Pick the setup that matches your project. The browser engine reads Atomattr attributes and generates their CSS at runtime, so every web framework uses the same two pieces: the stylesheet and one call to start the engine.</p></div>
+<section id="what-you-install" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">What you install</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Atomattr ships as one package, <code>atomattr</code>. It contains the browser engine, <code>defaults.css</code> (design tokens and resets), the React primitives, and the React Native entry. There is no per-framework plugin: Svelte, Vue, Angular and plain HTML all write the same canonical attributes on native elements.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">Terminal</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="bash"><code class="language-bash">npm install atomattr</code></pre></div>
+<p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">The same works with <code>pnpm add atomattr</code>, <code>yarn add atomattr</code> or <code>bun add atomattr</code>. React and React Native projects already have their peer dependencies; the other frameworks need nothing extra.</p></section>
+<section id="plain-html-with-a-cdn" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">Plain HTML with a CDN</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">For a standalone static page, link the stylesheet and the script in the <code>&lt;head&gt;</code>. Do not add <code>defer</code>: the engine then styles elements as the browser parses them. Replace <code>1.0.2</code> with the version you want to pin, and keep both files on the same version. The script starts the engine as soon as it loads.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">HTML</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="html"><code class="language-xml">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/atomattr@1.0.2/dist/defaults.css&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/atomattr@1.0.2/dist/atomattr.min.js&quot;&gt;&lt;/script&gt;</code></pre></div>
+<p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">If you built Atomattr locally with <code>npm run build:library</code>, use <code>/dist/defaults.css</code> and <code>/dist/atomattr.min.js</code> from the same project instead.</p></section>
+<section id="vite-and-other-bundlers" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">Vite and other bundlers</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Import the stylesheet and start the engine once from your entry file (<code>src/main.js</code> or <code>src/main.ts</code>). Every framework below builds on this step.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">JavaScript</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="js"><code class="language-javascript">// src/main.js
+import &#x27;atomattr/defaults.css&#x27;;
+import { startAtomAttr } from &#x27;atomattr&#x27;;
 
-startAtomAttr();</code></pre>
-  </div>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">The engine also starts automatically when imported in a browser. Calling <code>startAtomAttr()</code> explicitly is useful when you want to show where startup happens; it is safe to call more than once. For inserted markup, call <code>refreshAtomAttr(container)</code> if you need the new rules immediately; the engine also observes DOM changes.</p></section>
-<section id="react-with-vite" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">React with Vite</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Import the engine and stylesheet once in the app entry (<code>src/main.jsx</code> or <code>src/main.tsx</code>). Importing <code>atomattr/react</code> also ensures the engine is started, so this explicit call is optional when using the React primitives.</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">tsx</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">// src/main.tsx
-import 'atomattr/defaults.css';
-import { startAtomAttr } from 'atomattr';
-import { Box, Txt } from 'atomattr/react';
-
-startAtomAttr();
+startAtomAttr();</code></pre></div>
+<p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">The engine also starts when it is imported in a browser, so the explicit call mostly documents where startup happens. It is safe to call more than once. For markup you insert yourself, call <code>refreshAtomAttr(container)</code> when you need the new rules immediately; the engine otherwise observes DOM changes on its own.</p></section>
+<section id="react" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">React</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Import the stylesheet once in the app entry. Importing <code>atomattr/react</code> starts the engine, so the explicit call is optional. Use either the primitives with camel-case props, or plain elements with canonical attributes.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">TSX</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="tsx"><code class="language-tsx">// src/main.tsx
+import &#x27;atomattr/defaults.css&#x27;;
+import { Box, Txt } from &#x27;atomattr/react&#x27;;
 
 export function App() {
   return (
-    &lt;Box bg="surface" p="6" rounded="xl"&gt;
-      &lt;Txt text="foreground"&gt;Atomattr in React&lt;/Txt&gt;
+    &lt;Box bg=&quot;surface&quot; p=&quot;6&quot; rounded=&quot;xl&quot;&gt;
+      &lt;Txt text=&quot;foreground&quot; fontSize=&quot;lg&quot;&gt;Atomattr in React&lt;/Txt&gt;
     &lt;/Box&gt;
   );
-}</code></pre>
-  </div>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">In React, use JSX-friendly camel-case props for dashed names, for example <code>fontSize</code> for the HTML attribute <code>font-size</code>. See the <a href="react.html">React guide</a> for aliases and complete examples.</p></section>
-<section id="svelte-with-vite" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Svelte with Vite</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Import the global stylesheet and start the engine once from your Svelte entry point (<code>src/main.js</code> or <code>src/main.ts</code>):</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">js</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">// src/main.js
-import 'atomattr/defaults.css';
-import { startAtomAttr } from 'atomattr';
-import { mount } from 'svelte';
-import App from './App.svelte';
+}</code></pre></div>
+<p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">For Next.js, import <code>atomattr/defaults.css</code> in the root layout and start the engine from a client component. The engine runs in the browser, so server-rendered HTML shows unstyled until it starts; keep above-the-fold critical layout in the first client render.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">TSX</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="tsx"><code class="language-tsx">// app/atomattr-start.tsx
+&#x27;use client&#x27;;
+import { useEffect } from &#x27;react&#x27;;
+import { startAtomAttr } from &#x27;atomattr&#x27;;
+
+export function AtomattrStart() {
+  useEffect(() =&gt; { startAtomAttr(); }, []);
+  return null;
+}</code></pre></div></section>
+<section id="svelte-and-sveltekit" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">Svelte and SvelteKit</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Start the engine from your entry point, or from <code>src/routes/+layout.svelte</code> in SvelteKit. Use canonical dashed attributes directly on elements; Svelte passes unknown attributes through.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">JavaScript</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="js"><code class="language-javascript">// src/main.js (Svelte + Vite)
+import &#x27;atomattr/defaults.css&#x27;;
+import { startAtomAttr } from &#x27;atomattr&#x27;;
+import { mount } from &#x27;svelte&#x27;;
+import App from &#x27;./App.svelte&#x27;;
 
 startAtomAttr();
-mount(App, { target: document.getElementById('app') });</code></pre>
-  </div>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Use canonical dashed HTML attributes in Svelte markup. For example:</p>
-<div max-w="4xl" mb="8" bg="grey-100" dark-bg="gray-900" rounded="2xl" overflow="hidden" border="1px" border-color="gray-200" dark-border-color="gray-800">
-    <div py="3" px="4" display="flex" justify="between" items="center" border-b="1px" border-color="gray-200" dark-border-color="gray-800">
-      <span text="gray-400" font-size="sm">svelte</span><i class="ri-file-code-line" text="gray-500"></i>
-    </div>
-    <pre px="6" overflow="auto" font-size="sm" line-height="relaxed"><code class="language-html">&lt;section bg="surface" p="6" rounded="xl"&gt;
-  &lt;h1 font-size="2xl" font-weight="bold"&gt;Atomattr in Svelte&lt;/h1&gt;
-&lt;/section&gt;</code></pre>
-  </div>
-<p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">This setup assumes a Svelte version/compiler that preserves unknown attributes on native HTML elements. Atomattr does not provide a Svelte component package.</p></section>
-<section id="verify-the-setup" pt="4" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4" pt="2">Verify the setup</h2><p font-size="md" text="muted" line-height="relaxed" mb="6" max-w="3xl">Put a visible style on a native element, such as <code>&lt;div p="4" bg="primary" text="white"&gt;Ready&lt;/div&gt;</code>. Check that the content has padding and a colored background. If it does not, confirm the stylesheet loaded, the browser engine was imported or its script was loaded, and the attributes use supported Atomattr names. The <a href="html.html">HTML guide</a>, <a href="react.html">React guide</a>, and <a href="syntax.html">syntax reference</a> explain the markup in more detail.</p></section>
-        <nav aria-label="Documentation pagination" display="flex" justify="end" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900">
-    <a href="syntax.html" aria-label="Next page: Syntax" text-decoration="none" text="text" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" flex hover-bg="primary/10" display="flex" items="center" gap="3">
-    <i class="ri-arrow-right-line" aria-hidden="true"></i>
-    <strong>Syntax</strong>
-  </a>
-  </nav>
-      </div>
-      <aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
-        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#install-in-a-javascript-project" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">Install in a JavaScript project</a>
-<a data-toc-link href="#plain-html-with-a-local-package-build" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Plain HTML with a local package build</a>
-<a data-toc-link href="#vite-with-plain-html" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Vite with plain HTML</a>
-<a data-toc-link href="#react-with-vite" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">React with Vite</a>
-<a data-toc-link href="#svelte-with-vite" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Svelte with Vite</a>
-<a data-toc-link href="#verify-the-setup" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Verify the setup</a></div></div>
-      </aside>
-    </div>
-  </main>
+mount(App, { target: document.getElementById(&#x27;app&#x27;) });</code></pre></div>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">Svelte</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="svelte"><code class="language-xml">&lt;!-- src/routes/+layout.svelte --&gt;
+&lt;script&gt;
+  import &#x27;atomattr/defaults.css&#x27;;
+  import { onMount } from &#x27;svelte&#x27;;
+  onMount(async () =&gt; (await import(&#x27;atomattr&#x27;)).startAtomAttr());
+&lt;/script&gt;
+
+&lt;slot /&gt;</code></pre></div></section>
+<section id="vue-and-nuxt" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">Vue and Nuxt</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Import the stylesheet and start the engine in <code>src/main.js</code>. In Nuxt, add the stylesheet to the <code>css</code> option and start the engine in a client-only plugin (<code>plugins/atomattr.client.ts</code>).</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">JavaScript</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="js"><code class="language-javascript">// src/main.js (Vue + Vite)
+import { createApp } from &#x27;vue&#x27;;
+import &#x27;atomattr/defaults.css&#x27;;
+import { startAtomAttr } from &#x27;atomattr&#x27;;
+import App from &#x27;./App.vue&#x27;;
+
+startAtomAttr();
+createApp(App).mount(&#x27;#app&#x27;);</code></pre></div>
+<p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Vue treats attributes it does not recognise as plain attributes, so <code>p="6"</code>, <code>md-flex-row</code> and <code>hover-bg="primary/80"</code> work in templates unchanged. Use a normal <code>:attr="value"</code> binding when the value is dynamic.</p></section>
+<section id="angular" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">Angular</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Add the stylesheet to the <code>styles</code> array in <code>angular.json</code> (<code>"node_modules/atomattr/dist/defaults.css"</code>) and start the engine in <code>main.ts</code>. Static attributes in templates pass through to the DOM.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">TypeScript</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="ts"><code class="language-typescript">// src/main.ts
+import { bootstrapApplication } from &#x27;@angular/platform-browser&#x27;;
+import { startAtomAttr } from &#x27;atomattr&#x27;;
+import { AppComponent } from &#x27;./app/app.component&#x27;;
+
+startAtomAttr();
+bootstrapApplication(AppComponent);</code></pre></div>
+<p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Use <code>[attr.hover-bg]="color"</code> to bind a dynamic value, because Angular only binds DOM properties with plain <code>[name]</code>. In Angular 17+ templates, write a literal <code>@</code> as <code>&amp;#64;</code>.</p></section>
+<section id="react-native" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">React Native</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">React Native does not use the browser engine or <code>defaults.css</code>. Import the primitives from <code>atomattr/react-native</code> and style them with the same token names. See the <a href="react-native.html" text="primary" hover-text-decoration="underline">React Native guide</a> for what is supported on each platform.</p>
+<div class="cg" data-cg data-single><div class="cg-head"><span class="cg-lang">TSX</span><button type="button" class="cg-copy" aria-label="Copy code"><i class="ri-file-copy-line"></i></button></div><pre class="cg-pane" data-pane="tsx"><code class="language-tsx">import { Box, Txt } from &#x27;atomattr/react-native&#x27;;
+
+export const Hello = () =&gt; &lt;Box p=&quot;4&quot; bg=&quot;primary&quot;&gt;&lt;Txt&gt;Ready&lt;/Txt&gt;&lt;/Box&gt;;</code></pre></div></section>
+<section id="verify-the-setup" pt="8" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><h2 dark-text="gray-50" font-size="xl" md-font-size="2xl" font-weight="bold" tracking="tight" mb="4">Verify the setup</h2><p font-size="md" text="muted" line-height="relaxed" mb="5" max-w="3xl">Put a visible style on a native element, such as <code>&lt;div p="4" bg="primary" text="white"&gt;Ready&lt;/div&gt;</code>. The content should have padding and a coloured background. If it does not, confirm that the stylesheet loaded, that the engine was imported or its script was loaded, and that the attribute names are supported. The <a href="html.html" text="primary" hover-text-decoration="underline">HTML</a>, <a href="react.html" text="primary" hover-text-decoration="underline">React</a>, <a href="svelte.html" text="primary" hover-text-decoration="underline">Svelte</a>, <a href="vue.html" text="primary" hover-text-decoration="underline">Vue</a> and <a href="angular.html" text="primary" hover-text-decoration="underline">Angular</a> guides go deeper, and the <a href="syntax.html" text="primary" hover-text-decoration="underline">syntax reference</a> explains the attribute grammar.</p></section>
+<nav aria-label="Documentation pagination" display="flex" justify="between" gap="3" max-w="4xl" py="10" border-t="1px" border-color="gray-100" dark-border-color="gray-900"><a href="search.html" aria-label="Previous page: Search" text-decoration="none" text="text" dark-text="gray-50" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" hover-bg="primary/10" display="flex" items="center" gap="3"><i class="ri-arrow-left-line" aria-hidden="true"></i><strong>Search</strong></a><a href="syntax.html" aria-label="Next page: Syntax" text-decoration="none" text="text" dark-text="gray-50" border="1px solid gray-200" dark-border-color="gray-800" rounded="lg" py="3" px="5" bg="gray-50" dark-bg="gray-900" hover-bg="primary/10" display="flex" items="center" gap="3"><strong>Syntax</strong><i class="ri-arrow-right-line" aria-hidden="true"></i></a></nav></div>
+<aside display="none" lg-display="block" fixed top="0" right="0" w="20dvw" min-h="100dvh" pt="24" pr="6" pl="4" z="30">
+        <div position="sticky" top="24"><h3 text="muted" font-size="xs" font-weight="700" tracking="wide" mb="3">ON THIS PAGE</h3><div display="flex" flex-col gap="1" border-l="1px" border-color="grey-100" dark-border-color="grey-900"><a data-toc-link href="#what-you-install" py="1.5" px="3" text="primary" hover-text="text" font-size="sm" font-weight="600" text-decoration="none">What you install</a> <a data-toc-link href="#plain-html-with-a-cdn" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Plain HTML with a CDN</a> <a data-toc-link href="#vite-and-other-bundlers" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Vite and other bundlers</a> <a data-toc-link href="#react" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">React</a> <a data-toc-link href="#svelte-and-sveltekit" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Svelte and SvelteKit</a> <a data-toc-link href="#vue-and-nuxt" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Vue and Nuxt</a> <a data-toc-link href="#angular" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Angular</a> <a data-toc-link href="#react-native" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">React Native</a> <a data-toc-link href="#verify-the-setup" py="1.5" px="3" text="muted" hover-text="text" font-size="sm" font-weight="400" text-decoration="none">Verify the setup</a></div></div></aside>
+</main>
   
-  <script src="../dist/atomattr.min.js" defer></script>
+  <script src="../dist/atomattr.min.js"></script>
   <script type="module" src="../site/app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>
-</body>
+<style>
+.cg{max-width:56rem;margin:0 0 2rem;border:1px solid var(--cg-bd,#e5e7eb);border-radius:1rem;overflow:hidden;background:var(--cg-bg,#f6f7f9)}
+.cg-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.35rem .5rem .35rem .35rem;border-bottom:1px solid var(--cg-bd,#e5e7eb);background:var(--cg-hd,#fff)}
+.cg-tabs{display:flex;gap:.125rem;overflow-x:auto;scrollbar-width:none}
+.cg-tabs button{all:unset;cursor:pointer;padding:.4rem .75rem;border-radius:.6rem;font:600 .8125rem/1 system-ui,sans-serif;color:#6b7280;white-space:nowrap}
+.cg-tabs button:hover{color:#111827;background:rgba(91,92,246,.08)}
+.cg-tabs button[aria-selected=true]{color:#4f46e5;background:rgba(91,92,246,.12)}
+.cg-lang{padding:.4rem .75rem;font:600 .8125rem/1 system-ui,sans-serif;color:#6b7280}
+.cg-copy{all:unset;cursor:pointer;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border-radius:.6rem;color:#6b7280;flex:none}
+.cg-copy:hover{background:rgba(91,92,246,.1);color:#4f46e5}
+.cg-pane{color:#1f2937;margin:0;padding:1.1rem 1.4rem;overflow:auto;font-size:.8125rem;line-height:1.7;tab-size:2}
+.cg-pane[hidden]{display:none}
+.cg-pane code.hljs,.cg-pane code{background:transparent!important;padding:0!important}
+html.dark .cg-pane{color:#e5e7eb}
+html.dark{--cg-bd:#1f2937;--cg-bg:#0b0f17;--cg-hd:#0f1520}
+html.dark .cg-tabs button{color:#94a3b8}html.dark .cg-tabs button:hover{color:#f9fafb}
+html.dark .cg-tabs button[aria-selected=true]{color:#a5b4fc;background:rgba(129,140,248,.16)}
+html.dark .cg-lang,html.dark .cg-copy{color:#94a3b8}
+@media(prefers-color-scheme:dark){html:not(.light):not(.dark) .cg{--cg-bd:#1f2937;--cg-bg:#0b0f17;--cg-hd:#0f1520}}
+</style>
+<script>
+(function(){var KEY='atomattr-docs-lang';
+function pick(l){try{localStorage.setItem(KEY,l)}catch(e){}
+ document.querySelectorAll('[data-cg]').forEach(function(g){var b=g.querySelector('[data-tab="'+l+'"]');if(b)sel(g,l)})}
+function sel(g,l){g.querySelectorAll('[data-tab]').forEach(function(b){b.setAttribute('aria-selected',b.dataset.tab===l)});
+ g.querySelectorAll('[data-pane]').forEach(function(p){p.hidden=p.dataset.pane!==l})}
+document.addEventListener('click',function(e){var t=e.target.closest('[data-tab]');
+ if(t){pick(t.dataset.tab);return}
+ var c=e.target.closest('.cg-copy');if(c){var g=c.closest('.cg');var p=g.querySelector('.cg-pane:not([hidden])');
+  navigator.clipboard&&navigator.clipboard.writeText(p.textContent).then(function(){var i=c.firstElementChild;i.className='ri-check-line';setTimeout(function(){i.className='ri-file-copy-line'},1200)})}});
+function theme(){var d=document.documentElement.classList.contains('dark'),l=document.getElementById('hljs-light'),k=document.getElementById('hljs-dark');
+ if(l&&k){l.media=d?'not all':'all';k.media=d?'all':'not all'}}
+theme();new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+document.addEventListener('input',function(e){var f=e.target.closest('[data-table-filter]');if(!f)return;var q=f.value.toLowerCase();
+ f.nextElementSibling.querySelectorAll('[data-row]').forEach(function(r){r.hidden=q&&r.textContent.toLowerCase().indexOf(q)<0})});
+var qs=new URLSearchParams(location.search).get('q');var fi=document.querySelector('[data-table-filter]');
+if(qs&&fi){fi.value=qs;fi.dispatchEvent(new Event('input',{bubbles:true}));}
+var saved;try{saved=localStorage.getItem(KEY)}catch(e){}
+if(saved)document.querySelectorAll('[data-cg]').forEach(function(g){if(g.querySelector('[data-tab="'+saved+'"]'))sel(g,saved)});
+})();
+</script>
+<script src="../assets/nav-search.js" defer></script></body>
 </html>

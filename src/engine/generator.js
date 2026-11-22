@@ -212,9 +212,94 @@ function resolveOutlineDeclaration(propKey, rawValue, isDark = false) {
 }
 
 let styleTag = null;
+// Keys of every attribute/value pair already handled (including ones that produced no rule).
 const ruleCache = new Set();
-// Registry of parsed objects we've seen — used to regenerate rules when theme changes
-const parsedRegistry = new Map();
+
+// Rules are kept in cascade order, not discovery order. Every rule has the same
+// specificity, so the one that comes later wins: base rules must come first, then
+// states, then breakpoints from small to large, then container queries. Without this
+// the result depended on which attribute the engine happened to meet first.
+const rulePriorities = []; // ascending priority of the rules this engine inserted
+let ruleBaseOffset = 0; // rules already in the sheet before ours (e.g. pre-rendered CSS)
+
+const STATE_ORDER = [
+  'hover', 'focus-within', 'focus', 'focus-visible', 'active', 'visited', 'checked',
+  'valid', 'invalid', 'required', 'optional', 'read-only', 'read-write', 'placeholder-shown',
+  'open', 'selected', 'indeterminate', 'empty', 'first', 'first-child', 'last', 'last-child',
+  'only', 'first-of-type', 'last-of-type', 'odd', 'even', 'disabled',
+];
+const ATTRIBUTE_SELECTOR = /\[(?:[^\]"\\]|"(?:[^"\\]|\\.)*")*\]/g;
+const WRAPPER_QUERY = /@(media|container) \(min-width: ([0-9.]+)px\)/g;
+
+// Every rule has the same specificity, so a shorthand (`p`) must come before the longhands
+// it overlaps (`px`, `pt`), or `p="4" pt="2"` would depend on discovery order. Rules are
+// therefore also ordered by how many longhand properties they set, broadest first.
+const SHORTHAND_BREADTH = {
+  padding: 4, margin: 4, inset: 4, 'scroll-margin': 4, 'scroll-padding': 4,
+  'border-radius': 4, 'border-width': 4, 'border-style': 4, 'border-color': 4,
+  border: 12, 'border-top': 3, 'border-right': 3, 'border-bottom': 3, 'border-left': 3,
+  'border-inline': 6, 'border-block': 6, 'border-inline-start': 3, 'border-inline-end': 3,
+  'border-block-start': 3, 'border-block-end': 3,
+  'padding-inline': 2, 'padding-block': 2, 'margin-inline': 2, 'margin-block': 2,
+  'inset-inline': 2, 'inset-block': 2,
+  background: 8, font: 8, flex: 3, gap: 2, overflow: 2, 'overscroll-behavior': 2,
+  'place-content': 2, 'place-items': 2, 'place-self': 2, 'grid-template': 3, grid: 8,
+  'grid-area': 4, 'grid-row': 2, 'grid-column': 2, transition: 4, animation: 8, outline: 3,
+  'list-style': 3, 'text-decoration': 4, mask: 8, columns: 2, 'text-emphasis': 2,
+  'text-wrap': 2, container: 2, 'position-try': 2, 'white-space': 2, 'animation-range': 2,
+  'view-timeline': 2, 'scroll-timeline': 2, 'contain-intrinsic-size': 2, 'border-spacing': 2,
+  'border-image': 5, 'font-synthesis': 3, 'text-box': 2,
+};
+
+function ruleBreadth(declarations) {
+  let total = 0;
+  for (const declaration of declarations) {
+    const name = declaration.slice(0, declaration.indexOf(':')).trim();
+    total += SHORTHAND_BREADTH[name] || 1;
+  }
+  return Math.min(total, 99);
+}
+
+function rulePriority(parsed, declarations = []) {
+  let width = 0;
+  WRAPPER_QUERY.lastIndex = 0;
+  let match;
+  while ((match = WRAPPER_QUERY.exec(parsed.wrapperStart || ''))) {
+    width += (match[1] === 'container' ? 100000 : 0) + parseFloat(match[2]);
+  }
+
+  let rank = 0;
+  const bare = String(parsed.selector || '').replace(ATTRIBUTE_SELECTOR, '');
+  const states = bare.match(/(?<!:):[a-z-]+/g) || [];
+  for (const state of states) {
+    const index = STATE_ORDER.indexOf(state.slice(1));
+    rank = Math.max(rank, index === -1 ? 60 : index + 1);
+  }
+
+  return (width * 100 + rank) * 100 + (99 - ruleBreadth(declarations));
+}
+
+function insertOrdered(sheet, rule, priority) {
+  const count = rulePriorities.length;
+  if (!count) ruleBaseOffset = sheet.cssRules.length;
+
+  // Most rules arrive in order, so appending is the common fast path.
+  if (!count || rulePriorities[count - 1] <= priority) {
+    sheet.insertRule(rule, ruleBaseOffset + count);
+    rulePriorities.push(priority);
+    return;
+  }
+
+  let low = 0;
+  let high = count;
+  while (low < high) {
+    const mid = (low + high) >> 1;
+    if (rulePriorities[mid] <= priority) low = mid + 1;
+    else high = mid;
+  }
+  sheet.insertRule(rule, ruleBaseOffset + low);
+  rulePriorities.splice(low, 0, priority);
+}
 
 let THEME = 'light';
 
@@ -244,22 +329,28 @@ export function setTheme(theme) {
       document.dispatchEvent(new CustomEvent('atomattr:themechange', { detail: THEME }));
     }
   } catch (e) {}
-  // Clear and regenerate rules using updated theme
-  const existing = Array.from(parsedRegistry.values());
-  clearGeneratedRules();
-  for (const p of existing) {
-    generateAndInjectRule(p);
-  }
+  // Rules do not depend on the active theme: colours resolve through CSS variables and
+  // `dark-` rules are scoped to `html.dark`, so nothing needs to be rebuilt here.
 }
 
   function applySemanticCssVars() {
     if (typeof document === 'undefined' || !document.documentElement) return;
     const el = document.documentElement;
-    // add transition class briefly
+
+    // The short colour transition on theme change touches every element, so skip it on
+    // very large pages and for people who prefer reduced motion.
+    let animate = true;
     try {
-      el.classList.add('aa-theme-in-transition');
-      setTimeout(() => el.classList.remove('aa-theme-in-transition'), 220);
+      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) animate = false;
+      if (document.getElementsByTagName('*').length > 1500) animate = false;
     } catch (e) {}
+
+    if (animate) {
+      try {
+        el.classList.add('aa-theme-in-transition');
+        setTimeout(() => el.classList.remove('aa-theme-in-transition'), 220);
+      } catch (e) {}
+    }
 
     // ensure transition rule exists in our style tag
     try {
@@ -278,23 +369,36 @@ export function getTheme() {
 // If running in a browser, initialize THEME from document and observe changes.
 if (typeof document !== 'undefined' && document.documentElement) {
   const el = document.documentElement;
-  const detect = () => {
+  const documentTheme = () => {
     try {
-      // prefer stored preference
-      try {
-        if (typeof localStorage !== 'undefined') {
-          const stored = localStorage.getItem('atomattr:theme');
-          if (stored === 'dark' || stored === 'light') return stored;
-        }
-      } catch (e) {}
-      if (el.dataset && el.dataset.theme) return el.dataset.theme === 'dark' ? 'dark' : 'light';
       if (el.classList && el.classList.contains('dark')) return 'dark';
+      if (el.dataset && el.dataset.theme) return el.dataset.theme === 'dark' ? 'dark' : 'light';
     } catch (e) {}
-    return 'light';
+    return null;
+  };
+  const storedTheme = () => {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        // 'atomattr-theme' is the key the AtomAttr site itself uses.
+        const stored = localStorage.getItem('atomattr:theme') || localStorage.getItem('atomattr-theme');
+        if (stored === 'dark' || stored === 'light') return stored;
+      }
+    } catch (e) {}
+    return null;
+  };
+  // Initial value: the document if it says anything, otherwise the saved preference.
+  const detectInitial = () => documentTheme() || storedTheme() || 'light';
+  // Later changes: only ever follow the document, so a stale saved value cannot undo a toggle.
+  // Follow whichever signal actually changed, so a stale `data-theme` cannot hide a class toggle.
+  const detect = attributeName => {
+    try {
+      if (attributeName === 'data-theme') return el.dataset.theme === 'dark' ? 'dark' : 'light';
+    } catch (e) {}
+    return el.classList && el.classList.contains('dark') ? 'dark' : documentTheme() || 'light';
   };
 
   // set initial theme to match document
-  THEME = detect();
+  THEME = detectInitial();
   try { applySemanticCssVars(THEME); } catch (e) {}
 
   // observe attribute changes so external toggles update the engine
@@ -302,7 +406,7 @@ if (typeof document !== 'undefined' && document.documentElement) {
     const mo = new MutationObserver(muts => {
       for (const m of muts) {
         if (m.type === 'attributes' && (m.attributeName === 'data-theme' || m.attributeName === 'class')) {
-          const newTheme = detect();
+          const newTheme = detect(m.attributeName);
           if (newTheme !== THEME) setTheme(newTheme);
         }
       }
@@ -483,22 +587,31 @@ function buildStatefulDeclarations(parsed, isDark = false) {
     return [`content: ${resolveContentValue(value)};`];
   }
 
+  if (propKey === 'line-clamp') {
+    const lines = String(value).trim();
+    if (lines === 'none' || lines === '0') {
+      return ['overflow: visible;', 'display: block;', '-webkit-box-orient: horizontal;', '-webkit-line-clamp: unset;', 'line-clamp: none;'];
+    }
+    return ['overflow: hidden;', 'display: -webkit-box;', '-webkit-box-orient: vertical;', `-webkit-line-clamp: ${lines};`, `line-clamp: ${lines};`];
+  }
+
   return [];
 }
 
 export function clearGeneratedRules() {
   const tag = ensureStyleTag();
   ruleCache.clear();
+  rulePriorities.length = 0;
+  ruleBaseOffset = 0;
 
   if (tag) {
     tag.textContent = '';
+    tag.__aa_transition_injected = false;
   }
 }
 
 export function generateAndInjectRule(parsed) {
   if (!parsed) return;
-  // record parsed for potential regeneration
-  parsedRegistry.set(parsed.cacheKey, parsed);
   if (ruleCache.has(parsed.cacheKey)) return;
 
   const tag = ensureStyleTag();
@@ -515,8 +628,9 @@ export function generateAndInjectRule(parsed) {
     declarations = [`content: ${resolveContentValue(parsed.value)};`];
   } else {
     const effectiveIsDark = parsed.isDark ?? (THEME === 'dark');
-    if (buildStatefulDeclarations(parsed, effectiveIsDark).length) {
-      declarations = buildStatefulDeclarations(parsed, effectiveIsDark);
+    const stateful = buildStatefulDeclarations(parsed, effectiveIsDark);
+    if (stateful.length) {
+      declarations = stateful;
     } else if (TRANSFORM_PROPS.has(parsed.propKey)) {
       const variable = TRANSFORM_VAR[parsed.propKey];
       const fn = {
@@ -553,9 +667,9 @@ export function generateAndInjectRule(parsed) {
   const rule = `${parsed.wrapperStart}${parsed.selector} { ${declarations.join(' ')} }${parsed.wrapperEnd}`;
 
   try {
-    tag.sheet.insertRule(rule, tag.sheet.cssRules.length);
-    ruleCache.add(parsed.cacheKey);
+    insertOrdered(tag.sheet, rule, rulePriority(parsed, declarations));
   } catch {
-    ruleCache.add(parsed.cacheKey);
+    // An invalid rule is skipped; it is still remembered so it is not retried.
   }
+  ruleCache.add(parsed.cacheKey);
 }

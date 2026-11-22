@@ -10,6 +10,19 @@ Use `rounded` or `radius` to set all corners. Presets range from `none` through 
 <article rounded="2xl" border="border" p="5">Card</article>
 ```
 
+```native
+import { Box, Txt } from 'atomattr/react-native';
+
+export function Shapes() {
+  return (
+    <>
+      <Box size="16" rounded="full" bg="gray-200" />
+      <Box rounded="2xl" border="1px solid gray-200" p="5"><Txt>Card</Txt></Box>
+    </>
+  );
+}
+```
+
 ## Individual corners and edges
 
 Use `rounded-t`, `rounded-b`, `rounded-l`, and `rounded-r` for paired physical corners. Use `rounded-tl`, `rounded-tr`, `rounded-bl`, and `rounded-br` for individual physical corners. Logical corners `rounded-ss`, `rounded-se`, `rounded-es`, and `rounded-ee` follow writing direction.

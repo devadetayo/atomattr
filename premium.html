@@ -1,71 +1,369 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Premium AtomAttr UI patterns are not currently available." />
-    <title>Premium — AtomAttr UI</title>
-    <link rel="stylesheet" href="./dist/defaults.css" />
-    <link rel="stylesheet" href="./assets/showcase.css" />
-    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
-  </head>
-  <body data-page-scope="Premium" bg="#f8f7f5" dark-bg="gray-950" text="text" min-h="screen" p="0" m="0">
-    <header position="sticky" top="0" z="50" bg="#f8f7f5" dark-bg="gray-950" border-b="1" border-b-color="gray-200" dark-border-color="gray-900" backdrop-blur="md">
-      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" justify="between" gap="4">
-        <a href="./index.html" display="inline-flex" items="center" gap="3" text-decoration="none" color="inherit">
-          <span w="10" h="10" rounded="xl" bg="primary" display="flex" items="center" justify="center" text="white" font-size="lg" font-weight="700">A</span>
-          <div>
-            <div font-size="sm" font-weight="700" letter-spacing="wide">ATOMATTR</div>
-            <div font-size="xs" text="muted">UI library</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="robots" content="index, follow" />
+  <title>AtomAttr Pro — Complete website templates</title>
+  <meta name="description" content="AtomAttr Pro will offer complete, responsive website templates with full previews and protected delivery. The catalog is not open yet." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/premium.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="AtomAttr Pro — Complete website templates" />
+  <meta property="og:description" content="AtomAttr Pro will offer complete, responsive website templates with full previews and protected delivery. The catalog is not open yet." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/premium.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AtomAttr Pro — Complete website templates" />
+  <meta name="twitter:description" content="AtomAttr Pro will offer complete, responsive website templates with full previews and protected delivery. The catalog is not open yet." />
+  <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <style>
+    /* Only what attributes cannot express: fonts, gradient text, and the selected state of the preview switch. */
+    html { font-family: 'DM Sans', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    code, kbd, .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .grad-text { background: linear-gradient(180deg, #fff 0%, #fff 35%, rgba(255,255,255,.55) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    html:not(.dark):not([data-theme="dark"]) .grad-text { background: linear-gradient(180deg, #0b0c0f 0%, #0b0c0f 40%, rgba(11,12,15,.6) 100%); -webkit-background-clip: text; background-clip: text; }
+    .accent-text { background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 45%, #d946ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .seg[aria-pressed="true"] { background: #fff !important; color: #0b0c0f !important; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+<link rel="stylesheet" href="assets/font.css">  <script src="./dist/atomattr.min.js"></script>
+</head>
+<body bg="#fff" dark-bg="#07080a" text="text" min-h="screen" p="0" m="0">
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="#07080a" border-b="1px" border-color="gray-100" dark-border-color="#ffffff/10" backdrop-blur="md"></header>
+
+  <main>
+
+    <!-- ============================== HERO ============================== -->
+    <section position="relative" overflow="hidden" bg-gradient="radial-gradient(60vw 28rem at 50% -10%, color-mix(in oklch, var(--blue-500) 24%, transparent), transparent 70%)">
+      <div position="absolute" top="0" left="0" w="full" h="full" opacity="40" aria-hidden="true" bg-gradient="repeating-linear-gradient(115deg, transparent 0 46px, color-mix(in oklch, var(--blue-500) 14%, transparent) 46px 48px)" style="mask-image:linear-gradient(180deg,#000 0%,transparent 62%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 62%);pointer-events:none;"></div>
+
+      <div position="relative" max-w="7xl" mx="auto" px="4" md-px="8" pt="14" lg-pt="20" pb="14" display="grid" grid-cols="1" lg-grid-cols="12" gap="12" items="center">
+
+        <div lg-col-span="6">
+          <p class="mono" display="inline-flex" items="center" gap="2" m="0" mb="7" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="warning"></span> ATOMATTR PRO · NOT OPEN YET</p>
+
+          <h1 font-size="5xl" md-font-size="6xl" lg-font-size="7xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="6"><span class="grad-text" display="block">Complete websites,</span><span class="accent-text" display="block">ready to make your own.</span></h1>
+
+          <p font-size="lg" md-font-size="xl" text="muted" line-height="relaxed" m="0" mb="8" w="full" md-max-w="32rem">A focused marketplace for full Atomattr websites: multiple pages, shared assets, responsive layouts, and a clear license with every product.</p>
+
+          <div display="flex" flex-col sm-flex-row items="start" sm-items="center" gap="3" sm-gap="5">
+            <a href="#products" display="inline-flex" items="center" justify="center" gap="2" bg="primary" hover-bg="primary/80" text="white" px="7" py="3.5" rounded="md" font-weight="600" text-decoration="none" shadow="lg" w="full" sm-w="fit">What is coming <i class="ri-arrow-down-line"></i></a>
+            <a href="./catalog.html" display="inline-flex" items="center" gap="2" text="text" hover-text="primary" text-decoration="none" font-weight="600"><i class="ri-layout-grid-line"></i> Browse free patterns</a>
           </div>
-        </a>
-        <nav display="none" lg-display="flex" items="center" gap="5" font-size="sm">
-          <a href="./components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
-          <a href="./sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
-          <a href="./templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
-        </nav>
-        <div display="flex" items="center" gap="3">
-          <button type="button" data-theme-toggle="light" bg="gray-100" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" text="text" rounded="full" px="3" py="2" font-size="sm" aria-label="Toggle light and dark theme">Light</button>
-          <a href="./playground.html" display="inline-flex" items="center" justify="center" bg="primary" text="white" px="4" py="2" rounded="full" text-decoration="none" font-size="sm" font-weight="600">Playground</a>
+          <p class="mono" m="0" mt="5" font-size="xs" tracking="wide" text="muted">NO PRODUCTS PUBLISHED · NO CHECKOUT · NO PAID DOWNLOADS</p>
+        </div>
+
+        <!-- Responsive preview illustration with a working device switch -->
+        <div lg-col-span="6" position="relative">
+          <div position="absolute" top="-10" left="10%" w="80%" h="40" rounded="full" bg="primary/30" aria-hidden="true" style="filter:blur(90px);pointer-events:none;"></div>
+          <div position="relative" bg="gray-100" dark-bg="#101113" border="0" rounded="md" overflow="hidden" shadow="2xl">
+            <div display="flex" items="center" justify="between" gap="3" px="4" py="3" border-b="1px solid gray-200" dark-border-color="#ffffff/10">
+              <div display="flex" items="center" gap="2"><span w="2.5" h="2.5" rounded="full" bg="danger"></span><span w="2.5" h="2.5" rounded="full" bg="warning"></span><span w="2.5" h="2.5" rounded="full" bg="success"></span></div>
+              <span class="mono" text="muted" font-size="xs">template-preview</span>
+              <span bg="gray-100" dark-bg="#ffffff/10" text="muted" rounded="md" px="2.5" py="0.5" font-size="xs" font-weight="600">Layout preview</span>
+            </div>
+
+            <div data-panel="desktop">
+              <div display="flex" justify="center" p="5" md-p="8" min-h="22rem" bg="gray-50" dark-bg="#07080a">
+                <div w="full" max-w="36rem" bg="gray-100" dark-bg="#17181b" border="0" rounded="md" overflow="hidden" align="left">
+                  <div display="flex" items="center" justify="between" px="4" py="3" border-b="1px solid gray-200" dark-border-color="#ffffff/10"><span w="5" h="5" rounded="md" bg="primary"></span><div display="flex" gap="2"><span w="8" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="8" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div><span w="12" h="5" rounded="full" bg="primary/25"></span></div>
+                  <div p="5" display="flex" flex-col gap="2"><span w="32" h="4" rounded="full" bg="#0b0c0f" dark-bg="#fff/80"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="24" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="16" h="6" rounded="full" bg="primary" mt="2"></span></div>
+                  <div p="5" pt="0" display="grid" grid-cols="3" gap="3"><div border="0" rounded="md" p="2" display="flex" flex-col gap="1.5" bg="gray-100" dark-bg="gray-900"><span h="8" rounded="md" bg="primary/15"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="10" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div><div border="0" rounded="md" p="2" display="flex" flex-col gap="1.5" bg="gray-100" dark-bg="gray-900"><span h="8" rounded="md" bg="primary/15"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="10" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div><div border="0" rounded="md" p="2" display="flex" flex-col gap="1.5" bg="gray-100" dark-bg="gray-900"><span h="8" rounded="md" bg="primary/15"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="10" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div></div>
+                </div>
+              </div>
+            </div>
+            <div data-panel="tablet" hidden>
+              <div display="flex" justify="center" p="5" md-p="8" min-h="22rem" bg="gray-50" dark-bg="#07080a">
+                <div w="full" max-w="22rem" bg="gray-100" dark-bg="#17181b" border="0" rounded="md" overflow="hidden" align="left">
+                  <div display="flex" items="center" justify="between" px="4" py="3" border-b="1px solid gray-200" dark-border-color="#ffffff/10"><span w="5" h="5" rounded="md" bg="primary"></span><div display="flex" gap="2"><span w="8" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="8" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div><span w="12" h="5" rounded="full" bg="primary/25"></span></div>
+                  <div p="5" display="flex" flex-col gap="2"><span w="32" h="4" rounded="full" bg="#0b0c0f" dark-bg="#fff/80"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="24" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="16" h="6" rounded="full" bg="primary" mt="2"></span></div>
+                  <div p="5" pt="0" display="grid" grid-cols="2" gap="3"><div border="0" rounded="md" p="2" display="flex" flex-col gap="1.5" bg="gray-100" dark-bg="gray-900"><span h="8" rounded="md" bg="primary/15"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="10" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div><div border="0" rounded="md" p="2" display="flex" flex-col gap="1.5" bg="gray-100" dark-bg="gray-900"><span h="8" rounded="md" bg="primary/15"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="10" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div></div>
+                </div>
+              </div>
+            </div>
+            <div data-panel="phone" hidden>
+              <div display="flex" justify="center" p="5" md-p="8" min-h="22rem" bg="gray-50" dark-bg="#07080a">
+                <div w="full" max-w="12rem" bg="gray-100" dark-bg="#17181b" border="0" rounded="md" overflow="hidden" align="left">
+                  <div display="flex" items="center" justify="between" px="4" py="3" border-b="1px solid gray-200" dark-border-color="#ffffff/10"><span w="5" h="5" rounded="md" bg="primary"></span><div display="flex" gap="2"><span w="8" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="8" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div><span w="12" h="5" rounded="full" bg="primary/25"></span></div>
+                  <div p="5" display="flex" flex-col gap="2"><span w="32" h="4" rounded="full" bg="#0b0c0f" dark-bg="#fff/80"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="24" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="16" h="6" rounded="full" bg="primary" mt="2"></span></div>
+                  <div p="5" pt="0" display="grid" grid-cols="1" gap="3"><div border="0" rounded="md" p="2" display="flex" flex-col gap="1.5" bg="gray-100" dark-bg="gray-900"><span h="8" rounded="md" bg="primary/15"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="10" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div><div border="0" rounded="md" p="2" display="flex" flex-col gap="1.5" bg="gray-100" dark-bg="gray-900"><span h="8" rounded="md" bg="primary/15"></span><span h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span><span w="10" h="2" rounded="full" bg="gray-200" dark-bg="#ffffff/15"></span></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div align="center" p="4" border-t="1px solid gray-200" dark-border-color="#ffffff/10">
+              <div role="group" aria-label="Preview size" display="inline-flex" gap="1" p="1" rounded="full" bg="gray-100" dark-bg="#ffffff/10">
+                <button type="button" class="seg" data-view="desktop" aria-pressed="true" bg="transparent" text="muted" border="0" rounded="md" px="4" py="1.5" font-size="sm" font-weight="600" cursor="pointer">Desktop</button>
+                <button type="button" class="seg" data-view="tablet" aria-pressed="false" bg="transparent" text="muted" border="0" rounded="md" px="4" py="1.5" font-size="sm" font-weight="600" cursor="pointer">Tablet</button>
+                <button type="button" class="seg" data-view="phone" aria-pressed="false" bg="transparent" text="muted" border="0" rounded="md" px="4" py="1.5" font-size="sm" font-weight="600" cursor="pointer">Phone</button>
+              </div>
+              <p class="mono" m="0" mt="3" font-size="xs" tracking="wide" text="muted">AN ILLUSTRATION OF THE PREVIEW EVERY LISTING WILL HAVE</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================== MARKETPLACE ============================== -->
+    <section id="products" max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+
+      <div display="flex" flex-col md-flex-row items="start" md-items="end" justify="between" gap="4" mb="10">
+        <div>
+          <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> THE MARKETPLACE</p>
+          <h2 font-size="4xl" md-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0"><span class="grad-text">Complete templates.</span> <span text="muted">Coming soon.</span></h2>
+        </div>
+        <span display="inline-flex" items="center" gap="2" text="muted" font-size="sm"><i class="ri-time-line"></i> Catalog opening soon</span>
+      </div>
+
+      <div id="empty-state" bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="6" md-p="10" display="flex" flex-col md-flex-row items="start" md-items="center" justify="between" gap="8">
+        <div w="full" md-max-w="40rem">
+          <span display="inline-flex" items="center" gap="2" text="muted" font-size="sm"><i class="ri-inbox-2-line"></i> Nothing published yet</span>
+          <h3 font-size="2xl" md-font-size="3xl" font-weight="700" line-height="tight" tracking="tight" m="0" mt="3" mb="3">The first Pro templates are still being prepared.</h3>
+          <p text="muted" line-height="relaxed" m="0">When a template is available, its page will list every included page, a responsive preview, requirements, version, license, price and purchase status. There are no placeholder listings and no payment buttons here until that is true.</p>
+        </div>
+        <div display="flex" flex-col gap="3" w="full" md-w="fit" flex="none">
+          <a href="./catalog.html" display="inline-flex" items="center" justify="center" gap="2" bg="primary" hover-bg="primary/80" text="white" px="6" py="3" rounded="md" font-weight="600" text-decoration="none">Browse free patterns <i class="ri-arrow-right-line"></i></a>
+          <a href="./sections.html" display="inline-flex" items="center" justify="center" gap="2" text="text" border="0" hover-bg="gray-100" dark-hover-bg="#ffffff/5" px="6" py="3" rounded="md" font-weight="600" text-decoration="none" bg="gray-100" dark-bg="gray-900">Explore sections</a>
         </div>
       </div>
-    </header>
+    </section>
 
-    <main id="catalog">
-      <section bg-gradient="linear-gradient(180deg, color-mix(in oklch, var(--aa-color-primary) 8%, transparent), transparent 80%)">
-        <div max-w="7xl" mx="auto" px="4" md-px="8" py="10" lg-py="16">
-          <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="4">PREMIUM PATTERNS</p>
-          <h1 font-size="5xl" md-font-size="6xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="5">No paid patterns are available.</h1>
-          <p font-size="lg" text="muted" line-height="relaxed" m="0" max-w="2xl">This library currently has no checkout or locked content. All published components and sections are available to browse and copy.</p>
+
+    <!-- ============================== EVERY LISTING ============================== -->
+    <section border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#090a0c">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+        <div mb="12">
+          <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> EVERY LISTING</p>
+          <h2 font-size="4xl" md-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5" w="full" lg-max-w="46rem"><span class="grad-text">Know exactly what you are buying.</span> <span text="muted">Before you pay.</span></h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" w="full" md-max-w="34rem">These are the details each published template will show. The examples below illustrate the layout and are not products.</p>
         </div>
-      </section>
+        <div display="grid" grid-cols="1" md-grid-cols="12" gap="4">
 
-      <section bg="gray-50" dark-bg="gray-900" border-t="1" border-t-color="gray-200" dark-border-color="gray-800" border-b="1" border-b-color="gray-200" dark-border-color="gray-800">
-        <div max-w="7xl" mx="auto" px="4" md-px="8" py="12" lg-py="16">
-          <div display="flex" flex-col lg-flex-row items="start" lg-items="center" justify="between" gap="5" mb="8">
-            <div>
-              <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="3">DISCOVER</p>
-              <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0">Published free patterns</h2>
-            </div>
-            <label for="search-input" sr-only>Search premium templates</label>
-            <div display="flex" items="center" gap="2" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="full" px="4" py="2.5" w="full" lg-max-w="lg">
-              <i class="ri-search-line" text="muted"></i>
-              <input id="search-input" type="search" placeholder="Search SaaS, agencies, ecommerce, properties…" bg="transparent" border="0" text="text" w="full" outline="none" />
-            </div>
+        <article md-col-span="6" lg-col-span="7" bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="6" md-p="7" display="flex" flex-col gap="5">
+          <div display="flex" items="start" justify="between" gap="4">
+            <span w="11" h="11" rounded="md" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-pages-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">PAGES</span>
           </div>
+          <div>
+            <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Every page and shared asset</h3>
+            <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">A listing shows exactly what is in the package, so you know what you are getting before you decide.</p>
+          </div>
+          <div mt="auto" bg="gray-100" dark-bg="#07080a" border="0" rounded="md" p="4"><div class="mono" font-size="xs" line-height="relaxed" text="muted"><div text="text">your-template/</div><div ml="4">index.html</div><div ml="4">pricing.html</div><div ml="4">about.html</div><div ml="4">contact.html</div><div ml="4">assets/</div></div></div>
+        </article>
 
-          <div id="category-filters" display="flex" gap="2" wrap mb="8"></div>
-          <div id="catalog-grid" display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="3" gap="5"></div>
-          <div id="empty-state" hidden bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="8" mt="8">
-            <h3 m="0" mb="2" font-size="xl">No paid patterns are available</h3>
-            <p m="0" text="muted">Browse the published free components and sections instead.</p>
-            <a href="./catalog.html" text="primary">Browse published patterns</a>
+        <article md-col-span="6" lg-col-span="5" bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="6" md-p="7" display="flex" flex-col gap="5">
+          <div display="flex" items="start" justify="between" gap="4">
+            <span w="11" h="11" rounded="md" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-smartphone-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">PREVIEW</span>
+          </div>
+          <div>
+            <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Full responsive preview</h3>
+            <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Move through the whole site at phone, tablet and desktop sizes before you buy.</p>
+          </div>
+          <div mt="auto" bg="gray-100" dark-bg="#07080a" border="0" rounded="md" p="4"><div display="flex" flex-wrap="wrap" gap="2" font-size="sm" font-weight="600"><span display="inline-flex" items="center" gap="2" bg="gray-100" dark-bg="#ffffff/5" rounded="md" px="3" py="1.5"><i class="ri-computer-line"></i> Desktop</span><span display="inline-flex" items="center" gap="2" bg="gray-100" dark-bg="#ffffff/5" rounded="md" px="3" py="1.5"><i class="ri-tablet-line"></i> Tablet</span><span display="inline-flex" items="center" gap="2" bg="gray-100" dark-bg="#ffffff/5" rounded="md" px="3" py="1.5"><i class="ri-smartphone-line"></i> Phone</span></div></div>
+        </article>
+
+        <article md-col-span="6" lg-col-span="5" bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="6" md-p="7" display="flex" flex-col gap="5">
+          <div display="flex" items="start" justify="between" gap="4">
+            <span w="11" h="11" rounded="md" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-file-shield-2-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">TERMS</span>
+          </div>
+          <div>
+            <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Version, requirements, license</h3>
+            <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Stated plainly on every listing, next to the price.</p>
+          </div>
+          <div mt="auto" bg="gray-100" dark-bg="#07080a" border="0" rounded="md" p="4"><div display="flex" flex-col gap="2" font-size="sm"><span display="flex" items="center" gap="2"><i class="ri-git-branch-line" text="primary"></i> Version of the package</span><span display="flex" items="center" gap="2"><i class="ri-file-shield-2-line" text="primary"></i> License terms</span><span display="flex" items="center" gap="2"><i class="ri-list-check-2" text="primary"></i> Requirements</span></div></div>
+        </article>
+
+        <article md-col-span="6" lg-col-span="7" bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="6" md-p="7" display="flex" flex-col gap="5">
+          <div display="flex" items="start" justify="between" gap="4">
+            <span w="11" h="11" rounded="md" bg="danger/10" text="danger" display="flex" items="center" justify="center" font-size="xl"><i class="ri-lock-2-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">DELIVERY</span>
+          </div>
+          <div>
+            <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Private download after a verified order</h3>
+            <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">The payment provider confirms the order on the server. Only then does a buyer receive the ZIP.</p>
+          </div>
+          <div mt="auto" bg="gray-100" dark-bg="#07080a" border="0" rounded="md" p="4"><div display="flex" flex-col sm-flex-row items="start" sm-items="center" gap="2" font-size="sm" font-weight="600"><span display="inline-flex" items="center" gap="2" bg="gray-100" dark-bg="#ffffff/5" rounded="md" px="3" py="1.5"><i class="ri-bank-card-line"></i> Order</span><i class="ri-arrow-right-line" text="muted"></i><span display="inline-flex" items="center" gap="2" bg="gray-100" dark-bg="#ffffff/5" rounded="md" px="3" py="1.5"><i class="ri-shield-check-line"></i> Verified by the provider</span><i class="ri-arrow-right-line" text="muted"></i><span display="inline-flex" items="center" gap="2" bg="primary/10" text="primary" rounded="md" px="3" py="1.5"><i class="ri-download-cloud-2-line"></i> Private ZIP link</span></div></div>
+        </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== FREE VS PRO ============================== -->
+    <section max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+      <div mb="10">
+        <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> FREE AND PRO</p>
+        <h2 font-size="4xl" md-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0"><span class="grad-text">Two ways to build with Atomattr.</span> <span text="muted">Patterns stay free.</span></h2>
+      </div>
+
+      <div display="grid" grid-cols="1" md-grid-cols="2" gap="4">
+
+        <article bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="7" display="flex" flex-col gap="5">
+          <div display="flex" items="center" justify="between">
+            <span w="11" h="11" rounded="md" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-layout-grid-line"></i></span>
+            <span class="mono" text="success" font-size="xs" tracking="wide">AVAILABLE NOW</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" m="0" mb="2">Atomattr UI</h3>
+            <p m="0" text="muted" line-height="relaxed">Free components and sections. Preview them, read the source, and open them in the Playground to edit.</p>
+          </div>
+          <div display="flex" flex-col gap="2" font-size="sm" flex="1">
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Browse without an account</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> HTML and React source</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> License shown per design</span>
+          </div>
+          <a href="./catalog.html" display="flex" items="center" justify="center" gap="2" bg="primary" hover-bg="primary/80" text="white" px="4" py="3" rounded="md" text-decoration="none" font-weight="600">Browse the library <i class="ri-arrow-right-line"></i></a>
+        </article>
+
+        <article bg="gray-50" dark-bg="#0e0f11" border="0" rounded="md" p="7" display="flex" flex-col gap="5" position="relative" overflow="hidden">
+          <div position="absolute" top="-10" right="-10" w="40" h="40" rounded="full" bg="primary/30" aria-hidden="true" style="filter:blur(60px);pointer-events:none;"></div>
+          <div position="relative" display="flex" items="center" justify="between">
+            <span w="11" h="11" rounded="md" bg="primary" text="white" display="flex" items="center" justify="center" font-size="xl"><i class="ri-sparkling-2-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide">NOT OPEN YET</span>
+          </div>
+          <div position="relative">
+            <h3 font-size="xl" font-weight="700" m="0" mb="2">Atomattr Pro</h3>
+            <p m="0" text="muted" line-height="relaxed">Complete, multi-page website templates with shared assets, delivered as a private download after payment is verified.</p>
+          </div>
+          <div position="relative" display="flex" flex-col gap="2" font-size="sm" flex="1">
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="primary"></i> Full preview before you buy</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="primary"></i> Version and license in every listing</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="primary"></i> Server-verified purchase</span>
+          </div>
+          <a href="./playground.html" position="relative" display="flex" items="center" justify="center" gap="2" text="text" border="0" hover-bg="gray-100" dark-hover-bg="#ffffff/5" px="4" py="3" rounded="md" text-decoration="none" font-weight="600" bg="gray-100" dark-bg="gray-900"><i class="ri-terminal-box-line"></i> Try the Playground meanwhile</a>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ============================== HOW BUYING WILL WORK ============================== -->
+    <section border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#090a0c">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+        <div mb="10">
+          <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> HOW BUYING WILL WORK</p>
+          <h2 font-size="4xl" md-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5"><span class="grad-text">Preview, pay, download.</span> <span text="muted">The plan for launch.</span></h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" w="full" md-max-w="36rem">Checkout is not configured yet, so none of this is live. A preview can always be screenshotted, so protection lives on the download: private files, and a link that only verified buyers receive.</p>
+        </div>
+        <div display="grid" grid-cols="1" md-grid-cols="3" gap="4">
+          <div bg="gray-100" dark-bg="#0e0f11" border="0" rounded="md" p="7"><span class="mono" text="primary" font-size="sm" font-weight="600">01</span><h3 font-size="xl" font-weight="700" m="0" mt="3" mb="2">Preview the whole site</h3><p text="muted" line-height="relaxed" m="0">Open a template and move through every included page before you decide.</p></div>
+          <div bg="gray-100" dark-bg="#0e0f11" border="0" rounded="md" p="7"><span class="mono" text="primary" font-size="sm" font-weight="600">02</span><h3 font-size="xl" font-weight="700" m="0" mt="3" mb="2">Pay through a provider</h3><p text="muted" line-height="relaxed" m="0">The payment provider confirms the order on the server. A message in your browser is never treated as proof.</p></div>
+          <div bg="gray-100" dark-bg="#0e0f11" border="0" rounded="md" p="7"><span class="mono" text="primary" font-size="sm" font-weight="600">03</span><h3 font-size="xl" font-weight="700" m="0" mt="3" mb="2">Download your ZIP</h3><p text="muted" line-height="relaxed" m="0">Verified buyers get a private download. The complete source never sits in public files.</p></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== CTA ============================== -->
+    <section position="relative" overflow="hidden" border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg-gradient="radial-gradient(60vw 24rem at 50% 120%, color-mix(in oklch, var(--aa-color-primary) 32%, transparent), transparent 70%)">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24" align="center">
+        <div mx="auto" w="full" md-max-w="60vw" lg-max-w="46vw">
+          <h2 class="grad-text" font-size="4xl" md-font-size="5xl" lg-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5">Start with the free patterns.</h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="8">Try the markup in the Playground now. Pro templates will be announced here once the first one is ready.</p>
+          <div display="flex" flex-col sm-flex-row items="center" justify="center" gap="3">
+            <a href="./catalog.html" bg="primary" hover-bg="primary/80" text="white" px="8" py="3.5" rounded="md" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" shadow="lg">Browse free patterns <i class="ri-arrow-right-line"></i></a>
+            <a href="./playground.html" text="text" border="0" hover-bg="gray-100" dark-hover-bg="#ffffff/5" px="8" py="3.5" rounded="md" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" bg="gray-100" dark-bg="gray-900">Open playground</a>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <script src="./dist/atomattr.min.js" defer></script>
-    <script type="module" src="./catalog.js"></script>
-  </body>
+  </main>
+
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer border-t="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
+
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
+
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p mt="4" text="muted" line-height="relaxed" w="full" lg-max-w="20rem">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Library</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+            <a href="sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+            <a href="templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="contribute.html" text="muted" text-decoration="none" hover-text="text">Contribute a design</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Atomattr. Copy it. Own it. Change it.</span>
+        <span display="flex" items="center" gap="2">Built with Atomattr <i class="ri-heart-3-line"></i></span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script type="module" src="./site/app.js"></script>
+  <script>
+    /* Preview switch: change the width of the illustrated layout. */
+    (function () {
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('.seg'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var view = button.getAttribute('data-view');
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === button ? 'true' : 'false'); });
+          panels.forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== view; });
+        });
+      });
+    })();
+  </script>
+  <script src="./assets/theme-icon.js" defer></script>
+<script src="assets/nav-search.js" defer></script></body>
 </html>

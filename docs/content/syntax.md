@@ -13,7 +13,7 @@ Atomattr recognizes registered styling attributes on HTML elements. The attribut
 
 ## Prefixes
 
-Modifiers are prefixes on the property attribute name: `md-p`, `hover-bg`, `dark-text`, `group-hover-opacity`, `cq-md-grid-cols`, and `before-content`. Breakpoints and container queries wrap a rule; theme, group, state, and pseudo-element modifiers alter its selector. Only registered property names and supported modifiers are parsed.
+Modifiers are prefixes on the property attribute name: `md-p`, `hover-bg`, `dark-text`, `group-hover-opacity`, and `before-content`. Breakpoints wrap a rule in a media query; theme, group, state, and pseudo-element modifiers alter its selector. Only registered property names and supported modifiers are parsed.
 
 ```html
 <article p="4" md-p="8" bg="white" dark-bg="gray-900" hover-shadow="lg">

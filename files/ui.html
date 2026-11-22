@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="robots" content="index, follow" />
+  <title>AtomAttr UI — Copy it. Own it. Change it.</title>
+  <meta name="description" content="Browse and copy published AtomAttr UI components and sections. Preview each pattern, inspect its source, and copy HTML or React-ready code." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/ui.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="AtomAttr UI — Copy it. Own it. Change it." />
+  <meta property="og:description" content="Preview, inspect and copy interface patterns written in Atomattr attributes." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/ui.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AtomAttr UI — Copy it. Own it. Change it." />
+  <meta name="twitter:description" content="Preview, inspect and copy interface patterns written in Atomattr attributes." />
+  <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <style>
+    /* Only what attributes cannot express: fonts, gradient text, keycap depth, the FAQ accordion, and the selected state of the hero switch. */
+    html { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    code, kbd, .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .grad-text { background: linear-gradient(180deg, #fff 0%, #fff 35%, rgba(255,255,255,.55) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    html:not(.dark):not([data-theme="dark"]) .grad-text { background: linear-gradient(180deg, #0b0c0f 0%, #0b0c0f 40%, rgba(11,12,15,.6) 100%); -webkit-background-clip: text; background-clip: text; }
+    .accent-text { background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 45%, #d946ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .seg[aria-pressed="true"] { background: #fff !important; color: #0b0c0f !important; }
+    .faq summary { list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq .faq-opened { display: none; }
+    .faq[open] .faq-opened { display: inline; }
+    .faq[open] .faq-closed { display: none; }
+    .faq[open] { border-color: var(--aa-color-primary, #5b5cf6); }
+    @media (min-width: 1024px) { .faq-sticky { position: sticky; top: 96px; } }
+    .keycap { box-shadow: 0 1px 0 rgba(255,255,255,.12) inset, 0 2px 0 rgba(0,0,0,.5); }
+    .logos { scrollbar-width: none; }
+    .logos::-webkit-scrollbar { display: none; }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+
+<body bg="#fff" dark-bg="#07080a" text="text" min-h="screen" p="0" m="0">
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="#07080a" border-b="1px" border-color="gray-100" dark-border-color="#ffffff/10" backdrop-blur="md"></header>
+
+  <main>
+
+    <!-- ============================== HERO ============================== -->
+    <section position="relative" overflow="hidden" bg-gradient="radial-gradient(60vw 28rem at 50% -10%, color-mix(in oklch, var(--blue-500) 24%, transparent), transparent 70%)">
+      <div position="absolute" top="0" left="0" w="full" h="full" opacity="40" aria-hidden="true" bg-gradient="repeating-linear-gradient(115deg, transparent 0 46px, color-mix(in oklch, var(--blue-500) 14%, transparent) 46px 48px)" style="mask-image:linear-gradient(180deg,#000 0%,transparent 62%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 62%);pointer-events:none;"></div>
+
+      <div position="relative" max-w="7xl" mx="auto" px="4" md-px="8" pt="14" lg-pt="20" pb="12">
+
+        <p class="mono" display="inline-flex" items="center" gap="2" m="0" mb="7" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> ATOMATTR UI · COPY IT. OWN IT. CHANGE IT.</p>
+
+        <h1 font-size="5xl" md-font-size="7xl" lg-font-size="8xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="6" w="full" lg-max-w="60vw"><span class="grad-text" display="block">Your shortcut to</span><span class="accent-text" display="block">beautiful interfaces.</span></h1>
+
+        <p font-size="lg" md-font-size="xl" text="muted" line-height="relaxed" m="0" mb="8" w="full" md-max-w="36rem">Ready-made components and sections written in Atomattr attributes. Preview them live, read the source, and paste into HTML or React.</p>
+
+        <div display="flex" flex-col sm-flex-row items="start" sm-items="center" gap="3" sm-gap="5">
+          <a href="./catalog.html" display="inline-flex" items="center" justify="center" gap="2" bg="primary" hover-bg="primary/80" text="white" px="7" py="3.5" rounded="full" font-weight="600" text-decoration="none" shadow="lg" w="full" sm-w="fit">Browse catalog <i class="ri-arrow-right-line"></i></a>
+          <a href="#features" display="inline-flex" items="center" gap="2" text="text" hover-text="primary" text-decoration="none" font-weight="600">See it in action <i class="ri-arrow-down-line"></i></a>
+        </div>
+        <p class="mono" m="0" mt="5" font-size="xs" tracking="wide" text="muted">FREE &amp; PUBLIC · HTML + REACT SOURCE · NO ACCOUNT NEEDED</p>
+
+        <!-- Product mock: the same pattern in three views -->
+        <div position="relative" mt="14" rounded="3xl" overflow="hidden" p="5" md-p="12" bg-gradient="linear-gradient(135deg, #5b5cf6 0%, #7c5cf6 55%, #a78bfa 100%)">
+          <div position="relative" mx="auto" w="full" lg-max-w="44rem" bg="#fff" dark-bg="#0b0c0e" border="1px solid #ffffff/20" rounded="2xl" overflow="hidden" shadow="2xl">
+            <div display="flex" items="center" justify="between" gap="3" px="4" py="3" border-b="1px solid gray-200" dark-border-color="#ffffff/10">
+              <div display="flex" items="center" gap="2"><span w="2.5" h="2.5" rounded="full" bg="danger"></span><span w="2.5" h="2.5" rounded="full" bg="warning"></span><span w="2.5" h="2.5" rounded="full" bg="success"></span></div>
+              <span class="mono" text="muted" font-size="xs">pricing-card</span>
+              <span class="mono" text="muted" font-size="xs">Component</span>
+            </div>
+
+            <div data-panel="preview">
+              <div display="flex" items="center" justify="center" p="6" md-p="10" min-h="20rem" bg="gray-50" dark-bg="#07080a">
+                <div w="full" max-w="16rem">
+                  <div bg="#fff" dark-bg="#17181b" rounded="2xl" p="6" shadow="md">
+                    <p text="primary" font-size="xs" font-weight="700">STARTER</p>
+                    <p font-size="4xl" font-weight="700">$19<span text="muted" font-size="sm">/mo</span></p>
+                    <button bg="primary" text="white" border="0" rounded="full" px="5" py="2" font-weight="600">Choose plan</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-panel="html" hidden>
+              <pre class="mono" m="0" p="5" md-p="7" min-h="20rem" overflow="auto" font-size="sm" line-height="relaxed" bg="gray-50" dark-bg="#07080a"><code><span text="blue-500">&lt;div</span> <span text="amber-500">bg</span>=<span text="emerald-500">"#fff"</span> <span text="amber-500">dark-bg</span>=<span text="emerald-500">"#17181b"</span> <span text="amber-500">rounded</span>=<span text="emerald-500">"2xl"</span> <span text="amber-500">p</span>=<span text="emerald-500">"6"</span> <span text="amber-500">shadow</span>=<span text="emerald-500">"md"</span><span text="blue-500">&gt;</span>
+  <span text="blue-500">&lt;p</span> <span text="amber-500">text</span>=<span text="emerald-500">"primary"</span> <span text="amber-500">font-size</span>=<span text="emerald-500">"xs"</span> <span text="amber-500">font-weight</span>=<span text="emerald-500">"700"</span><span text="blue-500">&gt;</span>STARTER<span text="blue-500">&lt;/p</span><span text="blue-500">&gt;</span>
+  <span text="blue-500">&lt;p</span> <span text="amber-500">font-size</span>=<span text="emerald-500">"4xl"</span> <span text="amber-500">font-weight</span>=<span text="emerald-500">"700"</span><span text="blue-500">&gt;</span>$19<span text="blue-500">&lt;span</span> <span text="amber-500">text</span>=<span text="emerald-500">"muted"</span> <span text="amber-500">font-size</span>=<span text="emerald-500">"sm"</span><span text="blue-500">&gt;</span>/mo<span text="blue-500">&lt;/span</span><span text="blue-500">&gt;</span><span text="blue-500">&lt;/p</span><span text="blue-500">&gt;</span>
+  <span text="blue-500">&lt;button</span> <span text="amber-500">bg</span>=<span text="emerald-500">"primary"</span> <span text="amber-500">text</span>=<span text="emerald-500">"white"</span> <span text="amber-500">border</span>=<span text="emerald-500">"0"</span> <span text="amber-500">rounded</span>=<span text="emerald-500">"full"</span> <span text="amber-500">px</span>=<span text="emerald-500">"5"</span> <span text="amber-500">py</span>=<span text="emerald-500">"2"</span> <span text="amber-500">font-weight</span>=<span text="emerald-500">"600"</span><span text="blue-500">&gt;</span>Choose plan<span text="blue-500">&lt;/button</span><span text="blue-500">&gt;</span>
+<span text="blue-500">&lt;/div</span><span text="blue-500">&gt;</span></code></pre>
+            </div>
+            <div data-panel="react" hidden>
+              <pre class="mono" m="0" p="5" md-p="7" min-h="20rem" overflow="auto" font-size="sm" line-height="relaxed" bg="gray-50" dark-bg="#07080a"><code>import React from 'react';
+import { startAtomAttr } from 'atomattr';
+import 'atomattr/defaults.css';
+
+startAtomAttr();
+
+export function PricingCard() {
+  return (
+    <span text="blue-500">&lt;div</span> <span text="amber-500">bg</span>=<span text="emerald-500">"#fff"</span> <span text="amber-500">dark-bg</span>=<span text="emerald-500">"#17181b"</span> <span text="amber-500">rounded</span>=<span text="emerald-500">"2xl"</span> <span text="amber-500">p</span>=<span text="emerald-500">"6"</span> <span text="amber-500">shadow</span>=<span text="emerald-500">"md"</span><span text="blue-500">&gt;</span>
+      <span text="blue-500">&lt;p</span> <span text="amber-500">text</span>=<span text="emerald-500">"primary"</span> <span text="amber-500">font-size</span>=<span text="emerald-500">"xs"</span> <span text="amber-500">font-weight</span>=<span text="emerald-500">"700"</span><span text="blue-500">&gt;</span>STARTER<span text="blue-500">&lt;/p</span><span text="blue-500">&gt;</span>
+      <span text="blue-500">&lt;p</span> <span text="amber-500">font-size</span>=<span text="emerald-500">"4xl"</span> <span text="amber-500">font-weight</span>=<span text="emerald-500">"700"</span><span text="blue-500">&gt;</span>$19<span text="blue-500">&lt;span</span> <span text="amber-500">text</span>=<span text="emerald-500">"muted"</span> <span text="amber-500">font-size</span>=<span text="emerald-500">"sm"</span><span text="blue-500">&gt;</span>/mo<span text="blue-500">&lt;/span</span><span text="blue-500">&gt;</span><span text="blue-500">&lt;/p</span><span text="blue-500">&gt;</span>
+      <span text="blue-500">&lt;button</span> <span text="amber-500">bg</span>=<span text="emerald-500">"primary"</span> <span text="amber-500">text</span>=<span text="emerald-500">"white"</span> <span text="amber-500">border</span>=<span text="emerald-500">"0"</span> <span text="amber-500">rounded</span>=<span text="emerald-500">"full"</span> <span text="amber-500">px</span>=<span text="emerald-500">"5"</span> <span text="amber-500">py</span>=<span text="emerald-500">"2"</span> <span text="amber-500">font-weight</span>=<span text="emerald-500">"600"</span><span text="blue-500">&gt;</span>Choose plan<span text="blue-500">&lt;/button</span><span text="blue-500">&gt;</span>
+    <span text="blue-500">&lt;/div</span><span text="blue-500">&gt;</span>
+  );
+}</code></pre>
+            </div>
+          </div>
+
+          <div align="center" mt="6">
+            <div role="group" aria-label="Pattern view" display="inline-flex" gap="1" p="1" rounded="full" bg="#000/35">
+              <button type="button" class="seg" data-view="preview" aria-pressed="true" bg="transparent" text="#fff/80" border="0" rounded="full" px="4" py="1.5" font-size="sm" font-weight="600" cursor="pointer">Preview</button>
+              <button type="button" class="seg" data-view="html" aria-pressed="false" bg="transparent" text="#fff/80" border="0" rounded="full" px="4" py="1.5" font-size="sm" font-weight="600" cursor="pointer">HTML</button>
+              <button type="button" class="seg" data-view="react" aria-pressed="false" bg="transparent" text="#fff/80" border="0" rounded="full" px="4" py="1.5" font-size="sm" font-weight="600" cursor="pointer">React</button>
+            </div>
+            <p class="mono" m="0" mt="4" font-size="xs" tracking="wide" text="#fff/75">ONE PATTERN, THREE VIEWS. SWITCH TO READ THE REAL SOURCE.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================== WORKS WITH ============================== -->
+    <section border-t="1px solid gray-100" dark-border-color="#ffffff/10" border-b="1px solid gray-100">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="6" display="flex" flex-col md-flex-row items="start" md-items="center" gap="4" md-gap="8">
+        <p class="mono" m="0" font-size="xs" tracking="wide" text="muted" flex="none">WORKS WITH</p>
+        <div class="logos" display="flex" items="center" gap="8" overflow="auto" w="full">
+          <span display="inline-flex" items="center" gap="2.5" flex="none" text="text" font-weight="600"><i class="ri-html5-fill" text="#e34f26" font-size="3xl"></i> HTML</span>
+          <span display="inline-flex" items="center" gap="2.5" flex="none" text="text" font-weight="600"><i class="ri-reactjs-fill" text="#61dafb" font-size="3xl"></i> React</span>
+          <span display="inline-flex" items="center" gap="2.5" flex="none" text="text" font-weight="600"><i class="ri-reactjs-fill" text="#61dafb" font-size="3xl"></i> React Native</span>
+          <span display="inline-flex" items="center" gap="2.5" flex="none" text="text" font-weight="600"><i class="ri-vuejs-fill" text="#42b883" font-size="3xl"></i> Vue</span>
+          <span display="inline-flex" items="center" gap="2.5" flex="none" text="text" font-weight="600"><i class="ri-svelte-fill" text="#ff3e00" font-size="3xl"></i> Svelte</span>
+          <span display="inline-flex" items="center" gap="2.5" flex="none" text="text" font-weight="600"><i class="ri-javascript-fill" text="#f7df1e" font-size="3xl"></i> JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== FEATURES ============================== -->
+    <section id="features" max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+
+      <div mb="12">
+        <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> FEATURES</p>
+        <h2 font-size="4xl" md-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5" w="full" lg-max-w="46rem"><span class="grad-text">Everything a page needs.</span> <span text="muted">Already in the markup.</span></h2>
+        <p font-size="lg" text="muted" line-height="relaxed" m="0" w="full" md-max-w="32rem">Each pattern carries its own layout, theme and breakpoints, so you paste it in and it behaves.</p>
+      </div>
+
+      <div display="grid" grid-cols="1" md-grid-cols="2" lg-grid-cols="12" gap="4">
+
+        <article lg-col-span="8" position="relative" overflow="hidden" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" md-p="7" display="flex" flex-col gap="6">
+          <div display="flex" items="start" justify="between" gap="4">
+            <div>
+              <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Copy as HTML or React</h3>
+              <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Every pattern ships both sources. Pick the one your project uses and paste.</p>
+            </div>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">HTML · REACT</span>
+          </div>
+          <div mt="auto"><div display="grid" grid-cols="1" md-grid-cols="2" gap="4">
+              <div class="mono" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="4" font-size="xs" line-height="relaxed" overflow="auto">
+                <div><span text="blue-500">&lt;button</span> <span text="amber-500">bg</span>=<span text="emerald-500">"primary"</span></div>
+                <div ml="4"><span text="amber-500">text</span>=<span text="emerald-500">"white"</span> <span text="amber-500">px</span>=<span text="emerald-500">"6"</span></div>
+                <div ml="4"><span text="amber-500">rounded</span>=<span text="emerald-500">"xl"</span><span text="blue-500">&gt;</span></div>
+                <div ml="4">Get started</div>
+                <div text="blue-500">&lt;/button&gt;</div>
+              </div>
+              <div bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" display="flex" items="center" justify="center" p="6">
+                <button type="button" bg="primary" hover-bg="primary/80" text="white" px="6" py="3" rounded="xl" border="0" font-weight="600" cursor="pointer">Get started</button>
+              </div>
+            </div></div>
+        </article>
+
+        <article lg-col-span="4" position="relative" overflow="hidden" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" md-p="7" display="flex" flex-col gap="6">
+          <div display="flex" items="start" justify="between" gap="4">
+            <div>
+              <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Dark mode, built in</h3>
+              <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Light and dark intent live together with <code>dark-bg</code> on the same element.</p>
+            </div>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">THEMING</span>
+          </div>
+          <div mt="auto"><div display="grid" grid-cols="2" rounded="2xl" overflow="hidden" border="1px solid gray-200" dark-border-color="#ffffff/10">
+              <div bg="#fff" text="#000" p="4" font-size="sm" font-weight="600">Light<div bg="primary" rounded="full" py="1.5" mt="3"></div></div>
+              <div bg="#000" text="#fff" p="4" font-size="sm" font-weight="600">Dark<div bg="primary" rounded="full" py="1.5" mt="3"></div></div>
+            </div></div>
+        </article>
+
+        <article lg-col-span="7" position="relative" overflow="hidden" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" md-p="7" display="flex" flex-col gap="6">
+          <div display="flex" items="start" justify="between" gap="4">
+            <div>
+              <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Preview before you paste</h3>
+              <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Every card in the library is a live render of real Atomattr markup, not a screenshot.</p>
+            </div>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">CATALOG</span>
+          </div>
+          <div mt="auto"><div bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3">
+              <div display="flex" items="center" gap="1.5" mb="3"><span w="2" h="2" rounded="full" bg="danger"></span><span w="2" h="2" rounded="full" bg="warning"></span><span w="2" h="2" rounded="full" bg="success"></span><span class="mono" ml="2" text="muted" font-size="xs">catalog</span></div>
+              <div display="grid" grid-cols="3" gap="3">
+                <div bg="gray-100" dark-bg="#17181b" rounded="xl" p="3"><p m="0" text="primary" font-size="xs" font-weight="700">STARTER</p><p m="0" font-size="2xl" font-weight="700">$19</p><span bg="primary" rounded="full" py="1" display="block" mt="2"></span></div>
+                <div bg="gray-100" dark-bg="#17181b" rounded="xl" p="3" display="flex" flex-col gap="1.5"><b font-size="xs">Welcome back</b><span bg="#fff" dark-bg="#0e0f11" rounded="md" py="1.5"></span><span bg="#fff" dark-bg="#0e0f11" rounded="md" py="1.5"></span><span bg="primary" rounded="full" py="1.5"></span></div>
+                <div bg="gray-100" dark-bg="#17181b" rounded="xl" p="3"><div bg="primary" text="white" rounded="lg" p="2"><p m="0" font-size="xs">Customers</p><p m="0" font-weight="700">18,246</p></div></div>
+              </div>
+            </div></div>
+        </article>
+
+        <article lg-col-span="5" position="relative" overflow="hidden" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" md-p="7" display="flex" flex-col gap="6">
+          <div display="flex" items="start" justify="between" gap="4">
+            <div>
+              <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Open it in the Playground</h3>
+              <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Send any pattern to the Playground and change its attributes with a live preview.</p>
+            </div>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">PLAYGROUND</span>
+          </div>
+          <div mt="auto"><div bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="4" display="flex" flex-col sm-flex-row items="start" sm-items="center" justify="between" gap="4">
+              <div class="mono" font-size="xs" line-height="relaxed"><span text="blue-500">&lt;button</span> <span text="amber-500">bg</span>=<span text="emerald-500">"primary"</span> <span text="amber-500">rounded</span>=<span text="emerald-500">"xl"</span><span text="blue-500">&gt;</span></div>
+              <a href="./playground.html" display="inline-flex" items="center" gap="2" bg="primary" hover-bg="primary/80" text="white" px="4" py="2" rounded="full" font-size="sm" font-weight="600" text-decoration="none" flex="none"><i class="ri-terminal-box-line"></i> Open in Playground</a>
+            </div></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-palette-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">TOKENS</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Semantic tokens</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">Say <code>primary</code> or <code>muted</code> and your theme decides the colour.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><div display="grid" grid-cols="4" gap="2"><span bg="primary" rounded="lg" py="4"></span><span bg="success" rounded="lg" py="4"></span><span bg="warning" rounded="lg" py="4"></span><span bg="danger" rounded="lg" py="4"></span></div></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-smartphone-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">BREAKPOINTS</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Responsive by prefix</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">Breakpoints sit beside the base value on the same element.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><div display="flex" items="end" gap="2" mb="3"><span w="full" h="10" rounded="md" bg="primary/30"></span><span w="full" h="7" rounded="md" bg="primary/60"></span><span w="full" h="4" rounded="md" bg="primary"></span></div><code font-size="xs" text="muted">md-grid-cols="3"</code></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-code-box-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">NATIVE</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">React Native, same words</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">The vocabulary carries over from <code>&lt;div&gt;</code> to <code>&lt;View&gt;</code>.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><code font-size="xs"><span text="blue-500">&lt;View</span> <span text="amber-500">display</span>=<span text="emerald-500">"grid"</span> <span text="amber-500">gap</span>=<span text="emerald-500">"4"</span> <span text="blue-500">/&gt;</span></code></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-download-cloud-2-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">SETUP</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Two files, no build step</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">A page needs the defaults stylesheet and the script. That is all.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><div class="mono" font-size="xs" line-height="relaxed" overflow="auto"><div text="muted">defaults.css</div><div text="muted">atomattr.min.js</div></div></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-file-shield-2-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">LICENSE</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Creator and license shown</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">Each design lists who made it and the license it is under.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><div display="flex" flex-col gap="1.5" font-size="sm"><span display="flex" items="center" gap="2"><i class="ri-user-line"></i> Creator</span><span display="flex" items="center" gap="2"><i class="ri-file-shield-2-line"></i> License</span></div></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-lock-unlock-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">ACCESS</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Free and public</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">Browse, preview and copy the published patterns without signing in.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><span display="flex" items="center" gap="2" font-size="sm"><i class="ri-lock-unlock-line"></i> No account needed</span></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-search-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">SEARCH</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Search, tags and sorting</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">Find a pattern by keyword, tag or name.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><div display="flex" items="center" gap="2" font-size="sm" text="muted"><i class="ri-search-line"></i><span flex="1">Search the library…</span><kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" rounded="md" px="1.5" py="0.5" font-size="xs">/</kbd></div></div>
+        </article>
+
+        <article lg-col-span="3" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" display="flex" flex-col gap="4" min-h="64">
+          <div display="flex" items="start" justify="between" gap="3">
+            <span w="10" h="10" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-git-pull-request-line"></i></span>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">CONTRIBUTE</span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Prepare a design</h3>
+            <p text="muted" line-height="relaxed" m="0" font-size="sm">Validate a package in your browser and download it as JSON.</p>
+          </div>
+          <div mt="auto" bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="3"><a href="./contribute.html" display="flex" items="center" justify="between" gap="2" font-size="sm" text="primary" text-decoration="none" font-weight="600">Prepare a draft <i class="ri-arrow-right-up-line"></i></a></div>
+        </article>
+
+        <article lg-col-span="6" position="relative" overflow="hidden" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" md-p="7" display="flex" flex-col gap="6">
+          <div display="flex" items="start" justify="between" gap="4">
+            <div>
+              <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Inspect the source</h3>
+              <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Read the attributes, then switch between HTML and React.</p>
+            </div>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">SOURCE</span>
+          </div>
+          <div mt="auto"><div bg="#fff" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" overflow="hidden">
+              <div display="flex" items="center" justify="between" px="4" py="2.5" border-b="1px solid gray-200" dark-border-color="#ffffff/10">
+                <div display="flex" gap="1" bg="gray-100" dark-bg="#17181b" rounded="lg" p="1" font-size="xs" font-weight="600"><span px="2.5" py="1" rounded="md" text="muted">Preview</span><span px="2.5" py="1" rounded="md" bg="#fff" dark-bg="#2a2b30">Code</span></div>
+                <span class="mono" text="muted" font-size="xs">HTML · React</span>
+              </div>
+              <div class="mono" p="4" font-size="xs" line-height="relaxed" overflow="auto">
+                <div><span text="blue-500">&lt;nav</span> <span text="amber-500">display</span>=<span text="emerald-500">"flex"</span> <span text="amber-500">justify</span>=<span text="emerald-500">"between"</span><span text="blue-500">&gt;</span></div>
+                <div ml="4"><span text="blue-500">&lt;b&gt;</span>Brand<span text="blue-500">&lt;/b&gt;</span></div>
+                <div ml="4"><span text="blue-500">&lt;a</span> <span text="amber-500">text</span>=<span text="emerald-500">"muted"</span><span text="blue-500">&gt;</span>Docs<span text="blue-500">&lt;/a&gt;</span></div>
+                <div text="blue-500">&lt;/nav&gt;</div>
+              </div>
+            </div></div>
+        </article>
+
+        <article lg-col-span="6" position="relative" overflow="hidden" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="6" md-p="7" display="flex" flex-col gap="6">
+          <div display="flex" items="start" justify="between" gap="4">
+            <div>
+              <h3 font-size="xl" md-font-size="2xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="2">Complete websites, later</h3>
+              <p text="muted" line-height="relaxed" m="0" w="full" md-max-w="26rem">Atomattr Pro will offer full multi-page templates. Nothing is for sale yet, and nothing here pretends otherwise.</p>
+            </div>
+            <span class="mono" text="muted" font-size="xs" tracking="wide" flex="none">PRO · NOT OPEN YET</span>
+          </div>
+          <div mt="auto"><div border="1px dashed gray-300" dark-border-color="#ffffff/20" rounded="2xl" p="4" display="flex" flex-col sm-flex-row items="start" sm-items="center" justify="between" gap="4">
+              <div display="flex" flex-col gap="1.5" font-size="sm" text="muted">
+                <span display="flex" items="center" gap="2"><i class="ri-pages-line" text="primary"></i> Every page and shared asset</span>
+                <span display="flex" items="center" gap="2"><i class="ri-smartphone-line" text="primary"></i> Responsive preview</span>
+                <span display="flex" items="center" gap="2"><i class="ri-file-shield-2-line" text="primary"></i> Version and license</span>
+              </div>
+              <a href="./premium.html" display="inline-flex" items="center" gap="2" text="text" border="1px solid gray-200" dark-border-color="#ffffff/10" hover-bg="gray-100" dark-hover-bg="#ffffff/5" px="4" py="2" rounded="full" font-size="sm" font-weight="600" text-decoration="none" flex="none">About Pro <i class="ri-arrow-right-line"></i></a>
+            </div></div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ============================== HOW IT WORKS ============================== -->
+    <section border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#090a0c">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+        <div mb="10">
+          <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> HOW IT WORKS</p>
+          <h2 font-size="4xl" md-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" w="full" lg-max-w="46rem"><span class="grad-text">From preview to your project.</span> <span text="muted">In three steps.</span></h2>
+        </div>
+        <div display="grid" grid-cols="1" md-grid-cols="3" gap="4">
+          <div bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="7"><span class="mono" text="primary" font-size="sm" font-weight="600">01</span><h3 font-size="xl" font-weight="700" m="0" mt="3" mb="2">Browse and preview</h3><p text="muted" line-height="relaxed" m="0">Open a component or section and see it live, in light and dark.</p></div>
+          <div bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="7"><span class="mono" text="primary" font-size="sm" font-weight="600">02</span><h3 font-size="xl" font-weight="700" m="0" mt="3" mb="2">Inspect the source</h3><p text="muted" line-height="relaxed" m="0">Read the attributes, then switch between HTML and React.</p></div>
+          <div bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="7"><span class="mono" text="primary" font-size="sm" font-weight="600">03</span><h3 font-size="xl" font-weight="700" m="0" mt="3" mb="2">Copy and change it</h3><p text="muted" line-height="relaxed" m="0">Paste it into your page and edit any attribute. It is your code now.</p></div>
+        </div>
+        <a href="./docs/installation.html" display="inline-flex" items="center" gap="2" mt="8" text="muted" hover-text="primary" text-decoration="none" font-weight="600">Read the install guide <i class="ri-arrow-right-line"></i></a>
+      </div>
+    </section>
+
+    <!-- ============================== BROWSE ============================== -->
+    <section border-t="1px solid gray-100" dark-border-color="#ffffff/10">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="20">
+        <div display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="4" gap="4">
+
+          <a href="./components.html" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-layout-grid-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Components</h3>
+            <p m="0" text="muted" line-height="relaxed">Navigation, cards, and forms for product interfaces and admin areas.</p>
+          </a>
+          <a href="./sections.html" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-layout-top-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Sections</h3>
+            <p m="0" text="muted" line-height="relaxed">Hero, pricing, and more for product sites, customer pages, and docs.</p>
+          </a>
+          <a href="./templates.html" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-pages-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Templates</h3>
+            <p m="0" text="muted" line-height="relaxed">No templates yet. Full pages appear here once their preview and source are ready.</p>
+          </a>
+          <a href="./playground.html" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-terminal-box-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Playground</h3>
+            <p m="0" text="muted" line-height="relaxed">Paste a pattern and tweak its attributes with a live preview.</p>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== FAQ ============================== -->
+    <section border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#090a0c" position="relative" overflow="hidden">
+      <div position="absolute" top="-10" right="0" w="40vw" h="24rem" rounded="full" bg="primary/20" aria-hidden="true" style="filter:blur(120px);pointer-events:none;"></div>
+
+      <div position="relative" w="full" px="4" md-px="10" lg-px="16" py="16" lg-py="24" display="grid" grid-cols="1" lg-grid-cols="12" gap="10" lg-gap="16">
+
+        <!-- Left: heading + help card -->
+        <div lg-col-span="5">
+          <div class="faq-sticky" display="flex" flex-col gap="6">
+            <span display="inline-flex" items="center" gap="2" w="fit" bg="primary/10" text="primary" rounded="full" px="3" py="1" font-size="xs" font-weight="600"><i class="ri-question-answer-line"></i> FAQ</span>
+            <h2 class="grad-text" font-size="4xl" md-font-size="5xl" lg-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0">Before you copy.</h2>
+            <p font-size="lg" text="muted" line-height="relaxed" m="0" w="full" lg-max-w="26rem">Quick answers about how patterns work, what you need installed, and what you can change.</p>
+
+            <a href="https://discord.gg/efCPNK2Wp" display="flex" items="center" gap="4" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="4" text="text" text-decoration="none" hover-border-color="primary" w="full" lg-max-w="26rem">
+              <span w="11" h="11" flex="none" rounded="xl" bg="primary" text="white" display="flex" items="center" justify="center" font-size="xl"><i class="ri-discord-fill"></i></span>
+              <span flex="1"><b display="block" font-size="sm">Still have a question?</b><span text="muted" font-size="sm">Ask in the community chat</span></span>
+              <i class="ri-arrow-right-up-line" text="muted" font-size="xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: accordion -->
+        <div lg-col-span="7" display="flex" flex-col gap="3">
+
+          <details class="faq" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" hover-border-color="primary">
+            <summary display="flex" items="center" gap="4" px="5" py="5" cursor="pointer" font-weight="600" font-size="lg">
+              <span w="10" h="10" flex="none" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-box-3-line"></i></span>
+              <span flex="1">Is AtomAttr UI a component package?</span>
+              <span w="8" h="8" flex="none" rounded="full" bg="gray-100" dark-bg="#ffffff/5" text="muted" display="flex" items="center" justify="center"><i class="ri-add-line faq-closed"></i><i class="ri-subtract-line faq-opened"></i></span>
+            </summary>
+            <p text="muted" line-height="relaxed" m="0" pl="20" pr="6" pb="6" font-size="base">No. It is a library of patterns you preview and copy. You own the source from the moment you paste it.</p>
+          </details>
+
+          <details class="faq" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" hover-border-color="primary">
+            <summary display="flex" items="center" gap="4" px="5" py="5" cursor="pointer" font-weight="600" font-size="lg">
+              <span w="10" h="10" flex="none" rounded="xl" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-download-cloud-2-line"></i></span>
+              <span flex="1">Do I need AtomAttr installed to use a pattern?</span>
+              <span w="8" h="8" flex="none" rounded="full" bg="gray-100" dark-bg="#ffffff/5" text="muted" display="flex" items="center" justify="center"><i class="ri-add-line faq-closed"></i><i class="ri-subtract-line faq-opened"></i></span>
+            </summary>
+            <p text="muted" line-height="relaxed" m="0" pl="20" pr="6" pb="6" font-size="base">Yes. Patterns are written in Atomattr attributes, so your page needs the defaults stylesheet and script. The install guide covers both.</p>
+          </details>
+
+          <details class="faq" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" hover-border-color="primary">
+            <summary display="flex" items="center" gap="4" px="5" py="5" cursor="pointer" font-weight="600" font-size="lg">
+              <span w="10" h="10" flex="none" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-palette-line"></i></span>
+              <span flex="1">Can I change the colors?</span>
+              <span w="8" h="8" flex="none" rounded="full" bg="gray-100" dark-bg="#ffffff/5" text="muted" display="flex" items="center" justify="center"><i class="ri-add-line faq-closed"></i><i class="ri-subtract-line faq-opened"></i></span>
+            </summary>
+            <p text="muted" line-height="relaxed" m="0" pl="20" pr="6" pb="6" font-size="base">Yes. Patterns use semantic tokens like <code>primary</code> and <code>muted</code>, so your theme controls the actual values.</p>
+          </details>
+
+          <details class="faq" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" hover-border-color="primary">
+            <summary display="flex" items="center" gap="4" px="5" py="5" cursor="pointer" font-weight="600" font-size="lg">
+              <span w="10" h="10" flex="none" rounded="xl" bg="danger/10" text="danger" display="flex" items="center" justify="center" font-size="xl"><i class="ri-code-box-line"></i></span>
+              <span flex="1">Which formats are available?</span>
+              <span w="8" h="8" flex="none" rounded="full" bg="gray-100" dark-bg="#ffffff/5" text="muted" display="flex" items="center" justify="center"><i class="ri-add-line faq-closed"></i><i class="ri-subtract-line faq-opened"></i></span>
+            </summary>
+            <p text="muted" line-height="relaxed" m="0" pl="20" pr="6" pb="6" font-size="base">Each pattern is published as HTML and as React source.</p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+
+    
+<!-- ============================== CTA ============================== -->
+    <section position="relative" overflow="hidden" border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg-gradient="radial-gradient(60vw 24rem at 50% 120%, color-mix(in oklch, var(--aa-color-primary) 32%, transparent), transparent 70%)">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24" align="center">
+        <div mx="auto" w="full" md-max-w="60vw" lg-max-w="46vw">
+          <h2 class="grad-text" font-size="4xl" md-font-size="5xl" lg-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5">Copy one pattern, then decide.</h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="8">Paste it into your project and see how the markup feels before changing anything big.</p>
+          <div display="flex" flex-col sm-flex-row items="center" justify="center" gap="3">
+            <a href="./catalog.html" bg="primary" hover-bg="primary/80" text="white" px="8" py="3.5" rounded="xl" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" shadow="lg">Browse catalog <i class="ri-arrow-right-line"></i></a>
+            <a href="./playground.html" text="text" bg="gray-100" dark-bg="#ffffff/5" border="1px solid gray-200" dark-border-color="#ffffff/10" px="8" py="3.5" rounded="xl" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" hover-bg="gray-200" dark-hover-bg="#ffffff/10">Open playground</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer border-t="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
+
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
+
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p mt="4" text="muted" line-height="relaxed" w="full" lg-max-w="20rem">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="lg" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="lg" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="lg" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Library</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+            <a href="sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+            <a href="templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="contribute.html" text="muted" text-decoration="none" hover-text="text">Contribute a design</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Atomattr. Copy it. Own it. Change it.</span>
+        <span display="flex" items="center" gap="2">Built with Atomattr <i class="ri-heart-3-line"></i></span>
+      </div>
+
+    </div>
+  </footer>
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script type="module" src="./site/app.js"></script>
+  <script>
+    /* Hero switch: show the same pattern as a live preview, as HTML, or as React. */
+    (function () {
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('.seg'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var view = button.getAttribute('data-view');
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === button ? 'true' : 'false'); });
+          panels.forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== view; });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

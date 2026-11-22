@@ -1,21 +1,19 @@
 # State attributes
-> State prefixes map to supported CSS pseudo-classes for interaction, form validation, and child position.
+> State prefixes map to CSS pseudo-classes for interaction, validation and position in a list.
 
 ## Interactive states
 
-Use state prefixes when a style should apply only during interaction or validation.
+Use a state prefix when a style should apply only during interaction or while a form control is in a given state. The full list of prefixes is in [Selectors and states](selectors.html).
 
 ```html
-<button bg="primary" hover-bg="primary/80" focus-visible-outline="2px" focus-visible-outline-color="primary" disabled-opacity="50">
+<button bg="primary" text="white" px="4" py="2" rounded="lg" hover-bg="primary/80" focus-visible-outline="2px" focus-visible-outline-color="primary" disabled-opacity="50">
   Continue
 </button>
 ```
 
 ## Structural states
 
-Use `first`, `last`, `odd`, and `even` when repeated elements need alternating or edge styling.
-
-The parser also registers `first-of-type`, `last-of-type`, `only`, and `empty`. These map to structural pseudo-classes such as `:first-of-type`, `:only-child`, and `:empty`.
+Use `first`, `last`, `odd` and `even` when repeated elements need alternating or edge styling.
 
 ```html
 <li odd-bg="gray-50" even-bg="white" first-rounded-t="lg" last-rounded-b="lg">
@@ -25,10 +23,10 @@ The parser also registers `first-of-type`, `last-of-type`, `only`, and `empty`. 
 
 ## Form states
 
-Form controls can use `checked`, `selected`, `required`, `optional`, `valid`, `invalid`, `read-only`, `read-write`, `indeterminate`, `placeholder-shown`, and `open` where the browser exposes those states. In the current parser, `selected` is an alias for `:checked` (use it for checked controls such as radios and checkboxes); it does not select an `<option>`. For a selected option, style the `<option>` directly with a base attribute or use application logic/CSS.
+Controls can use `checked`, `required`, `invalid` and `disabled`. For `valid`, `placeholder-shown` and `read-only`, write a CSS rule, since those prefixes are not registered in 1.0.1.
 
 ```html
 <label>Work email
-  <input type="email" required invalid-border-color="red-600" valid-border-color="emerald-600" placeholder-shown-text="gray-500">
+  <input type="email" required invalid-border-color="red-600" border="1px solid gray-300" rounded="lg" p="2">
 </label>
 ```

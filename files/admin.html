@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Studio — AtomAttr UI</title>
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    textarea, code, kbd { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+    input, select, textarea { font-size: 14px; box-sizing: border-box; font-family: inherit; }
+    textarea { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #5b5cf6 !important; box-shadow: 0 0 0 3px rgba(91,92,246,.25); }
+    .dots { background-image: radial-gradient(rgba(15,23,42,.14) 1px, transparent 1px); background-size: 18px 18px; }
+    html.dark .dots { background-image: radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px); }
+  </style>
+</head>
+<body bg="gray-50" dark-bg="#07080a" text="text" min-h="screen" p="0" m="0">
+
+  <!-- ===== Passphrase gate ===== -->
+  <main id="gate" display="flex" items="center" justify="center" px="4" style="min-height:100vh">
+    <form id="gate-form" w="full" max-w="24rem" bg="#fff" dark-bg="#101113" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="6" shadow="lg" display="grid" gap="4">
+      <div><span w="10" h="10" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-lock-2-line"></i></span></div>
+      <div><h1 id="gate-title" m="0" font-size="xl">Studio</h1><p id="gate-note" m="0" mt="1" text="muted" font-size="sm">Enter your passphrase.</p></div>
+      <label for="gate-pass" sr-only>Passphrase</label>
+      <input id="gate-pass" type="password" autocomplete="current-password" placeholder="Passphrase" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2.5">
+      <p id="gate-error" role="alert" m="0" text="danger" font-size="sm" hidden></p>
+      <button id="gate-btn" type="submit" bg="primary" hover-bg="primary/80" text="white" border="0" py="2.5" rounded="lg" font-weight="600" cursor="pointer">Unlock</button>
+    </form>
+  </main>
+
+  <!-- ===== Studio ===== -->
+  <div id="app" hidden>
+    <header bg="#fff" dark-bg="#101113" border-b="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" justify="between" gap="4">
+        <div display="flex" items="center" gap="3"><b>AtomAttr UI Studio</b><span bg="warning/10" text="warning" rounded="full" px="2.5" py="0.5" font-size="xs" font-weight="600">Private · this browser only</span></div>
+        <div display="flex" items="center" gap="2" font-size="sm">
+          <a href="./catalog.html" text="primary" text-decoration="none" font-weight="600">View gallery with drafts</a>
+          <button id="lock" type="button" bg="transparent" text="muted" hover-text="text" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="lg" px="3" py="1.5" cursor="pointer">Lock</button>
+        </div>
+      </div>
+    </header>
+
+    <p id="hash-note" hidden max-w="7xl" mx="auto" px="4" md-px="8" mt="4" text="muted" font-size="sm"></p>
+
+    <main max-w="7xl" mx="auto" px="4" md-px="8" py="6" display="grid" grid-cols="1" xl-grid-cols="2" gap="6" items="start">
+
+      <!-- Form -->
+      <section bg="#fff" dark-bg="#101113" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="5" display="grid" gap="4">
+        <h2 m="0" font-size="lg">Design</h2>
+        <div display="grid" grid-cols="1" md-grid-cols="2" gap="4">
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">Name<input id="f-name" type="text" placeholder="Glass Pill" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">Category<select id="f-category" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></select></label>
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">Slug (auto)<input id="f-slug" type="text" placeholder="navbars-glass-pill" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">Tags (comma separated)<input id="f-tags" type="text" placeholder="navbar, glass, floating" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+        </div>
+        <label display="grid" gap="1.5" font-size="sm" font-weight="600">Description<input id="f-desc" type="text" placeholder="One sentence on what it is and when to use it." bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+        <div display="grid" grid-cols="2" md-grid-cols="4" gap="4">
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">Creator<input id="f-creator" type="text" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">License<input id="f-license" type="text" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">Frame W<input id="f-fw" type="number" min="200" max="1600" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+          <label display="grid" gap="1.5" font-size="sm" font-weight="600">Frame H<input id="f-fh" type="number" min="120" max="1200" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"></label>
+        </div>
+        <label display="grid" gap="1.5" font-size="sm" font-weight="600">Alignment in frame<select id="f-align" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2"><option value="">Automatic (top for navbars and sections, centered otherwise)</option><option value="top">Top, full width</option><option value="center">Centered</option></select></label>
+        <label display="grid" gap="1.5" font-size="sm" font-weight="600">AtomAttr markup<textarea id="f-markup" rows="14" spellcheck="false" placeholder='<nav display="flex" px="6" py="4" bg="#fff">…</nav>' bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2" line-height="relaxed"></textarea></label>
+        <ul id="lint" m="0" pl="5" text="warning" font-size="sm" hidden></ul>
+        <div display="flex" wrap gap="2">
+          <button id="save" type="button" bg="primary" hover-bg="primary/80" text="white" border="0" rounded="lg" px="4" py="2.5" font-weight="600" cursor="pointer">Save draft</button>
+          <button id="new" type="button" bg="transparent" text="text" border="1px solid gray-300" dark-border-color="#ffffff/20" rounded="lg" px="4" py="2.5" font-weight="600" cursor="pointer">New</button>
+          <button id="play" type="button" bg="transparent" text="text" border="1px solid gray-300" dark-border-color="#ffffff/20" rounded="lg" px="4" py="2.5" font-weight="600" cursor="pointer">Open in Playground</button>
+          <span id="msg" role="status" aria-live="polite" text="muted" font-size="sm" display="inline-flex" items="center"></span>
+        </div>
+      </section>
+
+      <!-- Preview -->
+      <section display="grid" gap="3" style="position:sticky;top:12px">
+        <div display="flex" wrap items="center" justify="between" gap="3">
+          <h2 m="0" font-size="lg">Live preview</h2>
+          <div display="flex" gap="2" font-size="sm">
+            <div id="pv-widths" display="flex" gap="1" bg="gray-200" dark-bg="#ffffff/10" rounded="lg" p="1">
+              <button type="button" data-w="frame" bg="#fff" dark-bg="#ffffff/15" text="text" border="0" rounded="md" px="3" py="1.5" cursor="pointer">Frame</button>
+              <button type="button" data-w="768" bg="transparent" text="muted" border="0" rounded="md" px="3" py="1.5" cursor="pointer">768</button>
+              <button type="button" data-w="390" bg="transparent" text="muted" border="0" rounded="md" px="3" py="1.5" cursor="pointer">390</button>
+            </div>
+            <button id="pv-theme" type="button" bg="gray-200" dark-bg="#ffffff/10" text="text" border="0" rounded="lg" px="3" py="1.5" cursor="pointer"><i class="ri-contrast-line"></i> Light</button>
+          </div>
+        </div>
+        <div id="pv-stage" class="dots" position="relative" overflow="hidden" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" bg="gray-100" dark-bg="#0b0c0e" style="height:26rem">
+          <div id="pv-frame" style="position:absolute;left:0;top:0;transform-origin:0 0;background:#fff;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.18),0 10px 30px rgba(0,0,0,.08)"><iframe id="pv" title="Preview" style="display:block;width:100%;height:100%;border:0;border-radius:4px"></iframe></div>
+        </div>
+        <p id="pv-size" m="0" text="muted" font-size="xs"></p>
+      </section>
+
+      <!-- Drafts -->
+      <section bg="#fff" dark-bg="#101113" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="5" display="grid" gap="3">
+        <h2 m="0" font-size="lg">Drafts <span id="count" text="muted" font-size="sm" font-weight="400"></span></h2>
+        <div id="drafts" display="grid" gap="2"></div>
+        <p id="drafts-empty" m="0" text="muted" font-size="sm">No drafts yet. Fill the form and press Save draft.</p>
+      </section>
+
+      <!-- Publish -->
+      <section bg="#fff" dark-bg="#101113" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="5" display="grid" gap="3">
+        <h2 m="0" font-size="lg">Publish</h2>
+        <p m="0" text="muted" font-size="sm" line-height="relaxed">Drafts are only in this browser. To publish, copy the export below, paste the objects inside <code>catalogItems</code> in <code>data/catalog-data.js</code>, commit, then delete the draft here.</p>
+        <textarea id="export" rows="8" readonly spellcheck="false" bg="gray-50" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2" font-size="xs"></textarea>
+        <div display="flex" wrap gap="2">
+          <button id="exp-copy" type="button" bg="primary" hover-bg="primary/80" text="white" border="0" rounded="lg" px="4" py="2" font-weight="600" cursor="pointer">Copy export</button>
+          <button id="exp-dl" type="button" bg="transparent" text="text" border="1px solid gray-300" dark-border-color="#ffffff/20" rounded="lg" px="4" py="2" font-weight="600" cursor="pointer">Download .json</button>
+        </div>
+        <details>
+          <summary cursor="pointer" font-size="sm" font-weight="600">Import drafts from JSON</summary>
+          <textarea id="imp" rows="4" spellcheck="false" placeholder="Paste a JSON array or object exported from the studio" bg="#fff" dark-bg="#0b0c0e" text="text" border="1px solid gray-300" dark-border-color="#ffffff/15" rounded="lg" px="3" py="2" w="full" mt="2" font-size="xs"></textarea>
+          <button id="imp-btn" type="button" mt="2" bg="transparent" text="text" border="1px solid gray-300" dark-border-color="#ffffff/20" rounded="lg" px="4" py="2" font-weight="600" cursor="pointer">Import</button>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>

@@ -197,10 +197,10 @@ add('installation.html', 'Installation', 'Install Atomattr, load the base styles
       <h1 font-size="3xl" text="primary">It works</h1>
       <button bg="primary" text="white" px="4" py="2" rounded="lg">Continue</button>
     </main>
-    <script src="/dist/atomattr.min.js" defer></script>
+    <script src="/dist/atomattr.min.js"></script>
   </body>
-</html>`), para('For a standalone page without a local build, load both files from the same pinned package version. Avoid mixing a stylesheet from one version with a runtime from another.'), code('CDN links', `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atomattr@1.0.1/dist/defaults.css">
-<script src="https://cdn.jsdelivr.net/npm/atomattr@1.0.1/dist/atomattr.min.js" defer></script>`)]),
+</html>`), para('For a standalone page without a local build, load both files from the same pinned package version. Avoid mixing a stylesheet from one version with a runtime from another.'), code('CDN links', `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atomattr@1.0.2/dist/defaults.css">
+<script src="https://cdn.jsdelivr.net/npm/atomattr@1.0.2/dist/atomattr.min.js"></script>`)]),
   sec('vite', 'Vite and other JavaScript apps', [para('Import the stylesheet and engine from your client entry point. Start the engine after importing it; the call is safe if another browser-side import has already started it.'), code('src/main.js', `import 'atomattr/defaults.css';
 import { startAtomAttr } from 'atomattr';
 
@@ -500,7 +500,7 @@ add('html.html', 'HTML', 'Use Atomattr directly in HTML by loading the defaults 
     <main p="6">
       <h1 font-size="4xl" font-weight="bold">HTML first</h1>
     </main>
-    <script src="/dist/atomattr.min.js" defer></script>
+    <script src="/dist/atomattr.min.js"></script>
   </body>
 </html>`)]),
   sec('component-example', 'Component example', [para('A complete HTML component usually combines layout, spacing, color, typography, radius, border, and state attributes.'), code('pricing-card.html', `<article display="flex" flex-col gap="5" p="6" bg="white" dark-bg="gray-900" rounded="2xl" border="border" shadow="md">
@@ -1237,7 +1237,7 @@ function render(page) {
     </div>
   </main>
   ${searchDataScript(page)}
-  <script src="${assetPrefix}dist/atomattr.min.js" defer></script>
+  <script src="${assetPrefix}dist/atomattr.min.js"></script>
   <script type="module" src="${assetPrefix}site/app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>

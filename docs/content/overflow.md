@@ -17,7 +17,7 @@ Use `overflow`, `overflow-x`, and `overflow-y` to control content along each axi
 
 ## Truncation and scrolling
 
-Overflow clipping alone does not add an ellipsis or prevent text wrapping. Use the typography attributes such as `text-overflow`, `whitespace`, or `line-clamp` for text presentation. For a scrollable horizontal row, set a constrained width and `overflow-x="auto"`.
+Overflow clipping alone does not add an ellipsis or prevent text wrapping. Use the typography attributes such as `truncate`, `text-overflow` or `whitespace` for text presentation. For a scrollable horizontal row, set a constrained width and `overflow-x="auto"`.
 
 ## Attributes
 

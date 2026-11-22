@@ -12,12 +12,25 @@ Use `p` for all four sides, or `pt`, `pr`, `pb`, and `pl` for physical sides. `p
 </article>
 ```
 
-## Logical padding
+```native
+import { Box, Txt } from 'atomattr/react-native';
 
-Use `ps` and `pe` for inline start and end. The longer `padding-inline`, `padding-inline-start`, `padding-inline-end`, `padding-block`, `padding-block-start`, and `padding-block-end` names map directly to CSS logical properties. Logical properties adapt to writing direction; for example, inline start is the right side in right-to-left text.
+export function Card() {
+  return (
+    <Box p="5" bg="white" rounded="xl">
+      <Txt fontWeight="bold" mb="2">Card title</Txt>
+      <Txt>Content with space inside the card.</Txt>
+    </Box>
+  );
+}
+```
+
+## Start and end padding
+
+Use `ps` and `pe` for inline start and end padding. They follow the writing direction, so inline start is the right side in right-to-left text.
 
 ```html
-<blockquote padding-inline="1.5rem" padding-block="1rem" border-inline-start="4px solid">
+<blockquote px="6" py="4" border-l="4" border-color="primary">
   Direction-aware inset content
 </blockquote>
 ```
@@ -28,4 +41,4 @@ The `p` attribute supports CSS-style two- and four-part spacing shorthands. For 
 
 ## Attributes
 
-The table lists supported physical and logical padding attributes and their CSS outputs.
+The table lists supported padding attributes and their CSS outputs.

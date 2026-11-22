@@ -11,6 +11,21 @@ Use `gap` on a flex or grid container to create consistent space between its ite
 </div>
 ```
 
+```native
+import { Row, Box, Txt } from 'atomattr/react-native';
+
+// gap support depends on your React Native version; test on iOS and Android.
+export function Cards() {
+  return (
+    <Row gap="4">
+      {['First', 'Second', 'Third'].map((t) => (
+        <Box key={t} flex={1} p="4" rounded="xl" bg="white"><Txt>{t}</Txt></Box>
+      ))}
+    </Row>
+  );
+}
+```
+
 ## Set row and column gaps separately
 
 Use `gap-x` for the column gap and `gap-y` for the row gap. These are useful for grids with different horizontal and vertical rhythm, or wrapped flex rows. CSS lengths such as `1rem` and supported functions can also be used.

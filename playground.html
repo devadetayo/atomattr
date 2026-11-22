@@ -22,7 +22,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/foundation.min.css" media="(prefers-color-scheme: light)">
     <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css" media="(prefers-color-scheme: dark)">
 
@@ -32,7 +32,7 @@
          The editor has no background of its own; it sits on the page. Everything
          else is styled with Atomattr attributes. */
       html { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif; -webkit-text-size-adjust: 100%; }
-      h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.015em; }
+      h1, h2, h3 { font-family: 'DM Sans', sans-serif; letter-spacing: -0.015em; }
       /* The playground is full-bleed: no page margins, padding or max-width around it. */
       html, body { margin: 0 !important; padding: 0 !important; }
       .page-shell { margin: 0 !important; padding: 0 !important; max-width: none !important; width: 100% !important; }
@@ -78,7 +78,8 @@
     <link rel="stylesheet" href="./dist/defaults.css" />
     <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
     <link rel="stylesheet" href="./assets/showcase.css" />
-  </head>
+  <link rel="stylesheet" href="assets/font.css">  <script src="./dist/atomattr.min.js"></script>
+</head>
 
   <body bg="#fff" dark-bg="grey-950" text="text" min-h="screen">
     <main class="page-shell">
@@ -98,7 +99,7 @@
           </div>
 
           <div display="flex" items="center" gap="2">
-            <div id="pg-layout-seg" data-m="desktop" data-d="flex" display="flex" items="center" gap="1" bg="gray-100" dark-bg="gray-900" rounded="lg" p="1" role="group" aria-label="Workspace layout">
+            <div id="pg-layout-seg" data-m="desktop" data-d="flex" display="flex" items="center" gap="1" bg="gray-100" dark-bg="gray-900" rounded="md" p="1" role="group" aria-label="Workspace layout">
               <button type="button" data-layout="split" title="Side by side" aria-label="Side-by-side view" aria-pressed="true" display="flex" items="center" justify="center" bg="#fff" dark-bg="gray-800" text="primary" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-layout-column-line" font-size="15"></i></button>
               <button type="button" data-layout="stacked" title="Stacked" aria-label="Stacked view" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-layout-row-line" font-size="15"></i></button>
               <button type="button" data-layout="editor" title="Editor only" aria-label="Editor only" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" w="8" h="8" rounded="md" cursor="pointer"><i class="ri-code-s-slash-line" font-size="15"></i></button>
@@ -107,17 +108,17 @@
 
             <span data-m="desktop" data-d="block" w="1px" h="6" bg="gray-200" dark-bg="gray-800" mx="1"></span>
 
-            <button id="pg-run" type="button" title="Run (Ctrl/⌘ + Enter)" aria-label="Run preview" display="flex" items="center" gap="1.5" bg="primary" text="white" px="3" h="9" rounded="lg" font-size="sm" font-weight="600" cursor="pointer">
+            <button id="pg-run" type="button" title="Run (Ctrl/⌘ + Enter)" aria-label="Run preview" display="flex" items="center" gap="1.5" bg="primary" text="white" px="3" h="9" rounded="md" font-size="sm" font-weight="600" cursor="pointer">
               <i class="ri-play-fill" font-size="15"></i>
             </button>
-            <button id="pg-reset" type="button" data-m="desktop" data-d="flex" title="Reset to example" aria-label="Reset to example" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
+            <button id="pg-reset" type="button" data-m="desktop" data-d="flex" title="Reset to example" aria-label="Reset to example" display="flex" items="center" justify="center" bg="gray-100" border="0" text="muted" w="9" h="9" rounded="md" cursor="pointer" hover-bg="primary/10" dark-bg="gray-900">
               <i class="ri-restart-line" font-size="16"></i>
             </button>
-            <button id="pg-share" type="button" title="Copy a shareable link to this code" aria-label="Copy share link" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="9" h="9" rounded="lg" cursor="pointer" hover-bg="primary/10">
+            <button id="pg-share" type="button" title="Copy a shareable link to this code" aria-label="Copy share link" display="flex" items="center" justify="center" bg="gray-100" border="0" text="muted" w="9" h="9" rounded="md" cursor="pointer" hover-bg="primary/10" dark-bg="gray-900">
               <i class="ri-share-line" font-size="16"></i>
             </button>
-            <button type="button" aria-label="Toggle color theme" title="Toggle site color theme" data-color-toggle bg="transparent" border="border" text="text" w="9" h="9" rounded="lg" display="flex" items="center" justify="center" cursor="pointer">
-              <i class="ri-sun-line" font-size="18" data-color-toggle-icon></i>
+            <button type="button" aria-label="Toggle color theme" title="Toggle site color theme" data-color-toggle bg="gray-100" border="0" text="text" w="9" h="9" rounded="md" display="flex" items="center" justify="center" cursor="pointer" dark-bg="gray-900">
+              <i class="ri-contrast-line" font-size="18" data-color-toggle-icon></i>
             </button>
           </div>
         </div>
@@ -143,9 +144,9 @@
                   <button type="button" role="tab" data-tab="css" aria-selected="false" display="flex" items="center" gap="1.5" bg="transparent" text="muted" border-b="2px" border-color="transparent" pt="3" pb="2.5" font-size="sm" font-weight="600" cursor="pointer"><i class="ri-css3-line" font-size="15"></i>CSS</button>
                 </div>
                 <div display="flex" items="center" gap="2">
-                  <button id="pg-wrap-btn" type="button" title="Word wrap" aria-label="Toggle word wrap" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-text-wrap" font-size="15"></i></button>
-                  <button id="pg-pretty" type="button" title="Prettify (Alt + Shift + F)" aria-label="Prettify code" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-magic-line" font-size="15"></i></button>
-                  <button id="pg-copy" type="button" title="Copy code" aria-label="Copy code" display="flex" items="center" justify="center" bg="transparent" border="border" text="muted" w="8" h="8" rounded="lg" cursor="pointer" hover-bg="primary/10"><i class="ri-file-copy-line" font-size="15"></i></button>
+                  <button id="pg-wrap-btn" type="button" title="Word wrap" aria-label="Toggle word wrap" aria-pressed="false" display="flex" items="center" justify="center" bg="gray-100" border="0" text="muted" w="8" h="8" rounded="md" cursor="pointer" hover-bg="primary/10" dark-bg="gray-900"><i class="ri-text-wrap" font-size="15"></i></button>
+                  <button id="pg-pretty" type="button" title="Prettify (Alt + Shift + F)" aria-label="Prettify code" display="flex" items="center" justify="center" bg="gray-100" border="0" text="muted" w="8" h="8" rounded="md" cursor="pointer" hover-bg="primary/10" dark-bg="gray-900"><i class="ri-magic-line" font-size="15"></i></button>
+                  <button id="pg-copy" type="button" title="Copy code" aria-label="Copy code" display="flex" items="center" justify="center" bg="gray-100" border="0" text="muted" w="8" h="8" rounded="md" cursor="pointer" hover-bg="primary/10" dark-bg="gray-900"><i class="ri-file-copy-line" font-size="15"></i></button>
                 </div>
               </div>
 
@@ -232,8 +233,8 @@
             <span id="pg-cursor" style="font-variant-numeric:tabular-nums;">Ln 1, Col 1</span>
             <button id="pg-console-btn" type="button" title="Show console" aria-label="Show console" display="flex" items="center" gap="1.5" bg="transparent" text="muted" px="2" h="6" rounded="md" font-size="xs" cursor="pointer" hover-bg="primary/10">
               <i class="ri-terminal-box-line" font-size="14"></i>Console
-              <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
-              <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
+              <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="md" style="font-size:10px;line-height:16px;"></span>
+              <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="md" style="font-size:10px;line-height:16px;"></span>
             </button>
             <button id="pg-tips-btn" type="button" title="Tips and shortcuts" aria-label="Show tips" display="flex" items="center" gap="1.5" bg="transparent" text="muted" px="2" h="6" rounded="md" font-size="xs" cursor="pointer" hover-bg="primary/10">
               <i class="ri-lightbulb-line" font-size="14"></i>Tips
@@ -247,8 +248,8 @@
           <button type="button" data-mobile-pane="preview" aria-label="Preview" title="Preview" aria-pressed="false" display="flex" items="center" justify="center" bg="transparent" text="muted" cursor="pointer" style="flex:1;min-height:52px;"><i class="ri-eye-line" font-size="22"></i></button>
           <button id="pg-m-console" type="button" aria-label="Toggle console" title="Console" aria-pressed="false" display="flex" items="center" justify="center" gap="1" bg="transparent" text="muted" cursor="pointer" style="flex:1;min-height:52px;">
             <i class="ri-terminal-box-line" font-size="22"></i>
-            <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
-            <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="full" style="font-size:10px;line-height:16px;"></span>
+            <span data-badge-err display="none" bg="#dc2626" text="white" px="1.5" rounded="md" style="font-size:10px;line-height:16px;"></span>
+            <span data-badge-warn display="none" bg="#d97706" text="white" px="1.5" rounded="md" style="font-size:10px;line-height:16px;"></span>
           </button>
         </nav>
 
@@ -256,15 +257,14 @@
     </main>
 
     <!-- Autocomplete popup -->
-    <div id="pg-ac" role="listbox" aria-label="Atomattr suggestions" display="none" bg="#fff" dark-bg="gray-900" border="border" rounded="lg" p="1" z="80" style="position:fixed;max-height:220px;min-width:170px;overflow-y:auto;box-shadow:0 12px 32px rgba(0,0,0,.22);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;"></div>
+    <div id="pg-ac" role="listbox" aria-label="Atomattr suggestions" display="none" bg="gray-100" dark-bg="gray-900" border="0" rounded="md" p="1" z="80" style="position:fixed;max-height:220px;min-width:170px;overflow-y:auto;box-shadow:0 12px 32px rgba(0,0,0,.22);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;"></div>
 
     <!-- Toast -->
-    <div id="pg-toast" role="status" aria-live="polite" display="none" items="center" gap="3" bg="#111827" text="white" px="4" py="2" rounded="lg" font-size="sm" z="90" style="position:fixed;left:50%;bottom:44px;transform:translateX(-50%);max-width:92vw;box-shadow:0 8px 28px rgba(0,0,0,.3);">
+    <div id="pg-toast" role="status" aria-live="polite" display="none" items="center" gap="3" bg="#111827" text="white" px="4" py="2" rounded="md" font-size="sm" z="90" style="position:fixed;left:50%;bottom:44px;transform:translateX(-50%);max-width:92vw;box-shadow:0 8px 28px rgba(0,0,0,.3);">
       <span id="pg-toast-msg"></span>
       <button id="pg-toast-action" type="button" display="none" bg="transparent" text="#a5b4fc" font-weight="600" font-size="sm" cursor="pointer"></button>
     </div>
 
-    <script src="./dist/atomattr.min.js" defer></script>
     <script type="module" src="./site/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
@@ -320,30 +320,30 @@
       var EX = {
         html: [
           { id: 'starter', title: 'Starter', icon: 'ri-flashlight-line',
-            code: '<div p="6" display="flex" flex-col gap="4">\n  <div bg="surface" p="6" rounded="xl" border="border">\n    <span class="badge">New</span>\n    <h3 font-weight="bold" mb="2">Hello Atomattr</h3>\n    <p text="muted" mb="4">Edit this snippet and watch the preview update.</p>\n    <button type="button" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Get started</button>\n  </div>\n  <p text="muted" font-size="xs">Attributes style the elements. Ordinary CSS lives in the CSS tab.</p>\n</div>',
+            code: '<div p="6" display="flex" flex-col gap="4">\n  <div bg="surface" p="6" rounded="md" border="0">\n    <span class="badge">New</span>\n    <h3 font-weight="bold" mb="2">Hello Atomattr</h3>\n    <p text="muted" mb="4">Edit this snippet and watch the preview update.</p>\n    <button type="button" bg="primary" text="white" px="4" py="2" rounded="md" font-size="sm" font-weight="600" hover-bg="blue-700">Get started</button>\n  </div>\n  <p text="muted" font-size="xs">Attributes style the elements. Ordinary CSS lives in the CSS tab.</p>\n</div>',
             css: '/* Atomattr styles elements through attributes;\n   ordinary CSS works alongside it. */\n.badge {\n  display: inline-block;\n  margin-bottom: 8px;\n  padding: 2px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n  background: rgba(91, 92, 246, 0.12);\n  color: #5b5cf6;\n}\n' },
           { id: 'flexbox', title: 'Flexbox', icon: 'ri-align-justify',
-            code: '<div p="2" display="flex" flex-col gap="4">\n  <nav display="flex" items="center" justify="between" gap="3" bg="surface" px="4" py="3" rounded="lg" border="border">\n    <strong>Brand</strong>\n    <div display="flex" items="center" gap="4" text="muted" font-size="sm">\n      <span>Docs</span><span>Pricing</span><span>Blog</span>\n    </div>\n    <button type="button" bg="primary" text="white" px="3" py="1.5" rounded="md" font-size="sm" font-weight="600">Sign in</button>\n  </nav>\n  <div display="flex" items="center" justify="center" gap="3" bg="surface" p="6" rounded="lg" border="border">\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">items="center"</span>\n    <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">justify="center"</span>\n  </div>\n</div>', css: '' },
+            code: '<div p="2" display="flex" flex-col gap="4">\n  <nav display="flex" items="center" justify="between" gap="3" bg="surface" px="4" py="3" rounded="md" border="0">\n    <strong>Brand</strong>\n    <div display="flex" items="center" gap="4" text="muted" font-size="sm">\n      <span>Docs</span><span>Pricing</span><span>Blog</span>\n    </div>\n    <button type="button" bg="primary" text="white" px="3" py="1.5" rounded="md" font-size="sm" font-weight="600">Sign in</button>\n  </nav>\n  <div display="flex" items="center" justify="center" gap="3" bg="surface" p="6" rounded="md" border="0">\n    <span bg="success/10" text="success" px="3" py="1" rounded="md" font-size="xs" font-weight="600">items="center"</span>\n    <span bg="success/10" text="success" px="3" py="1" rounded="md" font-size="xs" font-weight="600">justify="center"</span>\n  </div>\n</div>', css: '' },
           { id: 'grid', title: 'Grid', icon: 'ri-grid-line',
-            code: '<div p="2">\n  <div display="grid" grid-cols="2" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">One</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Two</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Three</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Four</div>\n  </div>\n</div>', css: '' },
+            code: '<div p="2">\n  <div display="grid" grid-cols="2" gap="4">\n    <div bg="surface" p="4" rounded="md" border="0">One</div>\n    <div bg="surface" p="4" rounded="md" border="0">Two</div>\n    <div bg="surface" p="4" rounded="md" border="0">Three</div>\n    <div bg="surface" p="4" rounded="md" border="0">Four</div>\n  </div>\n</div>', css: '' },
           { id: 'responsive', title: 'Responsive grid', icon: 'ri-device-line',
-            code: '<div p="2" display="flex" flex-col gap="3">\n  <p text="muted" font-size="sm">Pick a device above: 1 column on mobile, 3 from md, 4 from lg.</p>\n  <div display="grid" grid-cols="1" md-grid-cols="3" lg-grid-cols="4" gap="4">\n    <div bg="surface" p="4" rounded="lg" border="border">Card 1</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 2</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 3</div>\n    <div bg="surface" p="4" rounded="lg" border="border">Card 4</div>\n  </div>\n</div>', css: '' },
+            code: '<div p="2" display="flex" flex-col gap="3">\n  <p text="muted" font-size="sm">Pick a device above: 1 column on mobile, 3 from md, 4 from lg.</p>\n  <div display="grid" grid-cols="1" md-grid-cols="3" lg-grid-cols="4" gap="4">\n    <div bg="surface" p="4" rounded="md" border="0">Card 1</div>\n    <div bg="surface" p="4" rounded="md" border="0">Card 2</div>\n    <div bg="surface" p="4" rounded="md" border="0">Card 3</div>\n    <div bg="surface" p="4" rounded="md" border="0">Card 4</div>\n  </div>\n</div>', css: '' },
           { id: 'cards', title: 'Cards', icon: 'ri-layout-grid-line',
-            code: '<div p="2" display="grid" grid-cols="1" md-grid-cols="3" gap="4">\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-rocket-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Fast</h3>\n    <p text="muted" font-size="sm">Style with attributes, no class names.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-palette-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Expressive</h3>\n    <p text="muted" font-size="sm">States and breakpoints are prefixes.</p>\n  </div>\n  <div bg="surface" p="5" rounded="xl" border="border">\n    <i class="ri-shield-check-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Predictable</h3>\n    <p text="muted" font-size="sm">Plain CSS still works alongside.</p>\n  </div>\n</div>', css: '' },
+            code: '<div p="2" display="grid" grid-cols="1" md-grid-cols="3" gap="4">\n  <div bg="surface" p="5" rounded="md" border="0">\n    <i class="ri-rocket-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Fast</h3>\n    <p text="muted" font-size="sm">Style with attributes, no class names.</p>\n  </div>\n  <div bg="surface" p="5" rounded="md" border="0">\n    <i class="ri-palette-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Expressive</h3>\n    <p text="muted" font-size="sm">States and breakpoints are prefixes.</p>\n  </div>\n  <div bg="surface" p="5" rounded="md" border="0">\n    <i class="ri-shield-check-line" font-size="20" text="primary"></i>\n    <h3 font-weight="bold" mt="2" mb="1">Predictable</h3>\n    <p text="muted" font-size="sm">Plain CSS still works alongside.</p>\n  </div>\n</div>', css: '' },
           { id: 'forms', title: 'Form + dropdown', icon: 'ri-edit-box-line',
-            code: '<form p="4" display="flex" flex-col gap="4" onsubmit="return false">\n  <label display="flex" flex-col gap="1.5" font-size="sm" font-weight="600">\n    Email\n    <input type="email" placeholder="you@example.com" w="full" px="3" py="2" rounded="lg" border="border" bg="transparent" text="text" font-size="sm">\n  </label>\n\n  <details position="relative">\n    <summary display="flex" items="center" justify="between" px="3" py="2" rounded="lg" border="border" font-size="sm" cursor="pointer">\n      Choose a plan\n      <i class="ri-arrow-down-s-line"></i>\n    </summary>\n    <div bg="surface" border="border" rounded="lg" p="1" w="full" z="10" style="position:absolute;top:calc(100% + 4px);left:0;">\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Starter</div>\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Team</div>\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Enterprise</div>\n    </div>\n  </details>\n\n  <button type="submit" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600">Subscribe</button>\n</form>',
+            code: '<form p="4" display="flex" flex-col gap="4" onsubmit="return false">\n  <label display="flex" flex-col gap="1.5" font-size="sm" font-weight="600">\n    Email\n    <input type="email" placeholder="you@example.com" w="full" px="3" py="2" rounded="md" border="0" bg="gray-100" text="text" font-size="sm" dark-bg="gray-900">\n  </label>\n\n  <details position="relative">\n    <summary display="flex" items="center" justify="between" px="3" py="2" rounded="md" border="0" font-size="sm" cursor="pointer" bg="gray-100" dark-bg="gray-900">\n      Choose a plan\n      <i class="ri-arrow-down-s-line"></i>\n    </summary>\n    <div bg="surface" border="0" rounded="md" p="1" w="full" z="10" style="position:absolute;top:calc(100% + 4px);left:0;">\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Starter</div>\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Team</div>\n      <div px="3" py="2" rounded="md" font-size="sm" cursor="pointer" hover-bg="primary/10">Enterprise</div>\n    </div>\n  </details>\n\n  <button type="submit" bg="primary" text="white" px="4" py="2" rounded="md" font-size="sm" font-weight="600">Subscribe</button>\n</form>',
             css: 'summary { list-style: none; }\nsummary::-webkit-details-marker { display: none; }\n' },
-          { id: 'dark', title: 'Dark mode', icon: 'ri-moon-line',
-            code: '<div bg="#fff" dark-bg="grey-950" text="text" p="6" rounded="xl" border-b="1px" border-color="gray-100" dark-border-color="gray-900">\n  <h3 font-weight="bold" mb="2">Dark mode</h3>\n  <p text="muted" mb="4">dark-bg switches the background when the preview is dark. Try the Preview theme menu.</p>\n  <span bg="success/10" text="success" px="3" py="1" rounded="full" font-size="xs" font-weight="600">dark-bg="grey-950"</span>\n</div>', css: '' }
+          { id: 'dark', title: 'Dark mode', icon: 'ri-contrast-fill',
+            code: '<div bg="#fff" dark-bg="grey-950" text="text" p="6" rounded="md" border-b="1px" border-color="gray-100" dark-border-color="gray-900">\n  <h3 font-weight="bold" mb="2">Dark mode</h3>\n  <p text="muted" mb="4">dark-bg switches the background when the preview is dark. Try the Preview theme menu.</p>\n  <span bg="success/10" text="success" px="3" py="1" rounded="md" font-size="xs" font-weight="600">dark-bg="grey-950"</span>\n</div>', css: '' }
         ],
         react: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
-          code: 'const { useState } = React;\n\nfunction App() {\n  const [n, setN] = useState(0);\n  return (\n    <div p="6" bg="surface" rounded="xl" border="border">\n      <h3 font-weight="bold" mb="2">Hello React</h3>\n      <p text="muted" mb="4">Clicked {n} times</p>\n      <button type="button" onClick={() => setN(n + 1)} bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">\n        Click me\n      </button>\n    </div>\n  );\n}\n' }],
+          code: 'const { useState } = React;\n\nfunction App() {\n  const [n, setN] = useState(0);\n  return (\n    <div p="6" bg="surface" rounded="md" border="0">\n      <h3 font-weight="bold" mb="2">Hello React</h3>\n      <p text="muted" mb="4">Clicked {n} times</p>\n      <button type="button" onClick={() => setN(n + 1)} bg="primary" text="white" px="4" py="2" rounded="md" font-size="sm" font-weight="600" hover-bg="blue-700">\n        Click me\n      </button>\n    </div>\n  );\n}\n' }],
         vue: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
-          code: '<template>\n  <div p="6" bg="surface" rounded="xl" border="border">\n    <h3 font-weight="bold" mb="2">Hello Vue</h3>\n    <p text="muted" mb="4">Count: {{ count }}</p>\n    <button type="button" @click="count++" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Add one</button>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return { count: 0 };\n  }\n};\n<\/script>\n' }],
+          code: '<template>\n  <div p="6" bg="surface" rounded="md" border="0">\n    <h3 font-weight="bold" mb="2">Hello Vue</h3>\n    <p text="muted" mb="4">Count: {{ count }}</p>\n    <button type="button" @click="count++" bg="primary" text="white" px="4" py="2" rounded="md" font-size="sm" font-weight="600" hover-bg="blue-700">Add one</button>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return { count: 0 };\n  }\n};\n<\/script>\n' }],
         svelte: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
-          code: '<script>\n  let count = 0;\n<\/script>\n\n<div p="6" bg="surface" rounded="xl" border="border">\n  <h3 font-weight="bold" mb="2">Hello Svelte</h3>\n  <p text="muted" mb="4">Count: {count}</p>\n  <button type="button" on:click={() => count++} bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Add one</button>\n</div>\n' }],
+          code: '<script>\n  let count = 0;\n<\/script>\n\n<div p="6" bg="surface" rounded="md" border="0">\n  <h3 font-weight="bold" mb="2">Hello Svelte</h3>\n  <p text="muted" mb="4">Count: {count}</p>\n  <button type="button" on:click={() => count++} bg="primary" text="white" px="4" py="2" rounded="md" font-size="sm" font-weight="600" hover-bg="blue-700">Add one</button>\n</div>\n' }],
         alpine: [{ id: 'starter', title: 'Starter', icon: 'ri-flashlight-line', css: '',
-          code: '<div x-data="{ open: false }" p="6" bg="surface" rounded="xl" border="border">\n  <h3 font-weight="bold" mb="2">Hello Alpine</h3>\n  <button type="button" @click="open = !open" bg="primary" text="white" px="4" py="2" rounded="lg" font-size="sm" font-weight="600" hover-bg="blue-700">Toggle</button>\n  <p x-show="open" text="muted" mt="4">Now you see me.</p>\n</div>\n' }]
+          code: '<div x-data="{ open: false }" p="6" bg="surface" rounded="md" border="0">\n  <h3 font-weight="bold" mb="2">Hello Alpine</h3>\n  <button type="button" @click="open = !open" bg="primary" text="white" px="4" py="2" rounded="md" font-size="sm" font-weight="600" hover-bg="blue-700">Toggle</button>\n  <p x-show="open" text="muted" mt="4">Now you see me.</p>\n</div>\n' }]
       };
       var EXMAP = {};
       Object.keys(EX).forEach(function (l) { EXMAP[l] = {}; EX[l].forEach(function (e) { EXMAP[l][e.id] = e; }); });
@@ -373,8 +373,8 @@
       var ZOOM_ITEMS = [{ value: 'fit', label: 'Fit to screen', icon: 'ri-fullscreen-line' }].concat(['50', '75', '100', '125', '150'].map(function (z) { return { value: z, label: z + '%', icon: 'ri-zoom-in-line' }; }));
       var PREVIEW_THEME_ITEMS = [
         { value: 'system', label: 'System', icon: 'ri-contrast-2-line' },
-        { value: 'light', label: 'Light', icon: 'ri-sun-line' },
-        { value: 'dark', label: 'Dark', icon: 'ri-moon-line' }
+        { value: 'light', label: 'Light', icon: 'ri-contrast-line' },
+        { value: 'dark', label: 'Dark', icon: 'ri-contrast-fill' }
       ];
 
       /* ------------------------------------------------------------------ *
@@ -1496,5 +1496,6 @@
       }
     })();
     </script>
-  </body>
+    <script src="./assets/theme-icon.js" defer></script>
+</body>
 </html>

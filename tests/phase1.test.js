@@ -8,9 +8,9 @@ class FakeStyleSheet {
     this.cssRules = [];
   }
 
-  insertRule(rule) {
-    this.cssRules.push(rule);
-    return this.cssRules.length - 1;
+  insertRule(rule, index = this.cssRules.length) {
+    this.cssRules.splice(index, 0, rule);
+    return index;
   }
 }
 

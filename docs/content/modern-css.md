@@ -1,32 +1,34 @@
-# Modern CSS capabilities
-> Use registered AtomAttr attributes to emit modern CSS declarations supported by the browser.
+# Modern CSS
+> Atomattr 1.0.1 covers the everyday CSS properties. For newer platform features, write that part in CSS and keep using attributes for everything else.
 
-## Container queries
+## What the attribute engine covers
 
-Set `container="card / inline-size"` on an ancestor, then use a `cq-*` modifier on a descendant. The current modifiers cover fixed minimum widths and target the nearest eligible size container; they do not expose arbitrary query syntax or named-container selection. See [Container queries](container-queries.html) for details.
+The engine maps about 320 attribute names to CSS properties: layout, spacing, sizing, colour, borders, typography, filters, transforms, transitions, animations and scroll snapping. Browse the full list in the [cheatsheet](cheatsheet.html). Values can be tokens, or raw CSS such as `calc()`, `clamp()`, `var()`, gradients and `url()`, which pass straight through.
 
 ```html
-<article container="card / inline-size" p="4" border="border">
-  <div display="grid" grid-cols="1" cq-md-grid-cols="2" gap="4">
-    <img object="cover" aspect="video" src="cover.jpg" alt="">
-    <div><h2 text-wrap="balance">A card that responds to its own width</h2></div>
-  </div>
+<section p="clamp(1rem, 4vw, 3rem)" min-h="calc(100dvh - 4rem)" bg="linear-gradient(135deg, #0f172a, #2563eb)" text="white">
+  Raw CSS values work on any registered attribute.
+</section>
+```
+
+## Features that need plain CSS
+
+The published 1.0.1 package does not register attributes for container queries, anchor positioning, scroll-driven animations, View Transitions, `text-wrap`, line clamping, logical properties such as `padding-inline`, or the `cq-` prefix. Write those in a stylesheet or an inline `style` attribute, and style the rest of the element with attributes.
+
+```html
+<article style="container-type: inline-size" p="4" border="1" border-color="border" rounded="xl">
+  <h2 style="text-wrap: balance" font-size="xl" font-weight="bold">Mixed approach</h2>
+  <p text="muted">Platform feature in CSS, everything else in attributes.</p>
 </article>
 ```
 
-## Modern property coverage
-
-The dictionary includes properties for logical sizing and insets, text wrapping and clamping, containment, field sizing, scroll and view timelines, anchor positioning, masks and clipping, and View Transitions. AtomAttr emits declarations; it does not polyfill features or make unsupported browser CSS work.
+The focused guides show the CSS for each feature: [Container queries](container-queries.html), [Anchor positioning](anchor-positioning.html), [Scroll-driven animations](scroll-driven-animations.html) and [View Transitions](view-transitions.html).
 
 ## Browser support
 
-Feature support varies by browser and version. Check your support targets for anchor positioning, scroll-driven animation timelines, `field-sizing`, intrinsic-size interpolation, and other newer CSS features. Provide a fallback for any feature required to use the interface.
+Check your support targets before using newer CSS. Anchor positioning, scroll-driven timelines and View Transitions are still rolling out across browsers, so give interactive UI a fallback that works without them. Atomattr only generates declarations; it does not polyfill anything.
 
-## Focused guides
+## Related guides
 
-- [Container queries](container-queries.html): set up a query container and use supported size modifiers.
-- [Anchor positioning](anchor-positioning.html): connect positioned elements to CSS anchors.
-- [Scroll-driven animations](scroll-driven-animations.html): use CSS scroll and view timelines.
-- [View Transitions](view-transitions.html): name elements participating in transition snapshots.
-- [Selectors and states](selectors.html): review the selector variants supported by the parser.
-- [Runtime and performance](performance.html): understand rule generation and mutation handling.
+- [Selectors and states](selectors.html): the supported state and structural prefixes.
+- [Runtime and performance](performance.html): how rules are generated and cached.

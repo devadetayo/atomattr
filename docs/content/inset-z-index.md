@@ -1,13 +1,13 @@
 # Inset and z-index
 > Offset positioned elements and control their stacking order.
 
-## Physical and logical insets
+## Insets
 
-Use `top`, `right`, `bottom`, and `left` for physical offsets. Use `inset`, `inset-x`, and `inset-y` for shorthand offsets; logical forms such as `inset-inline-start` adapt to writing direction. Numeric offsets use the spacing scale, while values such as `0`, `50%`, `1rem`, or `calc(...)` follow CSS length rules.
+Use `top`, `right`, `bottom`, and `left` for offsets. Use `inset`, `inset-x`, and `inset-y` for shorthand offsets. Numeric offsets use the spacing scale, while values such as `0`, `50%`, `1rem`, or `calc(...)` follow CSS length rules.
 
 ```html
 <div position="relative" h="40">
-  <button position="absolute" inset-block-start="0" inset-inline-end="0">Close</button>
+  <button position="absolute" top="0" right="0">Close</button>
 </div>
 ```
 
@@ -21,4 +21,4 @@ An absolutely positioned element can use opposing insets to stretch across an ax
 
 ## Attributes
 
-The table lists physical and logical inset attributes and the z-index attribute. Pair offsets with an appropriate `position` value.
+The table lists inset attributes and the z-index attribute. Pair offsets with an appropriate `position` value.

@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="robots" content="index, follow" />
+  <title>Support AtomAttr</title>
+  <meta name="description" content="Choose a sponsor tier for AtomAttr, then pick where to give: GitHub Sponsors, Buy Me a Coffee, Ko-fi or Open Collective." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/support.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="Support AtomAttr" />
+  <meta property="og:description" content="Choose a sponsor tier for AtomAttr, then pick where to give." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/support.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Support AtomAttr" />
+  <meta name="twitter:description" content="Choose a sponsor tier for AtomAttr, then pick where to give." />
+  <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <style>
+    /* Only what attributes cannot express: fonts, gradient text, and input focus ring. */
+    html { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    code, kbd, .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .grad-text { background: linear-gradient(180deg, #fff 0%, #fff 35%, rgba(255,255,255,.55) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    html:not(.dark):not([data-theme="dark"]) .grad-text { background: linear-gradient(180deg, #0b0c0f 0%, #0b0c0f 40%, rgba(11,12,15,.6) 100%); -webkit-background-clip: text; background-clip: text; }
+    input, textarea { font-family: inherit; font-size: 15px; outline: none; box-sizing: border-box; width: 100%; }
+    input:focus, textarea:focus { border-color: #5b5cf6 !important; box-shadow: 0 0 0 3px rgba(91,92,246,.25); }
+    textarea { resize: vertical; }
+    button { font-family: inherit; }
+    .accent-text { background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 45%, #d946ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .keycap { box-shadow: 0 1px 0 rgba(255,255,255,.12) inset, 0 2px 0 rgba(0,0,0,.5); }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body bg="#fff" dark-bg="#07080a" text="text" min-h="screen" p="0" m="0">
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="#07080a" border-b="1px" border-color="gray-100" dark-border-color="#ffffff/10" backdrop-blur="md"></header>
+
+  <main>
+
+    <!-- ============================== HERO ============================== -->
+    <section position="relative" overflow="hidden" bg-gradient="radial-gradient(60vw 28rem at 50% -10%, color-mix(in oklch, var(--blue-500) 24%, transparent), transparent 70%)">
+      <div position="absolute" top="0" left="0" w="full" h="full" opacity="40" aria-hidden="true" bg-gradient="repeating-linear-gradient(115deg, transparent 0 46px, color-mix(in oklch, var(--blue-500) 14%, transparent) 46px 48px)" style="mask-image:linear-gradient(180deg,#000 0%,transparent 62%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 62%);pointer-events:none;"></div>
+
+      <div position="relative" max-w="7xl" mx="auto" px="4" md-px="8" pt="14" lg-pt="20" pb="8">
+        <p class="mono" display="inline-flex" items="center" gap="2" m="0" mb="7" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> SUPPORT · PICK A TIER, THEN A PROVIDER</p>
+
+        <h1 font-size="5xl" md-font-size="7xl" lg-font-size="8xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="6" w="full" lg-max-w="60vw"><span class="grad-text" display="block">Pick a tier.</span><span class="accent-text" display="block">Then pick where.</span></h1>
+
+        <p font-size="lg" md-font-size="xl" text="muted" line-height="relaxed" m="0" mb="8" w="full" md-max-w="36rem">Your support pays for docs, the playground and framework compatibility. Choose how much, then choose where you want to give.</p>
+
+        <div display="flex" flex-col sm-flex-row items="start" sm-items="center" gap="3" sm-gap="5">
+          <a href="#support-options" display="inline-flex" items="center" justify="center" gap="2" bg="primary" hover-bg="primary/80" text="white" px="7" py="3.5" rounded="full" font-weight="600" text-decoration="none" shadow="lg" w="full" sm-w="fit">Choose a tier <i class="ri-arrow-down-line"></i></a>
+          <a href="sponsors.html" display="inline-flex" items="center" gap="2" text="text" hover-text="primary" text-decoration="none" font-weight="600"><i class="ri-award-line"></i> View the sponsor wall</a>
+        </div>
+        <p class="mono" m="0" mt="5" font-size="xs" tracking="wide" text="muted">MONTHLY AMOUNTS · FOUR PROVIDERS · LOGOS ADDED AFTER CONFIRMATION</p>
+      </div>
+    </section>
+
+    <!-- ============================== STEP 1: TIERS ============================== -->
+    <section id="support-options" max-w="7xl" mx="auto" px="4" md-px="8" py="12" lg-py="16">
+
+      <div display="flex" flex-col md-flex-row items="start" md-items="end" justify="between" gap="4" mb="10">
+        <div>
+          <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> STEP 1</p>
+          <h2 class="grad-text" font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0">Choose a tier.</h2>
+        </div>
+        <p m="0" text="muted" line-height="relaxed" w="full" md-max-w="24rem">Monthly amounts. Press <kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" rounded="md" px="1.5" py="0.5" font-size="xs" text="muted">1</kbd> <kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" rounded="md" px="1.5" py="0.5" font-size="xs" text="muted">2</kbd> or <kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" rounded="md" px="1.5" py="0.5" font-size="xs" text="muted">3</kbd> to pick one.</p>
+      </div>
+
+      <div role="radiogroup" aria-label="Sponsor tier" display="grid" grid-cols="1" md-grid-cols="3" gap="4">
+
+        <!-- Supporter -->
+        <button type="button" role="radio" aria-checked="false" data-tier="supporter" position="relative" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" hover-border-color="primary" rounded="3xl" p="7" display="flex" flex-col gap="5" overflow="hidden" cursor="pointer" text-align="left" text="text">
+          <span data-ring hidden position="absolute" top="0" left="0" w="full" h="full" rounded="3xl" border="2px solid primary" aria-hidden="true"></span>
+          <span display="flex" items="center" justify="between" w="full">
+            <span display="flex" items="center" gap="3">
+              <span w="10" h="10" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-heart-3-line"></i></span>
+              <span font-size="lg" font-weight="700">Supporter</span>
+            </span>
+            <span display="flex" items="center" gap="2">
+              <span data-check hidden><span w="6" h="6" rounded="full" bg="primary" text="white" display="flex" items="center" justify="center" font-size="sm"><i class="ri-check-line"></i></span></span>
+              <kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="md" px="2" py="0.5" font-size="xs" font-weight="600" text="muted">1</kbd>
+            </span>
+          </span>
+          <span display="flex" items="end" gap="2">
+            <span font-size="5xl" font-weight="700" tracking="tight" line-height="tight">$5</span>
+            <span text="muted" pb="1">/ month</span>
+          </span>
+          <span text="muted" line-height="relaxed">Keep the lights on and get your logo on the wall.</span>
+          <span display="flex" flex-col gap="2" font-size="sm">
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Small logo on the sponsor wall</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Link to your site</span>
+          </span>
+        </button>
+
+        <!-- Builder (recommended) -->
+        <button type="button" role="radio" aria-checked="false" data-tier="builder" position="relative" bg="gray-50" dark-bg="#0e0f11" border="1px solid primary/50" rounded="3xl" p="7" display="flex" flex-col gap="5" overflow="hidden" cursor="pointer" text-align="left" text="text">
+          <span position="absolute" top="-10" right="-10" w="40" h="40" rounded="full" bg="primary/30" aria-hidden="true" style="filter:blur(60px);pointer-events:none;"></span>
+          <span data-ring hidden position="absolute" top="0" left="0" w="full" h="full" rounded="3xl" border="2px solid primary" aria-hidden="true"></span>
+          <span position="relative" display="flex" items="center" justify="between" w="full">
+            <span display="flex" items="center" gap="3">
+              <span w="10" h="10" rounded="xl" bg="primary" text="white" display="flex" items="center" justify="center" font-size="xl"><i class="ri-hammer-line"></i></span>
+              <span font-size="lg" font-weight="700">Builder</span>
+            </span>
+            <span display="flex" items="center" gap="2">
+              <span data-check hidden><span w="6" h="6" rounded="full" bg="primary" text="white" display="flex" items="center" justify="center" font-size="sm"><i class="ri-check-line"></i></span></span>
+              <kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="md" px="2" py="0.5" font-size="xs" font-weight="600" text="muted">2</kbd>
+            </span>
+          </span>
+          <span position="relative" display="flex" items="center" gap="3">
+            <span display="flex" items="end" gap="2">
+              <span font-size="5xl" font-weight="700" tracking="tight" line-height="tight">$25</span>
+              <span text="muted" pb="1">/ month</span>
+            </span>
+            <span bg="primary/10" text="primary" rounded="full" px="3" py="1" font-size="xs" font-weight="600">Recommended</span>
+          </span>
+          <span position="relative" text="muted" line-height="relaxed">For teams and indie products that ship with Atomattr.</span>
+          <span position="relative" display="flex" flex-col gap="2" font-size="sm">
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Medium logo on the sponsor wall</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Link to your site</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Your feature requests are read first</span>
+          </span>
+        </button>
+
+        <!-- Partner -->
+        <button type="button" role="radio" aria-checked="false" data-tier="partner" position="relative" bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" hover-border-color="primary" rounded="3xl" p="7" display="flex" flex-col gap="5" overflow="hidden" cursor="pointer" text-align="left" text="text">
+          <span data-ring hidden position="absolute" top="0" left="0" w="full" h="full" rounded="3xl" border="2px solid primary" aria-hidden="true"></span>
+          <span display="flex" items="center" justify="between" w="full">
+            <span display="flex" items="center" gap="3">
+              <span w="10" h="10" rounded="xl" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-vip-crown-line"></i></span>
+              <span font-size="lg" font-weight="700">Partner</span>
+            </span>
+            <span display="flex" items="center" gap="2">
+              <span data-check hidden><span w="6" h="6" rounded="full" bg="primary" text="white" display="flex" items="center" justify="center" font-size="sm"><i class="ri-check-line"></i></span></span>
+              <kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="md" px="2" py="0.5" font-size="xs" font-weight="600" text="muted">3</kbd>
+            </span>
+          </span>
+          <span display="flex" items="end" gap="2">
+            <span font-size="5xl" font-weight="700" tracking="tight" line-height="tight">$100</span>
+            <span text="muted" pb="1">/ month</span>
+          </span>
+          <span text="muted" line-height="relaxed">The biggest logo, at the top of the wall.</span>
+          <span display="flex" flex-col gap="2" font-size="sm">
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Largest logo, top of the sponsor wall</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Link to your site</span>
+            <span display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> First in line for homepage placement</span>
+          </span>
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- ============================== STEP 2: PROVIDERS ============================== -->
+    <section id="providers" max-w="7xl" mx="auto" px="4" md-px="8" pb="12" lg-pb="16">
+
+      <div mb="8">
+        <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> STEP 2</p>
+        <h2 class="grad-text" font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0">Choose where to give.</h2>
+      </div>
+
+      <!-- Command palette -->
+      <div position="relative" w="full" lg-max-w="48rem">
+        <div position="absolute" top="-10" left="10%" w="80%" h="40" rounded="full" bg="primary/30" aria-hidden="true" style="filter:blur(90px);pointer-events:none;"></div>
+
+        <div position="relative" bg="#fff" dark-bg="#101113" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" overflow="hidden" shadow="2xl">
+
+          <div display="flex" items="center" gap="3" px="5" py="4" border-b="1px solid gray-200" dark-border-color="#ffffff/10" text="muted">
+            <i class="ri-search-line" font-size="xl"></i>
+            <span font-size="lg">Giving</span>
+            <span id="selected-tier" bg="primary/10" text="primary" rounded="md" px="2" py="0.5" font-size="sm" font-weight="600">Builder · $25 / month</span>
+            <span flex="1" text-align="right" font-size="sm">via</span>
+          </div>
+
+          <div p="2" display="flex" flex-col gap="0.5">
+            <p m="0" px="3" pt="2" pb="1" font-size="xs" font-weight="600" text="muted">Providers</p>
+          <a href="https://github.com/sponsors/devadetayo" target="_blank" rel="noreferrer" display="flex" items="center" gap="3" px="3" py="2.5" rounded="lg" text="text" text-decoration="none" bg="primary/10">
+            <span w="10" h="10" flex="none" rounded="lg" bg="primary" text="white" display="flex" items="center" justify="center" font-size="xl"><i class="ri-github-fill"></i></span>
+            <span flex="1"><b display="block" font-weight="600">GitHub Sponsors</b><span display="block" text="muted" font-size="sm">Monthly backing, handled by GitHub.</span></span>
+            <span text="muted" font-size="xs">Recommended</span>
+            <kbd class="keycap" bg="gray-100" dark-bg="#1b1c1f" rounded="md" px="1.5" py="0.5" font-size="xs" text="muted">↵</kbd>
+          </a>
+          <a href="https://buymeacoffee.com/devadetayo" target="_blank" rel="noreferrer" display="flex" items="center" gap="3" px="3" py="2.5" rounded="lg" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5">
+            <span w="10" h="10" flex="none" rounded="lg" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-cup-line"></i></span>
+            <span flex="1"><b display="block" font-weight="600">Buy Me a Coffee</b><span display="block" text="muted" font-size="sm">One-time or monthly membership.</span></span>
+            <span text="muted" font-size="xs">Provider</span>
+          </a>
+          <a href="https://ko-fi.com/devadetayo" target="_blank" rel="noreferrer" display="flex" items="center" gap="3" px="3" py="2.5" rounded="lg" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5">
+            <span w="10" h="10" flex="none" rounded="lg" bg="danger/10" text="danger" display="flex" items="center" justify="center" font-size="xl"><i class="ri-heart-3-line"></i></span>
+            <span flex="1"><b display="block" font-weight="600">Ko-fi</b><span display="block" text="muted" font-size="sm">Donations and monthly support.</span></span>
+            <span text="muted" font-size="xs">Provider</span>
+          </a>
+          <a href="https://opencollective.com/devadetayo" target="_blank" rel="noreferrer" display="flex" items="center" gap="3" px="3" py="2.5" rounded="lg" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5">
+            <span w="10" h="10" flex="none" rounded="lg" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-team-line"></i></span>
+            <span flex="1"><b display="block" font-weight="600">Open Collective</b><span display="block" text="muted" font-size="sm">Transparent funding with public ledgers.</span></span>
+            <span text="muted" font-size="xs">Provider</span>
+          </a>
+          </div>
+
+          <p m="0" px="5" py="3" border-t="1px solid gray-200" dark-border-color="#ffffff/10" text="muted" font-size="sm" line-height="relaxed">Pick the amount shown above on the provider's page, and add your X handle or logo link in the note so your tier can be confirmed by hand.</p>
+
+          <div display="flex" items="center" justify="between" gap="3" px="4" py="2.5" border-t="1px solid gray-200" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#0b0c0e" font-size="xs" text="muted">
+            <span display="flex" items="center" gap="2"><i class="ri-command-line"></i> Atomattr</span>
+            <span>Opens in a new tab</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== WHERE IT GOES ============================== -->
+    <section max-w="7xl" mx="auto" px="4" md-px="8" pb="16" lg-pb="24">
+      <div mb="10">
+        <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> WHERE IT GOES</p>
+        <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0" w="full" lg-max-w="40rem"><span class="grad-text">What your support pays for.</span> <span text="muted">Public, practical work.</span></h2>
+      </div>
+      <div display="grid" grid-cols="1" md-grid-cols="3" gap="4">
+        <article bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="7" display="flex" flex-col gap="4">
+          <span w="11" h="11" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-book-open-line"></i></span>
+          <h3 font-size="xl" font-weight="700" m="0">Docs and onboarding</h3>
+          <p m="0" text="muted" line-height="relaxed">Documentation, examples and guides that reduce friction for developers adopting the framework.</p>
+        </article>
+        <article bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="7" display="flex" flex-col gap="4">
+          <span w="11" h="11" rounded="xl" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-terminal-box-line"></i></span>
+          <h3 font-size="xl" font-weight="700" m="0">Playground and UI</h3>
+          <p m="0" text="muted" line-height="relaxed">Better tooling makes the framework easier to try, evaluate and compare across projects.</p>
+        </article>
+        <article bg="gray-50" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="3xl" p="7" display="flex" flex-col gap="4">
+          <span w="11" h="11" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-shield-check-line"></i></span>
+          <h3 font-size="xl" font-weight="700" m="0">Runtime and compatibility</h3>
+          <p m="0" text="muted" line-height="relaxed">Ongoing fixes keep the library working as the web and React Native ecosystems evolve.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- ============================== CONTACT ON X ============================== -->
+    <section id="contact" border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#090a0c">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24" display="grid" grid-cols="1" lg-grid-cols="2" gap="10" items="start">
+
+        <div>
+          <p class="mono" m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary"></span> PREFER TO TALK</p>
+          <h2 class="grad-text" font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5">Reach out on X.</h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="6">Questions about tiers, a custom partnership, or sending over your logo? Write it here and it opens on X, ready to post.</p>
+          <div display="flex" items="start" gap="3" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="4">
+            <i class="ri-information-line" text="primary" font-size="xl"></i>
+            <p m="0" text="muted" font-size="sm" line-height="relaxed">This opens a public post that mentions <span font-weight="600" text="text">@devadetayo</span>. For something private, send a DM from <a href="https://x.com/devadetayo" target="_blank" rel="noreferrer" text="primary">x.com/devadetayo</a> instead.</p>
+          </div>
+        </div>
+
+        <form id="x-form" display="flex" flex-col gap="4" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="6">
+          <div display="flex" flex-col gap="2">
+            <label for="f-name" font-size="sm" font-weight="600">Name or company</label>
+            <input id="f-name" name="name" type="text" autocomplete="organization" placeholder="Acme Inc." bg="gray-50" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="xl" px="4" py="3" text="text" />
+          </div>
+          <div display="flex" flex-col gap="2">
+            <label for="f-handle" font-size="sm" font-weight="600">Your X handle <span text="muted" font-weight="400">(optional)</span></label>
+            <input id="f-handle" name="handle" type="text" placeholder="@yourhandle" bg="gray-50" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="xl" px="4" py="3" text="text" />
+          </div>
+          <div display="flex" flex-col gap="2">
+            <label for="f-message" font-size="sm" font-weight="600">Message</label>
+            <textarea id="f-message" name="message" rows="4" required placeholder="I'd like to sponsor Atomattr…" bg="gray-50" dark-bg="#07080a" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="xl" px="4" py="3" text="text"></textarea>
+          </div>
+          <div display="flex" items="center" justify="between" gap="3" font-size="sm" text="muted">
+            <span id="f-tier">Tier: Builder · $25 / month</span>
+            <span class="mono"><span id="f-count">0 / 280</span> <span id="f-over" hidden text="danger" font-weight="600">· too long</span></span>
+          </div>
+          <div display="flex" flex-col sm-flex-row gap="3">
+            <button type="submit" display="flex" items="center" justify="center" gap="2" bg="primary" hover-bg="primary/80" text="white" px="6" py="3" rounded="xl" font-weight="600" cursor="pointer" border="0" w="full" sm-w="fit"><i class="ri-twitter-x-line"></i> Open on X</button>
+            <button type="button" id="f-copy" display="flex" items="center" justify="center" gap="2" bg="gray-100" dark-bg="#ffffff/5" border="1px solid gray-200" dark-border-color="#ffffff/10" hover-bg="gray-200" dark-hover-bg="#ffffff/10" text="text" px="6" py="3" rounded="xl" font-weight="600" cursor="pointer" w="full" sm-w="fit"><i class="ri-file-copy-line"></i> <span id="f-copy-label">Copy message</span></button>
+          </div>
+          <p id="f-status" m="0" font-size="sm" text="muted" role="status" aria-live="polite"></p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer border-t="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
+
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
+
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p mt="4" text="muted" line-height="relaxed" w="full" lg-max-w="20rem">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="lg" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="lg" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="lg" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Library</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+            <a href="sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+            <a href="templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="contribute.html" text="muted" text-decoration="none" hover-text="text">Contribute a design</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Atomattr. Copy it. Own it. Change it.</span>
+        <span display="flex" items="center" gap="2">Built with Atomattr <i class="ri-heart-3-line"></i></span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var TIERS = {
+        supporter: { name: 'Supporter', price: '$5' },
+        builder:   { name: 'Builder',   price: '$25' },
+        partner:   { name: 'Partner',   price: '$100' }
+      };
+      var current = 'builder';
+      var cards = Array.prototype.slice.call(document.querySelectorAll('[data-tier]'));
+      var pill = document.getElementById('selected-tier');
+      var formTier = document.getElementById('f-tier');
+      var form = document.getElementById('x-form');
+      var message = document.getElementById('f-message');
+      var count = document.getElementById('f-count');
+      var over = document.getElementById('f-over');
+      var status = document.getElementById('f-status');
+      var copyBtn = document.getElementById('f-copy');
+      var copyLabel = document.getElementById('f-copy-label');
+
+      function label() { var t = TIERS[current]; return t.name + ' \u00b7 ' + t.price + ' / month'; }
+
+      function select(id) {
+        if (!TIERS[id]) return;
+        current = id;
+        cards.forEach(function (card) {
+          var on = card.getAttribute('data-tier') === id;
+          card.setAttribute('aria-checked', on ? 'true' : 'false');
+          card.querySelector('[data-ring]').hidden = !on;
+          card.querySelector('[data-check]').hidden = !on;
+        });
+        pill.textContent = label();
+        formTier.textContent = 'Tier: ' + label();
+      }
+
+      function buildText() {
+        var name = form.elements.name.value.trim();
+        var handle = form.elements.handle.value.trim();
+        var body = message.value.trim();
+        var who = name ? name + (handle ? ' (' + handle + ')' : '') : handle;
+        var text = '@devadetayo ' + (who ? who + ': ' : '') + body + ' [' + TIERS[current].name + ' tier]';
+        return text.replace(/\s+/g, ' ').trim();
+      }
+
+      function updateCount() {
+        var n = buildText().length;
+        count.textContent = n + ' / 280';
+        over.hidden = n <= 280;
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () { select(card.getAttribute('data-tier')); });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        var tag = (e.target && e.target.tagName || '').toLowerCase();
+        if (tag === 'input' || tag === 'textarea' || e.metaKey || e.ctrlKey || e.altKey) return;
+        var map = { '1': 'supporter', '2': 'builder', '3': 'partner' };
+        if (map[e.key]) select(map[e.key]);
+      });
+
+      form.addEventListener('input', updateCount);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var text = buildText();
+        if (text.length > 280) {
+          status.textContent = 'That is over 280 characters. Shorten it a little so it fits in one post.';
+          return;
+        }
+        window.open('https://x.com/intent/post?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        status.textContent = 'Opened X in a new tab. Review the post there and send it.';
+      });
+
+      copyBtn.addEventListener('click', function () {
+        var text = buildText();
+        function done(ok) {
+          copyLabel.textContent = ok ? 'Copied' : 'Copy failed';
+          setTimeout(function () { copyLabel.textContent = 'Copy message'; }, 1800);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+        } else { done(false); }
+      });
+
+      select(current);
+      updateCount();
+    })();
+  </script>
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script type="module" src="./site/app.js"></script>
+</body>
+</html>

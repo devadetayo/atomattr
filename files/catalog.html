@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="robots" content="index, follow" />
+  <title>UI Library — AtomAttr</title>
+  <meta name="description" content="Browse live AtomAttr navbars, buttons, cards, forms and sections. Search, preview in a frame, and open any design in the Playground." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/catalog.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <style>
+    /* Only what attributes cannot express: fonts, gradient text, focus rings. */
+    html { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    code, kbd { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+    .grad-text { background: linear-gradient(180deg, #0b0c0f 0%, #0b0c0f 40%, rgba(11,12,15,.6) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    html.dark .grad-text { background: linear-gradient(180deg, #fff 0%, #fff 35%, rgba(255,255,255,.55) 100%); -webkit-background-clip: text; background-clip: text; }
+    input, select { font-family: inherit; font-size: 16px; box-sizing: border-box; }
+    .search-wrap input { outline: none; min-width: 0; }
+    .search-wrap:focus-within, select:focus { outline: none; border-color: #5b5cf6 !important; box-shadow: 0 0 0 3px rgba(91,92,246,.25); }
+    #category-filters { scrollbar-width: none; }
+    #category-filters::-webkit-scrollbar { display: none; }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body data-page-scope="all" bg="#fff" dark-bg="#07080a" text="text" min-h="screen" p="0" m="0">
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="#07080a" border-b="1px" border-color="gray-100" dark-border-color="#ffffff/10" backdrop-blur="md"></header>
+
+  <main>
+
+    <!-- HERO + SEARCH -->
+    <section position="relative" overflow="hidden" bg-gradient="radial-gradient(60vw 24rem at 50% -10%, color-mix(in oklch, var(--blue-500) 26%, transparent), transparent 70%)">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" pt="14" pb="10" display="flex" flex-col items="center" align="center">
+        <span display="inline-flex" items="center" gap="2" bg="primary/10" text="primary" border="1px solid primary/20" rounded="full" px="3" py="1" font-size="xs" font-weight="600" mb="6"><i class="ri-layout-grid-line"></i> AtomAttr UI</span>
+        <h1 class="grad-text" font-size="5xl" md-font-size="6xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="4" w="full" md-max-w="50rem">Pick a design. Open it. Make it yours.</h1>
+        <p font-size="lg" text="muted" line-height="relaxed" m="0" w="full" md-max-w="38rem">Navbars, buttons, cards and sections written in AtomAttr attributes. Every one opens in the Playground with its real source loaded.</p>
+
+        <div w="full" mt="8" lg-max-w="40rem">
+          <div class="search-wrap" display="flex" items="center" gap="3" px="5" py="4" bg="#fff" dark-bg="#101113" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" shadow="xl">
+            <i class="ri-search-line" text="muted" font-size="xl"></i>
+            <label for="search-input" sr-only>Search designs</label>
+            <input id="search-input" type="search" placeholder="Search navbars, buttons, glass, pricing…" autocomplete="off" bg="transparent" border="0" text="text" w="full" flex="1" />
+            <kbd bg="gray-100" dark-bg="#1b1c1f" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="md" px="2" py="0.5" font-size="xs" font-weight="600" text="muted">/</kbd>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER BAR (sticky under the site header) -->
+    <section position="sticky" z="50" bg="#fff" dark-bg="#07080a" border-y="1px" border-color="gray-100" dark-border-color="#ffffff/10" style="top:64px">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" gap="4">
+        <div id="category-filters" display="flex" gap="2" flex="1" overflow-x="auto" aria-label="Filter by category"></div>
+        <label for="sort-select" sr-only>Sort</label>
+        <select id="sort-select" flex="none" bg="#fff" dark-bg="#101113" border="1px solid gray-200" dark-border-color="#ffffff/10" text="text" rounded="xl" px="3" py="2" font-size="sm">
+          <option value="featured">Featured</option>
+          <option value="newest">Newest</option>
+          <option value="name-asc">Name: A to Z</option>
+          <option value="name-desc">Name: Z to A</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="catalog" bg="gray-50" dark-bg="#090a0c">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="8" lg-py="12">
+        <p id="catalog-status" role="status" aria-live="polite" text="muted" font-size="sm" m="0" mb="5">Loading designs…</p>
+        <div id="catalog-grid" display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="3" gap="8"></div>
+
+        <div id="empty-state" hidden role="status" bg="#fff" dark-bg="#0e0f11" border="1px solid gray-200" dark-border-color="#ffffff/10" rounded="2xl" p="8" mt="6" align="center">
+          <h3 m="0" mb="2" font-size="xl" font-weight="700">No designs match</h3>
+          <p m="0" text="muted">Try another word, or clear the category filter.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section border-t="1px" border-color="gray-100" dark-border-color="#ffffff/10" bg-gradient="radial-gradient(60vw 24rem at 50% 120%, color-mix(in oklch, var(--aa-color-primary) 28%, transparent), transparent 70%)">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" align="center">
+        <h2 class="grad-text" font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="4">Made something worth sharing?</h2>
+        <p font-size="lg" text="muted" m="0" mb="8">Community designs are reviewed before they are published, and each keeps its author and license.</p>
+        <div display="flex" flex-col sm-flex-row items="center" justify="center" gap="3">
+          <a href="./contribute.html" bg="primary" hover-bg="primary/80" text="white" px="8" py="3.5" rounded="xl" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" shadow="lg">Prepare a submission <i class="ri-arrow-right-line"></i></a>
+          <a href="./playground.html" text="text" bg="gray-100" dark-bg="#ffffff/5" border="1px solid gray-200" dark-border-color="#ffffff/10" px="8" py="3.5" rounded="xl" font-weight="600" text-decoration="none" hover-bg="gray-200" dark-hover-bg="#ffffff/10">Open the Playground</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer border-t="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" py="8" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+      <span>© 2026 Atomattr. Built with Atomattr <i class="ri-heart-3-line"></i></span>
+      <span display="flex" gap="5">
+        <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+        <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+        <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+        <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script type="module" src="./site/app.js"></script>
+  <script>
+    /* Press "/" to jump to search. */
+    document.addEventListener('keydown', function (e) {
+      var tag = (e.target && e.target.tagName || '').toLowerCase();
+      if (e.key !== '/' || tag === 'input' || tag === 'textarea' || tag === 'select' || e.metaKey || e.ctrlKey || e.altKey) return;
+      var box = document.getElementById('search-input');
+      if (box) { e.preventDefault(); box.focus(); }
+    });
+  </script>
+  <script type="module">
+    import('./catalog.js').catch((err) => {
+      console.error(err);
+      const status = document.getElementById('catalog-status');
+      const empty = document.getElementById('empty-state');
+      if (status) status.textContent = 'The gallery could not load. Refresh the page or try again later.';
+      if (empty) { empty.hidden = false; empty.querySelector('h3').textContent = 'Gallery unavailable'; empty.querySelector('p').textContent = 'The design data could not be loaded.'; }
+    });
+  </script>
+</body>
+</html>

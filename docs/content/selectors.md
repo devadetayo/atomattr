@@ -1,22 +1,32 @@
 # Selectors and states
-> AtomAttr variants generate selectors from a constrained, readable prefix grammar.
+> The prefixes Atomattr 1.0.1 understands: breakpoints, dark mode, group hover, element states and the before and after pseudo-elements.
 
-## Supported pseudo-class prefixes
+## Supported prefixes
 
-Supported state prefixes include `hover`, `focus`, `focus-visible`, `focus-within`, `active`, `visited`, `disabled`, `checked`, `indeterminate`, `required`, `optional`, `valid`, `invalid`, `read-only`, `read-write`, `placeholder-shown`, `open`, `selected`, `empty`, `only`, `first`, `last`, `odd`, `even`, `first-of-type`, and `last-of-type`. Prefixes compose with viewport, dark, and container-size variants. `selected` currently aliases `:checked`; it does not target selected `<option>` elements.
+Put a prefix before any registered attribute. Prefixes can be combined, such as `md-hover-bg` or `dark-hover-text`.
+
+<!-- atomattr:states -->
+
+Other prefixes: `sm-`, `md-`, `lg-`, `xl-` and `2xl-` for viewport width, `dark-` for the dark theme, `group-hover-` for a parent marked with the `group` attribute, and `before-` and `after-` for pseudo-elements.
 
 ```html
-<button hover-bg="primary/90" focus-visible-outline="2px" focus-visible-outline-color="primary" active-scale="0.98" disabled-opacity="50">Save</button>
-<li odd-bg="gray-50" even-bg="white">Activity item</li>
-<input required invalid-border-color="red-600" placeholder-shown-text="gray-500">
+<ul>
+  <li odd-bg="gray-50" even-bg="white" first-rounded-t="lg" last-rounded-b="lg" p="3">Row item</li>
+  <li odd-bg="gray-50" even-bg="white" first-rounded-t="lg" last-rounded-b="lg" p="3">Row item</li>
+</ul>
 ```
 
-## Composition rules
+## Not supported
 
-Prefixes are separated by hyphens and resolved against registered names, so longer prefixes such as `focus-visible` are recognized as one modifier. Examples include `md-hover-bg`, `dark-focus-visible-outline`, and `md-cq-lg-hover-bg`.
+There is no prefix for `valid`, `placeholder-shown`, `read-only`, `empty`, `only`, `first-of-type`, `last-of-type`, `optional`, `indeterminate` or `open`, and no `aria-` or `data-` variants. Write those few rules in CSS with a normal selector, or toggle an attribute from your own code and style the result.
 
-The engine builds an attribute selector for the full prefixed attribute name, then appends supported state pseudo-classes. Use the complete modifier-prefixed name in markup; the state prefix is not removed from the HTML attribute.
+## Group hover
 
-## Selector features not exposed yet
+Mark the parent with `group`, then style a child with `group-hover-`.
 
-Arbitrary `:has()`, `:is()`, `:where()`, `:not()`, descendant or sibling combinators, and custom selector strings are not supported by the attribute parser. Use regular CSS for these selectors. This avoids claiming a selector syntax that the engine cannot safely parse or generate.
+```html
+<a href="/docs" group display="flex" items="center" gap="2" p="3" rounded="lg" hover-bg="gray-100">
+  Read the docs
+  <span group-hover-translate-x="1" transition="all" duration="150ms">→</span>
+</a>
+```

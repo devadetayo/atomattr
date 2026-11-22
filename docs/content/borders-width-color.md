@@ -1,5 +1,5 @@
 # Border width, style, and color
-> Draw borders on all sides, selected sides, or logical edges.
+> Draw borders on all sides or on selected sides, and set their colour and style.
 
 ## Border shorthand
 
@@ -11,9 +11,9 @@ Use `border` with a width, style, and optional color, for example `border="1px s
 </article>
 ```
 
-## Sides and logical edges
+## Sides
 
-Use `border-t`, `border-r`, `border-b`, and `border-l` for physical sides; `border-x` and `border-y` set paired sides. Logical attributes such as `border-inline-start` adapt to writing direction. Side-specific color attributes let a border edge differ from the rest.
+Use `border-t`, `border-r`, `border-b`, and `border-l` for physical sides; `border-x` and `border-y` set paired sides. Side-specific colour attributes (`border-t-color`, `border-b-color`, `border-l-color`, `border-r-color`) let one edge differ from the rest.
 
 ## CSS values
 

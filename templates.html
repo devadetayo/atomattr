@@ -1,70 +1,185 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Browse AtomAttr UI templates for SaaS, portfolios, agencies, and developer products." />
-    <title>Templates — AtomAttr UI</title>
-    <link rel="stylesheet" href="./dist/defaults.css" />
-    <link rel="stylesheet" href="./assets/showcase.css" />
-    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
-  </head>
-  <body data-page-scope="Templates" bg="#f8f7f5" dark-bg="gray-950" text="text" min-h="screen" p="0" m="0">
-    <header position="sticky" top="0" z="50" bg="#f8f7f5" dark-bg="gray-950" border-b="1" border-b-color="gray-200" dark-border-color="gray-900" backdrop-blur="md">
-      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" justify="between" gap="4">
-        <a href="./index.html" display="inline-flex" items="center" gap="3" text-decoration="none" color="inherit">
-          <span w="10" h="10" rounded="xl" bg="primary" display="flex" items="center" justify="center" text="white" font-size="lg" font-weight="700">A</span>
-          <div>
-            <div font-size="sm" font-weight="700" letter-spacing="wide">ATOMATTR</div>
-            <div font-size="xs" text="muted">UI library</div>
-          </div>
-        </a>
-        <nav display="none" lg-display="flex" items="center" gap="5" font-size="sm">
-          <a href="./components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
-          <a href="./sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
-          <a href="./templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
-        </nav>
-        <div display="flex" items="center" gap="3">
-          <button type="button" data-theme-toggle="light" bg="gray-100" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" text="text" rounded="full" px="3" py="2" font-size="sm" aria-label="Toggle light and dark theme">Light</button>
-          <a href="./playground.html" display="inline-flex" items="center" justify="center" bg="primary" text="white" px="4" py="2" rounded="full" text-decoration="none" font-size="sm" font-weight="600">Playground</a>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="robots" content="index, follow" />
+  <title>Templates — AtomAttr UI</title>
+  <meta name="description" content="The people and companies backing Atomattr, shown by tier. Bigger tier, bigger logo." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/sponsors.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="Atomattr — Sponsors" />
+  <meta property="og:description" content="The people and companies backing Atomattr, shown by tier. Bigger tier, bigger logo." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/sponsors.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Atomattr — Sponsors" />
+  <meta name="twitter:description" content="The people and companies backing Atomattr, shown by tier. Bigger tier, bigger logo." />
+  <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/motion.css" />
+  <link rel="stylesheet" href="./assets/stage.css" />
+<link rel="stylesheet" href="assets/font.css">  <script src="./dist/atomattr.min.js"></script>
+  <script src="./dist/atomattr.min.js"></script>
+</head>
+<body bg="#fff" dark-bg="#07080a" text="text" dark-text="gray-50" min-h="screen" p="0" m="0">
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="#07080a" border-b="1px" border-color="gray-100" dark-border-color="#ffffff/10" backdrop-blur="md"></header>
+  <main>
+    <section border-b="1px solid gray-100" dark-border-color="#ffffff/10">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" pt="12" lg-pt="16" pb="2">
+        <h1 data-reveal font-size="4xl" md-font-size="6xl" font-weight="800" line-height="none" tracking="tighter" m="0" mb="6">Templates</h1>
+        <p data-reveal text="muted" font-size="lg" m="0" mb="6">Free, copy-ready pages. Looking for full multi-page projects? <a href="./pro-templates.html" text="primary" font-weight="600">See Pro templates <i class="ri-arrow-right-line"></i></a></p>
+        <div id="tpl-filters" hidden display="flex" wrap gap="2" style="margin-top:0" role="tablist" aria-label="Filter templates"></div>
       </div>
-    </header>
+    </section>
+    <section>
+      <div id="tpl-grid" max-w="7xl" mx="auto" px="4" md-px="8" py="10" lg-py="14"></div>
+      <p id="tpl-empty" hidden text="muted" text-align="center" py="16">No templates in this filter yet.</p>
+    </section>
+  </main>
+  <footer border-t="1px" border-color="gray-200" dark-border-color="gray-950">
 
-    <main id="catalog">
-      <section bg-gradient="linear-gradient(180deg, color-mix(in oklch, var(--aa-color-primary) 8%, transparent), transparent 80%)">
-        <div max-w="7xl" mx="auto" px="4" md-px="8" py="10" lg-py="16">
-          <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="4">TEMPLATE LIBRARY</p>
-          <h1 font-size="5xl" md-font-size="6xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="5">No complete templates are published yet.</h1>
-          <p font-size="lg" text="muted" line-height="relaxed" m="0" max-w="2xl">The library currently offers components and reusable sections. Complete pages will appear here when their full preview and copyable source are ready.</p>
-        </div>
-      </section>
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
 
-      <section bg="gray-50" dark-bg="gray-900" border-t="1" border-t-color="gray-200" dark-border-color="gray-800" border-b="1" border-b-color="gray-200" dark-border-color="gray-800">
-        <div max-w="7xl" mx="auto" px="4" md-px="8" py="12" lg-py="16">
-          <div display="flex" flex-col lg-flex-row items="start" lg-items="center" justify="between" gap="5" mb="8">
-            <div>
-              <p text="primary" font-size="xs" font-weight="700" tracking="wide" m="0" mb="3">DISCOVER</p>
-              <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0">Complete page templates</h2>
-            </div>
-            <label for="search-input" sr-only>Search templates</label>
-            <div display="flex" items="center" gap="2" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="full" px="4" py="2.5" w="full" lg-max-w="lg">
-              <i class="ri-search-line" text="muted"></i>
-              <input id="search-input" type="search" placeholder="Search SaaS, portfolios, dev tools, agencies…" bg="transparent" border="0" text="text" w="full" outline="none" />
-            </div>
-          </div>
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
 
-          <div id="category-filters" display="flex" gap="2" wrap mb="8"></div>
-          <div id="catalog-grid" display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="3" gap="5"></div>
-          <div id="empty-state" hidden bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="2xl" p="8" mt="8">
-            <h3 m="0" mb="2" font-size="xl">No complete templates are published yet</h3>
-            <p m="0" text="muted">Templates will be listed here once their preview and source are ready.</p>
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p max-w="sm" mt="4" text="muted" line-height="relaxed">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
+
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-twitter-x-fill" font-size="20"></i></a>
           </div>
         </div>
-      </section>
-    </main>
 
-    <script src="./dist/atomattr.min.js" defer></script>
-    <script type="module" src="./catalog.js"></script>
-  </body>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="cheatsheet.html" text="muted" text-decoration="none" hover-text="text">Cheat sheet</a>
+            <a href="blog.html" text="muted" text-decoration="none" hover-text="text">Blog</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="index.html#components" text="muted" text-decoration="none" hover-text="text">Examples</a>
+            <a href="index.html#features" text="muted" text-decoration="none" hover-text="text">Platforms</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Learn</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Getting started</a>
+            <a href="cheatsheet.html" text="muted" text-decoration="none" hover-text="text">Cheat sheet</a>
+            <a href="blog.html" text="muted" text-decoration="none" hover-text="text">Blog</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Cody Devadetayo. All rights reserved. - Atomattr</span>
+      </div>
+
+    </div>
+
+  </footer>
+  <dialog id="tpl-modal"><form method="dialog" class="tm"><button class="tm-b tm-x" aria-label="Close">✕</button>
+    <h3 data-m="name"></h3><p data-m="blurb"></p><ul data-m="inc"></ul>
+    <input data-m="email" type="email" placeholder="Email (for the receipt or launch notice)" autocomplete="email" aria-label="Email">
+    <div class="tm-row"><span class="tm-price" data-m="price"></span><a class="tm-b" data-m="prev" target="_blank" rel="noopener">Live preview</a><button type="button" class="tm-b pri" data-m="buy"></button></div><div class="tm-msg" data-m="msg" role="status"></div></form></dialog>
+  <style>
+    .tpl-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}@media(min-width:768px){.tpl-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1024px){.tpl-grid{grid-template-columns:repeat(3,1fr)}}
+    .tpl-h{font-size:1.25rem;font-weight:800;margin:0 0 1rem;letter-spacing:-.01em}.tpl-grid+.tpl-h{margin-top:3rem}.tpl-h small{font-weight:500;font-size:.85rem;opacity:.6;margin-left:.5rem}
+    .tpl-info small{display:block;font-size:.78rem;opacity:.6;font-weight:500}button.tpl-get{border:0;cursor:pointer;font-family:inherit}
+    #tpl-modal{border:1px solid rgba(100,116,139,.3);border-radius:1.25rem;padding:0;width:min(30rem,92vw);background:#fff;color:#0f172a;font-family:inherit}html.dark #tpl-modal{background:#101218;color:#f1f5f9}#tpl-modal::backdrop{background:rgba(2,6,23,.55);backdrop-filter:blur(3px)}
+    .tm{padding:1.5rem;display:flex;flex-direction:column;gap:1rem}.tm h3{margin:0;font-size:1.4rem;font-weight:800}.tm p{margin:0;opacity:.7;font-size:.95rem}.tm ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;font-size:.92rem}.tm li i{color:#5b5cf6}
+    .tm-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}.tm-price{font-size:1.6rem;font-weight:800;margin-right:auto}.tm-b{font:inherit;font-weight:600;font-size:.9rem;padding:.65rem 1.1rem;border-radius:999px;border:1px solid rgba(100,116,139,.35);background:transparent;color:inherit;cursor:pointer;text-decoration:none}.tm-b.pri{background:#5b5cf6;border-color:#5b5cf6;color:#fff}.tm-x{position:absolute;top:.8rem;right:.8rem}
+    .tm input{font:inherit;padding:.65rem .9rem;border-radius:.8rem;border:1px solid rgba(100,116,139,.35);background:transparent;color:inherit;width:100%;box-sizing:border-box}.tm-msg{font-size:.85rem;min-height:1.1em;opacity:.8}
+    .tpl-card{display:flex;flex-direction:column;gap:.65rem}
+    .tpl-shot{position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:8px;display:block;transition:box-shadow .3s}
+    .tpl-card:hover .tpl-shot{box-shadow:0 22px 44px -22px rgba(2,6,23,.45)}
+    .tpl-shot iframe{position:absolute;top:0;left:0;width:1440px;height:1000px;border:0;transform-origin:0 0;pointer-events:none;background:#fff;border-radius:6px 6px 0 0;box-shadow:0 -6px 30px -10px rgba(2,6,23,.35)}
+    .tpl-get{position:absolute;right:.8rem;bottom:.8rem;z-index:2;display:inline-flex;align-items:center;gap:.4rem;font-weight:600;font-size:.85rem;text-decoration:none;color:#111827;background:#fff;padding:.45rem .8rem;border-radius:6px;box-shadow:0 6px 18px -6px rgba(2,6,23,.45)}
+    html.dark .tpl-get{color:#f9fafb;background:#1c1d21}.tpl-get:hover{opacity:.7}.tpl-get i{font-size:1.1rem}
+    .tpl-info{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:0 .15rem}
+    .tpl-info b{font-size:1rem;font-weight:700;display:block}
+    .tpl-tag{flex:none;font:700 .72rem/1 inherit;padding:.38rem .6rem;border-radius:6px;background:rgba(34,197,94,.14);color:#15803d}
+    html.dark .tpl-tag{color:#4ade80}.tpl-tag.paid{background:rgba(91,92,246,.14);color:#4f46e5}html.dark .tpl-tag.paid{color:#a5b4fc}
+    .tpl-stats{display:flex;gap:.7rem;margin-left:auto;margin-right:.6rem;font-size:.8rem;opacity:.65;align-items:center}.tpl-stats i{vertical-align:-1px}
+    .tpl-chip{all:unset;cursor:pointer;padding:.5rem .95rem;border-radius:6px;background:rgba(100,116,139,.14);font-size:.85rem;font-weight:600}
+    .tpl-chip[aria-selected=true]{background:#5b5cf6;color:#fff}
+  </style>
+  <script>
+  (function(){
+    var grid=document.getElementById('tpl-grid'),filters=document.getElementById('tpl-filters'),empty=document.getElementById('tpl-empty'),list=[],cur='all';
+    function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    function money(p){return '$'+(p%1?p.toFixed(2):p)}
+    function fit(){grid.querySelectorAll('.tpl-shot').forEach(function(s){var f=s.querySelector('iframe'),cw=s.clientWidth,ch=s.clientHeight,left=Math.round(cw*0.04),k=(cw-left)/1280,top=Math.round(ch*0.04);f.style.width='1280px';f.style.height=((ch-top)/k)+'px';f.style.transform='translate('+left+'px,'+top+'px) scale('+k+')'})}
+    function card(t,idx){var paid=t.price>0,url=t.preview||('templates/'+t.id+'/index.html');
+      var act=paid?'<button type="button" class="tpl-get" data-buy="'+esc(t.id)+'"><i class="ri-shopping-bag-3-line"></i> '+(t.status==='soon'?'Details':'Buy')+'</button>':'<a class="tpl-get" href="'+url+'" download="'+t.id+'.html"><i class="ri-download-2-line"></i> Get code</a>';
+      return '<article class="tpl-card"><div class="tpl-shot aa-bg-'+(idx%10)+'"><a href="'+url+'" target="_blank" rel="noopener" aria-label="Preview '+esc(t.name)+'" style="position:absolute;inset:0;z-index:1"></a><iframe src="'+url+'" loading="lazy" tabindex="-1" title="'+esc(t.name)+' preview"></iframe>'+act+'</div>'+
+      '<div class="tpl-info"><div><b>'+esc(t.name)+'</b>'+(paid&&t.pages?'<small>'+t.pages+' pages</small>':'')+'</div><span class="tpl-stats"><span><span data-views="tpl-'+t.id+'">0</span> views</span>'+(paid?'':'<span><i class="ri-file-copy-line"></i> <span data-copies="tpl-'+t.id+'">0</span></span>')+'</span><span class="tpl-tag'+(paid?' paid':'')+'">'+(paid?money(t.price):'Free')+'</span></div></article>';}
+    function draw(){
+      var free=list.filter(function(t){return !t.price}),pro=list.filter(function(t){return t.price>0}),h='',n=0;
+      var showFree=cur!=='paid'&&free.length,showPro=cur!=='free'&&pro.length,both=showFree&&showPro;
+      if(showFree){if(both)h+='<h2 class="tpl-h">Free</h2>';h+='<div class="tpl-grid">'+free.map(function(t){return card(t,n++)}).join('')+'</div>'}
+      if(showPro){h+=(both?'<h2 class="tpl-h">Premium <small>Full multi-page projects</small></h2>':'')+'<div class="tpl-grid">'+pro.map(function(t){return card(t,n++)}).join('')+'</div>'}
+      grid.innerHTML=h; empty.hidden=!!(showFree||showPro); fit(); document.dispatchEvent(new Event('tpl-drawn')); requestAnimationFrame(fit); setTimeout(fit,300);
+    }
+    window.openBuy=function(id){var t=list.filter(function(x){return x.id===id})[0]; if(!t)return; var m=document.getElementById('tpl-modal');
+      m.querySelector('[data-m=name]').textContent=t.name; m.querySelector('[data-m=blurb]').textContent=t.blurb||''; m.querySelector('[data-m=price]').textContent=money(t.price);
+      m.querySelector('[data-m=inc]').innerHTML=(t.includes||[]).map(function(x){return '<li><i class="ri-check-line"></i> '+esc(x)+'</li>'}).join('');
+      m.querySelector('[data-m=prev]').href=t.preview||('templates/'+t.id+'/index.html'); m.dataset.id=id; m.querySelector('[data-m=msg]').textContent='';
+      m.querySelector('[data-m=buy]').textContent=(window.ATOMATTR_CHECKOUT_URL||t.checkout)?'Buy for '+money(t.price):'Notify me when it is out'; m.showModal();};
+    function chips(){var hasPaid=list.some(function(t){return t.price>0});
+      filters.style.display="none";return
+      filters.innerHTML=[['all','All'],['free','Free'],['paid','Premium']].map(function(c){return '<button type="button" class="tpl-chip" role="tab" data-f="'+c[0]+'" aria-selected="'+(c[0]===cur)+'">'+c[1]+'</button>'}).join('');
+      filters.onclick=function(e){var b=e.target.closest('[data-f]');if(!b)return;cur=b.dataset.f;chips();draw()}}
+    fetch('templates/templates.json').then(function(r){return r.json()}).then(function(d){list=d.filter(function(t){return !t.price});chips();draw()});
+    window.addEventListener('resize',fit); window.addEventListener('load',fit); if(window.ResizeObserver)new ResizeObserver(fit).observe(grid);
+  })();
+  </script>
+  <script type="module">
+  import { fillCounts, hit } from './assets/stats.js';
+  import { startCheckout } from './assets/checkout.js';
+  document.addEventListener('click', function(e){ var b=e.target.closest('[data-buy]'); if(b){ window.openBuy(b.dataset.buy); hit('tpl-'+b.dataset.buy,'view'); return; } var y=e.target.closest('[data-m=buy]'); if(y){ var m=document.getElementById('tpl-modal'); startCheckout(m.dataset.id, m.querySelector('[data-m=email]').value, m.querySelector('[data-m=msg]')); } });
+  document.addEventListener('tpl-drawn', function(){ fillCounts(document.getElementById('tpl-grid')); });
+  document.addEventListener('click', function(e){ var a=e.target.closest('.tpl-card a'); if(!a) return; var id=(a.getAttribute('href')||'').match(/templates[/]([^/]+)[/]/); if(!id) return; hit('tpl-'+id[1], a.classList.contains('tpl-get')?'copy':'view'); });
+  </script>
+  <script type="module" src="./site/app.js"></script>
+  <script src="./assets/motion.js"></script>
+  <script src="./assets/theme-icon.js" defer></script>
+  <script src="./assets/nav-search.js" defer></script>
+</body>
 </html>

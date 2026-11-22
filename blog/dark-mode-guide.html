@@ -1,162 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#5b5cf6" />
-    <meta name="robots" content="index, follow" />
-    <title>Mastering Dark Mode - AtomAttr Blog</title>
-    <meta name="description" content="A practical guide to building resilient dark-mode interfaces with Atomattr." />
-    <link rel="canonical" href="https://devadetayo.github.io/atomattr/blog/dark-mode-guide.html" />
-    <link rel="icon" href="../assets/favico/favico.png" type="image/png" />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="Atomattr Blog" />
-    <meta property="og:title" content="Mastering Dark Mode - AtomAttr Blog" />
-    <meta property="og:description" content="A practical guide to building resilient dark-mode interfaces with Atomattr." />
-    <meta property="og:url" content="https://devadetayo.github.io/atomattr/blog/dark-mode-guide.html" />
-    <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mastering Dark Mode - AtomAttr Blog" />
-    <meta name="twitter:description" content="A practical guide to building resilient dark-mode interfaces with Atomattr." />
-    <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
-    <link rel="stylesheet" href="../dist/defaults.css">
-    <script src="../dist/atomattr.min.js" defer></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-glow: #3b82f6;
-            --header-height: 4rem;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="../" />
+  <meta name="theme-color" content="#5b5cf6" />
+  <meta name="author" content="devadetayo" />
+  <title>Mastering Dark Mode in 5 Minutes — Atomattr Blog</title>
+  <meta name="description" content="One class on the root element, one prefix on your attributes." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/blog/dark-mode-guide.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="Mastering Dark Mode in 5 Minutes" />
+  <meta property="og:description" content="One class on the root element, one prefix on your attributes." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/blog/dark-mode-guide.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/motion.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/font.css"></head>
+<body bg="#fff" dark-bg="gray-950" text="text" dark-text="gray-50" min-h="screen" p="0" m="0">
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" backdrop-blur="md"></header>
+  <main>
+    <section position="relative" overflow="hidden">
+      <div aria-hidden="true" position="absolute" pointer-events="none" rounded="full" style="left:50%;top:-14rem;width:44rem;height:26rem;margin-left:-22rem;filter:blur(90px);background:radial-gradient(closest-side,#8b5cf655,transparent)"></div>
+      <div position="relative" max-w="44rem" mx="auto" px="4" pt="10" lg-pt="16" pb="8">
+        <a href="blog.html" display="inline-flex" items="center" gap="1.5" text="muted" text-decoration="none" hover-text="text" font-size="sm" mb="8"><i class="ri-arrow-left-line"></i> All articles</a>
+        <div display="flex" items="center" gap="3" font-size="sm" text="muted" mb="4"><span bg="primary/10" text="primary" rounded="full" px="3" py="0.5" font-weight="600" font-size="xs">Tutorial</span><span>Dec 05, 2025</span><span>·</span><span>2 min read</span></div>
+        <h1 data-reveal font-size="4xl" md-font-size="6xl" font-weight="800" line-height="tight" tracking="tighter" m="0" mb="5">Mastering Dark Mode in 5 Minutes</h1>
+        <p data-reveal style="--d:80ms" font-size="xl" text="muted" line-height="relaxed" m="0" mb="6">One class on the root element, one prefix on your attributes.</p>
+        <div display="flex" items="center" gap="3" font-size="sm"><span w="9" h="9" rounded="full" display="flex" items="center" justify="center" bg="primary/10" text="primary" font-weight="700">D</span><span><strong display="block">devadetayo</strong><span text="muted">Atomattr</span></span></div>
+      </div>
+    </section>
+    <article max-w="44rem" mx="auto" px="4" pb="12">
+      <div border-t="1px solid gray-200" dark-border-color="#ffffff/10" pt="4"></div>
+      <p font-size="lg" line-height="relaxed" m="0" mb="5">Dark mode in Atomattr is a root class plus a prefix. You decide when the class is on; the attributes decide what changes.</p><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Step 1: the class</h2><p font-size="lg" line-height="relaxed" m="0" mb="5">The <code class="mono">dark-</code> prefix generates rules scoped under <code class="mono">html.dark</code>. So dark mode is active whenever the root element carries the <code class="mono">dark</code> class.</p><div position="relative" my="6" rounded="2xl" overflow="hidden" bg="gray-950" border="1px solid #ffffff/10"><div display="flex" items="center" justify="between" px="4" py="2" border-b="1px solid #ffffff/10" font-size="xs" text="gray-400"><span class="mono">html</span><span display="flex" gap="1.5"><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i></span></div><pre class="mono" m="0" p="4" overflow-x="auto" font-size="sm" line-height="relaxed" text="gray-100" style="tab-size:2"><code>&lt;html class="dark"&gt;</code></pre></div><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Step 2: the prefix</h2><p font-size="lg" line-height="relaxed" m="0" mb="5">Put <code class="mono">dark-</code> in front of any attribute to set its dark-mode value. The light value stays on the plain attribute.</p><div position="relative" my="6" rounded="2xl" overflow="hidden" bg="gray-950" border="1px solid #ffffff/10"><div display="flex" items="center" justify="between" px="4" py="2" border-b="1px solid #ffffff/10" font-size="xs" text="gray-400"><span class="mono">html</span><span display="flex" gap="1.5"><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i></span></div><pre class="mono" m="0" p="4" overflow-x="auto" font-size="sm" line-height="relaxed" text="gray-100" style="tab-size:2"><code>&lt;body bg="#fff" dark-bg="gray-950" text="text" dark-text="gray-50"&gt;
+  &lt;article p="6" rounded="2xl" border="1px solid gray-200" dark-border-color="#ffffff/10"&gt;
+    Adapts to the theme.
+  &lt;/article&gt;
+&lt;/body&gt;</code></pre></div><div my="6" rounded="2xl" border="1px solid gray-200" dark-border-color="#ffffff/10" overflow="hidden"><div px="4" py="2" font-size="xs" text="muted" class="mono" border-b="1px solid gray-200" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#ffffff/5">Live result</div><div p="6"><div p="6" rounded="2xl" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="#ffffff/10" text="text" dark-text="gray-50">This card follows the theme toggle in the navigation bar.</div></div></div><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Step 3: a toggle with memory</h2><p font-size="lg" line-height="relaxed" m="0" mb="5">A toggle only needs to flip the class and remember the choice. This is the pattern the Atomattr site itself uses (the storage key is just a name you choose):</p><div position="relative" my="6" rounded="2xl" overflow="hidden" bg="gray-950" border="1px solid #ffffff/10"><div display="flex" items="center" justify="between" px="4" py="2" border-b="1px solid #ffffff/10" font-size="xs" text="gray-400"><span class="mono">html</span><span display="flex" gap="1.5"><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i></span></div><pre class="mono" m="0" p="4" overflow-x="auto" font-size="sm" line-height="relaxed" text="gray-100" style="tab-size:2"><code>&lt;button id="theme" aria-label="Toggle theme"&gt;&lt;i class="ri-contrast-line"&gt;&lt;/i&gt;&lt;/button&gt;
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-            background-color: var(--surface);
-            color: var(--text);
-        }
+&lt;script&gt;
+  var root = document.documentElement;
+  var saved = localStorage.getItem("atomattr-theme");
+  var prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+  root.classList.toggle("dark", saved ? saved === "dark" : prefersDark);
 
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  document.getElementById("theme").onclick = function () {
+    var dark = root.classList.toggle("dark");
+    localStorage.setItem("atomattr-theme", dark ? "dark" : "light");
+  };
+&lt;/script&gt;</code></pre></div><aside my="6" p="5" rounded="2xl" bg="primary/10" border="1px solid primary/20" display="flex" gap="3"><i class="ri-flashlight-line" text="primary" font-size="xl" flex="none"></i><div><strong display="block" mb="1">Avoid a flash</strong><span text="muted" line-height="relaxed">Run the first four lines in the head, before the body renders, so the right theme is applied before first paint.</span></div></aside><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Semantic colors help</h2><p font-size="lg" line-height="relaxed" m="0" mb="5">Names like <code class="mono">primary</code>, <code class="mono">muted</code>, <code class="mono">border</code> and <code class="mono">surface</code> resolve through <code class="mono">--aa-color-*</code> CSS variables, and the defaults stylesheet adjusts variables under <code class="mono">html.dark</code>. Using them means fewer <code class="mono">dark-</code> attributes. Override a variable to retheme everything that uses it:</p><div position="relative" my="6" rounded="2xl" overflow="hidden" bg="gray-950" border="1px solid #ffffff/10"><div display="flex" items="center" justify="between" px="4" py="2" border-b="1px solid #ffffff/10" font-size="xs" text="gray-400"><span class="mono">css</span><span display="flex" gap="1.5"><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i></span></div><pre class="mono" m="0" p="4" overflow-x="auto" font-size="sm" line-height="relaxed" text="gray-100" style="tab-size:2"><code>:root { --aa-color-primary: #7c3aed; }</code></pre></div><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Checklist</h2><ul m="0" mb="6" pl="6" list-style="disc" display="flex" flex-col gap="2" font-size="lg" line-height="relaxed"><li>Set text and background for the page body, in both modes.</li><li>Give borders a dark value, since light grays disappear on dark surfaces.</li><li>Check images and shadows: a logo may need a dark variant.</li><li>Test the toggle with and without a saved preference.</li></ul>
+    </article>
+    <section max-w="44rem" mx="auto" px="4" pb="12">
+      <div display="grid" grid-cols="1" sm-grid-cols="2" gap="4"><a href="blog/tailwind-vs-atomattr.html" display="flex" flex-col gap="1" p="5" rounded="2xl" border="1px solid gray-200" dark-border-color="#ffffff/10" hover-border-color="primary/50" text="text" text-decoration="none" text-align="left" transition="all" duration="300ms"><span font-size="xs" text="muted" class="mono">← PREVIOUS</span><strong>Tailwind vs. AtomAttr</strong></a><a href="blog/responsive-dashboard.html" display="flex" flex-col gap="1" p="5" rounded="2xl" border="1px solid gray-200" dark-border-color="#ffffff/10" hover-border-color="primary/50" text="text" text-decoration="none" text-align="right" transition="all" duration="300ms"><span font-size="xs" text="muted" class="mono">NEXT →</span><strong>Building a Responsive Dashboard</strong></a></div>
+    </section>
+    <section max-w="44rem" mx="auto" px="4" pb="20">
+      <div p="8" rounded="3xl" text-align="center" bg="gray-950" dark-bg="#17181b" text="white" position="relative" overflow="hidden">
+        <h2 m="0" mb="2" font-size="2xl" font-weight="800">Try Atomattr on something small</h2>
+        <p m="0" mb="5" text="gray-400">One stylesheet, one script, and you are writing attributes.</p>
+        <div display="flex" gap="3" justify="center" wrap><a href="docs.html" bg="#fff" text="gray-950" px="5" py="2.5" rounded="full" font-weight="600" text-decoration="none">Read the docs</a><a href="ui.html" border="1px solid #ffffff/20" text="white" px="5" py="2.5" rounded="full" font-weight="600" text-decoration="none">Browse components</a></div>
+      </div>
+    </section>
+  </main>
+  <footer border-t="1px" border-color="gray-200" dark-border-color="gray-950">
 
-        article h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-        }
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
 
-        article p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-        }
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
 
-        #mobile-menu {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateX(100%);
-        }
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p max-w="sm" mt="4" text="muted" line-height="relaxed">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
 
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
-    </style>
-</head>
-
-<body bg="surface" text="text" min-h="100vh" flex col>
-    <nav sticky top="0" z="50" w="full" bg="surface" bg-opacity="0.9" backdrop-blur="12px" border-b="1px"
-        border-color="border">
-        <div max-w="1400px" mx="auto" px="4" h="4rem" flex items="center" justify="between">
-            <a href="../index.html" flex items="center" gap="3" style="text-decoration:none;" text="text" group>
-                <div w="2rem" h="2rem" bg="linear-gradient(135deg, #3b82f6, #9333ea)" radius="md" flex items="center"
-                    justify="center" shadow="sm">
-                    <svg w="1.2rem" text="white" fill="none" stroke="currentColor" stroke-width="2.5"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                </div>
-                <div flex col justify="center">
-                    <span weight="700" size="1.1rem" leading="1" tracking="-0.02em">AtomAttr</span>
-                    <span text="text-dim" size="0.75rem" weight="500" tracking="wide">BLOG</span>
-                </div>
-            </a>
-            <div hidden lg-flex items="center" gap="6">
-                <a href="../index.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
-                    transition="colors" style="text-decoration:none;">Home</a>
-                <a href="../docs.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
-                    transition="colors" style="text-decoration:none;">Docs</a>
-                <a href="../playground.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
-                    transition="colors" style="text-decoration:none;">Playground</a>
-                <a href="../blog.html" text="primary" weight="600" size="0.9rem" transition="colors"
-                    style="text-decoration:none;">Blog</a>
-                <button id="themeToggle" bg="surface-alt" border="1px" border-color="border" p="0.5rem" radius="xl"
-                    hover-border-color="text-dim" transition="all" cursor="pointer">
-                    <svg class="sun" w="1rem" h="1rem" fill="none" stroke="currentColor" stroke-width="2"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                </button>
-            </div>
-            <button id="menuOpen" lg-hidden bg="transparent" border="none" p="2" text="text"><svg w="1.5rem" h="1.5rem"
-                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg></button>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
         </div>
-    </nav>
-    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="6" flex col
-        gap="6" shadow="2xl" border-l="1px" border-color="border" lg-hidden>
-        <div flex justify="between" items="center" mb="4"><span weight="700" size="1.25rem">Menu</span><button
-                id="menuClose" bg="surface-alt" p="2" radius="xl" border="none"><svg w="1.5rem" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg></button></div>
-        <a href="../index.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Home</a>
-        <a href="../docs.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Docs</a>
-        <a href="../playground.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Playground</a>
-        <a href="../blog.html" text="primary" size="1.1rem" weight="600" style="text-decoration:none;">Blog</a>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="cheatsheet.html" text="muted" text-decoration="none" hover-text="text">Cheat sheet</a>
+            <a href="blog.html" text="muted" text-decoration="none" hover-text="text">Blog</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="index.html#components" text="muted" text-decoration="none" hover-text="text">Examples</a>
+            <a href="index.html#features" text="muted" text-decoration="none" hover-text="text">Platforms</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Learn</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Getting started</a>
+            <a href="cheatsheet.html" text="muted" text-decoration="none" hover-text="text">Cheat sheet</a>
+            <a href="blog.html" text="muted" text-decoration="none" hover-text="text">Blog</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Cody Devadetayo. All rights reserved. - Atomattr</span>
+      </div>
+
     </div>
-    <header pt="6rem" pb="4rem" px="4" text-align="center" max-w="50rem" mx="auto">
-        <div flex gap="2" justify="center" mb="4" text="primary" weight="700" size="0.9rem" uppercase tracking="wide">
-            <span>Tutorial</span> • <span>Dec 05, 2025</span>
-        </div>
-        <h1 size="2.5rem" md-size="3.5rem" weight="800" leading="1.2" mb="6">Mastering Dark Mode in 5 Minutes</h1>
-        <div flex items="center" justify="center" gap="3">
-            <div w="2.5rem" h="2.5rem" bg="slate-200" radius="full"></div>
-            <div text-align="left">
-                <p weight="700" size="0.95rem" mb="0">Adetayo</p>
-                <p text="text-dim" size="0.85rem">Creator of AtomAttr</p>
-            </div>
-        </div>
-    </header>
-    <main w="full" max-w="48rem" mx="auto" px="4" pb="8rem">
-        <article>
-            <p>Implementing dark mode used to be hard. You'd need separate CSS files or complex class switching logic.
-                AtomAttr simplifies this with the <code>dark-</code> modifier. Just prefix any attribute with
-                <code>dark-</code> to define what it should look like in dark mode.
-            </p>
-            <h2>The Basics</h2>
-            <p>It starts with the `html` tag. If you add the class `dark` to your `html` tag, AtomAttr activates all
-                `dark-` attributes. You can toggle this class using JavaScript.</p>
-            <h2>Example Code</h2>
-            <pre><code>&lt;div bg="white" dark-bg="slate-900" text="black" dark-text="white"&gt;
-    &lt;h1&gt;Automatic Dark Mode&lt;/h1&gt;
-&lt;/div&gt;</code></pre>
-            <p>That's literally it. No configuration, no plugins. It just works.</p>
-        </article>
-    </main>
-    <footer bg="surface-alt" border-t="1px" border-color="border" pt="5rem" pb="3rem">
-        <div max-w="1400px" mx="auto" px="4" text-align="center" text="text-dim" size="0.85rem">&copy; 2025 Quanta Labs.
-            Released under MIT License.</div>
-    </footer>
-    <script>document.addEventListener('DOMContentLoaded', () => { const m = document.getElementById('mobile-menu'), o = document.getElementById('menuOpen'), c = document.getElementById('menuClose'), t = document.getElementById('themeToggle'), h = document.documentElement; o.addEventListener('click', () => m.classList.add('open')); c.addEventListener('click', () => m.classList.remove('open')); t.addEventListener('click', () => { h.classList.toggle('dark'); localStorage.setItem('theme', h.classList.contains('dark') ? 'dark' : 'light') }); if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) h.classList.add('dark'); if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start() });</script>
-</body>
 
+  </footer>
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script src="./site/app.js" type="module"></script>
+  <script src="./assets/motion.js"></script>
+  <script src="./assets/theme-icon.js" defer></script>
+<script src="../assets/nav-search.js" defer></script></body>
 </html>

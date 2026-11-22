@@ -19,7 +19,7 @@ The prefix does not detect system preference or create a toggle by itself. Add o
 document.documentElement.classList.toggle('dark', prefersDark);
 ```
 
-The AtomAttr theme API can set the same class and regenerate theme-dependent rules. Keep the class change and your semantic CSS variables in sync if the app maintains its own theme system.
+Remember the choice yourself, for example in `localStorage`, and set the class before first paint to avoid a flash of the wrong theme. Keep the class change and your semantic CSS variables in sync if the app maintains its own theme system.
 
 ## Color strategy
 

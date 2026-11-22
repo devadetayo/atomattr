@@ -1,0 +1,21 @@
+/* Preview stage backgrounds: a mix of plain and gradient tones, with a darker twin for each in dark mode. */
+.aa-bg-0{background:#e8e8ea}
+.aa-bg-1{background:linear-gradient(135deg,#c7d2fe,#fbcfe8)}
+.aa-bg-2{background:#fdeccb}
+.aa-bg-3{background:linear-gradient(135deg,#bae6fd,#bbf7d0)}
+.aa-bg-4{background:#dbe7fe}
+.aa-bg-5{background:linear-gradient(135deg,#fecaca,#fed7aa)}
+.aa-bg-6{background:#e9defd}
+.aa-bg-7{background:linear-gradient(135deg,#a7f3d0,#a5f3fc)}
+.aa-bg-8{background:#d8f0dc}
+.aa-bg-9{background:linear-gradient(135deg,#e9d5ff,#bfdbfe)}
+html.dark .aa-bg-0{background:#212121}
+html.dark .aa-bg-1{background:linear-gradient(135deg,#312e81,#831843)}
+html.dark .aa-bg-2{background:#3a2d12}
+html.dark .aa-bg-3{background:linear-gradient(135deg,#0c4a6e,#14532d)}
+html.dark .aa-bg-4{background:#172554}
+html.dark .aa-bg-5{background:linear-gradient(135deg,#7f1d1d,#7c2d12)}
+html.dark .aa-bg-6{background:#2e1065}
+html.dark .aa-bg-7{background:linear-gradient(135deg,#064e3b,#164e63)}
+html.dark .aa-bg-8{background:#14321c}
+html.dark .aa-bg-9{background:linear-gradient(135deg,#3b0764,#1e3a8a)}

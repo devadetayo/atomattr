@@ -12,9 +12,9 @@ Use `m` for all sides, or `mt`, `mr`, `mb`, and `ml` for individual physical sid
 </main>
 ```
 
-## Logical margins
+## Start and end margins
 
-Use `ms` and `me` for inline start and end margins. Longer `margin-inline*` and `margin-block*` attributes map to CSS logical properties and follow the element's writing direction.
+Use `ms` and `me` for inline start and end margins; they follow the writing direction, so start is the right side in right-to-left text. Use `mx-auto` to centre a block horizontally.
 
 ## Automatic margins
 
@@ -26,4 +26,4 @@ For consistent spacing between every flex or grid child, `gap` often expresses t
 
 ## Attributes
 
-The table lists supported physical and logical margin attributes and their CSS outputs.
+The table lists supported margin attributes and their CSS outputs.

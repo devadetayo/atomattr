@@ -11,6 +11,19 @@ Use `justify` for distribution along a flex container's main axis or for grid co
 </header>
 ```
 
+```native
+import { Row, Box, Txt, Btn } from 'atomattr/react-native';
+
+export function Header() {
+  return (
+    <Row items="center" justify="between" gap="4">
+      <Txt fontWeight="bold">Brand</Txt>
+      <Btn bg="primary">Sign in</Btn>
+    </Row>
+  );
+}
+```
+
 ## Grid alignment
 
 Use `justify-items` and `justify-self` for the inline axis in a grid; use `items` and `self` for the block or cross axis. The `place-items`, `place-content`, and `place-self` attributes map to CSS shorthand properties and accept their CSS values.

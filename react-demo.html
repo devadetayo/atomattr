@@ -21,7 +21,8 @@
     <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
     <link rel="stylesheet" href="./dist/defaults.css" />
     <link rel="stylesheet" href="./site/theme.css" />
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/font.css">  <script src="./dist/atomattr.min.js"></script>
+</head>
   <body>
     <main class="page-shell">
       <header class="site-header">
@@ -54,20 +55,20 @@
               props back into the same AtomAttr attributes the HTML engine already understands.
             </p>
             <div flex gap="3" wrap>
-              <a class="pill-link" href="docs.html#react" bg="blue-700" text="white" px="5" py="3" rounded="full">Read React docs</a>
-              <a class="pill-link" href="playground.html" bg="white" text="grey-950" px="4" py="2.5" rounded="xl" border="1" border-color="grey-300">Open playground</a>
+              <a class="pill-link" href="docs.html#react" bg="blue-700" text="white" px="5" py="3" rounded="md">Read React docs</a>
+              <a class="pill-link" href="playground.html" bg="white" text="grey-950" px="4" py="2.5" rounded="md" border="1" border-color="grey-300">Open playground</a>
             </div>
           </div>
 
-          <section class="demo-card" rounded="3xl" p="6">
+          <section class="demo-card" rounded="md" p="6">
             <p m="0" class="section-label">Canonical mapping</p>
             <div class="mini-grid" mt="5">
-              <article rounded="2xl" bg="white" p="4" border="1" border-color="grey-200">
+              <article rounded="md" bg="white" p="4" border="1" border-color="grey-200">
                 <p m="0" font-size="sm" text="grey-500">React prop</p>
                 <h3 mt="2" mb="0" font-size="xl" weight="bold">fontSize="4xl"</h3>
                 <p mt="3" mb="0" text="grey-600">JSX-safe alias</p>
               </article>
-              <article rounded="2xl" bg="grey-950" text="white" p="4">
+              <article rounded="md" bg="grey-950" text="white" p="4">
                 <p m="0" font-size="sm" text="grey-400">HTML output</p>
                 <h3 mt="2" mb="0" font-size="xl" weight="bold">font-size="4xl"</h3>
                 <p mt="3" mb="0" text="grey-300">Canonical AtomAttr key</p>
@@ -79,7 +80,7 @@
 
       <section class="section-space">
         <div class="demo-grid">
-          <section class="demo-card" rounded="3xl" p="5">
+          <section class="demo-card" rounded="md" p="5">
             <p m="0" class="section-label">Component code</p>
             <pre class="code-block" id="react-demo-code">import { Box, H1, Txt, Btn, Row, Badge } from 'atomattr/react';
 
@@ -106,10 +107,10 @@ export function HeroCard() {
             </div>
           </section>
 
-          <section class="demo-card" rounded="3xl" p="5" bg="slate-950" text="white">
+          <section class="demo-card" rounded="md" p="5" bg="slate-950" text="white">
             <p m="0" class="section-label" style="color: #94a3b8;">Rendered intent</p>
-            <section mt="5" rounded="3xl" bg="slate-900" p="6" shadow="2xl">
-              <span inline-flex items="center" rounded="full" px="3" py="1" font-size="xs" weight="semibold" bg="brand-light" text="slate-950">
+            <section mt="5" rounded="md" bg="slate-900" p="6" shadow="2xl">
+              <span inline-flex items="center" rounded="md" px="3" py="1" font-size="xs" weight="semibold" bg="brand-light" text="slate-950">
                 React
               </span>
               <h2 mt="4" mb="0" font-size="4xl" weight="black">Same contract, better ergonomics</h2>
@@ -117,8 +118,8 @@ export function HeroCard() {
                 Camel aliases normalize back into canonical AtomAttr keys.
               </p>
               <div mt="6" flex gap="3" wrap>
-                <button px="4" py="2" rounded="full" bg="brand-light" text="slate-950">Launch</button>
-                <span px="4" py="2" rounded="full" bg="slate-800" text="slate-200">HTML-first under the hood</span>
+                <button px="4" py="2" rounded="md" bg="brand-light" text="slate-950">Launch</button>
+                <span px="4" py="2" rounded="md" bg="slate-800" text="slate-200">HTML-first under the hood</span>
               </div>
             </section>
           </section>
@@ -127,15 +128,15 @@ export function HeroCard() {
 
       <section class="section-space">
         <div class="feature-grid">
-          <article class="demo-card" rounded="3xl" p="5">
+          <article class="demo-card" rounded="md" p="5">
             <h3 m="0" font-size="xl" weight="bold">Use direct props</h3>
             <p mt="3" mb="0" text="slate-600">For keys JSX handles cleanly: <code>bg</code>, <code>p</code>, <code>rounded</code>, <code>text</code>.</p>
           </article>
-          <article class="demo-card" rounded="3xl" p="5">
+          <article class="demo-card" rounded="md" p="5">
             <h3 m="0" font-size="xl" weight="bold">Use aliases when needed</h3>
             <p mt="3" mb="0" text="slate-600">For dashed canonical keys: <code>fontSize</code>, <code>minH</code>, <code>borderColor</code>, <code>gridCols</code>.</p>
           </article>
-          <article class="demo-card" rounded="3xl" p="5">
+          <article class="demo-card" rounded="md" p="5">
             <h3 m="0" font-size="xl" weight="bold">Use <code>attrs</code> for exact parity</h3>
             <p mt="3" mb="0" text="slate-600">When you want React snippets to visually match HTML examples exactly.</p>
           </article>
@@ -143,7 +144,6 @@ export function HeroCard() {
       </section>
     </main>
 
-    <script src="./dist/atomattr.min.js" defer></script>
     <script type="module" src="./site/app.js"></script>
   </body>
 </html>

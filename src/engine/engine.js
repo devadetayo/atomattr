@@ -25,13 +25,28 @@ function scheduleProcess(root, includeDescendants = false) {
   else Promise.resolve().then(flush);
 }
 
+// Parsing is pure, so the result for a given attribute name and value is reused.
+// Pages repeat the same values constantly, so most attributes skip the parser entirely.
+const parseCache = new Map();
+const PARSE_CACHE_LIMIT = 20000;
+
+function parseCached(name, value) {
+  const key = `${name}\u0000${value}`;
+  let parsed = parseCache.get(key);
+  if (parsed !== undefined) return parsed;
+  parsed = parseAttribute(name, value) || null;
+  if (parseCache.size >= PARSE_CACHE_LIMIT) parseCache.clear();
+  parseCache.set(key, parsed);
+  return parsed;
+}
+
 function processElement(element) {
   if (!element || element.nodeType !== 1 || !element.attributes) return;
 
   for (const attribute of element.attributes) {
     if (shouldIgnoreAttribute(attribute.name)) continue;
 
-    const parsed = parseAttribute(attribute.name, attribute.value);
+    const parsed = parseCached(attribute.name, attribute.value);
     if (parsed) generateAndInjectRule(parsed);
   }
 }
@@ -51,11 +66,10 @@ export function refreshAtomAttr(root = document.documentElement) {
 export function startEngine() {
   if (started || typeof document === 'undefined') return;
 
-  if (!document.body) {
-    window.addEventListener('DOMContentLoaded', startEngine, { once: true });
-    return;
-  }
-
+  // Start right away, even while the document is still loading. Elements that the
+  // parser adds afterwards are picked up by the observer below and styled before the
+  // browser paints them, so there is no flash of unstyled content. Load the browser
+  // build with a normal (non-deferred) script in <head> to get this behaviour.
   started = true;
   refreshAtomAttr(document.documentElement);
 
@@ -78,6 +92,11 @@ export function startEngine() {
     childList: true,
     subtree: true,
   });
+
+  // Safety net: one full pass once parsing has finished.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => refreshAtomAttr(document.documentElement), { once: true });
+  }
 }
 
 export function stopEngine() {

@@ -1,0 +1,165 @@
+[
+ {
+  "id": "finance",
+  "name": "Finance landing",
+  "blurb": "Purple and lime: hero card, solutions, security, FAQ.",
+  "price": 0,
+  "pages": 1,
+  "kb": 47
+ },
+ {
+  "id": "fintech",
+  "name": "Fintech app",
+  "blurb": "Dashboard hero, goals, knowledge articles and FAQ.",
+  "price": 0,
+  "pages": 1,
+  "kb": 53
+ },
+ {
+  "id": "brand",
+  "name": "Fashion store",
+  "blurb": "Sage hero tiles, categories and a new collection grid.",
+  "price": 0,
+  "pages": 1,
+  "kb": 38
+ },
+ {
+  "id": "dress",
+  "name": "Stylish dress",
+  "blurb": "Huge headline, model tiles, arrivals and a blog.",
+  "price": 0,
+  "pages": 1,
+  "kb": 48
+ },
+ {
+  "id": "designer",
+  "name": "UI/UX designer",
+  "blurb": "Soft blue portfolio with services, pricing and cases.",
+  "price": 0,
+  "pages": 1,
+  "kb": 40
+ },
+ {
+  "id": "dashboard",
+  "name": "Transactions dashboard",
+  "blurb": "Dark sidebar, searchable table that folds on phones.",
+  "price": 0,
+  "pages": 1,
+  "kb": 48
+ },
+ {
+  "id": "market",
+  "name": "Marketplace",
+  "blurb": "Flash sale, official stores, promos and product grids.",
+  "price": 0,
+  "pages": 1,
+  "kb": 58
+ },
+ {
+  "id": "velour",
+  "name": "Editorial fashion",
+  "blurb": "Big type, black brand band and an orange accent.",
+  "price": 0,
+  "pages": 1,
+  "kb": 30
+ },
+ {
+  "id": "mortgage",
+  "name": "Mortgage broker",
+  "blurb": "Serif headlines, black and white with a blue accent, stats and timeline.",
+  "price": 0,
+  "pages": 1,
+  "kb": 44
+ },
+ {
+  "id": "tasks",
+  "name": "Task manager app",
+  "blurb": "Soft green hero, feature cards, testimonials, FAQ and a dark CTA.",
+  "price": 0,
+  "pages": 1,
+  "kb": 57
+ },
+ {
+  "id": "finexus",
+  "name": "Dark finance dashboard",
+  "blurb": "Black sidebar, lime stats, cash flow bars and transactions.",
+  "price": 0,
+  "pages": 1,
+  "kb": 44
+ },
+ {
+  "id": "artshop",
+  "name": "Art print shop",
+  "blurb": "Blue hero, trending prints, yellow combo offer and happy customers.",
+  "price": 0,
+  "pages": 1,
+  "kb": 50
+ },
+ {
+  "id": "pro-saas",
+  "name": "SaaS launch kit",
+  "blurb": "A full multi-page product site: landing, pricing, blog, docs shell, login and dashboard.",
+  "price": 49,
+  "currency": "USD",
+  "pages": 12,
+  "stack": [
+   "HTML",
+   "React"
+  ],
+  "includes": [
+   "12 responsive pages",
+   "Light and dark mode",
+   "Pricing and checkout pages",
+   "Blog and changelog",
+   "Lifetime updates"
+  ],
+  "preview": "templates/fintech/index.html",
+  "status": "soon",
+  "checkout": ""
+ },
+ {
+  "id": "pro-agency",
+  "name": "Agency portfolio",
+  "blurb": "Case studies, services, team, contact flow and a CMS-ready blog.",
+  "price": 39,
+  "currency": "USD",
+  "pages": 9,
+  "stack": [
+   "HTML",
+   "React"
+  ],
+  "includes": [
+   "9 responsive pages",
+   "Case study layouts",
+   "Contact form wiring",
+   "Light and dark mode",
+   "Lifetime updates"
+  ],
+  "preview": "templates/designer/index.html",
+  "status": "soon",
+  "checkout": ""
+ },
+ {
+  "id": "pro-store",
+  "name": "Store front",
+  "blurb": "Catalog, product, cart and checkout screens for a small online shop.",
+  "price": 59,
+  "currency": "USD",
+  "pages": 14,
+  "stack": [
+   "HTML",
+   "React",
+   "React Native"
+  ],
+  "includes": [
+   "14 responsive pages",
+   "Cart and checkout flow",
+   "Order and account screens",
+   "Light and dark mode",
+   "Lifetime updates"
+  ],
+  "preview": "templates/brand/index.html",
+  "status": "soon",
+  "checkout": ""
+ }
+]

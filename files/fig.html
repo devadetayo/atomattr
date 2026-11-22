@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#5b5cf6" />
+  <meta name="description" content="Browse and copy published AtomAttr UI components and sections. Preview each pattern, inspect its source, and copy HTML or React-ready code." />
+  <title>AtomAttr UI — Copy it. Own it. Change it.</title>
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+</head>
+
+<body bg="#fff" dark-bg="gray-950" text="text" min-h="screen" p="0" m="0">
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" backdrop-blur="md"></header>
+
+  <main>
+
+    <!-- ============================== HERO ============================== -->
+    <section position="relative" overflow="hidden" bg-gradient="radial-gradient(70vw 32rem at 50% -8%, color-mix(in oklch, var(--aa-color-primary) 22%, transparent), transparent 70%)">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" pt="14" lg-pt="20" pb="12">
+
+        <div display="flex" flex-col items="center" align="center" mx="auto">
+          <a href="./catalog.html" display="inline-flex" items="center" gap="2" bg="primary/10" text="primary" border="1px solid primary/30" rounded="full" px="4" py="1.5" font-size="sm" font-weight="600" text-decoration="none" mb="7">
+            <i class="ri-sparkling-2-fill"></i> 20 patterns published
+          </a>
+
+          <h1 font-size="5xl" md-font-size="6xl" lg-font-size="7xl" font-weight="700" line-height="tight" tracking="tight" m="0" mb="6" w="full" md-max-w="70vw" lg-max-w="52vw">
+            Interfaces you can copy, own, and change.
+          </h1>
+
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="9" w="full" md-max-w="55vw" lg-max-w="36vw">
+            Ready-made components and sections written in Atomattr attributes. Preview a pattern, read its source, and paste it into HTML or React.
+          </p>
+
+          <a href="./catalog.html" display="flex" items="center" gap="3" w="full" md-max-w="36rem" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" px="4" py="3.5" shadow="xl" text="muted" text-decoration="none" mb="6" hover-border-color="primary">
+            <i class="ri-search-line" font-size="xl"></i>
+            <span flex="1" text-align="left">Search pricing, hero, login…</span>
+            <kbd bg="gray-100" dark-bg="gray-800" border="1px solid gray-200" dark-border-color="gray-700" rounded="md" px="2" py="0.5" font-size="xs" font-weight="600" text="muted">Ctrl K</kbd>
+          </a>
+
+          <div display="flex" flex-col sm-flex-row items="center" gap="3" w="full" justify="center">
+            <a href="./catalog.html" display="flex" items="center" justify="center" gap="2" bg="primary" text="white" px="7" py="3.5" rounded="full" font-weight="600" text-decoration="none" shadow="lg" w="full" sm-w="fit">Browse catalog <i class="ri-arrow-right-line"></i></a>
+            <a href="./docs/installation.html" display="flex" items="center" justify="center" gap="2" text="text" border="1px solid gray-200" dark-border-color="gray-800" px="7" py="3.5" rounded="full" font-weight="600" text-decoration="none" hover-bg="gray-100" dark-hover-bg="gray-900" w="full" sm-w="fit"><i class="ri-download-2-line"></i> Install AtomAttr</a>
+          </div>
+        </div>
+
+        <!-- Figma-style preview window -->
+        <div mt="14" lg-mt="16" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="3xl" overflow="hidden" shadow="xl">
+
+          <div display="flex" items="center" justify="between" gap="3" px="4" py="3" border-b="1px solid gray-200" dark-border-color="gray-800">
+            <div display="flex" items="center" gap="2">
+              <span w="2.5" h="2.5" rounded="full" bg="red-500"></span>
+              <span w="2.5" h="2.5" rounded="full" bg="amber-500"></span>
+              <span w="2.5" h="2.5" rounded="full" bg="emerald-500"></span>
+            </div>
+            <div display="flex" items="center" gap="1" text="muted">
+              <span display="flex" items="center" justify="center" w="8" h="8" rounded="lg" bg="primary/10" text="primary"><i class="ri-cursor-line"></i></span>
+              <span display="none" sm-display="flex" items="center" justify="center" w="8" h="8" rounded="lg"><i class="ri-layout-grid-line"></i></span>
+              <span display="none" sm-display="flex" items="center" justify="center" w="8" h="8" rounded="lg"><i class="ri-code-s-slash-line"></i></span>
+            </div>
+            <span display="flex" items="center" gap="2" bg="primary" text="white" px="3" py="1.5" rounded="lg" font-size="xs" font-weight="600"><i class="ri-file-copy-line"></i> Copy code</span>
+          </div>
+
+          <div display="grid" grid-cols="1" lg-grid-cols="12" gap="1px" bg="gray-200" dark-bg="gray-800">
+
+            <aside display="none" lg-display="block" lg-col-span="2" bg="#fff" dark-bg="gray-900" p="4" font-size="sm" text="muted">
+              <p m="0" mb="3" font-size="xs" font-weight="700" tracking="wide">LAYERS</p>
+              <div display="flex" flex-col gap="1">
+                <span display="flex" items="center" gap="2" px="2" py="1.5" rounded="md" bg="primary/10" text="primary"><i class="ri-layout-4-line"></i> Pricing card</span>
+                <span display="flex" items="center" gap="2" px="2" py="1.5" ml="4"><i class="ri-text"></i> Title</span>
+                <span display="flex" items="center" gap="2" px="2" py="1.5" ml="4"><i class="ri-list-check"></i> Features</span>
+                <span display="flex" items="center" gap="2" px="2" py="1.5" ml="4"><i class="ri-cursor-line"></i> Button</span>
+                <span display="flex" items="center" gap="2" px="2" py="1.5"><i class="ri-layout-4-line"></i> Sign-in form</span>
+              </div>
+            </aside>
+
+            <div lg-col-span="7" position="relative" min-h="30rem" p="6" md-p="10" display="flex" items="center" justify="center" gap="6" bg="gray-50" dark-bg="gray-950" bg-gradient="radial-gradient(rgba(128,128,128,.25) 1px, transparent 1px)" bg-size="16px 16px" overflow="hidden">
+              <div position="relative" w="full" max-w="20rem">
+                <span position="absolute" left="0" top="-8" bg="primary" text="white" px="2" py="0.5" rounded="md" font-size="xs" font-weight="600" whitespace="nowrap">Pricing card · 320 × 380</span>
+                <div bg="#fff" dark-bg="gray-900" border="2px solid primary" p="7" shadow="lg" position="relative">
+                  <span position="absolute" w="2.5" h="2.5" bg="#fff" border="2px solid primary" top="-6px" left="-6px"></span>
+                  <span position="absolute" w="2.5" h="2.5" bg="#fff" border="2px solid primary" top="-6px" right="-6px"></span>
+                  <span position="absolute" w="2.5" h="2.5" bg="#fff" border="2px solid primary" bottom="-6px" left="-6px"></span>
+                  <span position="absolute" w="2.5" h="2.5" bg="#fff" border="2px solid primary" bottom="-6px" right="-6px"></span>
+                  <p text="primary" font-size="sm" font-weight="700" m="0">PRO</p>
+                  <p font-size="5xl" font-weight="700" tracking="tight" m="0" mt="2">$19<span text="muted" font-size="sm" font-weight="400">/month</span></p>
+                  <div display="flex" flex-col gap="3" mt="5" font-size="sm">
+                    <div display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Unlimited projects</div>
+                    <div display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Dark mode built in</div>
+                    <div display="flex" items="center" gap="2"><i class="ri-check-line" text="success"></i> Priority support</div>
+                  </div>
+                  <button type="button" bg="primary" text="white" w="full" py="3" rounded="full" mt="6" border="0" font-weight="600">Start free trial</button>
+                </div>
+                <span position="absolute" right="-4" bottom="-8" display="flex" items="center" gap="1" bg="success" text="white" px="2.5" py="1" rounded="full" font-size="xs" font-weight="600"><i class="ri-cursor-fill"></i> Ada</span>
+              </div>
+
+              <div display="none" md-display="block" w="full" max-w="16rem" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="5" shadow="lg">
+                <h3 font-size="lg" font-weight="700" m="0" mb="4">Welcome back</h3>
+                <div bg="gray-100" dark-bg="gray-950" rounded="lg" px="3" py="2.5" text="muted" font-size="sm" mb="3">you@company.com</div>
+                <div bg="gray-100" dark-bg="gray-950" rounded="lg" px="3" py="2.5" text="muted" font-size="sm" mb="4">••••••••</div>
+                <div bg="gray-950" dark-bg="#fff" text="white" dark-text="gray-950" rounded="full" py="2.5" align="center" font-size="sm" font-weight="600">Sign in</div>
+              </div>
+            </div>
+
+            <aside lg-col-span="3" bg="#fff" dark-bg="gray-900" p="4" md-p="5" font-size="sm">
+              <p m="0" mb="3" font-size="xs" font-weight="700" tracking="wide" text="muted">ATTRIBUTES</p>
+              <div display="flex" flex-col gap="2" font-family="mono" font-size="xs">
+                <div display="flex" justify="between" gap="3" bg="gray-100" dark-bg="gray-950" rounded="md" px="3" py="2"><span text="amber-500">bg</span><span text="emerald-500">"primary"</span></div>
+                <div display="flex" justify="between" gap="3" bg="gray-100" dark-bg="gray-950" rounded="md" px="3" py="2"><span text="amber-500">rounded</span><span text="emerald-500">"full"</span></div>
+                <div display="flex" justify="between" gap="3" bg="gray-100" dark-bg="gray-950" rounded="md" px="3" py="2"><span text="amber-500">py</span><span text="emerald-500">"3"</span></div>
+                <div display="flex" justify="between" gap="3" bg="gray-100" dark-bg="gray-950" rounded="md" px="3" py="2"><span text="amber-500">hover-bg</span><span text="emerald-500">"primary/80"</span></div>
+                <div display="flex" justify="between" gap="3" bg="gray-100" dark-bg="gray-950" rounded="md" px="3" py="2"><span text="amber-500">dark-bg</span><span text="emerald-500">"#fff"</span></div>
+              </div>
+              <div display="flex" gap="2" mt="5">
+                <span bg="primary/10" text="primary" rounded="full" px="3" py="1" font-size="xs" font-weight="600">HTML</span>
+                <span bg="gray-100" dark-bg="gray-800" text="muted" rounded="full" px="3" py="1" font-size="xs" font-weight="600">React</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================== WORKS WITH ============================== -->
+    <section border-t="1px solid gray-100" dark-border-color="gray-900" border-b="1px solid gray-100">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="8" display="flex" flex-col md-flex-row items="center" justify="between" gap="6">
+        <p m="0" text="muted" font-size="sm">Patterns ship as HTML and React source. The same attributes work across frameworks.</p>
+        <div display="flex" items="center" gap="6" text="muted" font-size="3xl">
+          <i class="ri-html5-fill"></i><i class="ri-reactjs-fill"></i><i class="ri-vuejs-fill"></i><i class="ri-svelte-fill"></i><i class="ri-javascript-fill"></i>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== BENTO ============================== -->
+    <section max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+
+      <div align="center" mx="auto" mb="12" w="full" md-max-w="60vw" lg-max-w="40vw">
+        <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="4">Everything a page needs, already in the markup.</h2>
+        <p font-size="lg" text="muted" line-height="relaxed" m="0">Each pattern carries its own layout, theme, and breakpoints, so you paste it in and it behaves.</p>
+      </div>
+
+      <div display="grid" grid-cols="1" md-grid-cols="2" lg-grid-cols="6" gap="5">
+
+        <article lg-col-span="4" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="3xl" p="7" overflow="hidden">
+          <div display="flex" gap="2" mb="5">
+            <span bg="primary" text="white" rounded="full" px="3" py="1" font-size="xs" font-weight="600">HTML</span>
+            <span bg="gray-200" dark-bg="gray-800" text="muted" rounded="full" px="3" py="1" font-size="xs" font-weight="600">React</span>
+          </div>
+          <h3 font-size="2xl" font-weight="700" m="0" mb="2">Copy as HTML or React</h3>
+          <p text="muted" line-height="relaxed" m="0" mb="6" w="full" md-max-w="28rem">Every pattern has both sources. Pick the one your project uses and paste.</p>
+          <div display="grid" grid-cols="1" md-grid-cols="2" gap="4">
+            <div bg="#fff" dark-bg="gray-950" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="4" font-family="mono" font-size="xs" line-height="relaxed" overflow="auto">
+              <div><span text="blue-500">&lt;button</span> <span text="amber-500">bg</span>=<span text="emerald-500">"primary"</span></div>
+              <div ml="4"><span text="amber-500">text</span>=<span text="emerald-500">"white"</span> <span text="amber-500">px</span>=<span text="emerald-500">"6"</span></div>
+              <div ml="4"><span text="amber-500">rounded</span>=<span text="emerald-500">"full"</span><span text="blue-500">&gt;</span></div>
+              <div ml="4">Get started</div>
+              <div text="blue-500">&lt;/button&gt;</div>
+            </div>
+            <div bg="#fff" dark-bg="gray-950" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" display="flex" items="center" justify="center" p="6">
+              <button type="button" bg="primary" hover-bg="primary/80" text="white" px="6" py="3" rounded="full" border="0" font-weight="600">Get started</button>
+            </div>
+          </div>
+        </article>
+
+        <article lg-col-span="2" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="3xl" p="7" display="flex" flex-col justify="between" gap="6">
+          <div display="grid" grid-cols="2" rounded="2xl" overflow="hidden" border="1px solid gray-200" dark-border-color="gray-800">
+            <div bg="#fff" text="#000" p="4" font-size="sm" font-weight="600">Light<div bg="primary" rounded="full" py="1.5" mt="3"></div></div>
+            <div bg="#000" text="#fff" p="4" font-size="sm" font-weight="600">Dark<div bg="primary" rounded="full" py="1.5" mt="3"></div></div>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" m="0" mb="2">Dark mode, built in</h3>
+            <p text="muted" line-height="relaxed" m="0">Light and dark intent live together with <code>dark-bg</code> on the same element.</p>
+          </div>
+        </article>
+
+        <article lg-col-span="2" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="3xl" p="7" display="flex" flex-col justify="between" gap="6">
+          <div display="grid" grid-cols="4" gap="2">
+            <span bg="primary" rounded="xl" py="5"></span><span bg="success" rounded="xl" py="5"></span><span bg="warning" rounded="xl" py="5"></span><span bg="danger" rounded="xl" py="5"></span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" m="0" mb="2">Semantic tokens</h3>
+            <p text="muted" line-height="relaxed" m="0">Say <code>primary</code> or <code>muted</code> and your theme decides the color.</p>
+          </div>
+        </article>
+
+        <article lg-col-span="2" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="3xl" p="7" display="flex" flex-col justify="between" gap="6">
+          <div display="flex" items="end" gap="2">
+            <span w="full" h="16" rounded="lg" bg="primary/20"></span>
+            <span w="full" h="12" rounded="lg" bg="primary/40"></span>
+            <span w="full" h="8" rounded="lg" bg="primary"></span>
+          </div>
+          <div>
+            <h3 font-size="xl" font-weight="700" m="0" mb="2">Responsive by prefix</h3>
+            <p text="muted" line-height="relaxed" m="0"><code>md-grid-cols="3"</code> sits beside <code>grid-cols="1"</code>.</p>
+          </div>
+        </article>
+
+        <article lg-col-span="2" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="3xl" p="7" display="flex" flex-col justify="between" gap="6">
+          <div bg="#fff" dark-bg="gray-950" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="4" font-family="mono" font-size="xs" overflow="auto"><span text="blue-500">&lt;View</span> <span text="amber-500">display</span>=<span text="emerald-500">"grid"</span> <span text="amber-500">gap</span>=<span text="emerald-500">"4"</span> <span text="blue-500">/&gt;</span></div>
+          <div>
+            <h3 font-size="xl" font-weight="700" m="0" mb="2">React Native, same words</h3>
+            <p text="muted" line-height="relaxed" m="0">The vocabulary carries over from <code>&lt;div&gt;</code> to <code>&lt;View&gt;</code>.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ============================== SHOTS ============================== -->
+    <section bg="gray-50" dark-bg="gray-950" border-t="1px solid gray-100" dark-border-color="gray-900">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+
+        <div display="flex" flex-col md-flex-row items="start" md-items="end" justify="between" gap="5" mb="10">
+          <div>
+            <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="3">Fresh from the catalog</h2>
+            <p font-size="lg" text="muted" line-height="relaxed" m="0">Every shot is live Atomattr markup. Open one to see its source.</p>
+          </div>
+          <div display="flex" gap="2" wrap>
+            <a href="./catalog.html" bg="gray-950" dark-bg="#fff" text="white" dark-text="gray-950" px="4" py="1.5" rounded="full" font-size="sm" font-weight="600" text-decoration="none">All</a>
+            <a href="./components.html" border="1px solid gray-200" dark-border-color="gray-800" text="text" px="4" py="1.5" rounded="full" font-size="sm" font-weight="600" text-decoration="none" hover-bg="gray-100" dark-hover-bg="gray-900">Components</a>
+            <a href="./sections.html" border="1px solid gray-200" dark-border-color="gray-800" text="text" px="4" py="1.5" rounded="full" font-size="sm" font-weight="600" text-decoration="none" hover-bg="gray-100" dark-hover-bg="gray-900">Sections</a>
+          </div>
+        </div>
+
+        <div display="grid" grid-cols="1" md-grid-cols="2" lg-grid-cols="3" gap="6">
+
+          <a href="./components.html" text="text" text-decoration="none" display="block">
+            <div h="64" bg="gray-100" dark-bg="gray-900" border="1px solid transparent" hover-border-color="primary" rounded="2xl" display="flex" items="center" justify="center" p="6">
+              <div bg="#fff" dark-bg="gray-950" rounded="xl" p="5" w="full" max-w="12rem" shadow="md">
+                <p m="0" text="primary" font-size="xs" font-weight="700">PRO</p>
+                <p m="0" font-size="3xl" font-weight="700">$19<span text="muted" font-size="xs" font-weight="400">/mo</span></p>
+                <div bg="primary" rounded="full" py="1.5" mt="3"></div>
+              </div>
+            </div>
+            <div display="flex" items="center" justify="between" mt="3" px="1"><b font-size="sm">Pricing card</b><span text="muted" font-size="xs">Component · HTML, React</span></div>
+          </a>
+
+          <a href="./components.html" text="text" text-decoration="none" display="block">
+            <div h="64" bg="gray-100" dark-bg="gray-900" border="1px solid transparent" hover-border-color="primary" rounded="2xl" display="flex" items="center" justify="center" p="6">
+              <div bg="#fff" dark-bg="gray-950" rounded="xl" p="5" w="full" max-w="14rem" shadow="md" display="flex" flex-col gap="2">
+                <b font-size="sm">Welcome back</b>
+                <span bg="gray-100" dark-bg="gray-900" rounded="md" py="2"></span>
+                <span bg="gray-100" dark-bg="gray-900" rounded="md" py="2"></span>
+                <span bg="primary" rounded="full" py="2" mt="1"></span>
+              </div>
+            </div>
+            <div display="flex" items="center" justify="between" mt="3" px="1"><b font-size="sm">Sign-in form</b><span text="muted" font-size="xs">Component · HTML, React</span></div>
+          </a>
+
+          <a href="./components.html" text="text" text-decoration="none" display="block">
+            <div h="64" bg="gray-100" dark-bg="gray-900" border="1px solid transparent" hover-border-color="primary" rounded="2xl" display="flex" items="center" justify="center" p="6">
+              <div display="grid" grid-cols="2" gap="3" w="full" max-w="14rem">
+                <div bg="primary" text="white" rounded="xl" p="4" col-span="2"><p m="0" font-size="xs" text="#fff/75">Customers</p><p m="0" font-size="2xl" font-weight="700">18,246</p></div>
+                <div bg="#fff" dark-bg="gray-950" rounded="xl" p="3" shadow="md"><p m="0" font-size="xs" text="muted">Revenue</p><p m="0" font-weight="700">$48.9k</p></div>
+                <div bg="#fff" dark-bg="gray-950" rounded="xl" p="3" shadow="md"><p m="0" font-size="xs" text="muted">Churn</p><p m="0" font-weight="700">1.2%</p></div>
+              </div>
+            </div>
+            <div display="flex" items="center" justify="between" mt="3" px="1"><b font-size="sm">Stat cards</b><span text="muted" font-size="xs">Component · HTML, React</span></div>
+          </a>
+
+          <a href="./sections.html" text="text" text-decoration="none" display="block">
+            <div h="64" bg="gray-100" dark-bg="gray-900" border="1px solid transparent" hover-border-color="primary" rounded="2xl" display="flex" flex-col items="center" justify="center" gap="3" p="6" align="center">
+              <b font-size="2xl" tracking="tight" line-height="tight" max-w="14rem">Build faster with attributes</b>
+              <span bg="primary" text="white" rounded="full" px="5" py="2" font-size="sm" font-weight="600">Get started</span>
+            </div>
+            <div display="flex" items="center" justify="between" mt="3" px="1"><b font-size="sm">Centered hero</b><span text="muted" font-size="xs">Section · HTML, React</span></div>
+          </a>
+
+          <a href="./components.html" text="text" text-decoration="none" display="block">
+            <div h="64" bg="gray-100" dark-bg="gray-900" border="1px solid transparent" hover-border-color="primary" rounded="2xl" display="flex" items="center" justify="center" p="6">
+              <div bg="#000" rounded="full" p="3" display="flex" items="center" justify="between" gap="4" w="full" max-w="20rem">
+                <div display="flex" items="center" gap="3"><span w="10" h="10" rounded="full" bg="primary" display="flex" items="center" justify="center" text="white" font-weight="700">S</span><div><p m="0" text="#fff" font-size="sm" font-weight="600">Samantha Bloom</p><p m="0" text="#fff/60" font-size="xs">Calling…</p></div></div>
+                <span w="10" h="10" rounded="full" bg="green-500" text="#fff" display="flex" items="center" justify="center"><i class="ri-phone-fill"></i></span>
+              </div>
+            </div>
+            <div display="flex" items="center" justify="between" mt="3" px="1"><b font-size="sm">Call pill</b><span text="muted" font-size="xs">Component · HTML, React</span></div>
+          </a>
+
+          <a href="./sections.html" text="text" text-decoration="none" display="block">
+            <div h="64" bg="gray-100" dark-bg="gray-900" border="1px solid transparent" hover-border-color="primary" rounded="2xl" display="flex" items="center" justify="center" p="6">
+              <div bg="#fff" dark-bg="gray-950" rounded="xl" px="4" py="3" display="flex" items="center" justify="between" gap="3" w="full" shadow="md" font-size="xs">
+                <b>Brand</b><span text="muted">Docs</span><span text="muted">Pricing</span>
+                <span bg="primary" text="white" rounded="md" px="3" py="1.5" font-weight="600">Sign in</span>
+              </div>
+            </div>
+            <div display="flex" items="center" justify="between" mt="3" px="1"><b font-size="sm">Navbar</b><span text="muted" font-size="xs">Component · HTML, React</span></div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== HOW IT WORKS ============================== -->
+    <section max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+      <div display="grid" grid-cols="1" lg-grid-cols="2" gap="12" items="center">
+        <div>
+          <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5">From preview to your project in three steps.</h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="8" w="full" lg-max-w="30vw">No package to install for the patterns themselves. You copy the source and it becomes yours.</p>
+          <a href="./docs/installation.html" display="inline-flex" items="center" gap="2" text="muted" hover-text="primary" text-decoration="none" font-weight="600">Read the install guide <i class="ri-arrow-right-line"></i></a>
+        </div>
+
+        <div display="flex" flex-col gap="4">
+          <div display="flex" gap="4" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="5">
+            <span w="10" h="10" flex="none" rounded="full" bg="primary" text="white" display="flex" items="center" justify="center" font-weight="700">1</span>
+            <div><h3 font-size="lg" font-weight="700" m="0" mb="1">Browse and preview</h3><p text="muted" line-height="relaxed" m="0">Open a component or section and see it live, in light and dark.</p></div>
+          </div>
+          <div display="flex" gap="4" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="5">
+            <span w="10" h="10" flex="none" rounded="full" bg="primary" text="white" display="flex" items="center" justify="center" font-weight="700">2</span>
+            <div><h3 font-size="lg" font-weight="700" m="0" mb="1">Inspect the source</h3><p text="muted" line-height="relaxed" m="0">Read the attributes, then switch between HTML and React.</p></div>
+          </div>
+          <div display="flex" gap="4" bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="5">
+            <span w="10" h="10" flex="none" rounded="full" bg="primary" text="white" display="flex" items="center" justify="center" font-weight="700">3</span>
+            <div><h3 font-size="lg" font-weight="700" m="0" mb="1">Copy and change it</h3><p text="muted" line-height="relaxed" m="0">Paste it into your page and edit any attribute. It is your code now.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== BROWSE ============================== -->
+    <section bg="gray-50" dark-bg="gray-950" border-t="1px solid gray-100" dark-border-color="gray-900">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="20">
+        <div display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="4" gap="5">
+
+          <a href="./components.html" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-layout-grid-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Components</h3>
+            <p m="0" text="muted" line-height="relaxed">Navigation, cards, and forms for product interfaces and admin areas.</p>
+          </a>
+          <a href="./sections.html" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="success/10" text="success" display="flex" items="center" justify="center" font-size="xl"><i class="ri-layout-top-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Sections</h3>
+            <p m="0" text="muted" line-height="relaxed">Hero, pricing, and more for product sites, customer pages, and docs.</p>
+          </a>
+          <a href="./templates.html" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="warning/10" text="warning" display="flex" items="center" justify="center" font-size="xl"><i class="ri-pages-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Templates</h3>
+            <p m="0" text="muted" line-height="relaxed">No templates yet. Full pages appear here once their preview and source are ready.</p>
+          </a>
+          <a href="./playground.html" bg="#fff" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" p="6" text="text" text-decoration="none" display="flex" flex-col gap="4" hover-border-color="primary">
+            <span w="11" h="11" rounded="xl" bg="primary/10" text="primary" display="flex" items="center" justify="center" font-size="xl"><i class="ri-terminal-box-line"></i></span>
+            <h3 font-size="xl" font-weight="700" m="0">Playground</h3>
+            <p m="0" text="muted" line-height="relaxed">Paste a pattern and tweak its attributes with a live preview.</p>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== FAQ ============================== -->
+    <section max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24">
+      <div mx="auto" w="full" lg-max-w="50vw">
+        <h2 font-size="4xl" md-font-size="5xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="10" align="center">Before you copy.</h2>
+        <div display="flex" flex-col gap="3">
+          <details bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" px="6" py="5">
+            <summary font-weight="600" cursor="pointer">Is AtomAttr UI a component package?</summary>
+            <p text="muted" line-height="relaxed" m="0" mt="3">No. It is a library of patterns you preview and copy. You own the source from the moment you paste it.</p>
+          </details>
+          <details bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" px="6" py="5">
+            <summary font-weight="600" cursor="pointer">Do I need AtomAttr installed to use a pattern?</summary>
+            <p text="muted" line-height="relaxed" m="0" mt="3">Yes. Patterns are written in Atomattr attributes, so your page needs the defaults stylesheet and script. The install guide covers both.</p>
+          </details>
+          <details bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" px="6" py="5">
+            <summary font-weight="600" cursor="pointer">Can I change the colors?</summary>
+            <p text="muted" line-height="relaxed" m="0" mt="3">Yes. Patterns use semantic tokens like <code>primary</code> and <code>muted</code>, so your theme controls the actual values.</p>
+          </details>
+          <details bg="gray-50" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="gray-800" rounded="2xl" px="6" py="5">
+            <summary font-weight="600" cursor="pointer">Which formats are available?</summary>
+            <p text="muted" line-height="relaxed" m="0" mt="3">Each pattern is published as HTML and as React source.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================== CTA ============================== -->
+    <section position="relative" overflow="hidden" border-t="1px solid gray-100" dark-border-color="gray-900" bg-gradient="radial-gradient(60vw 24rem at 50% 120%, color-mix(in oklch, var(--aa-color-primary) 22%, transparent), transparent 70%)">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24" align="center">
+        <div mx="auto" w="full" md-max-w="60vw" lg-max-w="46vw">
+          <h2 font-size="4xl" md-font-size="5xl" lg-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5">Copy one pattern, then decide.</h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="8">Paste it into your project and see how the markup feels before changing anything big.</p>
+          <div display="flex" flex-col sm-flex-row items="center" justify="center" gap="3">
+            <a href="./catalog.html" bg="primary" text="white" px="8" py="3.5" rounded="full" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" shadow="lg">Browse catalog <i class="ri-arrow-right-line"></i></a>
+            <a href="./playground.html" text="text" border="1px solid gray-200" dark-border-color="gray-800" px="8" py="3.5" rounded="full" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" hover-bg="gray-100" dark-hover-bg="gray-900">Open playground</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer border-t="1px" border-color="gray-200" dark-border-color="gray-950">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
+
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
+
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p mt="4" text="muted" line-height="relaxed" w="full" lg-max-w="20rem">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="gray-800" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="gray-800" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="gray-800" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Library</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+            <a href="sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+            <a href="templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="gray-800" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Atomattr. Copy it. Own it. Change it.</span>
+        <span display="flex" items="center" gap="2">Built with Atomattr <i class="ri-heart-3-line"></i></span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script type="module" src="./site/app.js"></script>
+</body>
+</html>

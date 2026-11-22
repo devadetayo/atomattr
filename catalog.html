@@ -1,45 +1,268 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Browse, preview, and copy published AtomAttr components and sections." />
-    <title>UI Library — AtomAttr</title>
-    <link rel="stylesheet" href="./dist/defaults.css" />
-    <link rel="stylesheet" href="./assets/showcase.css" />
-    <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
-  </head>
-  <body data-page-scope="all" bg="#f8f7f5" dark-bg="gray-950" text="text" min-h="screen" p="0" m="0">
-    <header position="sticky" top="0" z="50" bg="#f8f7f5" dark-bg="gray-950" border-b="1" border-b-color="gray-200" dark-border-b-color="gray-900">
-      <div max-w="7xl" mx="auto" px="4" md-px="8" py="3" display="flex" items="center" justify="between" gap="4">
-        <a href="./index.html" display="inline-flex" items="center" gap="3" text-decoration="none" color="inherit"><span w="9" h="9" rounded="lg" bg="primary" display="flex" items="center" justify="center" text="white" font-weight="700">A</span><strong>AtomAttr UI</strong></a>
-        <nav aria-label="Main navigation" display="none" md-display="flex" items="center" gap="5" font-size="sm"><a href="./components.html" text="muted" text-decoration="none">Components</a><a href="./sections.html" text="muted" text-decoration="none">Sections</a><a href="./docs.html" text="muted" text-decoration="none">Framework docs</a></nav>
-        <button type="button" data-theme-toggle aria-label="Switch to dark theme" bg="gray-100" dark-bg="gray-900" border="1" border-color="gray-200" dark-border-color="gray-800" text="text" rounded="full" px="3" py="2" font-size="sm">Light</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+  <meta name="robots" content="index, follow" />
+  <title>Catalog — AtomAttr UI</title>
+  <meta name="description" content="Browse and copy published AtomAttr UI components and sections. Preview each pattern, inspect its source, and copy HTML or React-ready code." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/catalog.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="Catalog — AtomAttr UI" />
+  <meta property="og:description" content="Preview, inspect and copy interface patterns written in Atomattr attributes." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/catalog.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Catalog — AtomAttr UI" />
+  <meta name="twitter:description" content="Preview, inspect and copy interface patterns written in Atomattr attributes." />
+  <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/motion.css" />
+  <link rel="stylesheet" href="./assets/stage.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+  <style>
+    /* Only what attributes cannot express: fonts, gradient text, keycap depth, the FAQ accordion, and the selected state of the hero switch. */
+    html { font-family: 'DM Sans', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    code, kbd, .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .grad-text { background: linear-gradient(180deg, #fff 0%, #fff 35%, rgba(255,255,255,.55) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    html:not(.dark):not([data-theme="dark"]) .grad-text { background: linear-gradient(180deg, #0b0c0f 0%, #0b0c0f 40%, rgba(11,12,15,.6) 100%); -webkit-background-clip: text; background-clip: text; }
+    .accent-text { background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 45%, #d946ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .seg[aria-pressed="true"] { background: #fff !important; color: #0b0c0f !important; }
+    .faq summary { list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq .faq-opened { display: none; }
+    .faq[open] .faq-opened { display: inline; }
+    .faq[open] .faq-closed { display: none; }
+    .faq[open] { border-color: var(--aa-color-primary, #5b5cf6); }
+    @media (min-width: 1024px) { .faq-sticky { position: sticky; top: 96px; } }
+    .keycap { box-shadow: 0 1px 0 rgba(255,255,255,.12) inset, 0 2px 0 rgba(0,0,0,.5); }
+    .logos { scrollbar-width: none; }
+    .logos::-webkit-scrollbar { display: none; }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+  <link rel="modulepreload" href="./ui-cards.js" />
+  <link rel="modulepreload" href="./data/catalog-index.js" />
+  <link rel="modulepreload" href="./data/catalog-tiles.js" />
+<link rel="stylesheet" href="assets/font.css">  <script src="./dist/atomattr.min.js"></script>
+</head>
+
+<body data-scope="all" bg="#fff" dark-bg="#07080a" text="text" dark-text="gray-50" min-h="screen" p="0" m="0">
+
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="#07080a" border-b="1px" border-color="gray-100" dark-border-color="#ffffff/10" backdrop-blur="md"></header>
+
+  <main>
+    <!-- ============================== INTRO + SEARCH ============================== -->
+    <section position="relative" overflow="hidden" border-b="1px solid gray-100" dark-border-color="#ffffff/10">
+      <div aria-hidden="true" position="absolute" top="0" left="0" w="full" h="full" pointer-events="none" opacity="0.55" animate="aa-grid 6s linear infinite" bg-size="40px 40px" bg-image="linear-gradient(to right, color-mix(in oklch, var(--aa-color-primary, #5b5cf6) 14%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklch, var(--aa-color-primary, #5b5cf6) 14%, transparent) 1px, transparent 1px)" style="mask-image:radial-gradient(ellipse 70% 90% at 50% 0%,#000 25%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 90% at 50% 0%,#000 25%,transparent 75%)"></div>
+      <div position="relative" max-w="7xl" mx="auto" px="4" md-px="8" pt="12" lg-pt="16" pb="10" text-align="center">
+        <p class="mono" data-reveal m="0" mb="4" display="inline-flex" items="center" gap="2" font-size="xs" tracking="wide" text="muted"><span w="1.5" h="1.5" rounded="full" bg="primary" animate="aa-pulse 2s ease-in-out infinite"></span> ATOMATTR UI</p>
+        <h1 data-reveal style="--d:80ms" font-size="4xl" md-font-size="6xl" font-weight="800" line-height="none" tracking="tighter" m="0" mb="4">The full catalog. <span text="primary">Copy the code.</span></h1>
+        <p data-reveal style="--d:140ms" font-size="lg" text="muted" line-height="relaxed" m="0" mb="7" mx="auto" max-w="36rem">Every published component, section and template, grouped by category.</p>
+        <label data-reveal style="--d:200ms" display="flex" items="center" gap="3" mx="auto" max-w="30rem" px="5" py="3" rounded="md" bg="gray-100" dark-bg="#17181b" border="0" shadow="sm" text="muted">
+          <i class="ri-search-line"></i>
+          <input id="ui-search" type="search" placeholder="Search catalog…" aria-label="Search components" autocomplete="off" w="full" bg="transparent" border="0" outline="none" text="text" font-size="md" />
+          <kbd class="mono" font-size="xs" px="1.5" rounded="md" border="1px solid gray-200" dark-border-color="#ffffff/10">/</kbd>
+        </label>
       </div>
-    </header>
-    <main id="catalog">
-      <section border-b="1" border-b-color="gray-200" dark-border-b-color="gray-800">
-        <div max-w="7xl" mx="auto" px="4" md-px="8" py="10" lg-py="14">
-          <p m="0" mb="3" text="primary" font-size="xs" font-weight="700" tracking="wide">ATOMATTR UI LIBRARY</p>
-          <h1 m="0" font-size="5xl" tracking="tight" line-height="tight" max-w="4xl">Find a pattern. Preview it. Copy the source.</h1>
-          <p m="0" mt="4" text="muted" font-size="lg" line-height="relaxed" max-w="2xl">A growing collection of interface components and landing page sections written with AtomAttr attributes. Each published item includes its actual source.</p>
+    </section>
+
+    <!-- ============================== CATALOG (all from the Studio data) ============================== -->
+    <section id="components" bg="gray-50" dark-bg="#090a0c" min-h="screen">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="10" lg-py="14">
+        <p id="ui-status" role="status" text="muted" font-size="sm" m="0" mb="8">Loading components…</p>
+
+        <!-- 1. categories first -->
+        <div id="view-home">
+          <div id="ui-cats" display="grid" grid-cols="1" sm-grid-cols="2" lg-grid-cols="3" xl-grid-cols="4" gap="6" mb="16"></div>
+          
         </div>
-      </section>
-      <section bg="gray-50" dark-bg="gray-900">
-        <div max-w="7xl" mx="auto" px="4" md-px="8" py="10">
-          <div display="flex" flex-col md-flex-row items="start" md-items="center" justify="between" gap="4" mb="6">
-            <div><h2 m="0" font-size="2xl">Published patterns</h2><p m="0" mt="1" text="muted" font-size="sm">Search names, descriptions, and tags.</p></div>
-            <label for="search-input" sr-only>Search patterns</label>
-            <input id="search-input" type="search" placeholder="Search the library…" w="full" md-max-w="sm" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-300" dark-border-color="gray-700" text="text" rounded="lg" px="4" py="3" />
+
+        <!-- 2. one category / search results -->
+        <div id="view-list" hidden>
+          <a id="ui-back" href="#" display="inline-flex" items="center" gap="1.5" text="muted" hover-text="text" text-decoration="none" font-size="sm" mb="6"><i class="ri-arrow-left-line"></i> All categories</a>
+          <div display="flex" flex-col md-flex-row md-items="end" justify="between" gap="3" mb="8">
+            <div><h2 id="ui-list-title" font-size="3xl" md-font-size="5xl" font-weight="800" tracking="tighter" line-height="tight" m="0"></h2><p id="ui-list-sub" m="0" mt="2" text="muted" font-size="lg"></p></div>
+            <div id="ui-siblings" display="flex" gap="2" wrap></div>
           </div>
-          <div id="category-filters" display="flex" gap="2" wrap mb="6" aria-label="Filter patterns by tag"></div>
-          <div id="catalog-grid" display="grid" grid-cols="1" md-grid-cols="2" xl-grid-cols="3" gap="5"></div>
-          <div id="empty-state" hidden role="status" bg="#fff" dark-bg="gray-950" border="1" border-color="gray-200" dark-border-color="gray-800" rounded="xl" p="8" mt="6"><h3 m="0" mb="2" font-size="xl">No patterns match</h3><p m="0" text="muted">Try another search or clear the selected tag.</p></div>
+          <div id="ui-grid"></div>
+          <p id="ui-none" hidden text="muted" align="center" py="16" m="0">Nothing matches that search.</p>
         </div>
-      </section>
-    </main>
-    <footer border-t="1" border-t-color="gray-200" dark-border-t-color="gray-800"><div max-w="7xl" mx="auto" px="4" md-px="8" py="6" display="flex" flex-col sm-flex-row gap="3" justify="between" text="muted" font-size="sm"><span>AtomAttr UI</span><a href="./docs/installation.html" text="primary">Install AtomAttr</a><a href="./playground.html" text="primary">Try the playground</a><a href="https://github.com/devadetayo/atomattr" text="primary">Repository ↗</a></div></footer>
-    <script src="./dist/atomattr.min.js" defer></script>
-    <script type="module" src="./catalog.js"></script>
-  </body>
+      </div>
+    </section>
+
+
+    <section position="relative" overflow="hidden" border-t="1px solid gray-100" dark-border-color="#ffffff/10" bg-gradient="radial-gradient(60vw 24rem at 50% 120%, color-mix(in oklch, var(--aa-color-primary) 32%, transparent), transparent 70%)">
+      <div max-w="7xl" mx="auto" px="4" md-px="8" py="16" lg-py="24" align="center">
+        <div mx="auto" w="full" md-max-w="60vw" lg-max-w="46vw">
+          <h2 class="grad-text" font-size="4xl" md-font-size="5xl" lg-font-size="6xl" font-weight="700" tracking="tight" line-height="tight" m="0" mb="5">Copy one pattern, then decide.</h2>
+          <p font-size="lg" text="muted" line-height="relaxed" m="0" mb="8">Paste it into your project and see how the markup feels before changing anything big.</p>
+          <div display="flex" flex-col sm-flex-row items="center" justify="center" gap="3">
+            <a href="./catalog.html" bg="primary" hover-bg="primary/80" text="white" px="8" py="3.5" rounded="md" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" shadow="lg">Browse catalog <i class="ri-arrow-right-line"></i></a>
+            <a href="./playground.html" text="text" bg="gray-100" dark-bg="#ffffff/5" border="0" px="8" py="3.5" rounded="md" font-weight="600" text-decoration="none" display="inline-flex" items="center" gap="2" hover-bg="gray-200" dark-hover-bg="#ffffff/10">Open playground</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer border-t="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
+
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
+
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p mt="4" text="muted" line-height="relaxed" w="full" lg-max-w="20rem">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="md" border="0" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100" dark-hover-bg="#ffffff/5" bg="gray-100" dark-bg="gray-900"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Library</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="components.html" text="muted" text-decoration="none" hover-text="text">Components</a>
+            <a href="sections.html" text="muted" text-decoration="none" hover-text="text">Sections</a>
+            <a href="templates.html" text="muted" text-decoration="none" hover-text="text">Templates</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="contribute.html" text="muted" text-decoration="none" hover-text="text">Contribute a design</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Atomattr. Copy it. Own it. Change it.</span>
+        <span display="flex" items="center" gap="2">Built with Atomattr <i class="ri-heart-3-line"></i></span>
+      </div>
+
+    </div>
+  </footer>
+  <script src="./assets/motion.js"></script>
+  <script type="module" src="./site/app.js"></script>
+  <script type="module">
+    /* UI catalog: the Studio's published components (plus the owner's drafts), categories first. */
+    import { mountCards, loadIndex, loadTiles, hydrate } from './ui-cards.js';
+    import { esc, ORDER, GROUPS } from './ui-lib.js';
+    import { paint } from './ui-cards.js';
+    const $ = (id) => document.getElementById(id);
+    const META = {"Hero": ["ri-layout-top-line", "#6366f1", "Opening sections."], "Navigation": ["ri-navigation-line", "#0ea5e9", "Menus and wayfinding."], "Buttons": ["ri-cursor-line", "#ec4899", "Buttons with icons."], "Animated buttons": ["ri-magic-line", "#f59e0b", "Hover, press, loop and click effects."], "Cards": ["ri-layout-masonry-line", "#10b981", "Content cards for features, pricing, stats, profiles and links."], "Image cards": ["ri-image-2-line", "#8b5cf6", "Cards led by a photo: blog, product, places, people and overlays."], "Image pills": ["ri-user-smile-line", "#f43f5e", "Pill and chip shapes that carry a photo or avatar: tags, people, categories and stacks."], "More blocks": ["ri-apps-2-line", "#14b8a6", "Pricing, stats, logo clouds, calls to action, timelines, teams, blogs and galleries."], "Accordions and FAQ": ["ri-question-answer-line", "#6366f1", "Questions and answers that open and close."], "Testimonials": ["ri-double-quotes-l", "#ec4899", "Customer quotes, ratings and logos of people who trust you."], "Social links": ["ri-share-forward-line", "#0ea5e9", "Follow buttons, share bars, profile cards and icon sets."], "Forms and inputs": ["ri-input-field", "#10b981", "Complete forms and single fields."], "Range sliders": ["ri-equalizer-line", "#f59e0b", "Draggable sliders for price, volume and quantity."], "Checkbox": ["ri-checkbox-line", "#8b5cf6", "Tick boxes for consent, preferences and choices."], "Switches": ["ri-toggle-line", "#14b8a6", "On / off toggles that work in previews and exports."], "Radio and choices": ["ri-radio-button-line", "#f43f5e", "Pick-one controls: dots, cards, plan pickers and segmented controls."], "Dark mode toggles": ["ri-contrast-2-line", "#6366f1", "Buttons that flip the whole page between light and dark."], "Tooltips": ["ri-chat-1-line", "#0ea5e9", "Small hints that appear when you point at or focus an element."], "Loaders": ["ri-loader-4-line", "#ec4899", "Spinners, dots, bars, ripples and skeletons."], "Alerts and banners": ["ri-alarm-warning-line", "#f59e0b", "Inline messages and announcement bars."], "Toasts": ["ri-notification-3-line", "#10b981", "Short notifications that sit above the page."], "Modals and dialogs": ["ri-window-line", "#8b5cf6", "Dialogs that open over the page from a button and close again."], "Footers": ["ri-layout-bottom-line", "#14b8a6", "Closing sections for the bottom of a page."], "App screens": ["ri-dashboard-line", "#f43f5e", "Dashboards, lists and mobile screens."]};
+    const isWide = (c) => !!all.find((i) => i.category === c)?.wide;
+    const SCOPE = document.body.dataset.scope || 'all';
+    const SCOPE_CATS = SCOPE === 'all' ? ORDER : (GROUPS[SCOPE] || ORDER);
+    const NOUN = { Sections: 'sections', Templates: 'templates' }[SCOPE] || 'components';
+    let all = [], cats = [], TILES = {}, seq = 0;
+    const slugCat = (c) => c.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+    const tile = (c, i = 0) => {
+      const first = TILES[c] || all.find((i2) => i2.category === c && i2.preview), n = all.filter((i2) => i2.category === c).length;
+      const f = first.frame || { w: 480, h: 300 };
+      return `<a href="#${slugCat(c)}" data-reveal group display="flex" flex-col gap="2.5" text="text" dark-text="gray-50" text-decoration="none">
+        <div data-stage data-wide="${isWide(c) ? 1 : 0}" data-fw="${f.w}" data-fh="${f.h}" class="aa-stage" position="relative" overflow="hidden" rounded="md" bg="#e8e8ea" dark-bg="#212121" w="full" group-hover-shadow="xl" transition="all" duration="300ms" style="aspect-ratio:3/2">
+          <iframe title="${esc(c)} preview" loading="lazy" tabindex="-1" aria-hidden="true" data-slug="${esc(first.slug)}" border="0" pointer-events="none" bg="transparent" style="position:absolute;left:50%;top:50%;width:1px;height:1px;opacity:0;transform-origin:center center;transform:translate(-50%,-50%)"></iframe>
+          <span position="absolute" bottom="3" right="4" display="inline-flex" items="center" gap="1.5" font-size="sm" font-weight="600" text="gray-900" dark-text="gray-50">Browse <i class="ri-arrow-right-line" group-hover-translate-x="4px" transition="all" duration="300ms"></i></span>
+        </div>
+        <div display="flex" items="center" justify="between" gap="3" px="0.5"><span font-size="md" font-weight="700" truncate>${esc(c)}</span><span text="muted" font-size="sm" flex="none">${n} components</span></div></a>`;
+    };
+
+    function home() {
+      seq++;
+      $('view-home').hidden = false; $('view-list').hidden = true;
+      $('ui-cats').innerHTML = cats.map((c, i) => tile(c, i)).join('');
+      paint($('ui-cats'), new Map(Object.values(TILES).map((i) => [i.slug, i])));
+      if (window.__aaReveal) window.__aaReveal($('view-home'));
+      $('ui-status').textContent = `${all.length} ${NOUN} in ${cats.length} categories. Pick a category to see them all.`;
+    }
+
+    async function list(items, title, sub, current) {
+      const my = ++seq;
+      $('view-home').hidden = true; $('view-list').hidden = false;
+      $('ui-list-title').textContent = title; $('ui-list-sub').textContent = sub;
+      const g = $('ui-grid');
+      $('ui-none').hidden = items.length > 0;
+      g.innerHTML = '';
+      $('ui-status').textContent = items.length ? 'Loading…' : '';
+      items = await hydrate(items.slice(0, 160));
+      if (my !== seq) return;
+      const secs = [...new Set(items.map((i) => i.section || ''))].sort((a, b) => (a === '') - (b === ''));
+      const grouped = secs.length > 1 || (secs.length === 1 && secs[0]);
+      (grouped ? secs : ['']).forEach((s) => {
+        const part = grouped ? items.filter((i) => (i.section || '') === s) : items;
+        const wrap = document.createElement('section');
+        wrap.style.gridColumn = '1 / -1';
+        const wide = part.filter((i) => i.wide).length > part.length / 2;
+        wrap.innerHTML = (grouped ? `<h3 m="0" mb="4" font-size="lg" font-weight="800" display="flex" items="center" gap="2">${esc(s || 'More')} <span text="muted" font-size="sm" font-weight="600">${part.length}</span></h3>` : '') + `<div display="grid" grid-cols="1" ${wide ? 'md-grid-cols="2" xl-grid-cols="3"' : 'sm-grid-cols="2" lg-grid-cols="3" xl-grid-cols="4"'} gap="6"></div>`;
+        g.append(wrap);
+        mountCards(wrap.lastElementChild, part);
+      });
+      g.style.display = 'grid'; g.style.gap = '3rem'; g.style.gridTemplateColumns = '1fr';
+      $('ui-back').hidden = cats.length === 1; $('ui-siblings').hidden = cats.length === 1;
+      $('ui-siblings').hidden = true; void cats.map((c) => `<a href="#${slugCat(c)}" rounded="md" px="3.5" py="1" font-size="sm" font-weight="600" text-decoration="none" ${c === current ? 'bg="gray-950" dark-bg="#fff" text="white" dark-text="gray-950"' : 'text="muted" hover-text="text" border="0"'} bg="gray-100" dark-bg="gray-900">${esc(c)}</a>`).join('');
+      $('ui-status').textContent = '';
+    }
+
+    function route() {
+      if (!all.length) return;
+      const h = decodeURIComponent(location.hash.slice(1)), q = $('ui-search').value.trim().toLowerCase();
+      if (q) {
+        const hit = all.filter((i) => [i.name, i.category, i.section, i.description, (i.tags || []).join(' ')].join(' ').toLowerCase().includes(q));
+        return list(hit, `Results for “${$('ui-search').value.trim()}”`, `${hit.length} component${hit.length === 1 ? '' : 's'} found`, null);
+      }
+      const c = cats.find((x) => slugCat(x) === h) || (cats.length === 1 ? cats[0] : null);
+      if (c) { const items = all.filter((i) => i.category === c); window.scrollTo(0, 0); return list(items, c, `${items.length} component${items.length === 1 ? '' : 's'}. ${''}`, c); }
+      home();
+    }
+
+    $('ui-search').addEventListener('input', () => { if (!$('ui-search').value && location.hash) history.replaceState(null, '', location.pathname); route(); });
+    $('ui-back').addEventListener('click', (e) => { e.preventDefault(); $('ui-search').value = ''; history.pushState(null, '', location.pathname); route(); });
+    addEventListener('hashchange', () => { $('ui-search').value = ''; route(); });
+    addEventListener('keydown', (e) => { if (e.key === '/' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); $('ui-search').focus(); } });
+
+    Promise.all([loadIndex(), loadTiles()]).then(([idx, tiles]) => {
+      TILES = tiles;
+      all = idx.items.filter((i) => SCOPE_CATS.includes(i.category) || (SCOPE === 'all' && !ORDER.includes(i.category)));
+      cats = [...SCOPE_CATS, ...new Set(all.map((i) => i.category).filter((c) => !SCOPE_CATS.includes(c)))].filter((c) => all.some((i) => i.category === c));
+      if (!all.length) { $('ui-status').textContent = ''; $('ui-cats').innerHTML = `<p m="0" py="16" text="muted" align="center" style="grid-column:1/-1">No ${NOUN} are published yet. Add one in the Studio and it will appear here.</p>`; return; }
+      route();
+    }).catch(() => { $('ui-status').textContent = 'Components could not be loaded. Refresh the page to try again.'; });
+  </script>
+  <script src="./assets/theme-icon.js" defer></script>
+<script src="assets/nav-search.js" defer></script></body>
 </html>

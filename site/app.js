@@ -116,31 +116,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(<App />);`,
 
 startAtomAttr();
 
-function getThemeButtonMarkup(theme) {
-  const isDark = theme === 'dark';
-
+function getThemeButtonMarkup() {
+  // Contrast icon (half-filled circle), the same in light and dark.
   return `
-    <svg
-      aria-hidden="true"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      style="display:block;"
-    >
-      ${isDark
-        ? `
-          <path d="M12 3v2.5M12 18.5V21M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M3 12h2.5M18.5 12H21M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" />
-          <circle cx="12" cy="12" r="4.2" />
-        `
-        : `
-          <path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a8 8 0 1 0 9.5 9.5Z" />
-        `
-      }
+    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor" />
     </svg>
   `;
 }
@@ -215,8 +196,8 @@ function setupSiteNav() {
     const siteLinks = [
       ['Docs', `${root}docs.html`, 'docs'],
       ['Playground', `${root}playground.html`, 'playground'],
-      ['Guide', `${root}docs/cheatsheet.html`, 'cheatsheet'],
       ['AtomAttr UI', `${root}ui.html`, 'ui'],
+      ['Pro', `${root}pro-templates.html`, 'templates'],
     ];
 
     const docsLinks = [
@@ -230,7 +211,6 @@ function setupSiteNav() {
     const uiLinks = [
       ['Docs', `${root}docs.html`, 'docs'],
       ['Playground', `${root}playground.html`, 'playground'],
-      ['Guide', `${root}docs/cheatsheet.html`, 'cheatsheet'],
       ['AtomAttr UI', `${root}ui.html`, 'ui'],
     ];
 
@@ -245,28 +225,33 @@ function setupSiteNav() {
             <img src="${root}assets/images/logo.dark.png" alt="Atomattr" h="6" dark-display="flex" display="none">
           </a>
 
-          <div id="main-nav" aria-label="${isUi ? 'AtomAttr UI navigation' : 'Main navigation'}" display="none" fixed md-relative top="0" left="0" bg="#fff" dark-bg="gray-950" md-bg="transparent" md-dark-bg="transparent" md-display="flex" flex-col md-flex-row items="center" gap="2" w="full" md-w="auto" order="3" md-order="0" pt="4" md-pt="0" mt="16" md-mt="0" border-t="border" md-border="0">
+          <div id="main-nav" aria-label="${isUi ? 'AtomAttr UI navigation' : 'Main navigation'}" display="none" fixed md-relative top="16" md-top="0" left="0" w="full" md-w="auto" bg="#fff" dark-bg="#0b0d12" md-bg="transparent" md-dark-bg="transparent" md-display="flex" flex-col md-flex-row items="stretch" md-items="center" gap="1" md-gap="2" p="3" md-p="0" border-b="1px" md-border-b="0" border-color="gray-200" dark-border-color="#ffffff/10" shadow="2xl" md-shadow="none" z="50" max-h="80vh" overflow="auto" md-overflow="visible" order="3" md-order="0">
             ${links.map(([label, href, key]) => {
               const active =
                 (key === 'docs' && (current === 'docs.html' || location.pathname.includes('/docs/'))) ||
                 (key === 'ui-home' && (current === 'ui.html' || location.pathname.includes('/ui/'))) ||
                 (key === 'ui' && current === 'ui.html') ||
+                (key === 'templates' && (current === 'templates.html' || current === 'pro-templates.html')) ||
                 (key === 'search' && current === 'search.html') ||
                 (key === 'playground' && current === 'playground.html') ||
                 (key === 'docs-home' && (current === 'docs.html' || location.pathname.includes('/docs/')));
-              return `<a href="${href}" data-nav-link text="${active ? accent : 'muted'}" text-decoration="none" font-weight="${active ? '600' : '500'}" px="4" py="1.5" hover-text="primary" transition="colors" duration="300ms" ease>${label}</a>`;
+              return `<a href="${href}" data-nav-link text="${active ? accent : 'text'}" md-text="${active ? accent : 'muted'}" bg="${active ? 'primary/10' : 'transparent'}" md-bg="transparent" text-decoration="none" font-weight="${active ? '600' : '500'}" font-size="md" px="4" py="3" md-py="1.5" rounded="xl" md-rounded="none" display="flex" items="center" justify="between" hover-text="primary" hover-bg="primary/10" md-hover-bg="transparent" transition="colors" duration="300ms" ease>${label}<i class="ri-arrow-right-s-line" md-display="none" text="muted" font-size="xl"></i></a>`;
             }).join('')}
+            <div display="flex" md-display="none" gap="2" pt="3" mt="2" border-t="1px" border-color="gray-200" dark-border-color="#ffffff/10">
+              <a href="https://discord.gg/efCPNK2Wp" target="_blank" rel="noopener" display="flex" items="center" justify="center" gap="2" grow="1" py="2.5" rounded="xl" bg="gray-100" dark-bg="#ffffff/10" text="text" text-decoration="none" font-weight="600" font-size="sm"><i class="ri-discord-fill" font-size="lg" color="indigo-500"></i> Discord</a>
+              <a href="https://github.com/devadetayo/atomattr" target="_blank" rel="noopener" display="flex" items="center" justify="center" gap="2" grow="1" py="2.5" rounded="xl" bg="gray-100" dark-bg="#ffffff/10" text="text" text-decoration="none" font-weight="600" font-size="sm"><i class="ri-github-fill" font-size="lg"></i> GitHub</a>
+            </div>
           </div>
 
           <div display="flex" items="center" gap="2">
-            <a href="${root}index.html#community" aria-label="Open Discord community" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="full" text="text" text-decoration="none" hover-bg="primary/10">
+            <a href="https://discord.gg/efCPNK2Wp" target="_blank" rel="noopener" aria-label="Open Discord community" display="none" md-display="flex" items="center" justify="center" w="10" h="10" rounded="full" text="text" text-decoration="none" hover-bg="primary/10">
               <i class="ri-discord-fill" font-size="20" color="indigo-500"></i>
             </a>
-            <a href="${root}support.html" aria-label="Open voice chat support" display="none" md-display="flex" items="center" justify="center" p="2.5" rounded="full" text="text" dark-text="#fff" text-decoration="none" hover-bg="primary/10">
+            <a href="https://github.com/devadetayo/atomattr" target="_blank" rel="noopener" aria-label="Atomattr on GitHub" display="none" md-display="flex" items="center" justify="center" p="2.5" rounded="full" text="text" dark-text="#fff" text-decoration="none" hover-bg="primary/10">
               <i class="ri-github-fill" font-size="xl"></i>
             </a>
            <button type="button" aria-label="Toggle color theme" data-theme-toggle bg="transparent" text="text" dark-text="#fff" p="2.5" rounded="full" display="flex" items="center" justify="center" border="0" hover-bg="primary/10">
-              <i class="ri-moon-line" font-size="xl"></i>
+              <i class="ri-contrast-2-line" font-size="xl"></i>
             </button>
             <button type="button" aria-label="Open navigation" aria-expanded="false" data-mobile-toggle="main-nav" display="flex" md-display="none" bg="transparent" text="text" dark-text="#fff" p="2.5" rounded="full" items="center" justify="center" border="0">
               <i class="ri-menu-line" font-size="xl" data-mobile-toggle-icon></i>
@@ -299,6 +284,8 @@ function setupMobileNav() {
       setOpen(!isOpen);
     });
 
+    document.addEventListener('mousedown', e => { if (target.getAttribute('data-open') === 'true' && !target.contains(e.target) && !toggle.contains(e.target) && !e.target.closest('[data-ns]')) setOpen(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && target.getAttribute('data-open') === 'true') setOpen(false); });
     target.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         if (window.innerWidth < 768) {

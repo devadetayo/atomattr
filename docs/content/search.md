@@ -9,7 +9,7 @@ The search index is assembled from the registered attribute dictionary, supporte
 
 ## Search tips
 
-Try a short part of a name if you do not know its exact spelling. Search `font` for font-related attributes, `container` for query documentation, or `video` for the aspect ratio preset. Use the [cheatsheet](cheatsheet.html) for a complete attribute-to-property table.
+Try a short part of a name if you do not know its exact spelling. Search `font` for font-related attributes, `gap` for spacing attributes, or `video` for the aspect ratio preset. Use the [cheatsheet](cheatsheet.html) for a complete attribute-to-property table.
 
 ## Search page
 

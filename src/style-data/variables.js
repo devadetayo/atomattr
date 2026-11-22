@@ -605,6 +605,8 @@ export const LETTER_SPACING_PROPS = new Set(['tracking', 'letter-spacing']);
 export const SHADOW_PROPS = new Set(['shadow']);
 
 export const UNITLESS_PROPS = new Set([
+  'line-clamp',
+  'line-clamp-lines',
   'opacity',
   'z',
   'order',

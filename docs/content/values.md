@@ -7,6 +7,22 @@ Some properties resolve short values through Atomattr scales. For example, spaci
 
 The generated reference tables show the CSS property for each attribute. Use the focused pages for [spacing](spacing-padding.html), [sizing](sizing-width-height.html), [typography](typography-font.html), [colors](colors-backgrounds.html), and [effects](effects-shadow.html) for their value conventions.
 
+### Spacing scale
+
+Spacing attributes such as `p`, `m`, `gap`, `w`, `h` and `top` read this scale. Other numbers are treated as pixels.
+
+<!-- atomattr:spacing -->
+
+### Radius, font size, weight and shadow
+
+<!-- atomattr:radius -->
+
+<!-- atomattr:font-size -->
+
+<!-- atomattr:font-weight -->
+
+<!-- atomattr:shadow -->
+
 ## Raw CSS values
 
 When a value is not a token, Atomattr generally passes it through to the mapped CSS property. Use units where CSS expects them, and use valid CSS syntax for functions, keywords, and multi-part values.
@@ -28,6 +44,12 @@ Color attributes accept palette names, semantic color names, CSS colors, and sup
   Color values follow the color property.
 </div>
 ```
+
+### Semantic colours
+
+These names work on any colour attribute, in addition to the 280+ palette names such as `slate-500` or `emerald-600`.
+
+<!-- atomattr:semantic-colors -->
 
 ## Boolean attributes and bare helpers
 

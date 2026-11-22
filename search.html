@@ -24,17 +24,18 @@
     <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <style>
       html { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Inter", sans-serif; }
-      h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.015em; }
+      h1, h2, h3 { font-family: 'DM Sans', sans-serif; letter-spacing: -0.015em; }
       code, pre, pre code, input { font-family: 'JetBrains Mono', monospace; }
       [data-search-page] { scroll-margin-top: 100px; }
     </style>
     <link rel="stylesheet" href="./dist/defaults.css" />
     <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
     <link rel="stylesheet" href="./assets/showcase.css" />
-  </head>
+  <link rel="stylesheet" href="assets/font.css">  <script src="./dist/atomattr.min.js"></script>
+</head>
   <body
     bg="#fff"
     dark-bg="grey-950"
@@ -42,7 +43,7 @@
     min-h="screen"
   >
 
-    <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" border-b="1px" border-color="gray-100" dark-border-color="gray-900" backdrop-blur="md"></header>
+    <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" backdrop-blur="md"></header>
 
     <main class="page-shell" px="4" lg-px="6" xl-px="12" py="8" md-py="12" lg-py="16">
       <section
@@ -64,8 +65,8 @@
         <div
           bg="gray-50"
           dark-bg="gray-900"
-          border="border"
-          rounded="2xl"
+          border="0"
+          rounded="md"
           p="4"
           display="flex"
           flex-col
@@ -77,10 +78,10 @@
             type="search"
             placeholder="Try bg, p, primary, md, rounded, shadow..."
             w="full"
-            bg="#fff"
+            bg="gray-100"
             dark-bg="gray-950"
-            border="border"
-            rounded="xl"
+            border="0"
+            rounded="md"
             px="4"
             py="3"
             text="text"
@@ -96,8 +97,8 @@
           <div
             bg="gray-50"
             dark-bg="gray-900"
-            border="border"
-            rounded="2xl"
+            border="0"
+            rounded="md"
             p="6"
             text="muted"
             line-height="relaxed"
@@ -110,9 +111,9 @@
       </section>
     </main>
 
-    <script src="./dist/atomattr.min.js" defer></script>
     <script type="module" src="./site/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
-  </body>
+    <script src="./assets/theme-icon.js" defer></script>
+<script src="assets/nav-search.js" defer></script></body>
 </html>

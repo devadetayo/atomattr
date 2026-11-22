@@ -18,7 +18,7 @@ A sticky element needs an inset such as `top="0"` to define when it sticks. It i
 
 ## Offsets and stacking
 
-Use `top`, `right`, `bottom`, `left`, logical inset attributes, and `z` to set offsets and stack order. These values do not change an element's position mode: offsets generally require a positioned element, and stacking order can be affected by stacking contexts.
+Use `top`, `right`, `bottom`, `left`, and `z` to set offsets and stack order. These values do not change an element's position mode: offsets generally require a positioned element, and stacking order can be affected by stacking contexts.
 
 ## Attributes
 

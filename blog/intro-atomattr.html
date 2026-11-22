@@ -1,276 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#5b5cf6" />
-    <meta name="robots" content="index, follow" />
-    <title>Introducing AtomAttr - AtomAttr Blog</title>
-    <meta name="description" content="An introduction to Atomattr, a styling model built around expressive attributes instead of class-name soup." />
-    <link rel="canonical" href="https://devadetayo.github.io/atomattr/blog/intro-atomattr.html" />
-    <link rel="icon" href="../assets/favico/favico.png" type="image/png" />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="Atomattr Blog" />
-    <meta property="og:title" content="Introducing AtomAttr - AtomAttr Blog" />
-    <meta property="og:description" content="An introduction to Atomattr, a styling model built around expressive attributes instead of class-name soup." />
-    <meta property="og:url" content="https://devadetayo.github.io/atomattr/blog/intro-atomattr.html" />
-    <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Introducing AtomAttr - AtomAttr Blog" />
-    <meta name="twitter:description" content="An introduction to Atomattr, a styling model built around expressive attributes instead of class-name soup." />
-    <meta name="twitter:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="../" />
+  <meta name="theme-color" content="#5b5cf6" />
+  <meta name="author" content="devadetayo" />
+  <title>Introducing AtomAttr: The Runtime CSS Revolution — Atomattr Blog</title>
+  <meta name="description" content="Why styling lives on the element as attributes, and how the engine turns them into CSS right in the browser." />
+  <link rel="canonical" href="https://devadetayo.github.io/atomattr/blog/intro-atomattr.html" />
+  <link rel="icon" href="assets/favico/favico.png" type="image/png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Atomattr" />
+  <meta property="og:title" content="Introducing AtomAttr: The Runtime CSS Revolution" />
+  <meta property="og:description" content="Why styling lives on the element as attributes, and how the engine turns them into CSS right in the browser." />
+  <meta property="og:url" content="https://devadetayo.github.io/atomattr/blog/intro-atomattr.html" />
+  <meta property="og:image" content="https://devadetayo.github.io/atomattr/assets/favico/favico.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="./dist/defaults.css" />
+  <link rel="stylesheet" href="./assets/showcase.css" />
+  <link rel="stylesheet" href="./assets/motion.css" />
+  <link rel="stylesheet" href="./assets/remixicon/remixicon.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/font.css"></head>
+<body bg="#fff" dark-bg="gray-950" text="text" dark-text="gray-50" min-h="screen" p="0" m="0">
+  <header data-site-nav position="sticky" top="0" z="100" bg="#fff" dark-bg="gray-950" backdrop-blur="md"></header>
+  <main>
+    <section position="relative" overflow="hidden">
+      <div aria-hidden="true" position="absolute" pointer-events="none" rounded="full" style="left:50%;top:-14rem;width:44rem;height:26rem;margin-left:-22rem;filter:blur(90px);background:radial-gradient(closest-side,#6366f155,transparent)"></div>
+      <div position="relative" max-w="44rem" mx="auto" px="4" pt="10" lg-pt="16" pb="8">
+        <a href="blog.html" display="inline-flex" items="center" gap="1.5" text="muted" text-decoration="none" hover-text="text" font-size="sm" mb="8"><i class="ri-arrow-left-line"></i> All articles</a>
+        <div display="flex" items="center" gap="3" font-size="sm" text="muted" mb="4"><span bg="primary/10" text="primary" rounded="full" px="3" py="0.5" font-weight="600" font-size="xs">Engineering</span><span>Nov 25, 2025</span><span>·</span><span>2 min read</span></div>
+        <h1 data-reveal font-size="4xl" md-font-size="6xl" font-weight="800" line-height="tight" tracking="tighter" m="0" mb="5">Introducing AtomAttr: The Runtime CSS Revolution</h1>
+        <p data-reveal style="--d:80ms" font-size="xl" text="muted" line-height="relaxed" m="0" mb="6">Why styling lives on the element as attributes, and how the engine turns them into CSS right in the browser.</p>
+        <div display="flex" items="center" gap="3" font-size="sm"><span w="9" h="9" rounded="full" display="flex" items="center" justify="center" bg="primary/10" text="primary" font-weight="700">D</span><span><strong display="block">devadetayo</strong><span text="muted">Atomattr</span></span></div>
+      </div>
+    </section>
+    <article max-w="44rem" mx="auto" px="4" pb="12">
+      <div border-t="1px solid gray-200" dark-border-color="#ffffff/10" pt="4"></div>
+      <p font-size="lg" line-height="relaxed" m="0" mb="5">Most styling systems ask you to write a name on the element and then describe that name somewhere else: a class in a stylesheet, a token in a config, a component in a library. Atomattr removes the second step. The description <em>is</em> the attribute.</p><div position="relative" my="6" rounded="2xl" overflow="hidden" bg="gray-950" border="1px solid #ffffff/10"><div display="flex" items="center" justify="between" px="4" py="2" border-b="1px solid #ffffff/10" font-size="xs" text="gray-400"><span class="mono">html</span><span display="flex" gap="1.5"><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i></span></div><pre class="mono" m="0" p="4" overflow-x="auto" font-size="sm" line-height="relaxed" text="gray-100" style="tab-size:2"><code>&lt;button bg="primary" text="white" px="4" py="2" rounded="lg" hover-bg="blue-700"&gt;
+  Launch
+&lt;/button&gt;</code></pre></div><p font-size="lg" line-height="relaxed" m="0" mb="5">There is no stylesheet to open for that button. A small engine reads the attributes, turns each one into a CSS rule, and injects the rule into the page. Change an attribute and the style follows.</p><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Why attributes?</h2><p font-size="lg" line-height="relaxed" m="0" mb="5">Attributes are already how HTML carries state: <code class="mono">disabled</code>, <code class="mono">aria-expanded</code>, <code class="mono">data-*</code>. Putting presentation there too has a few practical effects:</p><ul m="0" mb="6" pl="6" list-style="disc" display="flex" flex-col gap="2" font-size="lg" line-height="relaxed"><li><strong>One place to look.</strong> What an element is and how it looks sit in the same tag.</li><li><strong>No naming.</strong> There is no <code class="mono">.card-inner-wrapper</code> to invent, search for, or leave behind when the markup changes.</li><li><strong>Readable diffs.</strong> A styling change shows up on the line of the element it changes.</li><li><strong>Plain structure.</strong> Values like <code class="mono">px="4"</code> or <code class="mono">bg="primary"</code> read like a sentence, with the property name first.</li></ul><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">How it works in one paragraph</h2><p font-size="lg" line-height="relaxed" m="0" mb="5">When the page loads, the engine walks every element, reads each attribute name and value, and asks a parser whether it describes a style. If it does, a generator builds a CSS rule such as <code class="mono">[px="4"] { padding-left: … }</code> and inserts it into a single <code class="mono">&lt;style id="atomattr-generated"&gt;</code> tag. A <code class="mono">MutationObserver</code> keeps watching, so elements added later, or attributes changed later, are styled too. The full walk-through is in <a href="blog/under-the-hood.html" text="primary">Under the Hood</a>.</p><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Getting started</h2><p font-size="lg" line-height="relaxed" m="0" mb="5">Add the defaults stylesheet and the script, then write attributes. That is the whole setup:</p><div position="relative" my="6" rounded="2xl" overflow="hidden" bg="gray-950" border="1px solid #ffffff/10"><div display="flex" items="center" justify="between" px="4" py="2" border-b="1px solid #ffffff/10" font-size="xs" text="gray-400"><span class="mono">html</span><span display="flex" gap="1.5"><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i><i w="2.5" h="2.5" rounded="full" bg="#ffffff/15"></i></span></div><pre class="mono" m="0" p="4" overflow-x="auto" font-size="sm" line-height="relaxed" text="gray-100" style="tab-size:2"><code>&lt;link rel="stylesheet" href="dist/defaults.css" /&gt;
+&lt;script src="dist/atomattr.min.js" defer&gt;&lt;/script&gt;
 
-    <!-- 1. LOAD ENGINE -->
-    <!-- Adjusted path for nested folder -->
-    <link rel="stylesheet" href="../dist/defaults.css">
-    <script src="../dist/atomattr.min.js" defer></script>
+&lt;div p="6" rounded="2xl" bg="surface" border="1px solid border"&gt;
+  Hello, attributes.
+&lt;/div&gt;</code></pre></div><div my="6" rounded="2xl" border="1px solid gray-200" dark-border-color="#ffffff/10" overflow="hidden"><div px="4" py="2" font-size="xs" text="muted" class="mono" border-b="1px solid gray-200" dark-border-color="#ffffff/10" bg="gray-50" dark-bg="#ffffff/5">Live result</div><div p="6"><div p="6" rounded="2xl" bg="surface" dark-bg="gray-900" border="1px solid gray-200" dark-border-color="#ffffff/10" shadow="sm">Hello, attributes.</div></div></div><p font-size="lg" line-height="relaxed" m="0" mb="5">The same attribute vocabulary is available in React and React Native, so what you learn on the web carries over. Responsive and state variants are prefixes on the same attribute: <code class="mono">md-px="8"</code>, <code class="mono">hover-bg="blue-700"</code>, <code class="mono">dark-bg="gray-950"</code>.</p><aside my="6" p="5" rounded="2xl" bg="primary/10" border="1px solid primary/20" display="flex" gap="3"><i class="ri-scales-3-line" text="primary" font-size="xl" flex="none"></i><div><strong display="block" mb="1">Honest trade-off</strong><span text="muted" line-height="relaxed">Because the engine runs in the browser, styles appear after the script runs. The next article, <a href="blog/no-build-step.html" text="primary">Why We Ditched the Build Step</a>, covers what that costs and how to plan for it.</span></div></aside><h2 font-size="2xl" md-font-size="3xl" font-weight="800" tracking="tight" line-height="tight" mt="12" mb="4">Where to go next</h2><ul m="0" mb="6" pl="6" list-style="disc" display="flex" flex-col gap="2" font-size="lg" line-height="relaxed"><li>Skim the <a href="cheatsheet.html" text="primary">cheat sheet</a> for the attribute vocabulary.</li><li>Read the <a href="docs.html" text="primary">documentation</a> for installation and the React paths.</li><li>Browse <a href="ui.html" text="primary">Atomattr UI</a> for ready-made components you can copy.</li></ul>
+    </article>
+    <section max-w="44rem" mx="auto" px="4" pb="12">
+      <div display="grid" grid-cols="1" sm-grid-cols="2" gap="4"><span></span><a href="blog/no-build-step.html" display="flex" flex-col gap="1" p="5" rounded="2xl" border="1px solid gray-200" dark-border-color="#ffffff/10" hover-border-color="primary/50" text="text" text-decoration="none" text-align="right" transition="all" duration="300ms"><span font-size="xs" text="muted" class="mono">NEXT →</span><strong>Why We Ditched the Build Step</strong></a></div>
+    </section>
+    <section max-w="44rem" mx="auto" px="4" pb="20">
+      <div p="8" rounded="3xl" text-align="center" bg="gray-950" dark-bg="#17181b" text="white" position="relative" overflow="hidden">
+        <h2 m="0" mb="2" font-size="2xl" font-weight="800">Try Atomattr on something small</h2>
+        <p m="0" mb="5" text="gray-400">One stylesheet, one script, and you are writing attributes.</p>
+        <div display="flex" gap="3" justify="center" wrap><a href="docs.html" bg="#fff" text="gray-950" px="5" py="2.5" rounded="full" font-weight="600" text-decoration="none">Read the docs</a><a href="ui.html" border="1px solid #ffffff/20" text="white" px="5" py="2.5" rounded="full" font-weight="600" text-decoration="none">Browse components</a></div>
+      </div>
+    </section>
+  </main>
+  <footer border-t="1px" border-color="gray-200" dark-border-color="gray-950">
 
-    <!-- 2. FONTS -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <div max-w="7xl" mx="auto" px="4" md-px="8" lg-px="10" xl-px="12" py="12" lg-py="16">
 
-    <style>
-        /* --- CORE SETUP --- */
-        :root {
-            --primary-glow: #3b82f6;
-            --header-height: 4rem;
-        }
+      <div display="grid" grid-cols="1" lg-grid-cols="6" gap="8">
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-            background-color: var(--surface);
-            color: var(--text);
-        }
+        <div lg-col-span="2">
+          <a href="./index.html" display="flex" items="center" gap="2.5" text="text" text-decoration="none" font-weight="bold" font-size="lg">
+            <img src="./assets/images/logo.png" h="6" dark-display="none" display="flex" alt="Atomattr">
+            <img src="./assets/images/logo.dark.png" h="6" dark-display="flex" display="none" alt="Atomattr">
+          </a>
+          <p max-w="sm" mt="4" text="muted" line-height="relaxed">Attribute-driven styling for modern interfaces, from the web to React Native.</p>
 
-        /* --- TEXT GRADIENT --- */
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* --- ARTICLE STYLING --- */
-        article h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        article p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-        }
-
-        article ul {
-            list-style: disc;
-            padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-dim);
-        }
-
-        article li {
-            margin-bottom: 0.5rem;
-        }
-
-        article code {
-            background: var(--surface-alt);
-            color: var(--primary);
-            padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9em;
-        }
-
-        article pre {
-            background: #1e293b;
-            color: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            overflow-x: auto;
-            margin-bottom: 2rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* --- MOBILE MENU --- */
-        #mobile-menu {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateX(100%);
-        }
-
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
-    </style>
-</head>
-
-<body bg="surface" text="text" min-h="100vh" flex col>
-
-    <!-- NAVBAR -->
-    <nav sticky top="0" z="50" w="full" bg="surface" bg-opacity="0.9" backdrop-blur="12px" border-b="1px"
-        border-color="border">
-        <div max-w="1400px" mx="auto" px="4" h="4rem" flex items="center" justify="between">
-
-            <!-- Logo -->
-            <a href="../index.html" flex items="center" gap="3" style="text-decoration:none;" text="text" group>
-                <div w="2rem" h="2rem" bg="linear-gradient(135deg, #3b82f6, #9333ea)" radius="md" flex items="center"
-                    justify="center" shadow="sm">
-                    <svg w="1.2rem" text="white" fill="none" stroke="currentColor" stroke-width="2.5"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                </div>
-                <div flex col justify="center">
-                    <span weight="700" size="1.1rem" leading="1" tracking="-0.02em">AtomAttr</span>
-                    <span text="text-dim" size="0.75rem" weight="500" tracking="wide">BLOG</span>
-                </div>
-            </a>
-
-            <!-- Desktop Menu -->
-            <div hidden lg-flex items="center" gap="6">
-                <a href="../index.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
-                    transition="colors" style="text-decoration:none;">Home</a>
-                <a href="../docs.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
-                    transition="colors" style="text-decoration:none;">Docs</a>
-                <a href="../playground.html" text="text-dim" hover-text="primary" weight="500" size="0.9rem"
-                    transition="colors" style="text-decoration:none;">Playground</a>
-                <a href="../blog.html" text="primary" weight="600" size="0.9rem" transition="colors"
-                    style="text-decoration:none;">Blog</a>
-
-                <div w="1px" h="1.5rem" bg="border"></div>
-
-                <button id="themeToggle" bg="surface-alt" border="1px" border-color="border" p="0.5rem" radius="xl"
-                    hover-border-color="text-dim" transition="all" cursor="pointer">
-                    <svg class="sun" w="1rem" h="1rem" fill="none" stroke="currentColor" stroke-width="2"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button id="menuOpen" lg-hidden bg="transparent" border="none" p="2" text="text">
-                <svg w="1.5rem" h="1.5rem" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
+          <div display="flex" gap="2" mt="6">
+            <a href="https://discord.gg/efCPNK2Wp" aria-label="Open community chat" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-discord-fill" font-size="20"></i></a>
+            <a href="https://github.com/devadetayo/atomattr" aria-label="Open GitHub" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-github-fill" font-size="20"></i></a>
+            <a href="https://x.com/devadetayo" aria-label="Follow on X" w="10" h="10" rounded="full" border="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" items="center" justify="center" text="text" text-decoration="none" hover-bg="gray-100"><i class="ri-twitter-x-fill" font-size="20"></i></a>
+          </div>
         </div>
-    </nav>
 
-    <!-- MOBILE DRAWER -->
-    <div id="mobile-menu" fixed top="0" right="0" h="100vh" w="80%" max-w="320px" z="100" bg="surface" p="6" flex col
-        gap="6" shadow="2xl" border-l="1px" border-color="border" lg-hidden>
-        <div flex justify="between" items="center" mb="4">
-            <span weight="700" size="1.25rem">Menu</span>
-            <button id="menuClose" bg="surface-alt" p="2" radius="xl" border="none"><svg w="1.5rem" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg></button>
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Product</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Documentation</a>
+            <a href="cheatsheet.html" text="muted" text-decoration="none" hover-text="text">Cheat sheet</a>
+            <a href="blog.html" text="muted" text-decoration="none" hover-text="text">Blog</a>
+            <a href="ui.html" text="muted" text-decoration="none" hover-text="text">AtomAttr UI</a>
+            <a href="index.html#components" text="muted" text-decoration="none" hover-text="text">Examples</a>
+            <a href="index.html#features" text="muted" text-decoration="none" hover-text="text">Platforms</a>
+            <a href="premium.html" text="muted" text-decoration="none" hover-text="text">Pro</a>
+          </div>
         </div>
-        <a href="../index.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Home</a>
-        <a href="../docs.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Documentation</a>
-        <a href="../playground.html" text="text" size="1.1rem" weight="600" style="text-decoration:none;">Playground</a>
-        <a href="../blog.html" text="primary" size="1.1rem" weight="600" style="text-decoration:none;">Blog</a>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Community</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="https://discord.gg/efCPNK2Wp" text="muted" text-decoration="none" hover-text="text">Discord</a>
+            <a href="https://github.com/devadetayo/atomattr" text="muted" text-decoration="none" hover-text="text">GitHub</a>
+            <a href="https://x.com/devadetayo" text="muted" text-decoration="none" hover-text="text">Follow on X</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Support</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="sponsors.html" text="muted" text-decoration="none" hover-text="text">Sponsors</a>
+            <a href="support.html" text="muted" text-decoration="none" hover-text="text">Support the project</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 font-size="sm" font-weight="700" m="0" mb="4">Learn</h3>
+          <div display="flex" flex-col gap="3">
+            <a href="docs.html" text="muted" text-decoration="none" hover-text="text">Getting started</a>
+            <a href="cheatsheet.html" text="muted" text-decoration="none" hover-text="text">Cheat sheet</a>
+            <a href="blog.html" text="muted" text-decoration="none" hover-text="text">Blog</a>
+            <a href="playground.html" text="muted" text-decoration="none" hover-text="text">Playground</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div mt="10" pt="6" border-t="1px solid gray-200" dark-border-color="#ffffff/10" display="flex" flex-col sm-flex-row justify="between" gap="3" text="muted" font-size="sm">
+        <span>© 2026 Cody Devadetayo. All rights reserved. - Atomattr</span>
+      </div>
+
     </div>
 
-    <!-- ARTICLE HEADER -->
-    <header pt="6rem" pb="4rem" px="4" text-align="center" max-w="50rem" mx="auto">
-        <div flex gap="2" justify="center" mb="4" text="primary" weight="700" size="0.9rem" uppercase tracking="wide">
-            <span>Engineering</span> • <span>Nov 25, 2025</span>
-        </div>
-        <h1 size="2.5rem" md-size="3.5rem" weight="800" leading="1.2" mb="6">
-            Introducing AtomAttr: The Runtime CSS Revolution
-        </h1>
-        <div flex items="center" justify="center" gap="3">
-            <div w="2.5rem" h="2.5rem" bg="slate-200" radius="full"></div>
-            <div text-align="left">
-                <p weight="700" size="0.95rem" mb="0">Adetayo</p>
-                <p text="text-dim" size="0.85rem">Creator of AtomAttr</p>
-            </div>
-        </div>
-    </header>
-
-    <!-- ARTICLE CONTENT -->
-    <main w="full" max-w="48rem" mx="auto" px="4" pb="8rem">
-        <article>
-            <p>For years, frontend development has been dominated by the build step. Webpack, Rollup, Vite, PostCSS...
-                the list goes on. While these tools are powerful, they introduce a layer of complexity that can be
-                overkill for many projects. We asked ourselves: <strong>What if you could just write HTML?</strong></p>
-
-            <h2>The Problem with Static CSS</h2>
-            <p>Traditional CSS requires you to maintain a separate stylesheet file. Utility frameworks like Tailwind CSS
-                improved this by moving styles into the HTML, but they still require a heavy Node.js build process to
-                generate the final CSS file. This creates a barrier to entry for backend developers, beginners, and
-                those working on legacy stacks.</p>
-
-            <h2>The AtomAttr Solution</h2>
-            <p>AtomAttr takes a different approach. Instead of compiling your CSS at build time, it compiles it at
-                <strong>runtime</strong>, right in the user's browser. This might sound slow, but thanks to modern
-                JavaScript engines and the MutationObserver API, it happens in milliseconds.
-            </p>
-
-            <pre><code>&lt;div flex justify="center" items="center" h="screen" bg="slate-900"&gt;
-    &lt;h1 text="white" size="3rem"&gt;Hello World&lt;/h1&gt;
-&lt;/div&gt;</code></pre>
-
-            <p>With the code above, AtomAttr scans the DOM, identifies the attributes, generates the corresponding
-                atomic CSS classes, and injects them into the page style. It's instant, responsive, and requires zero
-                configuration.</p>
-
-            <h2>Key Benefits</h2>
-            <ul>
-                <li><strong>Zero Config:</strong> No `npm install`, no `tailwind.config.js`. Just a script tag.</li>
-                <li><strong>Framework Agnostic:</strong> Works with React, Vue, PHP, Rails, or plain HTML.</li>
-                <li><strong>Tiny Footprint:</strong> The engine is less than 10KB gzipped.</li>
-            </ul>
-
-            <p>We believe this is the future of rapid prototyping and simpler web development. Try it out in the <a
-                    href="../playground.html" text="primary">Playground</a> today.</p>
-        </article>
-    </main>
-
-    <!-- FOOTER -->
-    <footer bg="surface-alt" border-t="1px" border-color="border" pt="5rem" pb="3rem">
-        <div max-w="1400px" mx="auto" px="4" text-align="center" text="text-dim" size="0.85rem">
-            &copy; 2025 Quanta Labs. Released under MIT License.
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menu = document.getElementById('mobile-menu');
-            const menuOpen = document.getElementById('menuOpen');
-            const menuClose = document.getElementById('menuClose');
-            const themeBtn = document.getElementById('themeToggle');
-            const html = document.documentElement;
-
-            // Mobile Menu
-            menuOpen.addEventListener('click', () => menu.classList.add('open'));
-            menuClose.addEventListener('click', () => menu.classList.remove('open'));
-
-            // Theme Toggle
-            themeBtn.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-            });
-
-            // Init State
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark');
-            }
-
-            // Force Engine Start
-            if (window.AtomAttr && window.AtomAttr.start) window.AtomAttr.start();
-        });
-    </script>
-</body>
-
+  </footer>
+  <script src="./dist/atomattr.min.js" defer></script>
+  <script src="./site/app.js" type="module"></script>
+  <script src="./assets/motion.js"></script>
+  <script src="./assets/theme-icon.js" defer></script>
+<script src="../assets/nav-search.js" defer></script></body>
 </html>

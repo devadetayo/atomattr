@@ -3,7 +3,9 @@
 
 ## Breakpoint prefixes
 
-Write a base attribute for the default style, then prefix an attribute with a breakpoint to apply it at that minimum viewport width. The registered thresholds come from the exported `BREAKPOINTS` map.
+Write a base attribute for the default style, then prefix an attribute with a breakpoint to apply it at that minimum viewport width. The thresholds are fixed at `sm` 640px, `md` 768px, `lg` 1024px, `xl` 1280px and `2xl` 1536px.
+
+<!-- atomattr:breakpoints -->
 
 ## Mobile-first example
 
@@ -28,4 +30,4 @@ Supported prefixes can be combined, such as `md-dark-hover-bg`. Atomattr compose
 </button>
 ```
 
-Use `cq-sm`, `cq-md`, `cq-lg`, and `cq-xl` for ancestor container sizes; they are documented separately in [Container queries](container-queries.html). Viewport breakpoints and container thresholds are independent.
+For component-level responsiveness based on a container's width, see [Container queries](container-queries.html).

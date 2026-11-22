@@ -1,21 +1,24 @@
 # View Transitions
-> Style named snapshots for browser View Transitions without adding routing or transition orchestration to AtomAttr.
+> Animate between page states with the browser View Transitions API. Atomattr 1.0.1 has no attribute for `view-transition-name`, so set it inline or in CSS.
 
-## Name participating elements
+## Name the element
 
-Set `view-transition-name` on elements that should receive their own snapshot. Names must be unique among simultaneously rendered participants. AtomAttr provides the CSS property and leaves transition initiation to the browser navigation or application code. Import the browser engine and defaults stylesheet first; see the [installation guide](installation.html).
+Give the element a `view-transition-name` with an inline `style`, then start the transition from script. Use Atomattr attributes for everything else on the element.
 
 ```html
-<article view-transition-name="product-card" bg="white" dark-bg="gray-900" rounded="xl" p="5">
-  <h2>Product details</h2>
+<article style="view-transition-name: product-card" p="4" rounded="xl" bg="surface" border="1" border-color="border">
+  Product card
 </article>
 ```
 
-## Style transition snapshots
+```js
+if (document.startViewTransition) {
+  document.startViewTransition(() => updateTheDom());
+} else {
+  updateTheDom();
+}
+```
 
-View Transition snapshots use special pseudo-elements such as `::view-transition-old()` and `::view-transition-new()`. The current AtomAttr attribute parser targets attributes on elements and supports only its built-in `before` and `after` pseudo-element prefixes; use a stylesheet for transition pseudo-element selectors and the `@view-transition` at-rule.
+## Notes
 
-## Progressive enhancement
-
-Treat these styles as progressive enhancement. Keep navigation and content updates functional without transitions, and respect reduced-motion preferences in the CSS that starts or styles a transition.
-
+Each name must be unique on the page while a transition runs. Attributes you change inside the callback are picked up by the engine as usual, because it observes attribute changes. Browsers without the API run the callback directly, so the interface still works.

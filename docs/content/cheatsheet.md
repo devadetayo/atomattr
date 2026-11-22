@@ -11,12 +11,10 @@ Browse every registered styling attribute and the CSS property it controls. Use 
 
 ## Modifiers
 
-Add a modifier prefix before any supported attribute to apply it at a viewport breakpoint, inside a size container, for a theme, or during an element state. Container variants (`cq-sm`, `cq-md`, `cq-lg`, and `cq-xl`) query the nearest eligible ancestor marked with `container="name / inline-size"`. The generated query currently uses its minimum width threshold and does not select the container by name.
+Add a modifier prefix before any supported attribute to apply it at a viewport breakpoint, for a theme, or during an element state.
 
 ```html
-<section container="card / inline-size">
-  <article grid-cols="1" cq-md-grid-cols="2" aspect="video">
-    ...
-  </article>
-</section>
+<article grid-cols="1" md-grid-cols="2" dark-bg="gray-900" hover-shadow="lg" aspect="video">
+  ...
+</article>
 ```

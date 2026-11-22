@@ -10,6 +10,18 @@ Use `w` and `h` to set width and height. Numeric values such as `w="64"` use the
 <main w="full" max-w="72rem" mx="auto">Page content</main>
 ```
 
+```native
+import { Box, Txt } from 'atomattr/react-native';
+
+export function Avatar() {
+  return (
+    <Box size="16" rounded="full" bg="gray-200" items="center" justify="center">
+      <Txt>+</Txt>
+    </Box>
+  );
+}
+```
+
 ## Equal dimensions
 
 Use `size` when an element should have the same width and height, such as an icon button or avatar. It maps to the CSS `width` and `height` properties. For a square shape that should preserve its proportion when only one dimension is set, use `aspect="square"` instead.
