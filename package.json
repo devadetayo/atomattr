@@ -1,6 +1,6 @@
 {
   "name": "atomattr",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Attribute-first styling for HTML and React Native.",
   "type": "module",
   "scripts": {

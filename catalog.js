@@ -106,7 +106,7 @@ function card(item) {
   const tags = (item.tags || []).map((t) => `<span bg="gray-100" dark-bg="#ffffff/5" text="muted" rounded="md" px="2.5" py="1" font-size="xs">${esc(t)}</span>`).join('');
   return `<article bg="gray-100" dark-bg="#0e0f11" border="0" rounded="md" overflow="hidden" display="flex" flex-col>
     <a href="${href}" aria-label="View ${esc(item.name)}" display="block" bg="gray-100" dark-bg="#07080a" border-b="1px solid gray-200" dark-border-color="#ffffff/10" overflow="hidden">
-      <iframe title="${esc(item.name)} preview" loading="lazy" tabindex="-1" aria-hidden="true" data-slug="${esc(item.slug)}" data-compact w="full" h="64" border="0" pointer-events="none"></iframe>
+      <iframe title="${esc(item.name)} preview" loading="lazy" tabindex="-1" aria-hidden="true" data-slug="${esc(item.slug)}" data-compact w="auto" min-h="32" max-h="auto" border="0" pointer-events="none"></iframe>
     </a>
     <div p="5" display="flex" flex-col gap="3" flex="1">
       <div display="flex" items="start" justify="between" gap="3">

@@ -19,7 +19,7 @@ export function componentCard(item, saved = readSaved()) {
   return `<article data-card="${esc(item.slug)}" data-reveal group display="flex" flex-col gap="2.5">
   <div data-stage data-wide="${wide ? 1 : 0}" data-fw="${f.w}" data-fh="${f.h}" class="aa-stage" position="relative" overflow="hidden" rounded="md" bg="#e8e8ea" dark-bg="#212121" w="full" group-hover-shadow="xl" transition="all" duration="300ms" style="aspect-ratio:3/2">
     <a href="${href}" aria-label="Open ${esc(item.name)}" position="absolute" top="0" left="0" w="full" h="full" z="1"></a>
-    <iframe title="${esc(item.name)} preview" loading="lazy" tabindex="-1" aria-hidden="true" data-slug="${esc(item.slug)}" border="0" pointer-events="none" bg="transparent" style="position:absolute;left:50%;top:50%;width:1px;height:1px;opacity:0;transform-origin:center center;transform:translate(-50%,-50%)"></iframe>
+    <iframe title="${esc(item.name)} preview" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" data-slug="${esc(item.slug)}" border="0" pointer-events="none" bg="transparent" style="position:absolute;left:50%;top:50%;width:1px;height:1px;opacity:0;transform-origin:center center;transform:translate(-50%,-50%)"></iframe>
     ${draft ? '<span position="absolute" top="3" left="3" z="2" bg="warning/15" text="warning" rounded="md" px="2.5" py="0.5" font-size="xs" font-weight="700">Draft</span>' : ''}
     <a href="${href}" position="absolute" bottom="3" right="4" z="2" display="inline-flex" items="center" gap="1.5" text="gray-900" dark-text="gray-50" font-size="sm" font-weight="600" text-decoration="none" hover-opacity="0.7" transition="all" duration="150ms"><i class="ri-code-s-slash-line" font-size="lg"></i> Get code</a>
   </div>
@@ -41,7 +41,22 @@ function fit(stage) {
   if (!cw || !ch) return;
   let w, h, k;
   if (stage.dataset.wide === '1') {
-    w = +stage.dataset.fw || 900; h = +stage.dataset.fh || 400;
+    // Lay wide components out at a desktop width (above the 1024px breakpoint) so they show their
+    // real layout, then scale the whole frame down to fit the card.
+    const fw = +stage.dataset.fw || 900, fh = +stage.dataset.fh || 400;
+    let d; try { d = ifr.contentDocument; } catch { d = null; }
+    w = fw; h = fh;
+    if (d && d.body && d.body.firstElementChild) {
+      const measure = (width) => {
+        ifr.style.width = width + 'px'; ifr.style.height = '1600px'; ifr.style.transform = 'none';
+        return Math.ceil(d.body.getBoundingClientRect().height);
+      };
+      // Short bars (navbars, banners) keep their compact width. Tall, page-like components are
+      // laid out at desktop width so responsive layouts show their real shape.
+      const compact = measure(fw);
+      if (compact > 300) { w = 1100; const m = measure(w); h = m > 40 ? Math.min(m, Math.max(fh, 240)) : fh; }
+      else if (compact > 40) h = compact;
+    }
     k = Math.min((cw - 56) / w, (ch - 64) / h);
   } else {
     let d; try { d = ifr.contentDocument; } catch { return; }
