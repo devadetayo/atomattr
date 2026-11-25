@@ -1,2 +1,11 @@
 /* PREVIEW STUB — real showcase.css not in zip. */
 @keyframes ui-flow2{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+
+[text="text"]{
+color: #000;
+}
+
+html.dark [text="text"]{
+color: #fff;
+}
